@@ -1,0 +1,18 @@
+.full-size {
+  height: 100vh;
+}
+.cover-container {
+  background-image: url("../img/cover.jpg");
+  background-size: cover;
+  background-position-y: center;
+  background-position-x: center;
+  box-shadow: 3px 3px 3px 3px rgb(170, 170, 170);
+}
+.logo-container {
+  background-image: url("../img/cat-chup_logo.jpg");
+  background-size: contain;
+  background-position-y: center;
+  background-position-x: center;
+  height: 300px;
+  width: 440px;
+}
