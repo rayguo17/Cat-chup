@@ -9,7 +9,7 @@ const HomePage = () => {
     return (
         <Container className="containerSize">
             <Row>
-                <Col xs="3"><SideBar /></Col>
+                <Col xs="3"></Col>
                 <Col xs="6" style={{ backgroundColor: 'grey' }}><p>search bar component</p><PostArea style={{ backgroundColor: 'grey' }} /></Col>
                 <Col xs="3"><ScehduleRightBar /></Col>
             </Row>

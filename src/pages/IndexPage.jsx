@@ -18,11 +18,11 @@ export const IndexPage = ()=>{
                 </div>
                 <div className='button-container' style={{marginTop:'30px'}}>
                     <button className='btn btn-primary btn-large' style={{width:'200px'}}>
-                        <Link to='/login' style={{textDecoration:'none', color:'white'}}>Login</Link>
+                        <Link to='/login' style={{textDecoration:'none', color:'white',width:'100%',display:'inline-block'}}>Login</Link>
                     </button>
                     <br/>
                     <button className='btn btn-primary btn-large mt-3' style={{width:'200px'}}>
-                        <Link to='/register' style={{textDecoration:'none',color:'white'}}>Register</Link>
+                        <Link to='/register' style={{textDecoration:'none',color:'white',width:'100%',display:'inline-block'}}>Register</Link>
                     </button>
                 </div>
             </center>
