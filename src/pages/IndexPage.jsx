@@ -13,16 +13,16 @@ export const IndexPage = ()=>{
             </div>
             <div className='col-6 px-0'>
             <center>
-                <div className='logo-container'>
+                <div className='logo-container' style={{marginTop:'130px'}}>
                     
                 </div>
-                <div className='button-container'>
-                    <button>
-                        <Link to='/login'>Login</Link>
+                <div className='button-container' style={{marginTop:'30px'}}>
+                    <button className='btn btn-primary btn-large' style={{width:'200px'}}>
+                        <Link to='/login' style={{textDecoration:'none', color:'white'}}>Login</Link>
                     </button>
                     <br/>
-                    <button>
-                        <Link to='/register'>Register</Link>
+                    <button className='btn btn-primary btn-large mt-3' style={{width:'200px'}}>
+                        <Link to='/register' style={{textDecoration:'none',color:'white'}}>Register</Link>
                     </button>
                 </div>
             </center>

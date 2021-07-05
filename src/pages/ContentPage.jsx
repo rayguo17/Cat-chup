@@ -10,6 +10,7 @@ export const ContentPage = ()=>{
                 <Route path='/home' render={()=><p>this is home</p>}/>
                 <Route path='/messages' render={()=><p>this is messages</p>}/>
                 <Route path='/friends' render={()=><p>this is friends</p>}/>
+                {/* <Route path='/profile' component={}/> */}
                 <Route path='/:username' render={()=><p>this is username</p>}/>
             </Switch>
         
