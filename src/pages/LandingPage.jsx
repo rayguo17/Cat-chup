@@ -1,8 +1,9 @@
-import { BrowserRouter,Route,Switch,Redirect } from "react-router-dom"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import { ContentPage } from "./ContentPage"
 import { IndexPage } from "./IndexPage"
 import { Login } from "./Login"
 import Register from "./Register"
+import HomePage from "./HomePage"
 
 // const PrivateRoute = ({component,...rest})=>{
 //     const auth = useSelector(state => state.authStore);
@@ -24,11 +25,11 @@ import Register from "./Register"
 //                                 pathname:'/login',
 //                                 state:{from:props.location},
 //                             }}
-                        
+
 //                         />
 //                     )
 //                 }}           
-            
+
 //             />
 //         )
 //     }else{
@@ -56,11 +57,11 @@ import Register from "./Register"
 //                                 pathname:'/secret',
 //                                 state:{from:props.location},
 //                             }}
-                        
+
 //                         />
 //                     )
 //                 }}           
-            
+
 //             />
 //         )
 //     }else{
@@ -69,18 +70,19 @@ import Register from "./Register"
 //   }
 
 //TODO: set index/login/register as public route, so after login would auto redirect
-const LandingPage  = ()=>{
+const LandingPage = () => {
     return (
         <div>
             <BrowserRouter>
                 <Switch>
-                    <Route exact path='/' component={IndexPage}/>
-                    <Route path='/login' component={Login}/>
-                    <Route path='/register' component={Register}/>
-                    <Route path='/:content' component={ContentPage}/>
+                    <Route exact path='/' component={IndexPage} />
+                    <Route path='/login' component={Login} />
+                    <Route path='/register' component={Register} />
+                    <Route path='/:content' component={ContentPage} />
+                    <Route path='/:home' component={HomePage} />
                 </Switch>
-                
-            
+
+
             </BrowserRouter>
         </div>
     )
