@@ -1,4 +1,4 @@
-import { BrowserRouter,Route,Switch,Redirect } from "react-router-dom"
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import { ContentPage } from "./ContentPage"
 import { IndexPage } from "./IndexPage"
 import { Login } from "./Login"
@@ -70,7 +70,7 @@ const PublicRoute = ({component,...rest})=>{
   }
 
 //TODO: set index/login/register as public route, so after login would auto redirect
-const LandingPage  = ()=>{
+const LandingPage = () => {
     return (
         <div>
             <BrowserRouter>
@@ -80,8 +80,8 @@ const LandingPage  = ()=>{
                     <PublicRoute path='/register' component={Register}/>
                     <PrivateRoute path='/:content' component={ContentPage}/>
                 </Switch>
-                
-            
+
+
             </BrowserRouter>
         </div>
     )

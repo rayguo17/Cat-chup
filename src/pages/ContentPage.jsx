@@ -1,23 +1,32 @@
-import { BrowserRouter,Route,Switch,Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import SideBar from "../components/SideBar";
+import { Container, Row, Col } from 'reactstrap';
+import PostArea from "../components/PostArea";
+import ScehduleRightBar from "../components/ScehduleRightBar"
+import '../stylesheet/navBar.css'
 
-export const ContentPage = ()=>{
+export const ContentPage = () => {
     return (
         <div>
-        <BrowserRouter>
-            <SideBar/>
-            <Switch>
-                <Route path='/home' render={()=><p>this is home</p>}/>
-                <Route path='/messages' render={()=><p>this is messages</p>}/>
-                <Route path='/friends' render={()=><p>this is friends</p>}/>
-                {/* <Route path='/profile' component={}/> */}
-                <Route path='/:username' render={()=><p>this is username</p>}/>
-            </Switch>
-        
-        
-        </BrowserRouter>
-    </div>
+            <BrowserRouter>
+                <Container>
+                    <Row>
+                        <Col xs="3"><SideBar /></Col>
+                        <Col xs="6" style={{ backgroundColor: 'grey' }}><p>search bar component</p><PostArea style={{ backgroundColor: 'grey' }} /></Col>
+                        <Col xs="3"><ScehduleRightBar /></Col>
+                    </Row>
+                </Container>
+                <Switch>
+                    <Route path='/home' render={() => <p></p>} />
+                    <Route path='/messages' render={() => <p></p>} />
+                    <Route path='/friends' render={() => <p></p>} />
+                    <Route path='/:username' render={() => <p></p>} />
+                </Switch>
+
+
+            </BrowserRouter>
+        </div>
     )
-    
+
 }
 
