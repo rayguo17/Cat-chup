@@ -13,7 +13,13 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
+<<<<<<< HEAD
     "emoji-picker-react": "^3.4.8",
+=======
+    "browser-image-compression": "^1.0.14",
+    "compress-js": "^2.0.2",
+    "formik": "^2.2.9",
+>>>>>>> 6766035599448adb20ad613fda7cc5a30270b65f
     "react": "^17.0.2",
     "react-chat-engine": "^1.10.4",
     "react-dom": "^17.0.2",
@@ -23,7 +29,8 @@
     "reactstrap": "^8.9.0",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
