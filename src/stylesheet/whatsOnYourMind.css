@@ -1,0 +1,66 @@
+.whatsOnYourMindContainer {
+background-color: white;
+height: 12vh;
+padding: 10px;
+margin: 0px 30px;
+border-bottom: 2px solid white;
+border-radius: 5px;
+position: relative;
+}
+
+.whatsOnYourMindButton{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #96D9FF !important;
+    padding: 10px 10vw !important;
+    border: none !important;
+    border-radius: 20px !important;
+}
+
+
+/***************** post madal css ****************/
+.postModalHeader{
+    text-align: center;
+    justify-content: center;
+}
+.postModalComment{
+    border: 1px solid black;
+    margin: 10px;
+}
+.postModalTags{
+    border: 1px solid black;
+    margin: 10px;
+}
+
+
+
+/***************** mobile css ****************/
+@media only screen and (max-width: 600px) {
+    .whatsOnYourMindContainer {
+        background-color: white;
+        height: 12vh;
+        padding: 10px;
+        margin: 0px 30px;
+        border-bottom: 2px solid white;
+        border-radius: 5px;
+        position: relative;
+        }
+        
+        .whatsOnYourMindButton{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: #96D9FF !important;
+            padding: 10px 10vw !important;
+            border: none !important;
+            border-radius: 20px !important;
+        }
+   
+  }

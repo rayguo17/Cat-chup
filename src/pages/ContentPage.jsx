@@ -4,6 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import PostArea from "../components/PostArea";
 import ScehduleRightBar from "../components/ScehduleRightBar"
 import '../stylesheet/navBar.css'
+import WhatsOnYourMind from "../components/WhatsOnYourMind";
 
 export const ContentPage = () => {
     return (
@@ -12,7 +13,7 @@ export const ContentPage = () => {
                 <Container>
                     <Row>
                         <Col xs="3"><SideBar /></Col>
-                        <Col xs="6" style={{ backgroundColor: 'grey' }}><p>search bar component</p><PostArea style={{ backgroundColor: 'grey' }} /></Col>
+                        <Col xs="6" style={{ backgroundColor: 'grey' }}><WhatsOnYourMind /><PostArea style={{ backgroundColor: 'grey' }} /></Col>
                         <Col xs="3"><ScehduleRightBar /></Col>
                     </Row>
                 </Container>

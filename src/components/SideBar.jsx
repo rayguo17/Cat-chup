@@ -16,7 +16,7 @@ const SideBar = (props) => {
 
 
             <Col xs="3" className="navIconLinkContainer">
-                <div><img src={Logo} alt="HomeIcon"></img>
+                <div><img className="mainLogo" src={Logo} alt="HomeIcon"></img>
                     <br />
 
                     <Nav vertical>
