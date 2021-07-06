@@ -37,7 +37,7 @@ const SideBar = (props) => {
                         </NavItem>
                         <NavItem className='flexIcon'>
                             <img src={profileIcon} alt="ProfileIcon"></img>
-                            <NavLink className="NavLink" href="#">PROFILE</NavLink>
+                            <NavLink className="NavLink" href={`/${props.username}`}>PROFILE</NavLink>
                         </NavItem>
 
                     </Nav>
