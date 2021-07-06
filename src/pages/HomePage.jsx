@@ -1,19 +1,22 @@
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
 import SideBar from "../components/SideBar";
 import { Container, Row, Col } from 'reactstrap';
 import PostArea from "../components/PostArea";
 import ScehduleRightBar from "../components/ScehduleRightBar"
 import '../stylesheet/navBar.css'
+import WhatsOnYourMind from "../components/WhatsOnYourMind";
 
 const HomePage = () => {
     return (
-        <Container className="containerSize">
-            <Row>
-                <Col xs="3"></Col>
-                <Col xs="6" style={{ backgroundColor: 'grey' }}><p>search bar component</p><PostArea style={{ backgroundColor: 'grey' }} /></Col>
-                <Col xs="3"><ScehduleRightBar /></Col>
-            </Row>
-        </Container>
+        <center>
+            <Container className="containerSize">
+                <Row>
+                    <Col className="left-col" xs="3"><SideBar /></Col>
+                    <Col xs="5" style={{ backgroundColor: 'grey' }}><WhatsOnYourMind /><PostArea style={{ backgroundColor: 'grey' }} /></Col>
+                    <Col xs="3"><ScehduleRightBar /></Col>
+                </Row>
+            </Container>
+        </center>
     )
 }
 
