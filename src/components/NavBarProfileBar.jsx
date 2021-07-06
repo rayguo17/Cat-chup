@@ -5,9 +5,9 @@ import '../stylesheet/navBar.css'
 
 const NavBarProfileBar = (props) => {
     return (
-        <footer className='flexIconProfile'>
-            <img src={profileIcon} alt="ProfilePic"></img>
-            <p>pass in props.Username</p>
+        <footer>
+            <img className='flexIconProfile' src={profileIcon} alt="ProfilePic"></img>
+            <span>pass in props.Username</span>
         </footer>)
 }
 
