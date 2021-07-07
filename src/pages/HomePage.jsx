@@ -11,7 +11,7 @@ const HomePage = () => {
         <center>
             <Container className="containerSize">
                 <Row>
-                    <Col className="left-col" xs="3"><SideBar /></Col>
+                    <Col className="left-col" xs="3"></Col>
                     <Col xs="5" style={{ backgroundColor: 'grey' }}><WhatsOnYourMind /><PostArea style={{ backgroundColor: 'grey' }} /></Col>
                     <Col xs="3"><ScehduleRightBar /></Col>
                 </Row>
