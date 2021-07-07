@@ -11,6 +11,7 @@ import NavProfileBar from './NavBarProfileBar'
 import MyPlansToday from './MyPlansToday';
 
 const SideBar = (props) => {
+    console.log('sidebar',props.username)
     return (
         <div className="navContainer">
 
@@ -22,11 +23,11 @@ const SideBar = (props) => {
 
                     <Nav vertical className="iconContainer">
                         <NavItem className='flexIcon'>
-                            <img src={homeIcon} alt="HomeIcon"></img> <NavLink className="NavLink" href="#">HOME</NavLink>
+                            <img src={homeIcon} alt="HomeIcon"></img> <NavLink className="NavLink" href="/home">HOME</NavLink>
                         </NavItem>
                         <NavItem className='flexIcon'>
 
-                            <img src={friendsIcon} alt="FriendIcon"></img>  <NavLink className="NavLink" href="#">FRIENDS</NavLink>
+                            <img src={friendsIcon} alt="FriendIcon"></img>  <NavLink className="NavLink" href="/friends">FRIENDS</NavLink>
                         </NavItem>
                         <NavItem className='flexIcon'>
                             <img src={notificationIcon} alt="NotitificationIcon"></img>
@@ -38,7 +39,7 @@ const SideBar = (props) => {
                         </NavItem>
                         <NavItem className='flexIcon'>
                             <img src={profileIcon} alt="ProfileIcon"></img>
-                            <NavLink className="NavLink" href="#">PROFILE</NavLink>
+                            <NavLink className="NavLink" href={`/${props.username}`}>PROFILE</NavLink>
                         </NavItem>
 
                     </Nav>

@@ -20,7 +20,9 @@
   margin-top: 10px;
   resize: none !important;
 }
-
+textarea {
+  resize: none !important;
+}
 .profile-container {
   margin-top: 100px;
 }
