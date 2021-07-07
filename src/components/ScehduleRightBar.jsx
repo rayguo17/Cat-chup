@@ -1,10 +1,10 @@
-
+import '../stylesheet/scheduleArea.css'
 
 
 
 const ScehduleRightBar = (props) => {
     return (
-        <div>
+        <div className="scheduleArea">
 
             <div><p>Scehdule right bar</p></div>
 

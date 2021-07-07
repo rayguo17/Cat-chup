@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Container,Row,Col } from "reactstrap";
-import { PersonalProfile } from "../components/PersonalProfile";
+import { PersonalProfile } from "../components/profile/PersonalProfile";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 
@@ -10,8 +10,9 @@ import axios from "axios";
 export const ProfilePage = (props)=>{
     
     const [userInfo,setUserInfo] = useState({});
+    const [infoChanged,setChanged] = useState(false);
     const [isOwner,setIsOwner] = useState(false);
-    const [modalIsOpen,setOpenModal] = useState(false);
+    
     
     //need to check whether this user is friend with him
     useEffect(async ()=>{
@@ -35,7 +36,7 @@ export const ProfilePage = (props)=>{
         }
         //and then check if they are friend?
 
-    },[])
+    },[infoChanged])
     return (
         <div>
             <Container>
@@ -45,7 +46,10 @@ export const ProfilePage = (props)=>{
                         <PersonalProfile
                             isOwner={isOwner}
                             userInfo={userInfo}
+                            infoChangedState={[infoChanged,setChanged]}
+
                         />
+
                     </Col>
                     <Col xs='3'></Col>
                 </Row>

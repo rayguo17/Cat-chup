@@ -11,15 +11,17 @@ import NavProfileBar from './NavBarProfileBar'
 import MyPlansToday from './MyPlansToday';
 
 const SideBar = (props) => {
+    console.log('sidebar',props.username)
     return (
         <div className="navContainer">
 
 
             <Col xs="3" className="navIconLinkContainer">
-                <div><img src={Logo} alt="HomeIcon"></img>
+                <div><img className="mainLogo" src={Logo} alt="HomeIcon"></img>
                     <br />
 
-                    <Nav vertical>
+
+                    <Nav vertical className="iconContainer">
                         <NavItem className='flexIcon'>
                             <img src={homeIcon} alt="HomeIcon"></img> <NavLink className="NavLink" href="#">HOME</NavLink>
                         </NavItem>
@@ -47,6 +49,7 @@ const SideBar = (props) => {
 
             <MyPlansToday />
             <NavProfileBar />
+
         </div>
     );
 }

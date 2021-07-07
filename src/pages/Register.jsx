@@ -80,6 +80,7 @@ const Register = (props) =>{
         if(formik.values.file){
             let reader = new FileReader();
             reader.onloadend = ()=>{
+                console.log('image reader',reader.result);
                 setImgUrl(reader.result);
             }
             reader.readAsDataURL(formik.values.file)
