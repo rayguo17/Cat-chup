@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import { ContentPage } from "./ContentPage"
 import { IndexPage } from "./IndexPage"
+import HomePage from "./HomePage"
 import { Login } from "./Login"
 import Register from "./Register"
 import { useSelector } from "react-redux"
@@ -75,7 +76,7 @@ const LandingPage = () => {
         <div>
             <BrowserRouter>
                 <Switch>
-                    <PublicRoute exact path='/' component={IndexPage}/>
+                    <PublicRoute exact path='/' component={HomePage}/>
                     <PublicRoute path='/login' component={Login}/>
                     <PublicRoute path='/register' component={Register}/>
                     <PrivateRoute path='/:content' component={ContentPage}/>
