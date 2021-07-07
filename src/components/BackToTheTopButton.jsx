@@ -1,9 +1,9 @@
 
 
-const BackToTheTop(){
-    return (<div></div>)
+const BackToTheTop = () => {
+    return (<div> </div>)
 
 
-}
+};
 
 export default BackToTheTop;

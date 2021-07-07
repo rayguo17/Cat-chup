@@ -7,6 +7,7 @@ import HomePage from "./HomePage";
 import jwtDecode from "jwt-decode";
 import { ProfilePage } from "./ProfilePage";
 import { useEffect,useState } from "react";
+import FriendsPage from "./FriendsPage";
 
 export const ContentPage = () => {
     const [username,setUsername] = useState(null)
@@ -32,7 +33,7 @@ export const ContentPage = () => {
                         <Switch className='col-9'>
                             <Route path='/home' component={HomePage} />
                             <Route path='/messages' render={() => <p></p>} />
-                            <Route path='/friends' render={() => <p></p>} />
+                            <Route path='/friends' component={FriendsPage} />
                             <Route path='/:username' component={ProfilePage} />
                         </Switch>
 

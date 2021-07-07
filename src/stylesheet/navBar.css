@@ -3,7 +3,15 @@
 /* global css */
 /* .row {} */
 
-
+/* .row{
+    margin: auto 0 !important;
+    padding: auto 0 !important;
+    
+}
+.row>*{
+    padding-left: 0;
+    padding-right: 0;
+} */
 .container{
     margin: 0% !important;
     padding: 0% !important;
@@ -13,9 +21,9 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding-right: 10rem;
+    /* padding-right: 10rem; */
     position: fixed;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     /* margin-right: 10px; */
     min-height: 100vh;
     /* min-width: 30vw; */
@@ -24,7 +32,7 @@
 }
 
 .left-col {
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 .mainLogo{
