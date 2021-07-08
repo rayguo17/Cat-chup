@@ -1,3 +1,77 @@
 .postContainer{
     height: 60vh;
 }
+
+.card{
+    margin:5px 0;
+}
+
+.userIcon{
+    position:absolute;
+    margin: 10px;
+}
+
+.userName{
+    position:absolute;
+    margin: 40px 0 0 0;
+    left:80px;
+}
+
+.userName p{
+    height:30px;
+    margin-bottom:0;
+}
+
+.mood{
+    border: 2px solid grey;
+    position: absolute;
+    width:20px;
+    height:20px;
+    margin: 20px 0 0 0;
+    left:80px;
+    background-color: yellow;
+}
+
+.card-content{
+    width: 100%;
+    min-height:100px;
+}
+
+.card-text{
+    margin:5px 20px 0 20px;
+    text-align: left;
+}
+
+.event-info{
+    margin:5px 20px 0 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.event-info p{
+    margin:0 10px;
+}
+
+.card-link img{
+    float:right;
+    width:30px;
+}
+
+.like-comment-button{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+.like-comment-button div{
+    width: 50%;
+}
+
+.like-comment-button div button{
+    display: flex;
+    align-items: center;
+}
+
+.like-comment-button div button p{
+    margin-bottom: 0;
+}
