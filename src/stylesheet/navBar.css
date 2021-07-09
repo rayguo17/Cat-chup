@@ -20,7 +20,7 @@
 .navContainer{
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    /* height: 100vh; */
     /* padding-right: 10rem; */
     position: fixed;
     /* margin-top: 10px; */
@@ -71,7 +71,7 @@
 
 .plansTodaySection{
     position: relative;
-    margin-top: 10vh;
+    /* margin-top: 10vh; */
     /* left: 18px; */
 }
 
@@ -100,9 +100,12 @@
 
 
 footer{
-width: 100% !important;
+width: inherit !important;
 margin-top: auto;
 background-color: #96D9FF;
+/* position: fixed; */
+/* bottom: 0;
+left: 6vw; */
 
 
 }
@@ -117,85 +120,3 @@ background-color: #96D9FF;
 }
 
 
-@media only screen and (max-width: 600px) {
-
-    /* .container{
-        margin: 0% !important;
-        padding: 0% !important;
-        max-width: 100% !important;
-    } */
-    .navContainer{
-        height: 100vh !important;
-        position: fixed;
-        margin-top: 10px;
-        margin-right: 10px;
-        min-height: 100vh;
-        /* min-width: 30vw; */
-       
-    }
-    
-    .mainLogo{
-        width: 20vw;
-    }
-    .navIconLinkContainer{
-        margin: 20px;
-        margin-bottom: 0%;
-        
-    }
-    
-    .NavLink{
-        color: black !important;
-        font-size: 4vh;
-        padding: 0rem 0vh !important;
-        text-align: left;
-        
-    }
-    
-    .flexIcon img {
-        height: 5vh;
-        /* width: 41px; */
-        margin-top: 7px;
-        margin-right: 15px;
-    }
-    
-    
-    
-    .plansTodayContainer {
-        padding: 0px 5px;
-        /* height: 33vh; */
-        width: 16vw;
-        /* min-width: 240px;
-        max-width: 16vw; */
-        min-height: 33vh;
-        border: 2px solid #96D9FF;
-        background-color: #D4E9F0;
-        border-radius: 2rem;
-        margin: 5px 20px;
-        
-    }
-    .myPlansTodayText{
-        margin:0px 70px;
-        font-size: 20px;
-        font-weight: 400;
-        text-decoration: underline;
-        text-decoration-thickness: 3px;
-        text-decoration-color: #96D9FF;
-    }
-    
-    
-    footer{  
-    margin-top: auto;
-    }
-    
-    .flexIconProfile {
-        /* display:inline-flex;
-        margin: 14px 0px 10px; */
-        max-height: 45px;
-        /* position: fixed;
-        text-align: center;
-        background-color: #96D9FF; */
-       
-    }
-
-
-}

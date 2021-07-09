@@ -22,14 +22,14 @@ import { FriendsPresetGroup } from './FriendsPresetGroup';
 //     }
 
 const FriendsHeader = (props) => {
-    const {activeTab,toggle,friendsList} = props;
-    const [presetGroup,setPresetGroup] = useState([]);
-    
-    useEffect(()=>{
-        let newPresetGroup= Object.keys(friendsList);
+    const { activeTab, toggle, friendsList } = props;
+    const [presetGroup, setPresetGroup] = useState([]);
+
+    useEffect(() => {
+        let newPresetGroup = Object.keys(friendsList);
         newPresetGroup.splice(5);
         setPresetGroup(newPresetGroup);
-    },[friendsList])
+    }, [friendsList])
     return (
         <div className="friendsHeaderContainer">
             <div className="TitleSearchContainer">
@@ -42,9 +42,9 @@ const FriendsHeader = (props) => {
             </div>
 
 
-            <Nav tabs style={{position:'relative'}}>
+            <Nav tabs style={{ position: 'relative' }}>
                 {
-                    presetGroup.map((group,index)=>{
+                    presetGroup.map((group, index) => {
                         return (
                             <FriendsPresetGroup
                                 toggle={toggle}
@@ -55,46 +55,8 @@ const FriendsHeader = (props) => {
                         )
                     })
                 }
-                {/* <NavItem>
-                    <NavLink
-                        className={classnames({ active: activeTab === 0 })}
-                        onClick={() => { toggle(0); }}>
-                        <p className="friendGroupList">All Friends</p>
-                    </NavLink>
-                </NavItem>
 
-                <NavItem>
-                    <NavLink
-                        className={classnames({ active: activeTab === 1 })}
-                        onClick={() => { toggle(1); }}>
-                        <p className="friendGroupList">Family</p>
-                    </NavLink>
-                </NavItem>
-
-                <NavItem>
-                    <NavLink
-                        className={classnames({ active: activeTab === 2 })}
-                        onClick={() => { toggle(2); }}>
-                        <p className="friendGroupList" >Work</p>
-                    </NavLink>
-                </NavItem>
-
-                <NavItem>
-                    <NavLink
-                        className={classnames({ active: activeTab === 3 })}
-                        onClick={() => { toggle(3); }}>
-                        <p className="friendGroupList">School</p>
-                    </NavLink>
-                </NavItem>
-
-                <NavItem>
-                    <NavLink
-                        className={classnames({ active: activeTab === 4 })}
-                        onClick={() => { toggle(4); }}>
-                        <p className="friendGroupList">Close Friends</p>
-                    </NavLink>
-                </NavItem> */}
-                <div style={{position:'absolute',right:'0px'}}>
+                <div style={{ position: 'absolute', right: '0px' }}>
                     <GroupFriendDrop
                         friendsList={friendsList}
                     />
