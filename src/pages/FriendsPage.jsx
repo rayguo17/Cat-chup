@@ -9,30 +9,33 @@ import '../stylesheet/friendsPage.css'
 import { useState } from "react";
 import FriendsArea from "../components/FriendsComponents/FriendsArea";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 
 
 const FriendsPage = () => {
 
     const [activeTab, setActiveTab] = useState('All Friends');
+    const friendListStore = useSelector(state=>state.friendListStore);
     const [friendsList,setFriendsList] = useState({});
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
     useEffect(()=>{
-        let dummyFriends={
-            "All Friends":[1,2,3,4],
-            "Family":[4,6,3,9],
-            "Work":[5,2,4],
-            "School":[3,2,45,45],
-            "Close Friends":[1,33,45,42,34],
-        }
-        setFriendsList(dummyFriends);
-        let key = Object.keys(dummyFriends);
+        // let dummyFriends={
+        //     "All Friends":[1,2,3,4],
+        //     "Family":[4,6,3,9],
+        //     "Work":[5,2,4],
+        //     "School":[3,2,45,45],
+        //     "Close Friends":[1,33,45,42,34],
+        // }
+        let friendList = friendListStore.friendList
+        setFriendsList(friendList);
+        let key = Object.keys(friendList);
         console.log('friends',key);
         setActiveTab(key[0]);
-    },[])
+    },[friendListStore])
     return (
         <center>
             <Container className="containerSize">

@@ -5,7 +5,7 @@ import { ProfilePicDiv } from './ProfilePicDiv';
 
 
 export const UploadImage = (props)=>{
-    const {initialPic,infoChangedState,title,PicDiv,newPic} = props
+    const {initialPic,title,PicDiv,newPic} = props
     
     const [images,setImages] = newPic;
     
