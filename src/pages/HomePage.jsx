@@ -8,15 +8,15 @@ import WhatsOnYourMind from "../components/WhatsOnYourMind";
 
 const HomePage = () => {
     return (
-        <center>
-            <Container className="containerSize">
-                <Row>
-                    <Col className="left-col" xs="3"><SideBar /></Col>
-                    <Col xs="5" style={{ backgroundColor: 'grey' }}><WhatsOnYourMind /><PostArea style={{ backgroundColor: 'grey' }} /></Col>
-                    <Col xs="3"><ScehduleRightBar /></Col>
-                </Row>
-            </Container>
-        </center>
+        <div className="col-9 px-0 mx-0 row">
+
+            <div className="col-6 px-0">
+                <WhatsOnYourMind /><PostArea style={{ backgroundColor: 'grey' }} />
+            </div>
+
+
+
+        </div>
     )
 }
 

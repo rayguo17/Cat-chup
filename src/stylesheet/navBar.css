@@ -17,17 +17,9 @@
   /* max-width: 100% !important; */
 }
 .navContainer {
-  /* display: flex;
-    flex-direction: column; */
-  /* height: 100vh; */
-  /* padding-right: 10rem; */
   position: sticky;
-  /* margin-top: auto; */
-  /* margin-right: 10px; */
   min-height: 100vh;
-  /* min-width: 30vw; */
-  /* width: 25%; */
-
+  top: 0;
   width: 100%;
 }
 
@@ -70,7 +62,7 @@
 
 .plansTodaySection {
   position: relative;
-  /* margin-top: 10vh; */
+  margin-top: 10vh;
   /* left: 18px; */
 }
 
@@ -84,10 +76,10 @@
   border: 2px solid #96d9ff;
   background-color: #d4e9f0;
   border-radius: 2rem;
-  margin: 5px 20px;
+  margin-top: 5px;
 }
 .myPlansTodayText {
-  margin: 0px 70px;
+  margin: 0px ;
   font-size: 20px;
   font-weight: 400;
   text-decoration: underline;
@@ -97,13 +89,10 @@
 }
 
 footer {
-  width: inherit !important;
-  margin-top: auto;
   background-color: #96d9ff;
-
-  position: sticky;
-  /* bottom: 0;
-  left: 6vw; */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .flexIconProfile {

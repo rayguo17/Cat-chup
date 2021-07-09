@@ -16,13 +16,13 @@ import { useSelector } from "react-redux";
 const FriendsPage = () => {
 
     const [activeTab, setActiveTab] = useState('All Friends');
-    const friendListStore = useSelector(state=>state.friendListStore);
-    const [friendsList,setFriendsList] = useState({});
+    const friendListStore = useSelector(state => state.friendListStore);
+    const [friendsList, setFriendsList] = useState({});
     const toggle = tab => {
         if (activeTab !== tab) setActiveTab(tab);
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         // let dummyFriends={
         //     "All Friends":[1,2,3,4],
         //     "Family":[4,6,3,9],
@@ -33,29 +33,30 @@ const FriendsPage = () => {
         let friendList = friendListStore.friendList
         setFriendsList(friendList);
         let key = Object.keys(friendList);
-        console.log('friends',key);
+        console.log('friends', key);
         setActiveTab(key[0]);
-    },[friendListStore])
+    }, [friendListStore])
     return (
         <div className='col-9 px-0 row mx-0'>
             <div className='col-6 px-0'>
-            <FriendsHeader
-                            toggle={toggle}
-                            activeTab={activeTab}
-                            friendsList={friendsList}
-                        />
-                        <FriendsArea
-                            activeTab={activeTab}
-                            friendsList={friendsList}
-                            style={{ backgroundColor: 'grey' }} />
+                <FriendsHeader
+                    toggle={toggle}
+                    activeTab={activeTab}
+                    friendsList={friendsList}
+                />
+                <FriendsArea
+                    activeTab={activeTab}
+                    friendsList={friendsList}
+                    style={{ backgroundColor: 'grey' }} />
             </div>
-            <div className='col-3 px-0' style={{backgroundColor:'red'}}>
+            <div className='col-3 px-0' style={{ backgroundColor: 'red' }}>
                 schedule at right
             </div>
-            
+
         </div>
     )
 }
 
 
 export default FriendsPage;
+
