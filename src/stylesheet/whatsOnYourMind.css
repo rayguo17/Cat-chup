@@ -1,11 +1,17 @@
 .whatsOnYourMindContainer {
 background-color: white;
 height: 12vh;
-padding: 10px;
-margin: 0px 30px;
+/* padding: 0px;
+margin: 0px 0px;
+
 border-bottom: 2px solid white;
-border-radius: 5px;
-position: relative;
+border-radius: 5px; */
+border-left: 20px solid grey;
+border-right: 20px solid grey;
+
+position: sticky;
+top:0;
+
 }
 
 .whatsOnYourMindButton{
@@ -16,7 +22,7 @@ position: relative;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color: #96D9FF !important;
-    padding: 15px 60px !important;
+    padding: 12px 50px !important;
     border: none !important;
     border-radius: 20px !important;
     box-shadow: none !important;
@@ -87,28 +93,3 @@ display: flex;
 
 
 /***************** mobile css ****************/
-@media only screen and (max-width: 600px) {
-    .whatsOnYourMindContainer {
-        background-color: white;
-        height: 12vh;
-        padding: 10px;
-        margin: 0px 30px;
-        border-bottom: 2px solid white;
-        border-radius: 5px;
-        position: relative;
-        }
-        
-        .whatsOnYourMindButton{
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            background-color: #96D9FF !important;
-            padding: 10px 10vw !important;
-            border: none !important;
-            border-radius: 20px !important;
-        }
-   
-  }

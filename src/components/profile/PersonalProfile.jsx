@@ -3,6 +3,7 @@ import { faMapMarkerAlt,faAt,faJedi,faEdit,faUserPlus } from "@fortawesome/free-
 import {useState} from 'react'
 import { ProfileEditModal } from "./ProfileEditModal"
 import { ProfilePicDiv } from "./ProfilePicDiv"
+import { useEffect } from "react"
 
 
 let profileBtn = {
@@ -14,6 +15,7 @@ let profileBtn = {
 export const PersonalProfile = (props)=>{
     console.log('isOwner',props.isOwner);
     console.log('userInfo',props.userInfo);
+
     const [modalIsOpen,setOpenModal] = useState(false);
     const toggle = ()=>setOpenModal(!modalIsOpen);
     const showButton = ()=>{
@@ -23,10 +25,11 @@ export const PersonalProfile = (props)=>{
             
             case props.isFriend:
                 return <button className='btn'>cat-chup</button>;
-            case props.isStranger:
-                return <button className='btn' style={profileBtn}><FontAwesomeIcon icon={faUserPlus}/>add friend</button>
+            default:
+                return <button className='btn btn-success' style={profileBtn}><FontAwesomeIcon icon={faUserPlus}/>add friend</button>
         }
     }
+    
 
     return (
         <div style={{position:'relative', height:'330px',borderBottom:'1px solid black'}}>
@@ -53,8 +56,6 @@ export const PersonalProfile = (props)=>{
             {props.isOwner?<ProfileEditModal
                 toggle={toggle}
                 modalIsOpen={modalIsOpen}
-                userInfo={props.userInfo}
-                infoChangedState={props.infoChangedState}
             />:null}
         </div>
     )
