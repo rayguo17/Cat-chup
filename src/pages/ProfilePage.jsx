@@ -49,8 +49,13 @@ export const ProfilePage = (props)=>{
 
     },[userStore,friendListStore])
     return (
-        <div>
-            <Container>
+        <div className='col-9 px-0'>
+            <PersonalProfile
+                            isOwner={isOwner}
+                            userInfo={userInfo}
+                            areFriends={areFriends}
+                        />
+            {/* <Container>
                 <Row>
                     <Col xs='3'></Col>
                     <Col xs='6'>
@@ -63,7 +68,8 @@ export const ProfilePage = (props)=>{
                     </Col>
                     <Col xs='3'></Col>
                 </Row>
-            </Container>
+            </Container> */}
+
         </div>
     )
 }

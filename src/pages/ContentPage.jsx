@@ -30,13 +30,13 @@ export const ContentPage = () => {
             <BrowserRouter>
                 <Container>
                     <Row>
-                        <Col xs="3"><SideBar
+                        <Col xs="3 px-0" style={{height:'auto'}}><SideBar
                             username={username}
                         /></Col>
                         {/* <Col xs="6" style={{ backgroundColor: 'grey' }}><p>search bar component</p><PostArea style={{ backgroundColor: 'grey' }} /></Col>
                         <Col xs="3"><ScehduleRightBar /></Col> */}
 
-                        <Switch className='col-9'>
+                        <Switch>
                             <Route path='/home' component={HomePage} />
                             <Route path='/messages' render={() => <p></p>} />
                             <Route path='/friends' component={FriendsPage} />
