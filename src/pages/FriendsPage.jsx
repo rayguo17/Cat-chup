@@ -40,9 +40,9 @@ const FriendsPage = () => {
         <center>
             <Container className="containerSize">
                 <Row className="mx-0">
-                    <Col className="left-col px-0" xs="3"></Col>
+                    <Col className="left-col" xs="3"><SideBar /></Col>
                     <Col className="px-0" xs="5" style={{ backgroundColor: 'grey' }}>
-                        <FriendsHeader 
+                        <FriendsHeader
                             toggle={toggle}
                             activeTab={activeTab}
                             friendsList={friendsList}
@@ -50,8 +50,8 @@ const FriendsPage = () => {
                         <FriendsArea
                             activeTab={activeTab}
                             friendsList={friendsList}
-                        style={{ backgroundColor: 'grey' }} />
-                        </Col>
+                            style={{ backgroundColor: 'grey' }} />
+                    </Col>
                     <Col className="px-0" xs="3"><ScehduleRightBar /></Col>
                 </Row>
             </Container>

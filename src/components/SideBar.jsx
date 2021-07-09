@@ -11,7 +11,7 @@ import NavProfileBar from './NavBarProfileBar'
 import MyPlansToday from './MyPlansToday';
 
 const SideBar = (props) => {
-    console.log('sidebar',props.username)
+    console.log('sidebar', props.username)
     return (
         <div className="navContainer">
 
@@ -31,7 +31,7 @@ const SideBar = (props) => {
                         </NavItem>
                         <NavItem className='flexIcon'>
                             <img src={notificationIcon} alt="NotitificationIcon"></img>
-                            <NavLink className="NavLink" href="#">NOTIFICATION</NavLink>
+                            <NavLink className="NavLink" href="/notifications">NOTIFICATION</NavLink>
                         </NavItem>
                         <NavItem className='flexIcon'>
                             <img src={speechIcon} alt="SpeechIcon"></img>

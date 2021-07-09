@@ -1,16 +1,16 @@
-import {ChatEngine} from 'react-chat-engine';
+import { ChatEngine } from 'react-chat-engine';
 import { Provider } from 'react-redux';
 import LandingPage from './pages/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { store } from './redux/store';
-//import './App.css';
+import './App.css';
 
 
-const App = ()=>{
+const App = () => {
     return (
         <Provider
-        store={store}>
-            <LandingPage/>
+            store={store}>
+            <LandingPage />
         </Provider>
         // <LandingPage/>
         // <ChatEngine
@@ -22,4 +22,4 @@ const App = ()=>{
     )
 }
 
-export default App; 
+export default App;
