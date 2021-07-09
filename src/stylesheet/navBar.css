@@ -102,8 +102,8 @@ footer {
   background-color: #96d9ff;
 
   position: sticky;
-  /* bottom: 0;
-  left: 6vw; */
+  bottom: 0;
+  /* left: 6vw; */
 }
 
 .flexIconProfile {
