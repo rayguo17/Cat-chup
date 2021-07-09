@@ -7,7 +7,7 @@ import MailIcon from '../img/mail-icon.png'
 
 const EventPost = (props) => {
   return (
-    <div>
+    <div style={{width:"90%"}}>
       <Card>
       <img className="userIcon" src="https://image.flaticon.com/icons/png/512/146/146005.png" alt="icon" style={{width:"50px", height:"50px"}}/>
       <span className="userName"><p>Username</p></span>

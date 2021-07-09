@@ -4,15 +4,17 @@ import EventCard from './EventCard';
 
 const ScehduleRightBar = (props) => {
     return (
-        <div>
+        <div style={{position:"fixed"}}>
             <center>
-                <h3>Available  Event</h3>
-                <WeekIcon />
-                <hr
-                    style={{
-                        height: 5
-                    }}
-                />
+                <div className="Schedule-header">
+                    <h3>Available  Event</h3>
+                    <WeekIcon />
+                    <hr
+                        style={{
+                            height: 5
+                        }}
+                    />
+                </div>
                 <EventCard />
             
             </center>
