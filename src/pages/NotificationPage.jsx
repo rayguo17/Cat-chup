@@ -4,7 +4,7 @@ import { Container, Row, Col } from 'reactstrap';
 import NotificationHeader from "../components/NotificationComponents/NotificationHeader";
 
 
-import ScehduleRightBar from "../components/ScehduleRightBar"
+import ScheduleRightBar from "../components/ScheduleRightBar"
 import '../stylesheet/navBar.css'
 import '../stylesheet/notificationPage.css'
 import NotificationDetailsHeader from "../components/NotificationComponents/NotificationDetailsHeader";
