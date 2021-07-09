@@ -1,0 +1,43 @@
+/************Notifications left side *****************/
+
+
+
+.notificationHeaderContainer{
+    background-color: #96D9FF !important;
+    color: white;
+    font-size: 26px;
+    text-align: left;
+    position: fixed;
+    z-index: 10;
+    width: 20%;
+
+}
+
+.notificationBodyContainer {
+    margin-top: 80px !important;
+    /* background-color: orange; */
+    
+}
+
+.notificationAvatar{
+    height: 40px;
+}
+
+/************Notification Details right side *****************/
+
+.notificationDetailsHeaderContainer{
+    background-color: #96D9FF !important;
+    color: white;
+    font-size: 26px;
+    text-align: left;
+    position: fixed;
+    z-index: 10;
+    width: 30%;
+
+}
+
+.notificationDetailMainContainer{
+
+    margin-left: 10px;
+}
+

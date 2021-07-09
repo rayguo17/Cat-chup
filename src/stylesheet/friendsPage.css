@@ -1,24 +1,60 @@
 .friendsHeaderContainer{
     background-color: #96D9FF;
     color: white;
-    position: relative;
+    position: fixed;
+    z-index: 10;
+    top:0;
+    width: inherit;
 }
 
-.TitleSearchContainer{
-    /* display: inline-flex; */
-}
+
 
 .catchUpSearch{
     top:10px;
     right:10px;
-    /* border: 4px #79D7F6 solid !important; */
     background-color: white;
-    border-radius: 1rem !important;
+    border-radius: 3rem !important;
     text-align: center;
+    z-index: 10;
     position: absolute;
     
 }
 
+/**************friendSearch *************/
+.friendSearch{
+    text-align: center;
+    z-index: 10;
+    text-align: center !important;
+    display: inline-block;
+}
+
+.friendSearch-input-container{
+    margin-top: 12px !important;
+    background-color: white;
+    border: 2px solid #00A3FF !important ;
+    border-radius: 3rem !important;
+    z-index: 10;
+    width: 18vw !important;
+    text-align: center !important;
+}
+
+.search-icon{
+    text-align: center !important;
+    display: inline-block;
+    height: 30px;
+    /* position: absolute; */
+    /* right: 47.3em; */
+    /* left: .20em; */
+}
+
+.friendSearch__input{
+    border: none !important;
+    font-size: 20px;
+    width: 13vw;
+    
+}
+/***************************/
+/***************************/
 
 .FriendsTitle{
     font-size: 26px;
@@ -29,6 +65,11 @@
     margin: 0px 0px 0px 20px;
 }
 
+.moreGroups{
+    position: 'absolute'!important;
+    right: '0px' !important;
+}
+
 /* .friendGroupList:hover {
     color: #00A3FF !important;
     background-color: #96D9FF !important;
@@ -36,6 +77,7 @@
     font-weight: 500;
     font-size: 18px;
 }
+
 
 .btn:focus, .btn-secondary:focus {
     outline: none !important;
@@ -69,23 +111,20 @@ background-color: aqua;
     border: none !important;
     outline: none !important;
     cursor: pointer !important;
-    color: #00A3FF !important;
+    /* color: #00A3FF !important; */
 }
 .nav-item > .active {
-    /* border-bottom: 5px solid blue !important; */
     background-color: #96D9FF !important;
     border: none !important;
     color: #00A3FF !important;
     cursor: pointer !important;
     margin: 0px !important;
-    /* border-bottom: 6px solid #00A3FF !important; */
     transition: none !important;
     
     
 }
 
 .nav-item > .active p{
-    /* border-bottom: 5px solid blue !important; */
     background-color: #96D9FF !important;
     border: none !important;
     color: #00A3FF !important;
@@ -97,3 +136,56 @@ background-color: aqua;
     
 }
 
+
+/* //FriendsAreaComponents */
+
+
+.friendsAreaComponent{
+    border-radius: 1rem !important;
+    padding: 0px !important;
+    margin:20px 0px 0px 0px !important;
+
+}
+
+.friendCardBody{
+    position: relative !important;
+    
+}
+
+.groupMoreButton{
+    
+    font-size: 30px;
+    color: grey !important;
+   
+    text-align: left;
+
+}
+
+
+
+
+.deleteFriendBtn{
+    position:absolute !important;
+    right: 15px !important;
+    bottom: 10px !important;
+    background-image: url("../img/DeleteFriendIcon.png") !important;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    color: none !important;
+    background-color: none !important;
+    height: 20px;
+    width: 30px;
+    border: none !important;
+}
+
+.modal-dialog{
+    position:relative !important;
+    pointer-events: none !important;
+    background-color: none !important;
+
+}
+
+.FriendsContentContainer{
+    margin-top: 80px;
+    background-color: #DFDFDF;
+}
