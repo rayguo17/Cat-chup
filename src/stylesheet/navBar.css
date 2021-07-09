@@ -26,13 +26,14 @@
     /* margin-top: 10px; */
     /* margin-right: 10px; */
     min-height: 100vh;
+    height: 100vh;
     /* min-width: 30vw; */
     /* width: 25%; */
    
 }
 
 .left-col {
-    margin-right: 20px;
+    margin-right: 4px;
 }
 
 .mainLogo{
@@ -89,7 +90,7 @@
     
 }
 .myPlansTodayText{
-    margin:0px 70px;
+    margin:25px 70px;
     font-size: 20px;
     font-weight: 400;
     text-decoration: underline;
@@ -100,10 +101,10 @@
 
 
 footer{
-width: inherit !important;
+/* width: inherit !important; */
 margin-top: auto;
 background-color: #96D9FF;
-/* position: fixed; */
+position: sticky;
 /* bottom: 0;
 left: 6vw; */
 

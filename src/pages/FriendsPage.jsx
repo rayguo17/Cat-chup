@@ -34,27 +34,24 @@ const FriendsPage = () => {
         setActiveTab(key[0]);
     }, [])
     return (
-        <center>
-            <Container className="containerSize">
-                <Row className="mx-0">
-                    <Col className="left-col" xs="3"><SideBar /></Col>
-                    <Col className="px-0" xs="5" style={{ backgroundColor: 'grey' }}>
-                        <FriendsHeader
-                            toggle={toggle}
-                            activeTab={activeTab}
-                            friendsList={friendsList}
-                        />
-                        <FriendsArea
-                            activeTab={activeTab}
-                            friendsList={friendsList}
-                            style={{ backgroundColor: 'grey' }} />
-                    </Col>
-                    <Col className="px-0" xs="3"><ScehduleRightBar /></Col>
-                </Row>
-            </Container>
-        </center>
+        <div className="col-9 px-0 row mx-0">
+            <div className="col-6 px-0">
+
+                <FriendsHeader
+                    toggle={toggle}
+                    activeTab={activeTab}
+                    friendsList={friendsList}
+                />
+                <FriendsArea
+                    activeTab={activeTab}
+                    friendsList={friendsList}
+                    style={{ backgroundColor: 'grey' }} />
+
+            </div>
+        </div>
     )
 }
 
 
 export default FriendsPage;
+

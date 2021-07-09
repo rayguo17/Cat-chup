@@ -77,6 +77,12 @@ const FriendsArea = (props) => {
             <div ><p>FriendsArea</p></div>
             <div ><p>FriendsArea</p></div>
             <div ><p>FriendsArea</p></div>
+            <div ><p>FriendsArea</p></div>
+            <div ><p>FriendsArea</p></div>
+            <div ><p>FriendsArea</p></div>
+            <div ><p>FriendsArea</p></div>
+            <div ><p>FriendsArea</p></div>
+            <div ><p>FriendsArea</p></div>
 
 
 
