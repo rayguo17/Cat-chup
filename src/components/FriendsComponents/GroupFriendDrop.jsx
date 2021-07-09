@@ -1,7 +1,7 @@
-
+import Dropdown from 'react-dropdown'
 import { useState } from 'react';
 
-import Dropdown from 'react-dropdown';
+
 
 
 export const GroupFriendDrop = (props) => {
@@ -43,4 +43,5 @@ export const GroupFriendDrop = (props) => {
     // </Dropdown>
   )
 }
+
 

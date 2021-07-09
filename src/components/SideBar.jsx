@@ -16,36 +16,36 @@ const SideBar = (props) => {
         <div className="navContainer">
 
 
-            <div xs="3" className="navIconLinkContainer">
-                <div><img className="mainLogo" src={Logo} alt="HomeIcon"></img>
-                    <br />
+            {/* <Col xs="3" className="navIconLinkContainer px-0"> */}
+            <div className='navIconLinkContainer'><img className="mainLogo" src={Logo} alt="HomeIcon"></img>
+                <br />
 
 
-                    <Nav vertical className="iconContainer">
-                        <NavItem className='flexIcon'>
-                            <img src={homeIcon} alt="HomeIcon"></img> <NavLink className="NavLink" href="/home">HOME</NavLink>
-                        </NavItem>
-                        <NavItem className='flexIcon'>
+                <Nav vertical className="iconContainer">
+                    <NavItem className='flexIcon'>
+                        <img src={homeIcon} alt="HomeIcon"></img> <NavLink className="NavLink" href="/home">HOME</NavLink>
+                    </NavItem>
+                    <NavItem className='flexIcon'>
 
-                            <img src={friendsIcon} alt="FriendIcon"></img>  <NavLink className="NavLink" href="/friends">FRIENDS</NavLink>
-                        </NavItem>
-                        <NavItem className='flexIcon'>
-                            <img src={notificationIcon} alt="NotitificationIcon"></img>
-                            <NavLink className="NavLink" href="/notifications">NOTIFICATION</NavLink>
-                        </NavItem>
-                        <NavItem className='flexIcon'>
-                            <img src={speechIcon} alt="SpeechIcon"></img>
-                            <NavLink className="NavLink" href="#">MESSAGES</NavLink>
-                        </NavItem>
-                        <NavItem className='flexIcon'>
-                            <img src={profileIcon} alt="ProfileIcon"></img>
-                            <NavLink className="NavLink" href={`/${props.username}`}>PROFILE</NavLink>
-                        </NavItem>
+                        <img src={friendsIcon} alt="FriendIcon"></img>  <NavLink className="NavLink" href="/friends">FRIENDS</NavLink>
+                    </NavItem>
+                    <NavItem className='flexIcon'>
+                        <img src={notificationIcon} alt="NotitificationIcon"></img>
+                        <NavLink className="NavLink" href="/notifications">NOTIFICATION</NavLink>
+                    </NavItem>
+                    <NavItem className='flexIcon'>
+                        <img src={speechIcon} alt="SpeechIcon"></img>
+                        <NavLink className="NavLink" href="#">MESSAGES</NavLink>
+                    </NavItem>
+                    <NavItem className='flexIcon'>
+                        <img src={profileIcon} alt="ProfileIcon"></img>
+                        <NavLink className="NavLink" href={`/${props.username}`}>PROFILE</NavLink>
+                    </NavItem>
 
-                    </Nav>
-                </div>
-
+                </Nav>
             </div>
+
+            {/* </Col> */}
 
             <MyPlansToday />
             <NavProfileBar />

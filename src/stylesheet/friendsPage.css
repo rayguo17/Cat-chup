@@ -1,73 +1,68 @@
-.friendsHeaderContainer{
-    background-color: #96D9FF;
-    color: white;
-    position: sticky;
-    z-index: 10;
-    top:0;
-    
+.friendsHeaderContainer {
+  background-color: #96d9ff;
+  color: white;
+  position: sticky;
+  z-index: 10;
+  top: 0;
 }
 
-
-
-.catchUpSearch{
-    top:10px;
-    right:10px;
-    background-color: white;
-    border-radius: 3rem !important;
-    text-align: center;
-    z-index: 10;
-    position: absolute;
-    
+.catchUpSearch {
+  top: 10px;
+  right: 10px;
+  background-color: white;
+  border-radius: 3rem !important;
+  text-align: center;
+  z-index: 10;
+  position: absolute;
 }
 
 /**************friendSearch *************/
-.friendSearch{
-    text-align: center;
-    z-index: 10;
-    text-align: center !important;
-    display: inline-block;
+.friendSearch {
+  text-align: center;
+  z-index: 10;
+  text-align: center !important;
+  display: inline-block;
 }
 
-.friendSearch-input-container{
-    margin-top: 12px !important;
-    background-color: white;
-    border: 2px solid #00A3FF !important ;
-    border-radius: 3rem !important;
-    z-index: 10;
-    width: 18vw !important;
-    text-align: center !important;
+.friendSearch-input-container {
+  margin-top: 12px !important;
+  background-color: white;
+  border: 2px solid #00a3ff !important ;
+  border-radius: 3rem !important;
+  z-index: 10;
+  width: 18vw !important;
+  text-align: center !important;
 }
 
-.search-icon{
-    text-align: center !important;
-    display: inline-block;
-    height: 30px;
-    /* position: absolute; */
-    /* right: 47.3em; */
-    /* left: .20em; */
+.search-icon {
+  text-align: center !important;
+  display: inline-block;
+  height: 30px;
+  /* position: absolute; */
+  /* right: 47.3em; */
+  /* left: .20em; */
 }
 
-.friendSearch__input{
-    border: none !important;
-    font-size: 20px;
-    width: 13vw;
-    
+.friendSearch__input {
+  border: none !important;
+  font-size: 20px;
+  width: 13vw;
 }
 /***************************/
 /***************************/
 
-.FriendsTitle{
-    font-size: 26px;
-    font-weight: 500;
-    text-align: left;
+.FriendsTitle {
+  font-size: 26px;
+  font-weight: 500;
+  text-align: left;
 
-    /* display: block; */
-    margin: 0px 0px 0px 20px;
+  /* display: block; */
+  margin: 0px 0px 0px 20px;
 }
 
-.moreGroups{
-    position: 'absolute'!important;
-    right: '0px' !important;
+.moreGroups {
+  position: "absolute" !important;
+  right: "0px" !important;
 }
 
 /* .friendGroupList:hover {
@@ -85,107 +80,90 @@
     border-bottom: 2px solid blue !important;
   } */
 
-.friendGroupListContainer{
-    display: inline-flex;
-   
+.friendGroupListContainer {
+  display: inline-flex;
 }
-.friendGroupListContainer .btn-group .btn{
-    border: red 3 px solid !important;
-   
+.friendGroupListContainer .btn-group .btn {
+  border: red 3 px solid !important;
 }
-.friendGroupList{
-    margin: 3px;
-    font-size: 15px;
-    background-color: #96D9FF !important;
-    border: none !important;
-    color: white;
+.friendGroupList {
+  margin: 3px;
+  font-size: 15px;
+  background-color: #96d9ff !important;
+  border: none !important;
+  color: white;
 }
-nav .tabs{
-background-color: aqua;
+nav .tabs {
+  background-color: aqua;
 }
 /* .activeGroupFriends{
     background-color: blue;
 } */
 
 .nav-link {
-    border: none !important;
-    outline: none !important;
-    cursor: pointer !important;
-    /* color: #00A3FF !important; */
+  border: none !important;
+  outline: none !important;
+  cursor: pointer !important;
+  /* color: #00A3FF !important; */
 }
 .nav-item > .active {
-    background-color: #96D9FF !important;
-    border: none !important;
-    color: #00A3FF !important;
-    cursor: pointer !important;
-    margin: 0px !important;
-    transition: none !important;
-    
-    
+  background-color: #96d9ff !important;
+  border: none !important;
+  color: #00a3ff !important;
+  cursor: pointer !important;
+  margin: 0px !important;
+  transition: none !important;
 }
 
-.nav-item > .active p{
-    background-color: #96D9FF !important;
-    border: none !important;
-    color: #00A3FF !important;
-    cursor: pointer !important;
-    margin: 0px !important;
-    border-bottom: 4px solid #00A3FF !important;
-    transition: none !important;
-    
-    
+.nav-item > .active p {
+  background-color: #96d9ff !important;
+  border: none !important;
+  color: #00a3ff !important;
+  cursor: pointer !important;
+  margin: 0px !important;
+  border-bottom: 4px solid #00a3ff !important;
+  transition: none !important;
 }
-
 
 /* //FriendsAreaComponents */
 
-
-.friendsAreaComponent{
-    border-radius: 1rem !important;
-    padding: 0px !important;
-    margin:20px 0px 0px 0px !important;
-
+.friendsAreaComponent {
+  border-radius: 1rem !important;
+  padding: 0px !important;
+  margin: 20px 0px 0px 0px !important;
 }
 
-.friendCardBody{
-    position: relative !important;
-    
+.friendCardBody {
+  position: relative !important;
 }
 
-.groupMoreButton{
-    
-    font-size: 30px;
-    color: grey !important;
-   
-    text-align: left;
+.groupMoreButton {
+  font-size: 30px;
+  color: grey !important;
 
+  text-align: left;
 }
 
-
-
-
-.deleteFriendBtn{
-    position:absolute !important;
-    right: 15px !important;
-    bottom: 10px !important;
-    background-image: url("../img/DeleteFriendIcon.png") !important;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    color: none !important;
-    background-color: none !important;
-    height: 20px;
-    width: 30px;
-    border: none !important;
+.deleteFriendBtn {
+  position: absolute !important;
+  right: 15px !important;
+  bottom: 10px !important;
+  background-image: url("../img/DeleteFriendIcon.png") !important;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  color: none !important;
+  background-color: none !important;
+  height: 20px;
+  width: 30px;
+  border: none !important;
 }
 
-.modal-dialog{
-    position:relative !important;
-    pointer-events: none !important;
-    background-color: none !important;
-
+.modal-dialog {
+  position: relative !important;
+  pointer-events: none !important;
+  background-color: none !important;
 }
 
-.FriendsContentContainer{
-    /* margin-top: 80px; */
-    background-color: #DFDFDF;
+.FriendsContentContainer {
+  background-color: #dfdfdf;
 }
