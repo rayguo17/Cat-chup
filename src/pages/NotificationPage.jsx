@@ -18,18 +18,13 @@ import { useState } from "react";
 const NotificationPage = () => {
 
     return (
-        <center>
-            <Container className="containerSize">
-                <Row className="mx-0">
-                    <Col className="left-col" xs="3"><SideBar /></Col>
-                    <Col className="px-0" xs="3">
-                        <NotificationHeader />
-                        <NotificationBody />
-                    </Col>
-                    <Col className="px-0 notificationDetailMainContainer" xs="5"><NotificationDetailsHeader /></Col>
-                </Row>
-            </Container>
-        </center>
+        <div className="col-9 px-0 mx-0 row">
+            <div className="col-3 px-0">
+                <NotificationHeader />
+                <NotificationBody />
+            </div>
+
+        </div>
     )
 }
 

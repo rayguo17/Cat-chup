@@ -79,9 +79,11 @@ const WhatsOnYourMind = (props) => {
 
 
 
+                            <label className={{display:"flex"}}>
+                                <img src={UploadImage} alt="uploadImage" className="uploadImage"></img>
+                                <UploadImages />
+                            </label>
 
-                            <img src={UploadImage} alt="uploadImage"></img>
-                            <UploadImages />
 
 
 
