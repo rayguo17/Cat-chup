@@ -16,8 +16,8 @@ const SideBar = (props) => {
         <div className="navContainer">
 
 
-            <Col xs="3" className="navIconLinkContainer">
-                <div><img className="mainLogo" src={Logo} alt="HomeIcon"></img>
+            {/* <Col xs="3" className="navIconLinkContainer px-0"> */}
+                <div className='navIconLinkContainer'><img className="mainLogo" src={Logo} alt="HomeIcon"></img>
                     <br />
 
 
@@ -45,7 +45,7 @@ const SideBar = (props) => {
                     </Nav>
                 </div>
 
-            </Col>
+            {/* </Col> */}
 
             <MyPlansToday />
             <NavProfileBar />

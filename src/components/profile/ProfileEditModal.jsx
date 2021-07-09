@@ -1,22 +1,23 @@
 import { useState,useEffect } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMapMarkerAlt,faJedi, faAt, faHourglassEnd, faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons"
+import { faMapMarkerAlt,faJedi, faEnvelope, faPhone} from "@fortawesome/free-solid-svg-icons"
 import { BgPicDiv } from "./BgPicDiv";
 import { ProfilePicDiv } from "./ProfilePicDiv";
 import { UploadImage } from "./UploadImage";
 import { useFormik } from "formik";
-import imageCompression from "browser-image-compression";
-import axios from "axios";
+import { updateProfileThunk } from "../../redux/userInfo/action";
+import { useDispatch, useSelector } from "react-redux";
 
 
 
 export const ProfileEditModal = (props)=>{
     const {
-        buttonLabel,className,toggle,modalIsOpen,userInfo,infoChangedState
+        buttonLabel,className,toggle,modalIsOpen
     } = props;
-    
-    const [infoChanged,setChanged] = infoChangedState;
+    const userStore = useSelector(state=>state.userInfoStore);
+    let userInfo = userStore.userInfo;
+    const dispatch = useDispatch()
     const formik=useFormik({
       initialValues:{
         profilePic:[],
@@ -40,8 +41,9 @@ export const ProfileEditModal = (props)=>{
         //console.log('formik vlaues after reset', formik.values)
         //alert(JSON.stringify(values,null,2));
         if(formik.values.profilePic[0]||formik.values.bgPic[0]||editingProfile){
-          await updateProfile(values,userInfo.imgPath,userInfo.bgImgPath,userInfo.username);
-          setChanged(!infoChanged);
+          //await updateProfile(values,userInfo.imgPath,userInfo.bgImgPath,userInfo.username);
+          dispatch(updateProfileThunk(values,userInfo.imgPath,userInfo.bgImgPath,userInfo.username))
+          //setChanged(!infoChanged);
         }
         
       },
@@ -106,7 +108,6 @@ export const ProfileEditModal = (props)=>{
                 <form onSubmit={formik.handleSubmit} id='update-profile-form'>
                     <UploadImage
                       initialPic={userInfo.imgPath}
-                      infoChangedState={infoChangedState}
                       title='Profile picture'
                       PicDiv={ProfilePicDiv}
                       newPic={[formik.values.profilePic,setProfilePic]}
@@ -114,7 +115,6 @@ export const ProfileEditModal = (props)=>{
                     />
                     <UploadImage
                       initialPic={userInfo.bgImgPath}
-                      infoChangedState={infoChangedState}
                       title='Cover photo'
                       PicDiv={BgPicDiv}
                       newPic={[formik.values.bgPic,setBgPic]}
@@ -168,76 +168,3 @@ export const ProfileEditModal = (props)=>{
 }
 
 
-const updateProfile = async (values,initialProPath,initialbgPath,username)=>{
-  console.log('submit',values,initialProPath,initialbgPath);
-  return new Promise( async (resolve,reject)=>{
-    const options = {
-      maxSizeMB:1,
-      maxWidthOrHeight:500,
-      useWebWorker:true
-  }
-  let newProfile = {
-    email:values.email,
-    phone:values.phone,
-    city:values.city,
-    description:values.description
-  }
-  let token = localStorage.getItem('token');
-  try {
-    if(values.bgPic[0]){
-      console.log('try to upload bg',values.bgPic[0])
-      let compressedImg = await imageCompression(values.bgPic[0].file,options)
-      let  bgFormData = new FormData();
-              bgFormData.append('profile_pic',compressedImg);
-              bgFormData.append('pic_name',compressedImg.name)
-              
-              let uploadBgImg = await axios({
-                  url:process.env.REACT_APP_API_SERVER+'/api/upload-bg-pic',
-                  method:'post',
-                  data:bgFormData,
-                  headers:{'Content-Type':'multipart/form-data'},
-              })
-              //console.log('uploadImg respond',uploadImg);
-              let bgImgPath = uploadBgImg.data;
-              newProfile.bgImgPath=bgImgPath;
-    }
-    if(values.profilePic[0]){
-      console.log('try to upload profile',values.profilePic[0])
-      let compressedImg = await imageCompression(values.profilePic[0].file,options)
-      let  proFormData = new FormData();
-              proFormData.append('profile_pic',compressedImg);
-              proFormData.append('pic_name',compressedImg.name)
-              
-              let uploadImg = await axios({
-                  url:process.env.REACT_APP_API_SERVER+'/api/upload-profile-pic',
-                  method:'post',
-                  data:proFormData,
-                  headers:{
-                    'Content-Type':'multipart/form-data',
-  
-                },
-              })
-              //console.log('uploadImg respond',uploadImg);
-              let imgPath = uploadImg.data;
-              newProfile.imgPath=imgPath;
-    }
-    let uploadReq = await axios({
-      url:process.env.REACT_APP_API_SERVER+`/api/user/profile/${username}`,
-      method:'put',
-      data:newProfile,
-      headers:{
-        Authorization:`Bearer ${token}`
-      }
-
-    })
-    if(uploadReq){
-      resolve('upload success')
-    }
-  } catch (error) {
-    console.log('update profile error',error)
-    reject(error);
-  }
-  })
-  
-  
-}
