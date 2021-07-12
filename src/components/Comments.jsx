@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: '36ch',
+    maxWidth: '',
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
@@ -26,7 +26,7 @@ const Comments = () => {
     return (  
         <List className={classes.root}>
 
-            <ListItem alignItems="flex-start">
+            <ListItem alignItems="flex-start" >
               <ListItemAvatar>
                 <Avatar alt="Remy Sharp" src="https://image.flaticon.com/icons/png/512/146/146005.png" />
               </ListItemAvatar>

@@ -7,9 +7,9 @@ import MailIcon from '../img/mail-icon.png'
 
 const EventPost = (props) => {
   return (
-    <div style={{width:"90%"}}>
+    <div className="eventcard-container" >
       <Card>
-      <img className="userIcon" src="https://image.flaticon.com/icons/png/512/146/146005.png" alt="icon" style={{width:"50px", height:"50px"}}/>
+      <img className="userIcon" src="https://image.flaticon.com/icons/png/512/146/146005.png" alt="icon" />
       <span className="userName"><p>Username</p></span>
       <div className="mood"></div>
         <CardBody>
@@ -28,9 +28,9 @@ const EventPost = (props) => {
             <input type="time" value="11:00" disabled />
           </div>
           <div style={{display:"flex",justifyContent:"space-evenly",marginTop:"5px"}}>
-                    <p className="">#tag A</p>
-                    <p className="">#tag B</p>
-                    <p className="">#tag C</p>
+                    <p className="event-tag">#tag A</p>
+                    <p className="event-tag">#tag B</p>
+                    <p className="event-tag">#tag C</p>
           </div>
           <CardLink href="#"> <img src={MailIcon} alt="mail-icon" /> </CardLink>
         </CardBody>

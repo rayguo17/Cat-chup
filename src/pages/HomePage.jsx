@@ -11,7 +11,7 @@ const HomePage = () => {
         <div className="col-9 px-0 mx-0 row">
 
             <div className="col-9 px-0">
-                <WhatsOnYourMind /><PostArea style={{ backgroundColor: 'grey' }} />
+                <WhatsOnYourMind /><PostArea />
             </div>
 
             <div className="col-3 px-0">
