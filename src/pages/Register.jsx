@@ -46,7 +46,7 @@ const Register = (props) =>{
             }),
             username:yup.string().max(15,'Must be 15 cahracters or less').required('Required').test('checkNameExist','name already taken',function(value){
                 return new Promise((resolve,reject)=>{
-                    axios.post('http://localhost:8080/api/checkUsername',{
+                    axios.post(process.env.REACT_APP_API_SERVER+'/api/checkUsername',{
                         username:value
                     }).then((data)=>{
                     if(data.data){
