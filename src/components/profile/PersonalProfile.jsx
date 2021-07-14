@@ -2,8 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapMarkerAlt,faAt,faJedi,faEdit,faUserPlus } from "@fortawesome/free-solid-svg-icons"
 import {useState} from 'react'
 import { ProfileEditModal } from "./ProfileEditModal"
+import { AddFriendModal } from "./AddFriendModal"
 import { ProfilePicDiv } from "./ProfilePicDiv"
-import { useEffect } from "react"
+import cat_chup from '../../img/logo87.svg'
+import {Button} from 'reactstrap'
+
 
 
 let profileBtn = {
@@ -23,10 +26,10 @@ export const PersonalProfile = (props)=>{
             case props.isOwner:
                 return <button className='btn btn-primary' style={profileBtn} onClick={toggle}><FontAwesomeIcon icon={faEdit}/> edit Profile</button>;
             
-            case props.isFriend:
-                return <button className='btn'>cat-chup</button>;
+            case props.areFriends:
+                return <Button outline color='success' style={{...profileBtn}}><span style={{display:'inline'}}><img style={{width:'20px'}} src={cat_chup} alt="" /></span> cat-chup</Button>;
             default:
-                return <button className='btn btn-success' style={profileBtn}><FontAwesomeIcon icon={faUserPlus}/>add friend</button>
+                return <button className='btn btn-success' onClick={toggle} style={profileBtn}><FontAwesomeIcon icon={faUserPlus}/>add friend</button>
         }
     }
     
@@ -56,6 +59,11 @@ export const PersonalProfile = (props)=>{
             {props.isOwner?<ProfileEditModal
                 toggle={toggle}
                 modalIsOpen={modalIsOpen}
+            />:null}
+            {(!props.isOwner && !props.areFriends)?<AddFriendModal
+                toggle={toggle}
+                modalIsOpen={modalIsOpen}
+                ownerName={props.userInfo.username}
             />:null}
         </div>
     )
