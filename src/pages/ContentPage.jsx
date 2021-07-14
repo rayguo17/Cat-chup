@@ -12,6 +12,7 @@ import NotificationPage from "./NotificationPage"
 import { useDispatch } from "react-redux";
 import { loadProfileThunk } from "../redux/userInfo/action";
 import { loadFriendThunk } from "../redux/friendsList/action";
+import CommentPage from './CommentPage'
 
 export const ContentPage = () => {
     const [username, setUsername] = useState(null);
@@ -39,6 +40,7 @@ export const ContentPage = () => {
 
                         <Switch>
                             <Route path='/home' component={HomePage} />
+                            <Route path='/comment' component={CommentPage} />
                             <Route path='/messages' render={() => <p></p>} />
                             <Route path='/friends' component={FriendsPage} />
                             <Route path="/notifications" component={NotificationPage} />
