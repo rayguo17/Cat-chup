@@ -21,7 +21,7 @@ export function loginThunk(values){
         return axios.post(process.env.REACT_APP_API_SERVER+'/api/login',{
             username:values.username,password:values.password
         }).then((response)=>{ 
-            console.log('request',response)
+            //console.log('request',response)
             if(response.data==null){
                 alert('username or password incorrect!')
                 dispatch(authFailureAction());
@@ -44,7 +44,7 @@ export function loginThunk(values){
 
 export function registerThunk(values){
     return async (dispatch)=>{
-        console.log('inside thunk',values);
+        //console.log('inside thunk',values);
         const options = {
             maxSizeMB:1,
             maxWidthOrHeight:500,

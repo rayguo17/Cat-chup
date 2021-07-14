@@ -12,6 +12,8 @@ import NotificationPage from "./NotificationPage"
 import { useDispatch } from "react-redux";
 import { loadProfileThunk } from "../redux/userInfo/action";
 import { loadFriendThunk } from "../redux/friendsList/action";
+import { socketConnectThunk } from "../redux/socket/action";
+import { loadNotiThunk } from "../redux/notification/action";
 
 export const ContentPage = () => {
     const [username, setUsername] = useState(null);
@@ -24,7 +26,9 @@ export const ContentPage = () => {
         setUsername(decode.username)
         console.log('jwt', decode);
         dispatch(loadProfileThunk(decode.username));
-        dispatch(loadFriendThunk(decode.id));
+        dispatch(loadFriendThunk(decode.username));
+        dispatch(socketConnectThunk());
+        dispatch(loadNotiThunk(decode.username))
     }, [])
     return (
         <center>

@@ -4,11 +4,11 @@ import {
   CardTitle, CardSubtitle, Button, 
   Modal, ModalHeader, ModalBody, ModalFooter 
 } from 'reactstrap';
-import MailIcon from '../img/mail-icon.png';
+// import MailIcon from '../img/mail-icon.png';
 import Comments from './Comments';
 import { TextField } from '@material-ui/core';
-import { setTemplateContent } from 'parse5/lib/tree-adapters/default';
-import { setCommentRange } from 'typescript';
+// import { setTemplateContent } from 'parse5/lib/tree-adapters/default';
+// import { setCommentRange } from 'typescript';
 import SendIcon from '@material-ui/icons/Send';
 
 const Post = (props) => {
