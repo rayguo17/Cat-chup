@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { createRef,useState,useEffect} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
@@ -17,6 +18,7 @@ import UploadImages from './UploadImage';
 
 import UploadVideo from '../img/upload_videoIcon.png'
 import EventDatePicker from './EventDatePicker';
+import Calendar from '../img/calendar-icon.png'
 
 const WhatsOnYourMind = (props) => {
     //modal 
@@ -47,6 +49,7 @@ const WhatsOnYourMind = (props) => {
     const [message, setMessage] = useState('hello');
     const [showEmojis,setShowEmojis] = useState();
     const [cursorPosition, setCursorPosition] = useState();
+    const [images, setImages] = useState([]);
 
     const pickEmoji = (e,{ emoji }) => {
         const ref = inputRef.current;
@@ -70,9 +73,13 @@ const WhatsOnYourMind = (props) => {
     }
 
     const handlePost = () => {
-        console.log("click")
+        let token = localStorage.getItem('token');
+
+        console.log("click",message)
+        axios.post(process.env.REACT_APP_API_SERVER+'/api/post',{message: message,imagesfile: images[0].file},{headers:{Authorization:`Bearer ${token}`}})
         
     }
+
 
 
     return (
@@ -82,7 +89,7 @@ const WhatsOnYourMind = (props) => {
                 <ModalHeader className="postModalHeader" toggle={toggle}><span>profile component</span>     POST</ModalHeader>
                 <ModalBody >
                     <div  >
-                        <input className="postModalComment" value={message} onChange={handleChange} ref={inputRef} placeholder="What's on your mind, Username?"></input>
+                        <input className="postModalComment" value={message} onChange={handleChange} placeholder="What's on your mind, Username?"></input>
                     </div>
                     <div className="postModalTagsContainer">
                         <p className="tagsFont">Tags:</p><input placeholder="#tags" className="postModalTags"></input>
@@ -92,7 +99,7 @@ const WhatsOnYourMind = (props) => {
 
                             <img src={MoodIcon} alt="moodIcon"></img>
                             <img src={Incognito} alt="incognitoIcon"></img>
-                            <EventDatePicker />
+                            <img src={Calendar} alt="event-date" />
                             {/* <Button color="success" onClick={toggleNested}>:)</Button> */}
 
 
@@ -113,7 +120,7 @@ const WhatsOnYourMind = (props) => {
 
                             <label className={{display:"flex"}}>
                                 <img src={UploadImage} alt="uploadImage" className="uploadImage"></img>
-                                <UploadImages />
+                                <UploadImages images={images} setImages={setImages} />
                             </label>
 
 

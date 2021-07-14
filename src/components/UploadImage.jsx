@@ -1,23 +1,25 @@
 import React from "react";
+import { useEffect } from "react";
 import ImageUploading from "react-images-uploading";
 
 
 
 
-function UploadImages() {
-    const [images, setImages] = React.useState([]);
-    const maxNumber = 69;
+function UploadImages(props) {
+   
+    const maxNumber = 4;
     const onChange = (imageList, addUpdateIndex) => {
         // data for submit
         console.log(imageList, addUpdateIndex);
-        setImages(imageList);
+        props.setImages(imageList);
     };
+    
 
     return (
         <div className="App">
             <ImageUploading
                 multiple
-                value={images}
+                value={props.images}
                 onChange={onChange}
                 maxNumber={maxNumber}
                 dataURLKey="data_url"
