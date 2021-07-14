@@ -1,5 +1,7 @@
 import SelectSearch from 'react-select-search';
 import SearchIcon from '../../img/searchIcon.png'
+import "../../stylesheet/globalSearch.css"
+import fuzzySearch from '../../util/fuzzySearch';
 
 
 const GlobalSearchBar = (props) => {
@@ -9,13 +11,13 @@ const GlobalSearchBar = (props) => {
         { name: 'Esther', value: 'es' },
         { name: 'Nathan', value: 'na' },
 
-        {
-            type: 'group',
-            name: 'Group name',
-            items: [
-                { name: 'Spanish', value: 'es' },
-            ]
-        },
+        // {
+        //     type: 'group',
+        //     name: 'Group name',
+        //     items: [
+        //         { name: 'Spanish', value: 'es' },
+        //     ]
+        // },
     ];
     return (
 
@@ -25,7 +27,7 @@ const GlobalSearchBar = (props) => {
         //     search
         //     // filterOptions={fuzzySearch}
         //     placeholder="Search CatchUp" />
-        <SelectSearch className="catchUpSearch" options={options} search placeholder="Search CatchUp" />
+        <SelectSearch options={options} filterOptions={fuzzySearch} search placeholder="Search CatchUp" />
 
 
 
