@@ -14,6 +14,7 @@ import { loadProfileThunk } from "../redux/userInfo/action";
 import { loadFriendThunk } from "../redux/friendsList/action";
 import { socketConnectThunk } from "../redux/socket/action";
 import { loadNotiThunk } from "../redux/notification/action";
+import CommentPage from './CommentPage'
 
 export const ContentPage = () => {
     const [username, setUsername] = useState(null);
@@ -43,6 +44,7 @@ export const ContentPage = () => {
 
                         <Switch>
                             <Route path='/home' component={HomePage} />
+                            <Route path='/comment' component={CommentPage} />
                             <Route path='/messages' render={() => <p></p>} />
                             <Route path='/friends' component={FriendsPage} />
                             <Route path="/notifications" component={NotificationPage} />

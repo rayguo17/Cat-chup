@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const WeekIcon = () => {
     return ( 
         <Container>
-          <Row  style={{display:"flex"}} >
+          <Row  style={{display:"flex",width:"90%" }} >
              <Col style={{margin:"0",padding:"0" }} ><img src={MondayIcon} alt="monday" style={{width:"20px", height:"20px"}} /></Col>
              <Col style={{margin:"0",padding:"0" }}><img src={TuesdayIcon} alt="tuesday"  style={{width:"20px", height:"20px"}} /></Col>
              <Col style={{margin:"0",padding:"0" }}><img src={WednesdayIcon} alt="wednesday"  style={{width:"20px", height:"20px"}} /></Col>

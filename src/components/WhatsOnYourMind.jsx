@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import axios from 'axios'
+import React, { createRef,useState,useEffect} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import EmojiPicker from './EmojiPicker';
@@ -16,6 +17,8 @@ import UploadImages from './UploadImage';
 
 
 import UploadVideo from '../img/upload_videoIcon.png'
+import EventDatePicker from './EventDatePicker';
+import Calendar from '../img/calendar-icon.png'
 
 const WhatsOnYourMind = (props) => {
     //modal 
@@ -42,6 +45,43 @@ const WhatsOnYourMind = (props) => {
 
     const toggleDrop = () => setOpen(!dropdownOpen);
 
+    const inputRef = createRef();
+    const [message, setMessage] = useState('hello');
+    const [showEmojis,setShowEmojis] = useState();
+    const [cursorPosition, setCursorPosition] = useState();
+    const [images, setImages] = useState([]);
+
+    const pickEmoji = (e,{ emoji }) => {
+        const ref = inputRef.current;
+        ref.focus();
+        const start = message.substring(0,ref.selectionStart);
+        const end = message.substring(ref.selectionStart);
+        const text = start + emoji + end;
+        setMessage(text);
+        setCursorPosition(start.length+emoji.length);
+    }
+
+    const handleChange = (e) => {
+        setMessage(e.target.value);
+    }
+
+    
+
+    const handleShowEmojis = () => {
+        inputRef.current.focus();
+        setShowEmojis(!showEmojis);
+    }
+
+    const handlePost = () => {
+        let token = localStorage.getItem('token');
+
+        console.log("click",message)
+        axios.post(process.env.REACT_APP_API_SERVER+'/api/post',{message: message,imagesfile: images[0].file},{headers:{Authorization:`Bearer ${token}`}})
+        
+    }
+
+
+
     return (
         <div className="whatsOnYourMindContainer">
             <Button className="whatsOnYourMindButton" onClick={toggle}>What's on your mind,username?</Button>
@@ -49,7 +89,7 @@ const WhatsOnYourMind = (props) => {
                 <ModalHeader className="postModalHeader" toggle={toggle}><span>profile component</span>     POST</ModalHeader>
                 <ModalBody >
                     <div  >
-                        <input className="postModalComment" placeholder="What's on your mind, Username?"></input>
+                        <input className="postModalComment" value={message} onChange={handleChange} placeholder="What's on your mind, Username?"></input>
                     </div>
                     <div className="postModalTagsContainer">
                         <p className="tagsFont">Tags:</p><input placeholder="#tags" className="postModalTags"></input>
@@ -59,8 +99,7 @@ const WhatsOnYourMind = (props) => {
 
                             <img src={MoodIcon} alt="moodIcon"></img>
                             <img src={Incognito} alt="incognitoIcon"></img>
-                            <img src={EventsIcon} alt="eventsIcon"></img>
-
+                            <img src={Calendar} alt="event-date" />
                             {/* <Button color="success" onClick={toggleNested}>:)</Button> */}
 
 
@@ -71,7 +110,7 @@ const WhatsOnYourMind = (props) => {
                                     <img src={PostEmoji} alt="postEmoji"></img>
                                 </DropdownToggle>
                                 <DropdownMenu>
-                                    <DropdownItem><EmojiPicker /></DropdownItem>
+                                    <DropdownItem><EmojiPicker onClick={handleShowEmojis} /></DropdownItem>
 
                                 </DropdownMenu>
                             </ButtonDropdown>
@@ -81,7 +120,7 @@ const WhatsOnYourMind = (props) => {
 
                             <label className={{display:"flex"}}>
                                 <img src={UploadImage} alt="uploadImage" className="uploadImage"></img>
-                                <UploadImages />
+                                <UploadImages images={images} setImages={setImages} />
                             </label>
 
 
@@ -99,15 +138,12 @@ const WhatsOnYourMind = (props) => {
 
                     <Modal isOpen={nestedModal} toggle={toggleNested} onClosed={closeAll ? toggle : undefined}>
 
-                        <EmojiPicker />
-
-
-
+                        <EmojiPicker pickEmoji={pickEmoji} />
 
                     </Modal>
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={toggle}>POST</Button>{' '}
+                    <Button color="primary" onClick={handlePost}>POST</Button>{' '}
 
                 </ModalFooter>
             </Modal>

@@ -15,7 +15,6 @@ const friendListReducer = (state=initialState,action)=>{
         case LOAD_FRIEND_FAILURE_ACTION:
         default:
             return state
-        
     }
 }
 

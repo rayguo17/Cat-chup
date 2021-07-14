@@ -5,7 +5,7 @@ import Post from './Post'
 
 const PostArea = (props) => {
     return (
-        <div className="postContainer" style={{ backgroundColor: 'grey' }}>
+        <div className="postContainer">
 
             <Post />
             <EventPost />
