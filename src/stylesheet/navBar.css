@@ -101,3 +101,17 @@ footer {
   max-height: 60px;
   text-align: center;
 }
+.logoutToggle{
+    /* position: "absolute" !important; */
+    /* background-color: red; */
+    /* bottom: "60px" !important; */
+}
+
+.logoutButton{
+    background-color: red;
+    border-radius: 1rem;
+    width: 5vw;
+    height: 4vh;
+    color: white;
+}
+
