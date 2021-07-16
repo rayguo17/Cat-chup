@@ -45,12 +45,24 @@ const WhatsOnYourMind = (props) => {
 
     const toggleDrop = () => setOpen(!dropdownOpen);
 
-    const inputRef = createRef();
+    
     const [message, setMessage] = useState('hello');
     const [showEmojis,setShowEmojis] = useState();
     const [cursorPosition, setCursorPosition] = useState();
     const [images, setImages] = useState([]);
 
+    
+
+    const handleChange = (e) => {
+        setMessage(e.target.value);
+    }
+
+    //handle Emoji
+    const inputRef = createRef();
+    const handleShowEmojis = () => {
+        inputRef.current.focus();
+        setShowEmojis(!showEmojis);
+    }
     const pickEmoji = (e,{ emoji }) => {
         const ref = inputRef.current;
         ref.focus();
@@ -60,17 +72,7 @@ const WhatsOnYourMind = (props) => {
         setMessage(text);
         setCursorPosition(start.length+emoji.length);
     }
-
-    const handleChange = (e) => {
-        setMessage(e.target.value);
-    }
-
-    
-
-    const handleShowEmojis = () => {
-        inputRef.current.focus();
-        setShowEmojis(!showEmojis);
-    }
+    //
 
     const handlePost = () => {
         let token = localStorage.getItem('token');
@@ -105,7 +107,7 @@ const WhatsOnYourMind = (props) => {
 
 
                             {/* dropdown for emoji picker */}
-                            <ButtonDropdown className="postEmojiDropdown" isOpen={dropdownOpen} toggle={toggleDrop}>
+                            {/* <ButtonDropdown className="postEmojiDropdown" isOpen={dropdownOpen} toggle={toggleDrop}>
                                 <DropdownToggle caret>
                                     <img src={PostEmoji} alt="postEmoji"></img>
                                 </DropdownToggle>
@@ -113,7 +115,7 @@ const WhatsOnYourMind = (props) => {
                                     <DropdownItem><EmojiPicker onClick={handleShowEmojis} /></DropdownItem>
 
                                 </DropdownMenu>
-                            </ButtonDropdown>
+                            </ButtonDropdown> */}
 
 
 
