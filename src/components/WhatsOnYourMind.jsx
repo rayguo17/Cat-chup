@@ -8,6 +8,8 @@ import PostEmoji from '../img/post_smile-emoji_icon.png'
 import Incognito from '../img/incognitoIcon.png'
 import MoodIcon from '../img/moodIcon.png'
 import EventsIcon from '../img/eventsIcon.png'
+import ImageUploading from "react-images-uploading";
+
 
 
 
@@ -120,15 +122,9 @@ const WhatsOnYourMind = (props) => {
 
                             <label className={{display:"flex"}}>
                                 <img src={UploadImage} alt="uploadImage" className="uploadImage"></img>
-                                <UploadImages images={images} setImages={setImages} />
                             </label>
-
-
-
-
-
                             <img src={UploadVideo} alt="uploadVideo"></img>
-
+                            <UploadImages images={images} setImages={setImages} />
 
 
 
