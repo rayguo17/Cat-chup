@@ -2,7 +2,8 @@
  * Main wrapper
  */
  .select-search {
-    width: 200px;
+    width: 170px;
+    z-index: 20;
     /* position: relative; */
     font-family: 'Nunito Sans', sans-serif;
     box-sizing: border-box;
@@ -13,6 +14,7 @@
 .select-search *::after,
 .select-search *::before {
     box-sizing: inherit;
+   
 }
 
 /**
@@ -20,7 +22,7 @@
  */
 .select-search__value {
     position: relative;
-    z-index: 1;
+   
 }
 
 .select-search__value::after {
@@ -31,26 +33,28 @@
     right: 19px;
     width: 11px;
     height: 11px;
+    
 }
 
 /**
  * Input
  */
 .select-search__input {
+   
     display: block;
-    height: 36px;
-    width: 100%;
-    padding: 0 40px 0 16px;
+    /* height: 30px; */
+    width: 95%;
+    /* padding: 0 40px 0 16px; */
     background: #fff;
     border: 1px solid transparent;
-    box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, 0.15);
-    border-radius: 3px;
+    /* box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, 0.15);
+    border-radius: 3px; */
     outline: none;
     font-family: 'Noto Sans', sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     text-align: left;
     text-overflow: ellipsis;
-    line-height: 36px;
+    /* line-height: 36px; */
     -webkit-appearance: none;
 }
 
@@ -59,6 +63,7 @@
 .select-search__input::-webkit-search-results-button,
 .select-search__input::-webkit-search-results-decoration {
     -webkit-appearance:none;
+   
 }
 
 .select-search__input:not([readonly]):focus {
@@ -114,7 +119,7 @@
 }
 
 .select-search__option.is-selected {
-    background: #2FCC8B;
+    background: #dfdfdf;
     color: #fff;
 }
 
@@ -125,7 +130,7 @@
 
 .select-search__option.is-highlighted.is-selected,
 .select-search__option.is-selected:hover {
-    background: #2eb378;
+    background: #dfdfdf;
     color: #fff;
 }
 
@@ -183,7 +188,7 @@
 }
 
 .select-search:not(.select-search--multiple) .select-search__input:hover {
-    border-color: #2FCC8B;
+    border-color: white;
 }
 
 
@@ -212,3 +217,21 @@
     text-align: center;
     color: #888;
 }
+
+
+/* ...........added............. */
+
+.globalSearch-input-container {
+    margin-top: 10px !important;
+    background-color: white;
+    border: 2px solid #00a3ff !important ;
+    border-radius: 1rem !important;
+    z-index: 10;
+    width: 14vw !important;
+    text-align: center !important;
+  }
+
+  .global-search-icon{
+      height: 26px;
+     
+  }

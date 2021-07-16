@@ -11,7 +11,7 @@ import NavProfileBar from './NavBarProfileBar'
 import MyPlansToday from './MyPlansToday';
 
 const SideBar = (props) => {
-    console.log('sidebar', props.username)
+    console.log('sidebar, who is logged in', props.username)
     return (
         <div className="navContainer">
 

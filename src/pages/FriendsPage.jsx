@@ -1,6 +1,6 @@
 
-import SideBar from "../components/SideBar";
-import { Container, Row, Col } from 'reactstrap';
+// import SideBar from "../components/SideBar";
+// import { Container, Row, Col } from 'reactstrap';
 
 import FriendsHeader from "../components/FriendsComponents/FriendsHeader"
 import ScheduleRightBar from "../components/ScheduleRightBar"
