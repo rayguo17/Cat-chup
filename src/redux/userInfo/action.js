@@ -39,7 +39,7 @@ export function loadProfileThunk(pageOwnerName){
                 url:process.env.REACT_APP_API_SERVER+'/api/user/profile/'+pageOwnerName,
                 headers:{Authorization:`Bearer ${jwt}`},
             })
-            console.log('in thunk get data',profileReq.data);
+            //console.log('in thunk get data',profileReq.data);
             let userProfile = profileReq.data
             dispatch(loadProfileSuccessAction(userProfile));
         } catch (error) {

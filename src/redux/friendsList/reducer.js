@@ -1,4 +1,4 @@
-import { LOAD_FRIEND_FAILURE_ACTION, LOAD_FRIEND_SUCCESS_ACTION } from "./action"
+import { DELETE_FRIEND_SUCCESS_ACTION, LOAD_FRIEND_FAILURE_ACTION, LOAD_FRIEND_SUCCESS_ACTION } from "./action"
 
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
 
 const friendListReducer = (state=initialState,action)=>{
     switch(action.type){
+        case DELETE_FRIEND_SUCCESS_ACTION:
         case LOAD_FRIEND_SUCCESS_ACTION:
             return{
                 friendList:action.friendList
@@ -14,7 +15,6 @@ const friendListReducer = (state=initialState,action)=>{
         case LOAD_FRIEND_FAILURE_ACTION:
         default:
             return state
-        
     }
 }
 

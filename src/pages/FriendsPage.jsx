@@ -3,7 +3,7 @@
 // import { Container, Row, Col } from 'reactstrap';
 
 import FriendsHeader from "../components/FriendsComponents/FriendsHeader"
-// import ScehduleRightBar from "../components/ScehduleRightBar"
+import ScheduleRightBar from "../components/ScheduleRightBar"
 import '../stylesheet/navBar.css'
 import '../stylesheet/friendsPage.css'
 import { useState } from "react";

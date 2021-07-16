@@ -12,6 +12,9 @@ import NotificationPage from "./NotificationPage"
 import { useDispatch } from "react-redux";
 import { loadProfileThunk } from "../redux/userInfo/action";
 import { loadFriendThunk } from "../redux/friendsList/action";
+import { socketConnectThunk } from "../redux/socket/action";
+import { loadNotiThunk } from "../redux/notification/action";
+import CommentPage from './CommentPage'
 
 export const ContentPage = () => {
     const [username, setUsername] = useState(null);
@@ -24,7 +27,9 @@ export const ContentPage = () => {
         setUsername(decode.username)
         console.log('jwt', decode);
         dispatch(loadProfileThunk(decode.username));
-        dispatch(loadFriendThunk(decode.id));
+        dispatch(loadFriendThunk(decode.username));
+        dispatch(socketConnectThunk());
+        dispatch(loadNotiThunk(decode.username))
     }, [])
     return (
         <center>
@@ -39,6 +44,7 @@ export const ContentPage = () => {
 
                         <Switch>
                             <Route path='/home' component={HomePage} />
+                            <Route path='/comment' component={CommentPage} />
                             <Route path='/messages' render={() => <p></p>} />
                             <Route path='/friends' component={FriendsPage} />
                             <Route path="/notifications" component={NotificationPage} />

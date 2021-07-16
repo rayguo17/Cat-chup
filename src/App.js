@@ -1,15 +1,19 @@
-import { ChatEngine } from 'react-chat-engine';
+// import { ChatEngine } from 'react-chat-engine';
 import { Provider } from 'react-redux';
 import LandingPage from './pages/LandingPage';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 import { store } from './redux/store';
 import './App.css';
+import '@fontsource/roboto'
 
 
 const App = () => {
     return (
         <Provider
             store={store}>
+                <ReactNotification/>
             <LandingPage />
         </Provider>
         // <LandingPage/>

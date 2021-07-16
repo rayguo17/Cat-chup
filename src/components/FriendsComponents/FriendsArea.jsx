@@ -54,20 +54,25 @@ const FriendsArea = (props) => {
                     {
                         searchResult === "" || searchResult.length === 0 ? localFriendsList[activeTab] && localFriendsList[activeTab].map((friends, index) => {
                             return (
-                                <Col xs="6">
+                                // <Col xs="6">
 
 
-                                    <Card className="friendsAreaComponent">
+                                //     <Card className="friendsAreaComponent">
 
-                                        <CardBody className="friendCardBody">
-                                            <CardImg top width="100%" src="../assets/318x180.svg" alt="Card image cap" />
-                                            < CardText>{localFriendsList[activeTab][index]}</CardText>
-                                            <button className="deleteFriendBtn" onClick={toggle}></button>
+                                //         <CardBody className="friendCardBody">
+                                //             <CardImg top width="100%" src="../assets/318x180.svg" alt="Card image cap" />
+                                //             < CardText>{localFriendsList[activeTab][index]}</CardText>
+                                //             <button className="deleteFriendBtn" onClick={toggle}></button>
 
 
-                                        </CardBody>
-                                    </Card>
-                                </Col>
+                                //         </CardBody>
+                                //     </Card>
+                                // </Col>
+                                <FriendCard
+                                    username={friend}
+                                    key={friend}
+                                    toggle={deleteBtnToggle}
+                                />
 
                             )
                         }) : (
