@@ -33,8 +33,8 @@
 }
 .navIconLinkContainer {
   margin: 0 20px;
-
   margin-bottom: 0%;
+  padding: 3vh
 }
 
 .NavLink {
@@ -61,8 +61,8 @@
 /*********** myplanstoday section *****/
 
 .plansTodaySection {
-  position: relative;
-  margin-top: 10vh;
+  position: sticky;
+  /* margin-top: 5vh; */
   /* left: 18px; */
 }
 

@@ -1,15 +1,15 @@
 
-import SideBar from "../components/SideBar";
-import { Container, Row, Col } from 'reactstrap';
+// import SideBar from "../components/SideBar";
+// import { Container, Row, Col } from 'reactstrap';
 import NotificationHeader from "../components/NotificationComponents/NotificationHeader";
 
 
-import ScehduleRightBar from "../components/ScehduleRightBar"
+// import ScehduleRightBar from "../components/ScehduleRightBar"
 import '../stylesheet/navBar.css'
 import '../stylesheet/notificationPage.css'
-import NotificationDetailsHeader from "../components/NotificationComponents/NotificationDetailsHeader";
+// import NotificationDetailsHeader from "../components/NotificationComponents/NotificationDetailsHeader";
 import NotificationBody from "../components/NotificationComponents/NotificationBody";
-import { useState } from "react";
+// import { useState } from "react";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
 // import { useEffect } from "react";
 
