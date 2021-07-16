@@ -25,7 +25,7 @@ export const ContentPage = () => {
         let jwt = localStorage.getItem('token');
         let decode = jwtDecode(jwt);
         setUsername(decode.username)
-        console.log('jwt', decode);
+        console.log('jwt content', decode);
         dispatch(loadProfileThunk(decode.username));
         dispatch(loadFriendThunk(decode.username));
         dispatch(socketConnectThunk());

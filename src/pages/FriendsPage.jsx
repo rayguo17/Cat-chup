@@ -33,7 +33,7 @@ const FriendsPage = () => {
         let friendList = friendListStore.friendList
         setFriendsList(friendList);
         let key = Object.keys(friendList);
-        console.log('friends', key);
+        console.log('friends', friendList);
         setActiveTab(key[0]);
     }, [friendListStore])
     return (
