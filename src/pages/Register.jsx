@@ -6,6 +6,8 @@ import { registerThunk } from "../redux/auth/action";
 import * as yup from 'yup'
 import axios from 'axios'
 import '../stylesheet/Register.css'
+import { FormControl, InputLabel,Input, FormHelperText, TextField } from "@material-ui/core";
+import { useEffect } from "react";
 
 
 
@@ -94,6 +96,9 @@ const Register = (props) =>{
         }
         
     }
+    useEffect(()=>{
+        console.log('all the error',formik.errors)
+    },[formik.errors])
     
     return (
         <div className='row mx-0 full-size'>
@@ -112,68 +117,85 @@ const Register = (props) =>{
                         className={formik.errors.file && formik.touched.file && 'error-input'}
                     />
                     {formik.errors.file && formik.touched.file && <div className='error-message'>{formik.errors.file}</div>}
-                    <div className='row mx-0 input-form'>
+                    <div className='row mx-0 input-form mt-4'>
                         <div className='col-6 left-input'>
-                        <input 
-                            name='username' id='username'
-                            value={formik.values.username}
-                            type="text" 
-                            onChange = {formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            placeholder='username*'
-                            className={formik.errors.username && formik.touched.username && 'error-input'}
-                        />
-                        {formik.errors.username && formik.touched.username && <div className='error-message'>{formik.errors.username}</div>}
-                        <input 
-                            name='email' id='email'
-                            value={formik.values.email}
-                            type="email" 
-                            onChange = {formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            placeholder='email*'
-                            className={formik.errors.email && formik.touched.email && 'error-input'}
-                        />
-                        {formik.errors.email && formik.touched.email && <div className='error-message'>{formik.errors.email}</div>}
-                        <input 
-                            name='password' id='password'
-                            value={formik.values.password}
-                            type="password" 
-                            onChange = {formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            placeholder='password*'
-                            className={formik.errors.password && formik.touched.password && 'error-input'}
-                        />
-                        {formik.errors.password && formik.touched.password && <div className='error-message'>{formik.errors.password}</div>}
-                        <input 
-                            name='confirmPassword' id='confirmPassword'
-                            value={formik.values.confirmPassword}
-                            type="password" 
-                            onChange = {formik.handleChange}
-                            onBlur={formik.handleBlur}
-                            placeholder='confirm password*'
-                            className={formik.errors.confirmPassword && formik.touched.confirmPassword && 'error-input'}
-                        />
-                        {formik.errors.confirmPassword && formik.touched.confirmPassword && <div className='error-message'>{formik.errors.confirmPassword}</div>}
+                            <FormControl error={formik.errors.username && formik.touched.username?true:false}>
+                                <InputLabel htmlFor='username'>Username*</InputLabel>
+                                <Input 
+                                name='username' id='username'
+                                value={formik.values.username}
+                                type="text" 
+                                onChange = {formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                className={formik.errors.username && formik.touched.username && 'error-input'}
+                                />
+                                <FormHelperText>{formik.errors.username && formik.touched.username && formik.errors.username}</FormHelperText>
+                            </FormControl>
+                            <FormControl error={formik.errors.email && formik.touched.email?true:false}>
+                                <InputLabel htmlFor='email'>Email*</InputLabel>
+                                <Input 
+                                name='email' id='email'
+                                value={formik.values.email}
+                                type="email" 
+                                onChange = {formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                />
+                                <FormHelperText>{formik.errors.email && formik.touched.email && formik.errors.email}</FormHelperText>
+                            </FormControl>
+                            <FormControl error={formik.errors.password && formik.touched.password?true:false}>
+                            <InputLabel htmlFor='password'>Password*</InputLabel>
+                                <Input 
+                                name='password' id='password'
+                                value={formik.values.password}
+                                type="password" 
+                                onChange = {formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                />
+                                <FormHelperText>{formik.errors.password && formik.touched.password &&formik.errors.password}</FormHelperText>
+                            </FormControl>
+                            <FormControl error={formik.errors.confirmPassword && formik.touched.confirmPassword?true:false}>
+                            <InputLabel htmlFor='confirmPassword'>Confrim Password*</InputLabel>
+                                <Input 
+                                name='confirmPassword' id='confirmPassword'
+                                value={formik.values.confirmPassword}
+                                type="password" 
+                                onChange = {formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                />
+                                <FormHelperText>{formik.errors.confirmPassword && formik.touched.confirmPassword && formik.errors.confirmPassword}</FormHelperText>
+                            </FormControl>
+
                         </div>
                         <div className='col-6 right-input'>
-                            <input type="text" 
-                                name='phone' id='phone'
-                                value={formik.values.phone}
-                                onChange = {formik.handleChange}
-                                placeholder='phone (optional)'
-                            />
-                            <input type="text" 
-                                name='city' id='city'
-                                value={formik.values.city}
-                                onChange = {formik.handleChange}
-                                placeholder='city (optional)'
-                            />
-                            <textarea cols="23" rows="3"
-                                name='description' id='description'
-                                placeholder='description (optional)'
+                            <FormControl>
+                            <InputLabel htmlFor='phone'>phone (optional)</InputLabel>
+                                <Input type="text" 
+                                    name='phone' id='phone'
+                                    value={formik.values.phone}
+                                    onChange = {formik.handleChange}
+                                    placeholder='phone (optional)'
+                                />
+                            </FormControl>
+                            <FormControl>
+                            <InputLabel htmlFor='city'>city (optional)</InputLabel>
+                                <Input type="text" 
+                                    name='city' id='city'
+                                    value={formik.values.city}
+                                    onChange = {formik.handleChange}
+                                    placeholder='city (optional)'
+                                />
+                            </FormControl>
+                            <TextField style={{marginTop:'30px'}}
+                                id='description'
+                                name='description'
+                                label='description (optional)'
                                 value={formik.values.description}
                                 onChange={formik.handleChange}
-                            ></textarea>
+                                multiline
+                                rows={3}
+                            
+                            />
+                            
                         </div>
                     </div>
                     <button

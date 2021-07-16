@@ -6,6 +6,7 @@ import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import { store } from './redux/store';
 import './App.css';
+import '@fontsource/roboto'
 
 
 const App = () => {

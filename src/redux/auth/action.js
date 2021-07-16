@@ -1,6 +1,5 @@
 import axios from "axios";
 import imageCompression from "browser-image-compression";
-import Logout from "../../components/Logout";
 
 
 export const AUTH_SUCCESS_ACTION = "LOGIN_SUCCESS_ACTION";
