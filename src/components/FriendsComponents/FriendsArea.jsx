@@ -12,10 +12,6 @@ import EditFriendGroup from "./EditFriendGroup";
 import BackToTopButton from "../BackToTopButton";
 
 
-
-
-
-
 const FriendsArea = (props) => {
 
 
@@ -29,12 +25,6 @@ const FriendsArea = (props) => {
     const [searchResult, setSearchResult] = useState("");
     console.log("SEARCH RESULT:", typeof searchResult)
 
-    useEffect(() => {
-        // console.log("useEffect FriendsList from friendsArea", friendsList);
-        setLocalFriendsList(friendsList);
-
-    }, [friendsList])
-
 
     return (
         <div className="FriendsContentContainer">
@@ -42,7 +32,7 @@ const FriendsArea = (props) => {
                 <Row className="mx-0">
 
                     <center className="friendAreaTopSection">
-                        <FriendSearchBar searched={(value) => setSearchResult(value)} localFriendsList={localFriendsList[activeTab]} />
+                        <FriendSearchBar searched={(value) => setSearchResult(value)} localFriendsList={friendsList[activeTab]} />
 
                         {activeTab !== "All Friends" &&
                             <EditFriendGroup activeTab={activeTab} friendsList={friendsList} />}
@@ -52,27 +42,22 @@ const FriendsArea = (props) => {
 
                     <DeleteFriendModal className="deleteFriendBtn" toggle={toggle} modal={modal} friendsList={friendsList} />
                     {
-                        searchResult === "" || searchResult.length === 0 ? localFriendsList[activeTab] && localFriendsList[activeTab].map((friends, index) => {
+                        searchResult === "" || searchResult.length === 0 ? friendsList[activeTab] && friendsList[activeTab].map((friends, index) => {
                             return (
-                                // <Col xs="6">
+                                <Col xs="6">
 
 
-                                //     <Card className="friendsAreaComponent">
+                                    <Card className="friendsAreaComponent">
 
-                                //         <CardBody className="friendCardBody">
-                                //             <CardImg top width="100%" src="../assets/318x180.svg" alt="Card image cap" />
-                                //             < CardText>{localFriendsList[activeTab][index]}</CardText>
-                                //             <button className="deleteFriendBtn" onClick={toggle}></button>
+                                        <CardBody className="friendCardBody">
+                                            <CardImg top width="100%" src="../assets/318x180.svg" alt="Card image cap" />
+                                            < CardText>{friendsList[activeTab][index]}</CardText>
+                                            <button className="deleteFriendBtn" onClick={toggle}></button>
 
 
-                                //         </CardBody>
-                                //     </Card>
-                                // </Col>
-                                <FriendCard
-                                    username={friend}
-                                    key={friend}
-                                    toggle={deleteBtnToggle}
-                                />
+                                        </CardBody>
+                                    </Card>
+                                </Col>
 
                             )
                         }) : (
