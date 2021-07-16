@@ -28,11 +28,15 @@ const CommentPage = () => {
 
     return (
         <div className="col-9 px-0 mx-0 row comment-part">
+
             <a href="/home">
                 <div className="back-btn-container" >
                     <img src={backButton} alt="back" className="back-btn" />
                 </div>
             </a>
+
+
+
 
             <div className="comment-card">
             <Card>
@@ -40,7 +44,6 @@ const CommentPage = () => {
                   <span className="userName"><p>Username</p></span>
                   <div className="mood"></div>
                     <CardBody>
-                      {/* <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle> */}
                     </CardBody>
                     <CardBody>
                       <div className="card-content" >

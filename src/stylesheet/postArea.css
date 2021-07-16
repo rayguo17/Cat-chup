@@ -48,11 +48,16 @@
 
 .card-content{
     width: 100%;
-    min-height:100px;
+}
+
+.card-content img{
+    margin-top: 10px;
+    width: 500px;
+    height: 300px;
 }
 
 .card-text{
-    margin:5px 20px 5px 20px;
+    margin:20px 30px 0 30px;
     text-align: left;
 }
 

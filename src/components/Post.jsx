@@ -1,49 +1,74 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
-  Card, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle, Button, 
-  Modal, ModalHeader, ModalBody, ModalFooter 
-} from 'reactstrap';
-import LikeIcon from '../img/like-icon.png'
-import CommentIcon from '../img/comment-icon.png'
+  Card,
+  CardText,
+  CardBody,
+  CardLink,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from "reactstrap";
+import LikeIcon from "../img/like-icon.png";
+import CommentIcon from "../img/comment-icon.png";
+import PostImgBox from "./PostImgBox";
 
 const Post = (props) => {
+  const {
+    id,
+    userInfo,
+    content,
+    postTime,
+    likeNumber,
+    commentsNumber,
+  } = props.postInfo;
 
   return (
     <div className="postcard-container">
-      <Card >
-      <img className="userIcon" src="https://image.flaticon.com/icons/png/512/146/146005.png" alt="icon" />
-      <span className="userName"><p>Username</p></span>
-      <div className="mood"></div>
+      <Card>
+        <img className="userIcon" src={userInfo.userIcon_url} alt="icon" />
+        <span className="userName">
+          <p> {userInfo.userName} </p>
+        </span>
+        <div className="mood"></div>
         <CardBody>
-          <CardTitle tag="h5">POST</CardTitle>
+          <CardTitle tag="h5"> Post.Title </CardTitle>
         </CardBody>
+        <CardText>{content.text}</CardText>
         <CardBody>
           <div className="card-content">
-            <CardText>It is a good day.</CardText>
-            <img width="100%" src="https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale" alt="Card image cap" />
-          </div>
+            <PostImgBox Picture={content.pictures} />
 
-          
+            {/* {content.pictures.map((picture, index) => (
+              <PostImgBox Picture={content.pictures} />
+              // <img width="100%" src={picture.data_url} alt="Card image cap" />
+            ))} */}
+          </div>
         </CardBody>
+        <p className="create-date"> {content.postTime} </p>
 
         <div className="post-like-comment-button">
           <div>
             <Button color="secondary">
-              <p>{1} Like</p>
+              <p>{likeNumber} Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
             </Button>
           </div>
 
           <div>
-          <a href="/comment">
-            <Button color="secondary" >
-                <p>{1} Comment</p>
-                <img src={CommentIcon} className="post-comment-btn" alt="Comment" />
-            </Button>
-          </a>
-            
-
+            <a href="/comment">
+              <Button color="secondary">
+                <p>{commentsNumber} Comment</p>
+                <img
+                  src={CommentIcon}
+                  className="post-comment-btn"
+                  alt="Comment"
+                />
+              </Button>
+            </a>
           </div>
         </div>
       </Card>
