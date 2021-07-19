@@ -13,6 +13,7 @@ import MailIcon from "../img/mail-icon.png";
 const EventCard = (props) => {
   const postInfo = props.postInfo;
   console.log(postInfo, "hi");
+  console.log(postInfo.content, "gi");
   return (
     <div>
       {postInfo.map((Info, index) => {
@@ -28,20 +29,26 @@ const EventCard = (props) => {
                   />
                 </Col>
                 <Col xs="9">
-                  <div style={{ textAlign: "end" }}>
-                    <p className="time">{Info.content.startTime}</p>
+                  <div>
+                    <div style={{ textAlign: "start" }}>
+                      <p className="time">{Info.content.eventDate}</p>
+                    </div>
+                    <div style={{ textAlign: "end" }}>
+                      <p className="time">
+                        {Info.content.startTime} ~{" "}
+                        {Info.content.endTime != false && Info.content.endTime}
+                      </p>
+                    </div>
                   </div>
-                  <div style={{ textAlign: "center" }}>
+                  <div style={{ textAlign: "left" }}>
                     <CardTitle tag="h6">{Info.content.caption}</CardTitle>
                   </div>
                   <div
                     style={{ display: "flex", justifyContent: "space-evenly" }}
                   >
-                    {/* {postInfo.map((Info, index) => {
-                  Info.content.tags.map((tag, index) => (
-                    <p className="event-tag">{tag}</p>
-                  ));
-                })} */}
+                    {Info.content.tags.map((tag, index) => (
+                      <p className="event-tag">{tag}</p>
+                    ))}
                   </div>
                   <div style={{ float: "right" }}>
                     <a href="#">
