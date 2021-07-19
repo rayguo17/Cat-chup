@@ -7,65 +7,51 @@ import {
 
 import '../../stylesheet/friendsPage.css'
 import DeleteFriend from "./DeleteFriend";
-import { FriendCard } from "./FriendCard";
 import FriendSearchBar from "./FriendSearchBar";
-
-
-
+import EditFriendGroup from "./EditFriendGroup";
+import BackToTopButton from "../BackToTopButton";
+import { FriendCard } from "./FriendCard"
 
 
 const FriendsArea = (props) => {
 
 
     const [modal, setModal] = useState(false);
-
-    const toggle = (e) => {
-        
-        setModal(!modal)
-    };
-    const deleteBtnToggle = (e)=>{
+    const toggle = () => setModal(!modal);
+    const deleteBtnToggle = (e) => {
         toggle();
-        console.log('trigger',e.target.getAttribute('name'));
+        console.log('trigger', e.target.getAttribute('name'));
         setOnDeleteUser(e.target.getAttribute('name'));
     }
-
-    const { friendsList, activeTab } = props
-    //console.log('friendsList', friendsList);
+    const { friendsList, activeTab, index } = props
+    console.log("Friends List from active tab:", friendsList[activeTab])
+    console.log('friendsList from friends area', friendsList, "active tab", activeTab, index);
     const [localFriendsList, setLocalFriendsList] = useState(friendsList);
-    const [onDeleteUser,setOnDeleteUser] = useState(null);
-    useEffect(() => {
-        //console.log(friendsList);
-        setLocalFriendsList(friendsList);
+    const [searchResult, setSearchResult] = useState("");
+    const [onDeleteUser, setOnDeleteUser] = useState(null)
+    console.log("SEARCH RESULT:", typeof searchResult)
 
-    }, [friendsList])
+
+
     return (
         <div className="FriendsContentContainer">
             <Container>
                 <Row className="mx-0">
-                    <center>
-                        <FriendSearchBar />
+
+                    <center className="friendAreaTopSection">
+                        <FriendSearchBar searched={(value) => setSearchResult(value)} localFriendsList={friendsList[activeTab]} />
+
+                        {activeTab !== "All Friends" &&
+                            <EditFriendGroup activeTab={activeTab} friendsList={friendsList} />}
+
                     </center>
 
-                    <DeleteFriend toggle={toggle} modal={modal}
-                        username={onDeleteUser}
-                    />
+
+                    <DeleteFriend toggle={toggle} modal={modal} username={onDeleteUser} />
                     {
-                        localFriendsList[activeTab] ? localFriendsList[activeTab].map((friend, index) => {
+                        searchResult === "" || searchResult.length === 0 ? friendsList[activeTab] && friendsList[activeTab].map((friend, index) => {
                             return (
-                                // <Col xs="6">
 
-
-                                //     <Card className="friendsAreaComponent">
-
-                                //         <CardBody className="friendCardBody">
-                                //             <CardImg top width="100%" src="../assets/318x180.svg" alt="Card image cap" />
-                                //             < CardText>{localFriendsList[activeTab][index]}</CardText>
-                                //             <button className="deleteFriendBtn" onClick={toggle}></button>
-
-
-                                //         </CardBody>
-                                //     </Card>
-                                // </Col>
                                 <FriendCard
                                     username={friend}
                                     key={friend}
@@ -73,32 +59,35 @@ const FriendsArea = (props) => {
                                 />
 
                             )
-                        }) : null
+                        }) :
+                            friendsList[activeTab] && friendsList[activeTab].filter(newfriendsList => {
+                                if (newfriendsList.toLowerCase().includes(searchResult)) return newfriendsList
+                            }).map((friend, index) => {
+                                // console.log("FRIENDS LIST III:", friend);
+                                return (
+                                    <FriendCard
+                                        username={friend}
+                                        key={index}
+                                        toggle={deleteBtnToggle}
+                                    />
+
+                                )
+                            })
 
 
                     }
                 </Row>
+
             </Container >
 
 
 
 
-            <div ><p>{activeTab}</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
-            <div ><p>FriendsArea</p></div>
+
+
+
+
+            <BackToTopButton />
 
 
 

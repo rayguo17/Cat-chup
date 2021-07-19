@@ -43,8 +43,7 @@ export const ContentPage = () => {
       },
       content: {
         caption: "Nice to create a post",
-        text: "It is a good day.",
-        mood: "happy",
+
         pictures: [
           {
             name: "pic1",

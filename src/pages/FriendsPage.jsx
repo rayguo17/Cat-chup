@@ -1,6 +1,6 @@
 
-import SideBar from "../components/SideBar";
-import { Container, Row, Col } from 'reactstrap';
+// import SideBar from "../components/SideBar";
+// import { Container, Row, Col } from 'reactstrap';
 
 import FriendsHeader from "../components/FriendsComponents/FriendsHeader"
 import ScheduleRightBar from "../components/ScheduleRightBar"
@@ -33,12 +33,12 @@ const FriendsPage = () => {
         let friendList = friendListStore.friendList
         setFriendsList(friendList);
         let key = Object.keys(friendList);
-        console.log('friends', key);
+        console.log('friends', friendList);
         setActiveTab(key[0]);
     }, [friendListStore])
     return (
         <div className='col-9 px-0 row mx-0'>
-            <div className='col-6 px-0'>
+            <div style={{ backgroundColor: '#dfdfdf' }} className='col-6 px-0'>
                 <FriendsHeader
                     toggle={toggle}
                     activeTab={activeTab}

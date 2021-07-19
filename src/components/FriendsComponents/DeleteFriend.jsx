@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import '../../stylesheet/friendsPage.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
@@ -16,13 +15,13 @@ const DeleteFriend = (props) => {
     } = props;
     const dispatch = useDispatch();
 
-    const deleteConfirm = ()=>{
-        
+    const deleteConfirm = () => {
+
         let token = localStorage.getItem('token');
         let decode = jwtDecode(token);
         let deleteRelation = {
-            actionOwner:decode.username,
-            friend:username
+            actionOwner: decode.username,
+            friend: username
         }
         dispatch(deleteFriendThunk(deleteRelation))
         toggle();

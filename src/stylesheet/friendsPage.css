@@ -2,7 +2,7 @@
   background-color: #96d9ff;
   color: white;
   position: sticky;
-  z-index: 10;
+  z-index: 20;
   top: 0;
 }
 
@@ -24,46 +24,51 @@
 }
 
 /**************friendSearch *************/
-.friendSearch {
+/* .friendSearch {
   text-align: center;
   z-index: 10;
   text-align: center !important;
   display: inline-block;
-}
+} */
 
 .friendSearch-input-container {
-  margin-top: 12px !important;
+  margin-top: 10px !important;
   background-color: white;
   border: 2px solid #00a3ff !important ;
-  border-radius: 3rem !important;
+  border-radius: 1rem !important;
   z-index: 10;
-  width: 18vw !important;
+  width: 14vw !important;
   text-align: center !important;
-}
-
-.search-icon {
-  text-align: center !important;
-  display: inline-block;
-  height: 30px;
-  /* position: absolute; */
-  /* right: 47.3em; */
-  /* left: .20em; */
+  /* height: 40px; */
 }
 
 .friendSearch__input {
   border: none !important;
   font-size: 20px;
-  width: 13vw;
+  width: 10vw;
 }
+
+.search-icon {
+  height: 28px;
+} 
 /***************************/
+
+.searchContainer {
+  display: block;
+  position: relative;
+  background-color: white;
+  border: 4px blue solid;
+  border-radius: 2rem;
+  padding: 4px;
+}
+
+
 /***************************/
 
 .FriendsTitle {
   font-size: 26px;
   font-weight: 500;
   text-align: left;
-
-  /* display: block; */
   margin: 0px 0px 0px 20px;
 }
 
@@ -71,21 +76,6 @@
   position: "absolute" !important;
   right: "0px" !important;
 }
-
-/* .friendGroupList:hover {
-    color: #00A3FF !important;
-    background-color: #96D9FF !important;
-    border-bottom: #00A3FF !important;
-    font-weight: 500;
-    font-size: 18px;
-}
-
-
-.btn:focus, .btn-secondary:focus {
-    outline: none !important;
-    box-shadow: none !important;
-    border-bottom: 2px solid blue !important;
-  } */
 
 .friendGroupListContainer {
   display: inline-flex;
@@ -103,15 +93,11 @@
 nav .tabs {
   background-color: aqua;
 }
-/* .activeGroupFriends{
-    background-color: blue;
-} */
 
 .nav-link {
   border: none !important;
   outline: none !important;
   cursor: pointer !important;
-  /* color: #00A3FF !important; */
 }
 .nav-item > .active {
   background-color: #96d9ff !important;
@@ -147,7 +133,6 @@ nav .tabs {
 .groupMoreButton {
   font-size: 30px;
   color: grey !important;
-
   text-align: left;
 }
 
@@ -173,4 +158,72 @@ nav .tabs {
 
 .FriendsContentContainer {
   background-color: #dfdfdf;
+}
+
+
+
+/* **************Friend top area section*************** */
+.friendAreaTopSection{
+  display: inline-flex;
+  justify-content: center;
+  position: sticky;
+  z-index: 15;
+}
+
+.editGroupButton{
+  background-color: #dfdfdf !important;
+  border: none !important;
+  position:fixed;
+  margin-left: 40px;
+  margin-top: 10px;
+}
+
+.editGroupIcon{
+  height: 32px;
+}
+
+.btn-check:focus+.btn, .btn:focus {
+  box-shadow: none !important;
+}
+
+
+
+/* **************************** */
+
+
+/* .backToTopButtonContainer{
+  color: none !important;
+  border:none !important;
+  outline:none !important;
+  background-color: none !important;
+} */
+
+
+.ScrollToTopButton{
+  position: fixed; 
+  margin-left: -110px;
+  left: 50vw;
+  bottom: 20px;
+  align-items: center;
+  height: 30px;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  animation: fadeIn 0.3s;
+  transition: opacity 0.4s;
+  opacity: 0.5;
+  
+}
+
+.ScrollToTopButton:hover{
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
 }

@@ -1,29 +1,16 @@
 import { useState } from 'react';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import GlobalSearchBar from './GlobalSerachBar';
-import { GroupFriendDrop } from './GroupFriendDrop';
+// import { GroupFriendDrop } from './GroupFriendDrop';
 import { useEffect } from 'react';
 import { FriendsPresetGroup } from './FriendsPresetGroup';
 
 
-
-
-
-// import React, { useState } from 'react';
-// import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
-// import classnames from 'classnames';
-
-// const Example = (props) => {
-//     const [activeTab, setActiveTab] = useState('1');
-
-//     const toggle = tab => {
-//       if(activeTab !== tab) setActiveTab(tab);
-//     }
-
 const FriendsHeader = (props) => {
     const { activeTab, toggle, friendsList } = props;
     const [presetGroup, setPresetGroup] = useState([]);
+    // console.log("friendsHeader", props)
 
     useEffect(() => {
         let newPresetGroup = Object.keys(friendsList);
@@ -33,14 +20,12 @@ const FriendsHeader = (props) => {
     return (
         <div className="friendsHeaderContainer">
             <div className="TitleSearchContainer">
-                <p className="FriendsTitle">Friends(no.1231)</p>
-
+                <p className="FriendsTitle">{activeTab}({friendsList[activeTab] && friendsList[activeTab].length})</p>
+                {/* <p className="FriendsTitle">{activeTab}</p> */}
 
                 <GlobalSearchBar />
 
-
             </div>
-
 
             <Nav tabs style={{ position: 'relative' }}>
                 {
@@ -56,11 +41,11 @@ const FriendsHeader = (props) => {
                     })
                 }
 
-                <div style={{ position: 'absolute', right: '0px' }}>
-                    <GroupFriendDrop
+                {/* <div style={{ position: 'absolute', right: '0px' }}> */}
+                {/* <GroupFriendDrop
                         friendsList={friendsList}
-                    />
-                </div>
+                    /> */}
+                {/* </div> */}
 
 
 

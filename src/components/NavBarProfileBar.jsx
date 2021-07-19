@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import profileIcon from '../img/profileIcon.png'
+// import profileIcon from '../img/profileIcon.png'
 import '../stylesheet/navBar.css'
 import { useState } from 'react'
 import Logout from './Logout';
