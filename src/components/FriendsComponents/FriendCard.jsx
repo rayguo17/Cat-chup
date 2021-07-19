@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import EditFriendGroup from "./EditFriendGroup";
 import {
     Card, CardImg, CardText, CardBody
 } from 'reactstrap';
@@ -9,6 +10,7 @@ import userAvatar from '../../img/profileIcon.png';
 export const FriendCard = (props) => {
     const { username, toggle } = props
     const [userInfo, setUserInfo] = useState(null);
+    const { friendsList, activeTab } = props
     useEffect(() => {
         async function getUserInfo() {
             let jwt = localStorage.getItem('token');
@@ -27,12 +29,14 @@ export const FriendCard = (props) => {
             <Card className="friendsAreaComponent">
 
                 <CardBody className="friendCardBody row mx-0">
-                    <div className='col-3 px-0' style={{ width: '65px', height: '50px', borderRadius: '50%', backgroundPositionY: 'center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${userInfo ? process.env.REACT_APP_API_SERVER + userInfo.imgPath : userAvatar})`, backgroundSize: 'contain' }}>
+                    <div className='col-3 px-0' style={{ padding: '10px', width: '50px', height: '50px', borderRadius: '50%', backgroundPositionY: 'center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${userInfo ? process.env.REACT_APP_API_SERVER + userInfo.imgPath : userAvatar})`, backgroundSize: 'contain' }}>
 
                     </div>
                     <div className='col-6 px-0' >
                         <a style={{ fontSize: "20px", color: "black", textDecoration: "none" }} href={"/" + username}>{username}</a>
                     </div>
+                    {activeTab == "All Friends" &&
+                        <EditFriendGroup username={username} activeTab={activeTab} friendsList={friendsList} />}
                     <button className="deleteFriendBtn" onClick={toggle} name={username}></button>
 
 

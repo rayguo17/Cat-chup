@@ -290,7 +290,7 @@ export const ContentPage = () => {
               <Route path="/messages" render={() => <p></p>} />
               <Route path="/comment" component={CommentPage} />
               <Route path="/messages" render={() => <p></p>} />
-              <Route path="/friends" component={FriendsPage} />
+              <Route path="/friends" render={() => <FriendsPage postInfo={postInfo} />} />
               <Route path="/notifications" component={NotificationPage} />
               <Route
                 path="/schedule"

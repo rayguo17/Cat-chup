@@ -41,8 +41,7 @@ const FriendsArea = (props) => {
                     <center className="friendAreaTopSection">
                         <FriendSearchBar searched={(value) => setSearchResult(value)} localFriendsList={friendsList[activeTab]} />
 
-                        {activeTab !== "All Friends" &&
-                            <EditFriendGroup activeTab={activeTab} friendsList={friendsList} />}
+
 
                     </center>
 
@@ -53,9 +52,12 @@ const FriendsArea = (props) => {
                             return (
 
                                 <FriendCard
+
                                     username={friend}
                                     key={friend}
                                     toggle={deleteBtnToggle}
+                                    activeTab={activeTab}
+                                    friendsList={friendsList}
                                 />
 
                             )
@@ -69,6 +71,8 @@ const FriendsArea = (props) => {
                                         username={friend}
                                         key={index}
                                         toggle={deleteBtnToggle}
+                                        activeTab={activeTab}
+                                        friendsList={friendsList}
                                     />
 
                                 )

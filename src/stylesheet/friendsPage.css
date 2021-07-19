@@ -11,6 +11,7 @@
     justify-content: space-between;
     width: 95%;
     margin-top:10px;
+    margin-bottom:10px;
 }
 
 .catchUpSearch {
@@ -171,15 +172,17 @@ nav .tabs {
 }
 
 .editGroupButton{
-  background-color: #dfdfdf !important;
+  background-color: white !important;
   border: none !important;
-  position:fixed;
-  margin-left: 40px;
-  margin-top: 10px;
+  position:absolute;
+  right: 5px;
+  top: 3px;
 }
 
 .editGroupIcon{
-  height: 32px;
+  height: 4px;
+  background-color: transparent !important;
+  color: transparent;
 }
 
 .btn-check:focus+.btn, .btn:focus {
