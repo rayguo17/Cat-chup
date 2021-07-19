@@ -2,18 +2,20 @@
 // import SideBar from "../components/SideBar";
 // import { Container, Row, Col } from 'reactstrap';
 
-import FriendsHeader from "../components/FriendsComponents/FriendsHeader"
-import ScheduleRightBar from "../components/ScheduleRightBar"
-import '../stylesheet/navBar.css'
-import '../stylesheet/friendsPage.css'
+import FriendsHeader from "../components/FriendsComponents/FriendsHeader";
+import '../stylesheet/navBar.css';
+import '../stylesheet/friendsPage.css';
 import { useState } from "react";
 import FriendsArea from "../components/FriendsComponents/FriendsArea";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import ScheduleRightBar from "../components/ScheduleRightBar";
 
 
 
-const FriendsPage = () => {
+
+const FriendsPage = (props) => {
+    const postInfo = props.postInfo
 
     const [activeTab, setActiveTab] = useState('All Friends');
     const friendListStore = useSelector(state => state.friendListStore);
@@ -49,8 +51,8 @@ const FriendsPage = () => {
                     friendsList={friendsList}
                     style={{ backgroundColor: 'grey' }} />
             </div>
-            <div className='col-3 px-0' style={{ backgroundColor: 'red' }}>
-                schedule at right
+            <div className='col-3 px-0'>
+                <ScheduleRightBar postInfo={postInfo} />
             </div>
 
         </div>
