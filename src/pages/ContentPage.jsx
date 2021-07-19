@@ -59,14 +59,50 @@ export const ContentPage = () => {
         comments: [
           {
             commentUserName: "Comment1",
+            commentUserIcon:
+              "https://cdn.iconscout.com/icon/free/png-512/boy-avatar-4-1129037.png",
             commentContent: "Hi",
-            commentTime: "",
+            commentTime: "2020-07-01 19:00:00",
           },
           {
             commentUserName: "Comment2",
+            commentUserIcon:
+              "https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale",
             commentContent: "Fine",
-            commentTime: "",
+            commentTime: "2020-07-01 20:00:00",
           },
+          {
+            commentUserName: "Comment1",
+            commentUserIcon:
+              "https://cdn.iconscout.com/icon/free/png-512/boy-avatar-4-1129037.png",
+            commentContent: "Hi",
+            commentTime: "2020-07-01 19:00:00",
+          },
+          {
+            commentUserName: "Comment2",
+            commentUserIcon:
+              "https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale",
+            commentContent: "Fine",
+            commentTime: "2020-07-01 20:00:00",
+          },
+          {
+            commentUserName: "Comment1",
+            commentUserIcon:
+              "https://cdn.iconscout.com/icon/free/png-512/boy-avatar-4-1129037.png",
+            commentContent: "Hi",
+            commentTime: "2020-07-01 19:00:00",
+          },
+          {
+            commentUserName: "Comment2",
+            commentUserIcon:
+              "https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale",
+            commentContent: "Fine",
+            commentTime: "2020-07-01 20:00:00",
+          },
+        ],
+        likes: [
+          { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
+          { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
         ],
         postTime: "2020-07-01 15:00:00",
         likeNumber: 5,
@@ -105,6 +141,10 @@ export const ContentPage = () => {
             commentContent: "Fine",
             commentTime: "",
           },
+        ],
+        likes: [
+          { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
+          { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
         ],
         eventDate: "2021-06-19",
         startTime: "05:00",
@@ -145,6 +185,10 @@ export const ContentPage = () => {
             commentTime: "",
           },
         ],
+        likes: [
+          { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
+          { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
+        ],
         eventDate: "2021-06-19",
         startTime: "05:00",
         endTime: "07:00",
@@ -183,6 +227,10 @@ export const ContentPage = () => {
             commentContent: "Fine",
             commentTime: "",
           },
+        ],
+        likes: [
+          { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
+          { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
         ],
         eventDate: "2021-06-19",
         startTime: "05:00",
@@ -223,6 +271,10 @@ export const ContentPage = () => {
             commentTime: "",
           },
         ],
+        likes: [
+          { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
+          { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
+        ],
         eventDate: "2021-06-19",
         startTime: "05:00",
         endTime: "07:00",
@@ -262,6 +314,10 @@ export const ContentPage = () => {
             commentTime: "",
           },
         ],
+        likes: [
+          { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
+          { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
+        ],
         eventDate: "2021-06-19",
         startTime: "05:00",
         endTime: "07:00",
@@ -288,7 +344,10 @@ export const ContentPage = () => {
                 render={() => <HomePage postInfo={postInfo} />}
               />
               <Route path="/messages" render={() => <p></p>} />
-              <Route path="/comment" component={CommentPage} />
+              <Route
+                path="/comment/:postid"
+                render={() => <CommentPage postInfo={postInfo} />}
+              />
               <Route path="/messages" render={() => <p></p>} />
               <Route path="/friends" render={() => <FriendsPage postInfo={postInfo} />} />
               <Route path="/notifications" component={NotificationPage} />

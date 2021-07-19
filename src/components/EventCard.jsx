@@ -40,27 +40,35 @@ const EventCard = (props) => {
                       </p>
                     </div>
                   </div>
-                  <div style={{ textAlign: "left" }}>
-                    <CardTitle tag="h6">{Info.content.caption}</CardTitle>
-                  </div>
-                  <div
-                    style={{ display: "flex", justifyContent: "space-evenly" }}
-                  >
-                    {Info.content.tags.map((tag, index) => (
-                      <p className="event-tag">{tag}</p>
-                    ))}
-                  </div>
-                  <div style={{ float: "right" }}>
-                    <a href="#">
-                      <img
-                        src={MailIcon}
-                        alt="mail-icon"
-                        style={{ width: "20px", height: "20px" }}
-                      />
-                    </a>
-                  </div>
                 </Col>
               </Row>
+              <div style={{ textAlign: "left" }}>
+                <CardTitle tag="h6">{Info.content.caption}</CardTitle>
+              </div>
+              <div style={{ display: "flex" }}>
+                <div
+                // style={{ display: "flex", justifyContent: "space-evenly" }}
+                >
+                  {Info.content.tags.map((tag, index) => (
+                    <p className="event-tag">{tag}</p>
+                  ))}
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <a href="#">
+                    <img
+                      src={MailIcon}
+                      alt="mail-icon"
+                      style={{ width: "20px", height: "20px" }}
+                    />
+                  </a>
+                </div>
+              </div>
             </Card>
           );
         }
