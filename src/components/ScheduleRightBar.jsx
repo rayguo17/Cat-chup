@@ -6,9 +6,17 @@ const ScehduleRightBar = (props) => {
   const postInfo = props.postInfo;
   console.log(postInfo, "hihi");
   return (
-    <div style={{ position: "fixed" }}>
+    <div>
       <center>
-        <div className="Schedule-header">
+        <div
+          className="Schedule-header"
+          style={{
+            position: "sticky",
+            top: "0",
+            zIndex: "10",
+            backgroundColor: "white",
+          }}
+        >
           <h3>Available Event</h3>
           <WeekIcon />
           <hr
@@ -17,14 +25,14 @@ const ScehduleRightBar = (props) => {
             }}
           />
         </div>
-        {/* {postInfo.map((Info, index) => {
-          Info.type == "event" && <EventCard postInfo={postInfo} />;
-        })} */}
-        {postInfo.map((Info, index) => {
-          if (Info.type === "event") {
-            return <EventCard postInfo={postInfo} />;
-          }
-        })}
+
+        <div>
+          {postInfo.map((Info, index) => {
+            if (Info.type === "event") {
+              return <EventCard postInfo={postInfo} />;
+            }
+          })}
+        </div>
       </center>
     </div>
   );

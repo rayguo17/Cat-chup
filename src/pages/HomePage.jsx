@@ -7,6 +7,7 @@ import WhatsOnYourMind from "../components/WhatsOnYourMind";
 import { CreatePostModal } from "../components/WhatsOnYourMindComponents/CreatePostModal";
 import { CreatePostBtnContainer } from "../components/WhatsOnYourMindComponents/CreatePostBtnContainer";
 import { useState } from "react";
+import "../stylesheet/homePage.css";
 
 const HomePage = (props) => {
   const postInfo = props.postInfo;
@@ -17,13 +18,13 @@ const HomePage = (props) => {
   };
 
   return (
-    <div className="col-9 px-0 mx-0 row">
-      <div className="col-9 px-0">
+    <div className="col-9 px-0 mx-0 row post-and-schedule">
+      <div className="col-9 px-0 post-page">
         <CreatePostBtnContainer toggle={toggleModal} />
         {/* <WhatsOnYourMind /> */}
         <PostArea postInfo={postInfo} />
       </div>
-      <div className="col-3 px-0">
+      <div className="col-3 px-0 schedule-page">
         <ScheduleRightBar postInfo={postInfo} />
       </div>
       <CreatePostModal toggle={toggleModal} modal={postModal} />

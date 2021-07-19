@@ -4,9 +4,6 @@ import Post from "./Post";
 
 const PostArea = (props) => {
   const postInfo = props.postInfo;
-  const changeToCommentPage = () => {
-    window.location.href = "/comment";
-  };
 
   return (
     <div className="postContainer">

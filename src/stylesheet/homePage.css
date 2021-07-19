@@ -1,0 +1,11 @@
+.post-and-schedule {
+  overflow: hidden;
+}
+
+.post-page {
+  overflow: scroll;
+}
+
+.schedule-page {
+  overflow: scroll;
+}
