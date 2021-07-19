@@ -42,16 +42,13 @@
   /* height: 40px; */
 }
 
-/* .friendSearch__input {
+.friendSearch__input {
   border: none !important;
   font-size: 20px;
-  width: 13vw;
+  width: 10vw;
 }
-*/
 
 .search-icon {
-  /* text-align: center !important;
-  display: inline-block; */
   height: 28px;
 } 
 /***************************/

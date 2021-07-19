@@ -18,10 +18,11 @@ const GlobalSearchBar = () => {
             <SelectSearch options={options} filterOptions={fuzzySearch} search placeholder="Search CatchUp"
                 renderOption={(props, value) => {
                     console.log('render option', value, props)
-                    return (<div style={{ display: 'flex', fontSize: '20px', color: 'black', padding: '8px' }}>
+                    return (<a style={{ textDecoration: "none" }} href={"/" + value.name}><div style={{ display: 'flex', fontSize: '20px', color: 'black', padding: '8px' }}>
                         <img style={{ height: '50px', borderRadius: '30px' }} src={value.photo} alt="this is photo" />
+                        {/* add a tag */}
                         <p style={{ marginLeft: '20px' }}>{value.name}</p>
-                    </div>)
+                    </div></a>)
                 }} />
         </div>
     )
