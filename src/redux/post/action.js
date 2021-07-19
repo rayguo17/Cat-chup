@@ -70,6 +70,7 @@ export function addNewPostThunk(values){
                 content.attachPic.push(imgReq.data);
             })
             newPost.content=content;
+            newPost.visible_group = values.visible_group;
             let addNewPost = await axios({
                 url:process.env.REACT_APP_API_SERVER+'/api/post',
                 method:'post',

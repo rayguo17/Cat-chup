@@ -51,10 +51,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FriendGroupSelector(props) {
   const classes = useStyles();
-  const {selectedGroup,handleSelect}=props;
+  const {selectedGroup,handleSelect,friendGroup}=props;
   const [group, setGroup] = React.useState('All Friends');
   const handleChange = (event) => {
-    setGroup(event.target.value);
+    //setGroup(event.target.value);
   };
   return (
     <div>
@@ -67,17 +67,27 @@ export default function FriendGroupSelector(props) {
           }}
           labelId="demo-customized-select-label"
           id="demo-customized-select"
-          value={group}
-          onChange={handleChange}
+          value={selectedGroup}
+          onChange={handleSelect}
           input={<BootstrapInput />}
           renderValue={(value)=>(<div><FontAwesomeIcon className='mx-1' icon={faEye}/> visible to {value}</div>)}
         >
-          <MenuItem value="All Friends">
+          {friendGroup.map((group,index)=>{
+            return (
+              <MenuItem
+                value={group}
+                key={index}
+              >
+                {group}
+              </MenuItem>
+            )
+          })}
+          {/* <MenuItem value="All Friends">
             All Friends
           </MenuItem>
           <MenuItem value={'Close Friends'}>Close Friends</MenuItem>
           <MenuItem value={'Family'}>Family</MenuItem>
-          <MenuItem value={'Work'}>Work</MenuItem>
+          <MenuItem value={'Work'}>Work</MenuItem> */}
         </Select>
       </FormControl>
       

@@ -14,8 +14,6 @@ import { PostImageShowcase } from './PostImageShowcase';
 import { EmojiPopper } from './EmojiPopper';
 import { useRef } from 'react';
 import { addNewPostThunk } from '../../redux/post/action';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye } from '@fortawesome/free-regular-svg-icons';
 import FriendGroupSelector from './FriendGroupSelector';
 
 export const CreatePostModal = (props)=>{
@@ -46,6 +44,10 @@ export const CreatePostModal = (props)=>{
      }
 
      //FOR VISIBLE FRIEND GROUP SELECTOR
+     const friendListStore = useSelector(state=>state.friendListStore);
+     const friendList = friendListStore.friendList;
+     console.log('friendList',friendList);
+     const friendGroup = Object.keys(friendList);
      
 
      //FOR FORMIK FORM CONTROL
@@ -53,7 +55,8 @@ export const CreatePostModal = (props)=>{
        initialValues:{
           caption:"",
           attachPic:[],
-          ownerName:userInfo.username
+          ownerName:userInfo.username,
+          visible_group:friendGroup[0],
        },
        onSubmit:values=>{
           console.log(values.caption);
@@ -73,10 +76,11 @@ export const CreatePostModal = (props)=>{
           values:{
             caption:"",
             attachPic:[],
-            ownerName:userInfo.username
+            ownerName:userInfo.username,
+            visible_group:friendGroup[0],
           }
         })
-     },[userInfoStore,modal])
+     },[userInfoStore,modal,friendList])
       return (
         <Modal isOpen={modal} toggle={toggle} className={className}>
             <ModalHeader toggle={toggle}>Modal title</ModalHeader>
@@ -125,7 +129,11 @@ export const CreatePostModal = (props)=>{
                                   imageList={imageList}
                                   onImageRemove={onImageRemove}
                                 />
-                                <FriendGroupSelector/>
+                                <FriendGroupSelector
+                                  friendGroup={friendGroup}
+                                  selectedGroup={formik.values.visible_group}
+                                  handleSelect={formik.handleChange}
+                                />
                                   <hr className='mt-0'/>
                                 <div style={{display:'flex',justifyContent:'start',flexDirection:'row'}}>
                                   <div className='add-on-function-post-btn' style={{backgroundImage:`url(${MoodIcon})`}}></div>

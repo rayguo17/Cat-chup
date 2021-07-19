@@ -51,7 +51,7 @@ const FriendsArea = (props) => {
                     />
                     {
                         localFriendsList[activeTab] ? localFriendsList[activeTab].map((friend, index) => {
-                            return (
+                            return ( 
                                 // <Col xs="6">
 
 
