@@ -26,8 +26,8 @@ const Post = (props) => {
     commentsNumber,
   } = props.postInfo;
 
-  const changeToCommentPage = () => {
-    window.location.href = "/comment";
+  const changeToCommentPage = (postInfo) => {
+    window.location.href = `/comment/${id}`;
   };
 
   return (
@@ -62,16 +62,14 @@ const Post = (props) => {
           </div>
 
           <div>
-            <a href="/comment">
-              <Button color="secondary">
-                <p>{commentsNumber} Comment</p>
-                <img
-                  src={CommentIcon}
-                  className="post-comment-btn"
-                  alt="Comment"
-                />
-              </Button>
-            </a>
+            <Button color="secondary" onclick={changeToCommentPage}>
+              <p>{commentsNumber} Comment</p>
+              <img
+                src={CommentIcon}
+                className="post-comment-btn"
+                alt="Comment"
+              />
+            </Button>
           </div>
         </div>
       </Card>
