@@ -19,12 +19,12 @@ const FriendsHeader = (props) => {
   return (
     <div className="friendsHeaderContainer">
       <div className="TitleSearchContainer">
-        {friendsList[activeTab] !== 0 ? (
+        {friendsList[activeTab] == 0 ? (
           <p className="FriendsTitle">All Friends</p>
-        ) : null}
-        {/* <p className="FriendsTitle">
+        ) : <p className="FriendsTitle">
           {activeTab}({friendsList[activeTab] && friendsList[activeTab].length})
-        </p> */}
+        </p>}
+
         {/* <p className="FriendsTitle">{activeTab}</p> */}
 
         <GlobalSearchBar />
