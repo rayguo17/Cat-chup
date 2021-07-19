@@ -1,18 +1,50 @@
-
-import '../stylesheet/navBar.css'
-
+import PlanTodayLabel from "./PlanTodayLabel";
+import { useHistory } from "react-router-dom";
 
 const MyPlansToday = (props) => {
-    return (
-        <div className="plansTodaySection">
-            <p className="myPlansTodayText">  My plans today  </p>
-            <div className="plansTodayContainer">
-                <span placeholder="todays plans">todays plans</span>
-            </div>
+  const postInfo = props.postInfo;
+  const today = new Date();
+  console.log("today", today);
+  const today_year = today.getFullYear();
+  const today_month = today.getMonth();
+  const today_day = today.getDate();
+  var today_date;
+  if (today_month < 10) {
+    if (today_day < 10) {
+      today_date = `${today_year}-${today_month}-0${today_day}`;
+    } else {
+      today_date = `${today_year}-0${today_month}-${today_day}`;
+    }
+  }
 
-        </div>)
-}
+  console.log("today_date", today_date);
 
+  const routeChange = () => {
+    // let path = "/schedule";
+    // const history = useHistory();
+    // history.pushState(path);
+    window.location.href = "/schedule";
+  };
+
+  return (
+    <div className="plansTodaySection">
+      <p className="myPlansTodayText"> My plans today </p>
+      <div
+        className="plansTodayContainer"
+        onClick={routeChange}
+        style={{ cursor: "pointer" }}
+      >
+        {/* <span placeholder="todays plans">todays plans</span> */}
+        <div className="plansTodayBox">
+          {postInfo.map((Info, index) => {
+            if (Info.type === "event" && Info.content.eventDate == today_date) {
+              return <PlanTodayLabel Info={Info} />;
+            }
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default MyPlansToday;
-

@@ -19,8 +19,12 @@ const EventPost = (props) => {
     commentsNumber,
   } = props.postInfo;
 
+  const changeToCommentPage = () => {
+    window.location.href = "/comment";
+  };
+
   return (
-    <div className="eventcard-container">
+    <div className="eventcard-container" onClick={changeToCommentPage}>
       <Card>
         <img className="userIcon" src={userInfo.userIcon_url} alt="icon" />
         <span className="userName">

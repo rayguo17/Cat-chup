@@ -26,8 +26,12 @@ const Post = (props) => {
     commentsNumber,
   } = props.postInfo;
 
+  const changeToCommentPage = () => {
+    window.location.href = "/comment";
+  };
+
   return (
-    <div className="postcard-container">
+    <div className="postcard-container" onClick={changeToCommentPage}>
       <Card>
         <img className="userIcon" src={userInfo.userIcon_url} alt="icon" />
         <span className="userName">
@@ -35,13 +39,12 @@ const Post = (props) => {
         </span>
         <div className="mood"></div>
         <CardBody>
-          <CardTitle tag="h5"> Post.Title </CardTitle>
+          <CardTitle tag="h5"> {content.caption} </CardTitle>
         </CardBody>
         <CardText>{content.text}</CardText>
         <CardBody>
           <div className="card-content">
             <PostImgBox Picture={content.pictures} />
-
             {/* {content.pictures.map((picture, index) => (
               <PostImgBox Picture={content.pictures} />
               // <img width="100%" src={picture.data_url} alt="Card image cap" />
