@@ -65,6 +65,8 @@ export default function FriendGroupSelector(props) {
            MenuProps={{
             disableScrollLock: true
           }}
+          name='visible_group'
+          id='visible_group'
           labelId="demo-customized-select-label"
           id="demo-customized-select"
           value={selectedGroup}

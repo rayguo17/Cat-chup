@@ -38,7 +38,7 @@ const FriendsPage = () => {
     }, [friendListStore])
     return (
         <div className='col-9 px-0 row mx-0'>
-            <div style={{ backgroundColor: '#dfdfdf' }} className='col-6 px-0'>
+            <div style={{ backgroundColor: '#dfdfdf' }} className='col-8 px-0'>
                 <FriendsHeader
                     toggle={toggle}
                     activeTab={activeTab}
@@ -49,7 +49,7 @@ const FriendsPage = () => {
                     friendsList={friendsList}
                     style={{ backgroundColor: 'grey' }} />
             </div>
-            <div className='col-3 px-0' style={{ backgroundColor: 'red' }}>
+            <div className='col-4 px-0' style={{ backgroundColor: 'red' }}>
                 schedule at right
             </div>
 

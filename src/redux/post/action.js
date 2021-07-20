@@ -31,6 +31,24 @@ export function addNewPostFailureAction(){
     }
 }
 
+export function loadPostThunk(username){
+    return async (dispatch)=>{
+        try {
+            let token = localStorage.getItem('token');
+            let getPostReq = await axios({
+                url:process.env.REACT_APP_API_SERVER+'/api/post/'+username,
+                headers: { Authorization: `Bearer ${token}` },
+            })
+            console.log('load post req', getPostReq);
+            dispatch(loadPostSuccessAction(getPostReq.data))
+        } catch (error) {
+            console.log('load post thunk error',error)
+            dispatch(loadPostFailureAction());
+        }
+        
+    }
+}
+
 export function addNewPostThunk(values){
     return async (dispatch)=>{
         const options = {
@@ -78,8 +96,10 @@ export function addNewPostThunk(values){
                 headers:{Authorization:`Bearer ${token}`},
             })
             console.log('add new post result',addNewPost);
+            console.log('new post',newPost);
             if(addNewPost.status===200){
-                dispatch(addNewPostSuccessAction(newPost))
+
+                dispatch(addNewPostSuccessAction(addNewPost.data))
                 store.addNotification({
                     title:'add post success!',
                     message:'Congratulations!',
