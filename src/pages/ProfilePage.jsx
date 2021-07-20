@@ -62,9 +62,9 @@ export const ProfilePage = (props) => {
             />
 
 
-            {areFriends === true ? (
+            {isOwner === true || areFriends === true ? (
 
-                <div>this is your friends post</div>
+                <div>this is the users post</div>
 
 
                 //replace null with users posts
