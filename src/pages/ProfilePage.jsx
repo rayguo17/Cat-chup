@@ -62,7 +62,7 @@ export const ProfilePage = (props) => {
             />
 
             {/* //if not friends is false will render out this */}
-            {areFriends == false ? (
+            {areFriends && areFriends == false ? (
                 <NotFriendBlackBlock
                     pageOwnerName={props.match.params.username}
                     areFriends={areFriends}
