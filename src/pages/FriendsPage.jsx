@@ -40,7 +40,7 @@ const FriendsPage = (props) => {
     }, [friendListStore])
     return (
         <div className='col-9 px-0 row mx-0'>
-            <div style={{ backgroundColor: '#dfdfdf' }} className='col-6 px-0'>
+            <div style={{ backgroundColor: '#dfdfdf' }} className='col-9 px-0'>
                 <FriendsHeader
                     toggle={toggle}
                     activeTab={activeTab}
