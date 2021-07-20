@@ -18,13 +18,16 @@ const HomePage = (props) => {
   };
 
   return (
-    <div className="col-9 px-0 mx-0 row post-and-schedule">
-      <div className="col-9 px-0 post-page">
+    <div
+      className="col-9 px-0 mx-0 row post-and-schedule"
+      style={{ overflow: "scroll" }}
+    >
+      <div className="col-9 px-0 post-page" style={{ maxHeight: "100vh" }}>
         <CreatePostBtnContainer toggle={toggleModal} />
         {/* <WhatsOnYourMind /> */}
         <PostArea postInfo={postInfo} />
       </div>
-      <div className="col-3 px-0 schedule-page">
+      <div className="col-3 px-0 schedule-page" style={{ maxHeight: "100vh" }}>
         <ScheduleRightBar postInfo={postInfo} />
       </div>
       <CreatePostModal toggle={toggleModal} modal={postModal} />
