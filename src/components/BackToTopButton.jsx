@@ -6,6 +6,7 @@ import backToTopIcon from '../img/backToTopIcon.png'
 const BackToTopButton = () => {
 
     //toggle visibility of scroll
+    // const scrollDiv = document.getElementsByClassName("Scrolllable")
 
     const [showScroll, setShowScroll] = useState(false)
 
@@ -24,7 +25,7 @@ const BackToTopButton = () => {
     window.addEventListener('scroll', checkScrollTop)
     return (
 
-        <img className="ScrollToTopButton" onClick={scrollTop} style={{ display: showScroll ? 'flex' : 'none' }} src={backToTopIcon} alt="backToTop button"></img>
+        <img className="ScrollToTopButton" onClick={scrollTop} style={{ display: showScroll ? 'flex' : 'block' }} src={backToTopIcon} alt="backToTop button"></img>
 
     );
 
