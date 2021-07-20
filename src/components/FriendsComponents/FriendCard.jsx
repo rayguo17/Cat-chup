@@ -24,16 +24,16 @@ export const FriendCard = (props) => {
         getUserInfo();
     }, [username])
     return (
-        <div className='col-5 mx-3'>
+        <div className='col-5 mx-auto'>
 
             <Card className="friendsAreaComponent">
 
                 <CardBody className="friendCardBody row mx-0">
-                    <div className='col-3 px-0' style={{ padding: '10px', width: '50px', height: '50px', borderRadius: '50%', backgroundPositionY: 'center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${userInfo ? process.env.REACT_APP_API_SERVER + userInfo.imgPath : userAvatar})`, backgroundSize: 'contain' }}>
+                    <div className='col-3 px-0' style={{ padding: '10px', width: '60px', height: '60px', borderRadius: '50%', backgroundPositionY: 'center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${userInfo ? process.env.REACT_APP_API_SERVER + userInfo.imgPath : userAvatar})`, backgroundSize: 'contain' }}>
 
                     </div>
                     <div className='col-6 px-0' >
-                        <a style={{ fontSize: "20px", color: "black", textDecoration: "none" }} href={"/" + username}>{username}</a>
+                        <a style={{ fontSize: "25px", color: "black", textDecoration: "none" }} href={"/" + username}>{username}</a>
                     </div>
                     {activeTab == "All Friends" &&
                         <EditFriendGroup username={username} activeTab={activeTab} friendsList={friendsList} />}

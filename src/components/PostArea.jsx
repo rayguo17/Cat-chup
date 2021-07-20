@@ -1,5 +1,6 @@
 import "../stylesheet/postArea.css";
 import EventPost from "./EventPost";
+import BackToTopButton from "./BackToTopButton";
 import Post from "./Post";
 
 const PostArea = (props) => {
@@ -13,7 +14,9 @@ const PostArea = (props) => {
         }
         return <Post postInfo={info} Key={info.id} />;
       })}
+      <BackToTopButton />
     </div>
+
 
     // {imageList.map((image, index) => (
     //     <div key={index} className="image-item">
@@ -24,6 +27,7 @@ const PostArea = (props) => {
     //         </div>
     //     </div>
     // ))} }
+
   );
 };
 
