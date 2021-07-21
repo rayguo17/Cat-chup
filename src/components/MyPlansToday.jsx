@@ -11,10 +11,12 @@ const MyPlansToday = (props) => {
   var today_date;
   if (today_month < 10) {
     if (today_day < 10) {
-      today_date = `${today_year}-${today_month}-0${today_day}`;
+      today_date = `${today_year}-0${today_month + 1}-0${today_day}`;
     } else {
-      today_date = `${today_year}-0${today_month}-${today_day}`;
+      today_date = `${today_year}-0${today_month + 1}-${today_day}`;
     }
+  } else {
+    today_date = `${today_year}-${today_month + 1}-${today_day}`;
   }
 
   console.log("today_date", today_date);
