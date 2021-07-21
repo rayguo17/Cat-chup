@@ -27,11 +27,17 @@ const EventCard = (props) => {
                     alt="icon"
                     style={{ width: "50px", height: "50px" }}
                   />
+                  <p className="username" style={{ width: "100px" }}>
+                    {Info.userInfo.userName}
+                  </p>
                 </Col>
                 <Col xs="9">
                   <div>
                     <div style={{ textAlign: "start" }}>
-                      <p className="time">{Info.content.eventDate}</p>
+                      <p className="time">
+                        {Info.content.eventDateWeek} &nbsp;
+                        {Info.content.eventDate}
+                      </p>
                     </div>
                     <div style={{ textAlign: "end" }}>
                       <p className="time">
@@ -46,13 +52,11 @@ const EventCard = (props) => {
                 <CardTitle tag="h6">{Info.content.caption}</CardTitle>
               </div>
               <div style={{ display: "flex" }}>
-                <div
-                // style={{ display: "flex", justifyContent: "space-evenly" }}
-                >
+                {/* <div>
                   {Info.content.tags.map((tag, index) => (
                     <p className="event-tag">{tag}</p>
                   ))}
-                </div>
+                </div> */}
                 <div
                   style={{
                     display: "flex",
