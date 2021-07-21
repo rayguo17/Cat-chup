@@ -6,13 +6,14 @@ import jwtDecode from "jwt-decode";
 import { useSelector } from "react-redux";
 import ScehduleRightBar from "../components/ScheduleRightBar";
 import ProfilePost from "../components/profile/ProfilePost";
+import { NotFriendBlackBlock } from "../components/NotFriendsComponents/NotFriendBlackBlock"
 
 //check the route name, normally we just dive in by clicking own name
-export const ProfilePage = (props)=>{
-    const [isOwner,setIsOwner] = useState(false);
-    const [areFriends,setareFriends] = useState(false);
-    const userStore = useSelector(state=>state.userInfoStore);
-    const friendListStore = useSelector(state=>state.friendListStore);
+export const ProfilePage = (props) => {
+    const [isOwner, setIsOwner] = useState(false);
+    const [areFriends, setareFriends] = useState(false);
+    const userStore = useSelector(state => state.userInfoStore);
+    const friendListStore = useSelector(state => state.friendListStore);
     //console.log('in profile page',userStore);
     const [userInfo,setUserInfo] = useState({}); 
     
@@ -23,44 +24,44 @@ export const ProfilePage = (props)=>{
     const [postInfo,setPostInfo] = useState([]);
 
     //need to check whether this user is friend with him
-    useEffect(()=>{
-        console.log('params',props.match.params.username);
+    useEffect(() => {
+        console.log('params', props.match.params.username);
         let pageOwnerName = props.match.params.username
         //first check is the user own this page;
         let jwt = localStorage.getItem('token');
         let decode = jwtDecode(jwt);
-        let currentUserName= decode.username
+        let currentUserName = decode.username
         //check if it is owner
-        if(pageOwnerName==currentUserName){
+        if (pageOwnerName == currentUserName) {
             setIsOwner(true);
             setareFriends(false);
             setUserInfo(userStore.userInfo);
         }
         //check if they are friends
-        if(friendListStore.friendList["All Friends"]){
-            async function FetchFriend(){
+        if (friendListStore.friendList["All Friends"]) {
+            async function FetchFriend() {
                 let friendInfo = await axios({
-                    url:process.env.REACT_APP_API_SERVER+'/api/user/profile/'+pageOwnerName,
-                    headers:{Authorization:`Bearer ${jwt}`}
+                    url: process.env.REACT_APP_API_SERVER + '/api/user/profile/' + pageOwnerName,
+                    headers: { Authorization: `Bearer ${jwt}` }
                 });
-                console.log('friendInfo',friendInfo);
+                console.log('friendInfo', friendInfo);
                 setUserInfo(friendInfo.data);
                 let allFriend = friendListStore.friendList["All Friends"];
-                console.log('friendList',friendListStore.friendList,allFriend);
-                if(allFriend.find(e=>e===pageOwnerName)){
+                console.log('friendList', friendListStore.friendList, allFriend);
+                if (allFriend.find(e => e === pageOwnerName)) {
                     console.log('are friends');
                     setareFriends(true);
                     setIsOwner(false)
-                    
+
                 }
             }
             FetchFriend();
-            
+
         }
-        
+
         //and then check if they are friend?
 
-    },[userStore,friendListStore])
+    }, [userStore, friendListStore])
     return (
         <div className='col-9 px-0 row mx-0'>
             <div className='col-8 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4'}}>
@@ -69,31 +70,31 @@ export const ProfilePage = (props)=>{
                             userInfo={userInfo}
                             areFriends={areFriends}
                         />
-            <ProfilePost
+            {isOwner === true || areFriends === true ? (
+
+                <ProfilePost
                 postList={postList}
                 isOwner={isOwner}
                 areFriends={areFriends}
                 postInfo={postInfo}
                 pageOwner={props.match.params.username}
-            />
+                />
+                                
+                                    
+            //replace null with users posts
+            ) : <NotFriendBlackBlock
+            pageOwnerName={props.match.params.username}
+            areFriends={areFriends}
+            />}
+            
             </div>
             <div className='col-4 px-0'>
                 
             </div>
-            {/* <Container>
-                <Row>
-                    <Col xs='3'></Col>
-                    <Col xs='6'>
-                        <PersonalProfile
-                            isOwner={isOwner}
-                            userInfo={userInfo}
-                            areFriends={areFriends}
-                        />
+            
 
-                    </Col>
-                    <Col xs='3'></Col>
-                </Row>
-            </Container> */}
+
+            
 
         </div>
     )

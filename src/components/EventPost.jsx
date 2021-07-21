@@ -19,8 +19,8 @@ const EventPost = (props) => {
     commentsNumber,
   } = props.postInfo;
 
-  const changeToCommentPage = () => {
-    window.location.href = "/comment";
+  const changeToCommentPage = (postInfo) => {
+    window.location.href = `/comment/${id}`;
   };
 
   return (

@@ -11,6 +11,7 @@
     justify-content: space-between;
     width: 95%;
     margin-top:10px;
+    margin-bottom:10px;
 }
 
 .catchUpSearch {
@@ -85,7 +86,7 @@
 }
 .friendGroupList {
   margin: 3px;
-  font-size: 15px;
+  font-size: 20px;
   background-color: #96d9ff !important;
   border: none !important;
   color: white;
@@ -124,6 +125,7 @@ nav .tabs {
   border-radius: 1rem !important;
   padding: 0px !important;
   margin: 20px 0px 0px 0px !important;
+  max-width: 20vw;
 }
 
 .friendCardBody {
@@ -171,15 +173,17 @@ nav .tabs {
 }
 
 .editGroupButton{
-  background-color: #dfdfdf !important;
+  background-color: white !important;
   border: none !important;
-  position:fixed;
-  margin-left: 40px;
-  margin-top: 10px;
+  position:absolute;
+  right: 5px;
+  top: 3px;
 }
 
 .editGroupIcon{
-  height: 32px;
+  height: 4px;
+  background-color: transparent !important;
+  color: transparent;
 }
 
 .btn-check:focus+.btn, .btn:focus {
@@ -201,7 +205,7 @@ nav .tabs {
 
 .ScrollToTopButton{
   position: fixed; 
-  margin-left: -110px;
+  /* margin-left: -110px; */
   left: 50vw;
   bottom: 20px;
   align-items: center;
@@ -211,12 +215,13 @@ nav .tabs {
   cursor: pointer;
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
-  opacity: 0.5;
+  opacity: 0.7;
   
 }
 
 .ScrollToTopButton:hover{
-  opacity: 1;
+  opacity: 0.7
+  ;
 }
 
 @keyframes fadeIn {

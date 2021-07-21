@@ -8,6 +8,7 @@ import { CreatePostModal } from "../components/WhatsOnYourMindComponents/CreateP
 import { CreatePostBtnContainer } from "../components/WhatsOnYourMindComponents/CreatePostBtnContainer";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import "../stylesheet/homePage.css";
 
 const HomePage = (props) => {
   const postInfo = props.postInfo;
@@ -19,15 +20,18 @@ const HomePage = (props) => {
   };
 
   return (
-    <div className="col-9 px-0 mx-0 row">
-      <div className="col-8 px-0">
+    <div
+      className="col-9 px-0 mx-0 row post-and-schedule"
+      style={{ overflow: "scroll" }}
+    >
+      <div className="col-9 px-0 post-page Scrolllable" style={{ maxHeight: "100vh" }}>
         <CreatePostBtnContainer toggle={toggleModal} />
         {/* <WhatsOnYourMind /> */}
         <PostArea postInfo={postInfo}
           postList={postList}
         />
       </div>
-      <div className="col-4 px-0">
+      <div className="col-3 px-0 schedule-page" style={{ maxHeight: "100vh" }}>
         <ScheduleRightBar postInfo={postInfo} />
       </div>
       <CreatePostModal toggle={toggleModal} modal={postModal} />

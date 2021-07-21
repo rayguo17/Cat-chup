@@ -1,5 +1,6 @@
 import "../stylesheet/postArea.css";
 import EventPost from "./EventPost";
+import BackToTopButton from "./BackToTopButton";
 import Post from "./Post";
 import PostCard from "./PostComponents/PostCard";
 
@@ -26,7 +27,9 @@ const PostArea = (props) => {
           />
         )
       })}
+      <BackToTopButton />
     </div>
+
 
     // {imageList.map((image, index) => (
     //     <div key={index} className="image-item">
@@ -37,6 +40,7 @@ const PostArea = (props) => {
     //         </div>
     //     </div>
     // ))} }
+
   );
 };
 

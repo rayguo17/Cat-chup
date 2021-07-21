@@ -227,7 +227,7 @@
     border: 2px solid #00a3ff !important ;
     border-radius: 1rem !important;
     z-index: 10;
-    width: 14vw !important;
+    /* width: 14vw !important; */
     text-align: center !important;
   }
 

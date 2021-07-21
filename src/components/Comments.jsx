@@ -21,33 +21,39 @@ const useStyles = makeStyles((theme) => ({
 
 const Comments = (props) => {
   const classes = useStyles();
-  const postInfo = props.postInfo;
+  const Info = props.Info;
 
   return (
     <List className={classes.root}>
-      <ListItem alignItems="flex-start">
-        <ListItemAvatar>
-          <Avatar
-            alt="Remy Sharp"
-            src="https://image.flaticon.com/icons/png/512/146/146005.png"
-          />
-        </ListItemAvatar>
-        <ListItemText
-          primary="username"
-          secondary={
-            <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
-                There will be a comment
-              </Typography>
-            </React.Fragment>
-          }
-        />
-      </ListItem>
+      {Info.content.comments.map((comment, index) => {
+        return (
+          <ListItem alignItems="flex-start">
+            <ListItemAvatar>
+              <Avatar alt="Remy Sharp" src={comment.commentUserIcon} />
+            </ListItemAvatar>
+            <ListItemText
+              primary={comment.commentUserName}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                  >
+                    <div>
+                      <div> {comment.commentContent}</div>
+                      <div style={{ textAlign: "right" }}>
+                        {comment.commentTime}
+                      </div>
+                    </div>
+                  </Typography>
+                </React.Fragment>
+              }
+            />
+          </ListItem>
+        );
+      })}
 
       <Divider variant="inset" component="li" />
     </List>
