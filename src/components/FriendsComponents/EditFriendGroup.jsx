@@ -3,7 +3,9 @@ import { useEffect } from 'react';
 import EditGroupIcon from '../../img/editGroupIcon.png'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import '../../stylesheet/friendsPage.css'
-
+import { useDispatch } from 'react-redux';
+import { updateFriendThunk } from '../../redux/friendsList/action';
+import jwtDecode from 'jwt-decode';
 const EditFriendGroup = (props) => {
 
     const [modal, setModal] = useState(false);
@@ -18,7 +20,7 @@ const EditFriendGroup = (props) => {
         username
     } = props;
 
-
+    const dispatch = useDispatch();
     const checked = (event) => {
         // const groupName = event.target.value
         const newCheck = { ...check }
@@ -29,7 +31,8 @@ const EditFriendGroup = (props) => {
     }
 
     const handleGroup = () => {
-
+        let token = localStorage.getItem('token');
+        let decode = jwtDecode(token);
         for (const [key, value] of Object.entries(check)) {
             console.log("FRIENDLIST:", friendsList[key]);
             console.log("USERNAME:", username);
@@ -42,10 +45,11 @@ const EditFriendGroup = (props) => {
                 console.log("newfriendslist", friendsList)
             }
         }
+        dispatch(updateFriendThunk(friendsList,decode.username));
         setModal(!modal);
     }
 
-    console.log('EditGroup', friendsList);
+    //console.log('EditGroup', friendsList);
 
     const handleClick = () => {
         // console.log("USERNAME:", username);
@@ -57,11 +61,12 @@ const EditFriendGroup = (props) => {
                 setCheck(prevValue => ({ ...prevValue, [key]: true }));
             }
         }
+        toggle()
     }
 
     return (
         <div>
-            <Button onClick={handleClick} className="editGroupButton"  ><img className="editGroupIcon" src={EditGroupIcon} alt="EditGroupIcon" onClick={toggle} /></Button>
+            <Button onClick={handleClick} className="editGroupButton"  ><img className="editGroupIcon" src={EditGroupIcon} alt="EditGroupIcon"  /></Button>
             <Modal isOpen={modal} toggle={toggle} className={className}>
                 <ModalHeader toggle={toggle}>Assign group</ModalHeader>
                 <ModalBody>
