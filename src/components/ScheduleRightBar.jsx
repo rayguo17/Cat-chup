@@ -29,7 +29,7 @@ const ScehduleRightBar = (props) => {
         <div>
           {postInfo.map((Info, index) => {
             if (Info.type === "event") {
-              return <EventCard postInfo={postInfo} />;
+              return <EventCard Info={Info} />;
             }
           })}
         </div>
