@@ -18,6 +18,7 @@ import CommentPage from "./CommentPage";
 import SchedulePage from "./SchedulePage";
 import { loadPostThunk } from "../redux/post/action";
 import { MessagePage } from "./MessagePage";
+import { WeekendTwoTone } from "@material-ui/icons";
 
 export const ContentPage = () => {
   const [username, setUsername] = useState(null);
@@ -46,6 +47,18 @@ export const ContentPage = () => {
 
   function dummydateIs(date2) {
     return new Date(date2);
+  }
+
+  function getDayOfWeek(date) {
+    var week;
+    if (date.getDay() == 0) week = "Sun";
+    if (date.getDay() == 1) week = "Mon";
+    if (date.getDay() == 2) week = "Tue";
+    if (date.getDay() == 3) week = "Wed";
+    if (date.getDay() == 4) week = "Thu";
+    if (date.getDay() == 5) week = "Fri";
+    if (date.getDay() == 6) week = "Sat";
+    return week;
   }
 
   const postInfo = [
@@ -339,6 +352,16 @@ export const ContentPage = () => {
       },
     },
   ];
+
+  function giveEventDateWeek() {
+    for (var Info of postInfo) {
+      Info.content.eventDateWeek = `${getDayOfWeek(
+        new Date(Info.content.eventDate)
+      )}`;
+    }
+  }
+
+  giveEventDateWeek();
 
   return (
     <center>
