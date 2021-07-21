@@ -22,7 +22,7 @@ const HomePage = (props) => {
       className="col-9 px-0 mx-0 row post-and-schedule"
       style={{ overflow: "scroll" }}
     >
-      <div className="col-9 px-0 post-page" style={{ maxHeight: "100vh" }}>
+      <div className="col-9 px-0 post-page Scrolllable" style={{ maxHeight: "100vh" }}>
         <CreatePostBtnContainer toggle={toggleModal} />
         {/* <WhatsOnYourMind /> */}
         <PostArea postInfo={postInfo} />

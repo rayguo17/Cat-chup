@@ -24,7 +24,7 @@ export const FriendCard = (props) => {
         getUserInfo();
     }, [username])
     return (
-        <div className='col-5 mx-auto'>
+        <div className='col-6'>
 
             <Card className="friendsAreaComponent">
 
