@@ -17,17 +17,16 @@ import CommentIcon from "../img/comment-icon.png";
 import PostImgBox from "./PostImgBox";
 
 const Post = (props) => {
-  const {
-    id,
-    userInfo,
-    content,
-    postTime,
-    likeNumber,
-    commentsNumber,
-  } = props.postInfo;
+  const { id, userInfo, content, likeNumber, commentsNumber } = props.postInfo;
+
+  console.log("post");
+  const postTimeYMDT =
+    new Date(content.postTime).toLocaleDateString() +
+    " " +
+    new Date(content.postTime).toLocaleTimeString();
 
   const changeToCommentPage = (postInfo) => {
-    window.location.href = `/comment/${id}`;
+    window.location.href = `/post/${id}`;
   };
 
   return (
@@ -51,7 +50,7 @@ const Post = (props) => {
             ))} */}
           </div>
         </CardBody>
-        <p className="create-date"> {content.postTime} </p>
+        <p className="create-date"> {postTimeYMDT} </p>
 
         <div className="post-like-comment-button">
           <div>

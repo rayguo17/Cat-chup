@@ -19,8 +19,16 @@ const EventPost = (props) => {
     commentsNumber,
   } = props.postInfo;
 
+  const postTimeYMDT =
+    new Date(content.postTime).toLocaleDateString() +
+    " " +
+    new Date(content.postTime).toLocaleTimeString();
+
+  const eventDateYMD = new Date(content.postTime).toLocaleDateString();
+  const DateTimeT = new Date(content.postTime).toLocaleTimeString();
+
   const changeToCommentPage = (postInfo) => {
-    window.location.href = `/comment/${id}`;
+    window.location.href = `/post/${id}`;
   };
 
   return (
@@ -63,7 +71,7 @@ const EventPost = (props) => {
             {" "}
             <img src={MailIcon} alt="mail-icon" />{" "}
           </CardLink>
-          <p className="create-date"> {content.postTime} </p>
+          <p className="create-date"> {postTimeYMDT} </p>
         </CardBody>
       </Card>
     </div>

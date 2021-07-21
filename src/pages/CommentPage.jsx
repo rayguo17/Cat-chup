@@ -68,7 +68,7 @@ const CommentPage = (props) => {
 
       <div className="comment-card">
         {postInfo.map((Info) => {
-          if (`/comment/${Info.id}` == window.location.pathname) {
+          if (`/post/${Info.id}` == window.location.pathname) {
             return (
               <Card>
                 <img

@@ -30,7 +30,6 @@ const PostArea = (props) => {
       <BackToTopButton />
     </div>
 
-
     // {imageList.map((image, index) => (
     //     <div key={index} className="image-item">
     //         <img src={image.data_url} alt="" width="100%" />
@@ -40,7 +39,6 @@ const PostArea = (props) => {
     //         </div>
     //     </div>
     // ))} }
-
   );
 };
 

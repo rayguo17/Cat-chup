@@ -22,6 +22,32 @@ const useStyles = makeStyles((theme) => ({
 const Comments = (props) => {
   const classes = useStyles();
   const Info = props.Info;
+  const eventDate = props.Info.content.eventDate;
+  console.log(eventDate);
+
+  var thatDate = new Date(eventDate);
+  function getDayOfWeek(date) {
+    var week;
+    if (date.getDay() == 0) week = "Sunday";
+    if (date.getDay() == 1) week = "Monday";
+    if (date.getDay() == 2) week = "Tuesday";
+    if (date.getDay() == 3) week = "Wednesday";
+    if (date.getDay() == 4) week = "Thursday";
+    if (date.getDay() == 5) week = "Friday";
+    if (date.getDay() == 6) week = "Saturday";
+    return week;
+  }
+
+  console.log("thatday: ", new Date(Info.content.comments.commentTime));
+  console.log("thatday: ", getDayOfWeek(thatDate));
+
+  function commentTimeYMDT(commentTime) {
+    return (
+      new Date(commentTime).toLocaleDateString() +
+      " " +
+      new Date(commentTime).toLocaleTimeString()
+    );
+  }
 
   return (
     <List className={classes.root}>
@@ -44,7 +70,7 @@ const Comments = (props) => {
                     <div>
                       <div> {comment.commentContent}</div>
                       <div style={{ textAlign: "right" }}>
-                        {comment.commentTime}
+                        {commentTimeYMDT(comment.commentTime)}
                       </div>
                     </div>
                   </Typography>

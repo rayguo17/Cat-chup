@@ -34,7 +34,19 @@ export const ContentPage = () => {
     dispatch(socketConnectThunk());
     dispatch(loadNotiThunk(decode.username));
     dispatch(loadPostThunk(decode.username));
-  },[]);
+  }, []);
+
+  var dummydate = new Date(
+    "Wed Jul 01 2021 19:00:00 GMT+0800 (Hong Kong Standard Time)"
+  );
+  var getD = dummydate.getDate();
+  function dummydatechange(date1, n) {
+    return date1.setDate(getD + n);
+  }
+
+  function dummydateIs(date2) {
+    return new Date(date2);
+  }
 
   const postInfo = [
     {
@@ -61,55 +73,53 @@ export const ContentPage = () => {
         ],
         comments: [
           {
-            commentUserName: "Comment1",
+            commentUserName: "Justin Ho",
             commentUserIcon:
               "https://cdn.iconscout.com/icon/free/png-512/boy-avatar-4-1129037.png",
             commentContent: "Hi",
-            commentTime: "2020-07-01 19:00:00",
+            commentTime: `${dummydateIs(dummydatechange(dummydate, 0))}`,
           },
           {
-            commentUserName: "Comment2",
+            commentUserName: "Harry",
             commentUserIcon:
-              "https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale",
+              "https://i.pinimg.com/474x/25/9d/a7/259da7bd747275c13bea70d01e6f5883.jpg",
             commentContent: "Fine",
-            commentTime: "2020-07-01 20:00:00",
+            commentTime: `${dummydateIs(dummydatechange(dummydate, 1))}`,
           },
           {
-            commentUserName: "Comment1",
+            commentUserName: "Ray",
             commentUserIcon:
-              "https://cdn.iconscout.com/icon/free/png-512/boy-avatar-4-1129037.png",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHUndSzxcF1UbSXX3bVILVaUbSIhoc_GEA8g&usqp=CAU",
             commentContent: "Hi",
-            commentTime: "2020-07-01 19:00:00",
+            commentTime: `${dummydateIs(dummydatechange(dummydate, 2))}`,
           },
           {
-            commentUserName: "Comment2",
+            commentUserName: "Justin Chueng",
             commentUserIcon:
-              "https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale",
+              "https://t3.ftcdn.net/jpg/02/45/28/14/360_F_245281469_8BxP6VT7st0gj6qNfLUVVq1UJt0NfFEd.jpg",
             commentContent: "Fine",
-            commentTime: "2020-07-01 20:00:00",
+            commentTime: `${dummydateIs(dummydatechange(dummydate, 3))}`,
           },
           {
-            commentUserName: "Comment1",
+            commentUserName: "Karl",
             commentUserIcon:
-              "https://cdn.iconscout.com/icon/free/png-512/boy-avatar-4-1129037.png",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIGq5Oq67C0aA4ppNbXuaOzw-38WfscDpI4Q&usqp=CAU",
             commentContent: "Hi",
-            commentTime: "2020-07-01 19:00:00",
+            commentTime: `${dummydateIs(dummydatechange(dummydate, 3))}`,
           },
           {
-            commentUserName: "Comment2",
+            commentUserName: "Bibek",
             commentUserIcon:
-              "https://img.huffingtonpost.com/asset/5e0f68ec2500003b1998fb2e.jpeg?cache=YqiWjN9UVt&ops=crop_34_446_5966_3406%2Cscalefit_720_noupscale",
+              "https://t4.ftcdn.net/jpg/02/45/28/11/360_F_245281118_AGF0PxMrx83Gvd2oe9vfPCdkzcABXSRY.jpg",
             commentContent: "Fine",
-            commentTime: "2020-07-01 20:00:00",
+            commentTime: `${dummydateIs(dummydatechange(dummydate, 3))}`,
           },
         ],
         likes: [
           { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
           { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
         ],
-        postTime: "2020-07-01 15:00:00",
-        likeNumber: 5,
-        commentsNumber: 1,
+        postTime: `${dummydateIs(dummydatechange(dummydate, 3))}`,
       },
     },
 
@@ -349,11 +359,14 @@ export const ContentPage = () => {
               <Route path="/messages" component={MessagePage} />
               <Route path="/comment" component={CommentPage} />
               <Route
-                path="/comment/:postid"
+                path="/post/:postid"
                 render={() => <CommentPage postInfo={postInfo} />}
               />
-              
-              <Route path="/friends" render={() => <FriendsPage postInfo={postInfo} />} />
+
+              <Route
+                path="/friends"
+                render={() => <FriendsPage postInfo={postInfo} />}
+              />
               <Route path="/notifications" component={NotificationPage} />
               <Route
                 path="/schedule"
