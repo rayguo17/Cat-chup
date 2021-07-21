@@ -40,7 +40,7 @@ const FriendsPage = (props) => {
         setActiveTab(key[0]);
     }, [friendListStore])
     return (
-        <div className='col-9 px-0 row mx-0 ' style={{ overflow: "scroll" }}>
+        <div className='col-9 px-0 row mx-0 ' style={{ overflow: "hidden" }}>
             <div style={{ backgroundColor: '#dfdfdf', maxHeight: "100vh" }} className='col-9 px-0 friends-page Scrolllable'>
                 <FriendsHeader
                     toggle={toggle}

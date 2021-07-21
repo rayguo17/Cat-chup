@@ -28,7 +28,7 @@ const NotificationPage = () => {
     }, [notiStore])
     return (
         <div className="col-9 px-0 mx-0 row">
-            <div className="col-6 px-0">
+            <div className="col-8 px-0">
                 <NotificationHeader />
                 {
                     notiList.map((noti, index) => {
@@ -45,7 +45,7 @@ const NotificationPage = () => {
                 {/* <LikedNotiCard/>
                 <CommentNotiCard/> */}
             </div>
-            <div className='col-3 px-0'>
+            <div className='col-4 px-0'>
 
             </div>
         </div>

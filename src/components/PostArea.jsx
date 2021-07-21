@@ -2,9 +2,14 @@ import "../stylesheet/postArea.css";
 import EventPost from "./EventPost";
 import BackToTopButton from "./BackToTopButton";
 import Post from "./Post";
+import PostCard from "./PostComponents/PostCard";
 
 const PostArea = (props) => {
-  const postInfo = props.postInfo;
+  const {postList,postInfo} = props
+  
+  const changeToCommentPage = () => {
+    window.location.href = "/comment";
+  };
 
   return (
     <div className="postContainer">
@@ -13,6 +18,14 @@ const PostArea = (props) => {
           return <EventPost postInfo={info} Key={info.id} />;
         }
         return <Post postInfo={info} Key={info.id} />;
+      })}
+      {postList.map((post,index)=>{
+        return (
+          <PostCard
+            postInfo={post}
+            key={post.id}
+          />
+        )
       })}
       <BackToTopButton />
     </div>
