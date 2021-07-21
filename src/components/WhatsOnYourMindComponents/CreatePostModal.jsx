@@ -46,7 +46,7 @@ export const CreatePostModal = (props)=>{
      //FOR VISIBLE FRIEND GROUP SELECTOR
      const friendListStore = useSelector(state=>state.friendListStore);
      const friendList = friendListStore.friendList;
-     console.log('friendList',friendList);
+     //console.log('friendList',friendList);
      const friendGroup = Object.keys(friendList);
      
 
@@ -133,6 +133,7 @@ export const CreatePostModal = (props)=>{
                                   friendGroup={friendGroup}
                                   selectedGroup={formik.values.visible_group}
                                   handleSelect={formik.handleChange}
+                                  
                                 />
                                   <hr className='mt-0'/>
                                 <div style={{display:'flex',justifyContent:'start',flexDirection:'row'}}>

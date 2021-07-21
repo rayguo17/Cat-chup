@@ -4,6 +4,8 @@ import { useState } from "react";
 import { PersonalProfile } from "../components/profile/PersonalProfile";
 import jwtDecode from "jwt-decode";
 import { useSelector } from "react-redux";
+import ScehduleRightBar from "../components/ScheduleRightBar";
+import ProfilePost from "../components/profile/ProfilePost";
 import { NotFriendBlackBlock } from "../components/NotFriendsComponents/NotFriendBlackBlock"
 
 //check the route name, normally we just dive in by clicking own name
@@ -13,7 +15,14 @@ export const ProfilePage = (props) => {
     const userStore = useSelector(state => state.userInfoStore);
     const friendListStore = useSelector(state => state.friendListStore);
     //console.log('in profile page',userStore);
-    const [userInfo, setUserInfo] = useState({});
+    const [userInfo,setUserInfo] = useState({}); 
+    
+    //set up post area
+    
+    const postListStore = useSelector(state=>state.postListStore);
+    const postList = postListStore.postList;
+    const [postInfo,setPostInfo] = useState([]);
+
     //need to check whether this user is friend with him
     useEffect(() => {
         console.log('params', props.match.params.username);
@@ -54,24 +63,38 @@ export const ProfilePage = (props) => {
 
     }, [userStore, friendListStore])
     return (
-        <div className='col-9 px-0'>
+        <div className='col-9 px-0 row mx-0'>
+            <div className='col-8 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4'}}>
             <PersonalProfile
-                isOwner={isOwner}
-                userInfo={userInfo}
-                areFriends={areFriends}
-            />
-
-
+                            isOwner={isOwner}
+                            userInfo={userInfo}
+                            areFriends={areFriends}
+                        />
             {isOwner === true || areFriends === true ? (
 
-                <div>this is the users post</div>
-
-
-                //replace null with users posts
-            ) : <NotFriendBlackBlock
-                pageOwnerName={props.match.params.username}
+                <ProfilePost
+                postList={postList}
+                isOwner={isOwner}
                 areFriends={areFriends}
+                postInfo={postInfo}
+                pageOwner={props.match.params.username}
+                />
+                                
+                                    
+            //replace null with users posts
+            ) : <NotFriendBlackBlock
+            pageOwnerName={props.match.params.username}
+            areFriends={areFriends}
             />}
+            
+            </div>
+            <div className='col-4 px-0'>
+                
+            </div>
+            
+
+
+            
 
         </div>
     )

@@ -16,6 +16,8 @@ import { socketConnectThunk } from "../redux/socket/action";
 import { loadNotiThunk } from "../redux/notification/action";
 import CommentPage from "./CommentPage";
 import SchedulePage from "./SchedulePage";
+import { loadPostThunk } from "../redux/post/action";
+import { MessagePage } from "./MessagePage";
 
 export const ContentPage = () => {
   const [username, setUsername] = useState(null);
@@ -31,7 +33,8 @@ export const ContentPage = () => {
     dispatch(loadFriendThunk(decode.username));
     dispatch(socketConnectThunk());
     dispatch(loadNotiThunk(decode.username));
-  }, []);
+    dispatch(loadPostThunk(decode.username));
+  },[]);
 
   const postInfo = [
     {
@@ -343,12 +346,13 @@ export const ContentPage = () => {
                 path="/home"
                 render={() => <HomePage postInfo={postInfo} />}
               />
-              <Route path="/messages" render={() => <p></p>} />
+              <Route path="/messages" component={MessagePage} />
+              <Route path="/comment" component={CommentPage} />
               <Route
                 path="/comment/:postid"
                 render={() => <CommentPage postInfo={postInfo} />}
               />
-              <Route path="/messages" render={() => <p></p>} />
+              
               <Route path="/friends" render={() => <FriendsPage postInfo={postInfo} />} />
               <Route path="/notifications" component={NotificationPage} />
               <Route

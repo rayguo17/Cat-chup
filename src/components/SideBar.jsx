@@ -42,7 +42,7 @@ const SideBar = (props) => {
           </NavItem>
           <NavItem className="flexIcon">
             <img src={speechIcon} alt="SpeechIcon"></img>
-            <NavLink className="NavLink" href="#">
+            <NavLink className="NavLink" href="/messages">
               MESSAGES
             </NavLink>
           </NavItem>
