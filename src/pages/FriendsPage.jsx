@@ -10,6 +10,7 @@ import FriendsArea from "../components/FriendsComponents/FriendsArea";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import ScheduleRightBar from "../components/ScheduleRightBar";
+import "../stylesheet/homePage.css";
 
 
 
@@ -39,8 +40,8 @@ const FriendsPage = (props) => {
         setActiveTab(key[0]);
     }, [friendListStore])
     return (
-        <div className='col-9 px-0 row mx-0'>
-            <div style={{ backgroundColor: '#dfdfdf' }} className='col-9 px-0'>
+        <div className='col-9 px-0 row mx-0 ' style={{ overflow: "scroll" }}>
+            <div style={{ backgroundColor: '#dfdfdf', maxHeight: "100vh" }} className='col-9 px-0 friends-page Scrolllable'>
                 <FriendsHeader
                     toggle={toggle}
                     activeTab={activeTab}
@@ -51,7 +52,7 @@ const FriendsPage = (props) => {
                     friendsList={friendsList}
                     style={{ backgroundColor: 'grey' }} />
             </div>
-            <div className='col-3 px-0'>
+            <div className='col-3 px-0 schedule-page' style={{ maxHeight: "100vh" }}>
                 <ScheduleRightBar postInfo={postInfo} />
             </div>
 
