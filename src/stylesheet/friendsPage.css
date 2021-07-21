@@ -100,7 +100,7 @@ nav .tabs {
   outline: none !important;
   cursor: pointer !important;
 }
-.nav-item > .active {
+#navFriends.active {
   background-color: #96d9ff !important;
   border: none !important;
   color: #00a3ff !important;
@@ -109,7 +109,7 @@ nav .tabs {
   transition: none !important;
 }
 
-.nav-item > .active p {
+#navFriends.active p {
   background-color: #96d9ff !important;
   border: none !important;
   color: #00a3ff !important;
