@@ -12,7 +12,9 @@ import "../stylesheet/homePage.css";
 
 const HomePage = (props) => {
   const postInfo = props.postInfo;
-  const postListStore = useSelector(state=>state.postListStore);
+  const username = props.username;
+  console.log("props.postInfo:", props.postInfo)
+  const postListStore = useSelector(state => state.postListStore);
   const postList = postListStore.postList;
   const [postModal, setPostModal] = useState(false);
   const toggleModal = () => {
@@ -25,7 +27,7 @@ const HomePage = (props) => {
       style={{ overflow: "scroll" }}
     >
       <div className="col-9 px-0 post-page Scrolllable" style={{ maxHeight: "100vh" }}>
-        <CreatePostBtnContainer toggle={toggleModal} />
+        <CreatePostBtnContainer toggle={toggleModal} username={username} />
         {/* <WhatsOnYourMind /> */}
         <PostArea postInfo={postInfo}
           postList={postList}

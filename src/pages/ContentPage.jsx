@@ -377,7 +377,7 @@ export const ContentPage = () => {
             <Switch>
               <Route
                 path="/home"
-                render={() => <HomePage postInfo={postInfo} />}
+                render={() => <HomePage postInfo={postInfo} username={username} />}
               />
               <Route path="/messages" component={MessagePage} />
               <Route path="/comment" component={CommentPage} />

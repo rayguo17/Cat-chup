@@ -6,7 +6,7 @@ export const FriendsPresetGroup = (props) => {
 
     return (
         <NavItem>
-            <NavLink
+            <NavLink id="navFriends"
                 className={classnames({ active: activeTab === group })}
                 onClick={() => { toggle(group); }}>
                 <p className="friendGroupList">{group}</p>

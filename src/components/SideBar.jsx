@@ -1,6 +1,6 @@
 import React from "react";
-import { Nav, NavItem, NavLink, Col } from "reactstrap";
-import "../stylesheet/navBar.css";
+import { useState } from "react";
+import { Nav, NavItem, Col } from "reactstrap";
 import homeIcon from "../img/homeIcon.png";
 import friendsIcon from "../img/friendsIcon.png";
 import notificationIcon from "../img/NotificationIcon.png";
@@ -9,6 +9,8 @@ import profileIcon from "../img/profileIcon.png";
 import Logo from "../img/Catchup-Nav-logo.png";
 import NavProfileBar from "./NavBarProfileBar";
 import MyPlansToday from "./MyPlansToday";
+import { NavLink } from "react-router-dom";
+import "../stylesheet/navBar.css";
 
 const SideBar = (props) => {
   const postInfo = props.postInfo;
@@ -18,38 +20,38 @@ const SideBar = (props) => {
     <div className="navContainer">
       {/* <Col xs="3" className="navIconLinkContainer px-0"> */}
       <div className="navIconLinkContainer">
-        <img className="mainLogo" src={Logo} alt="HomeIcon"></img>
+        <img className="mainLogo" src={Logo} alt="MainLogo"></img>
         <br />
 
         <Nav vertical className="iconContainer">
           <NavItem className="flexIcon">
-            <img src={homeIcon} alt="HomeIcon"></img>{" "}
-            <NavLink className="NavLink" href="/home">
-              HOME
+            <img src={homeIcon} alt="HomeIcon"></img>
+            <NavLink id='home' exact to="/home" className='MainNavLink'>
+              <span className="MainHeadingHover">HOME</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
-            <img src={friendsIcon} alt="FriendIcon"></img>{" "}
-            <NavLink className="NavLink" href="/friends">
-              FRIENDS
+            <img src={friendsIcon} alt="FriendIcon"></img>
+            <NavLink id='friends' exact to="/friends" className='MainNavLink'>
+              <span className="MainHeadingHover">FRIENDS</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={notificationIcon} alt="NotitificationIcon"></img>
-            <NavLink className="NavLink" href="/notifications">
-              NOTIFICATION
+            <NavLink id='notification' exact to="/notifications" className='MainNavLink'>
+              <span className="MainHeadingHover">NOTIFICATION</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={speechIcon} alt="SpeechIcon"></img>
-            <NavLink className="NavLink" href="/messages">
-              MESSAGES
+            <NavLink id='messages' exact to="/messages" className='MainNavLink'>
+              <span className="MainHeadingHover">MESSAGES</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={profileIcon} alt="ProfileIcon"></img>
-            <NavLink className="NavLink" href={`/${props.username}`}>
-              PROFILE
+            <NavLink id='profile' exact to={`/${props.username}`} className='MainNavLink'>
+              <span className="MainHeadingHover">PROFILE</span>
             </NavLink>
           </NavItem>
         </Nav>
@@ -58,38 +60,13 @@ const SideBar = (props) => {
       {/* </Col> */}
 
       <MyPlansToday postInfo={postInfo} />
-      <NavProfileBar />
+
+      <footer className="pt-2" >
+        <NavProfileBar />
+      </footer>
     </div>
   );
 };
 
 export default SideBar;
 
-// const SideBar = () => {
-//     return (
-//         <div>
-//
-
-//             <ul>
-//                 <li>
-//                     <img src="../src/img/Catchup-Nav-logo.png" alt="home"></img><Link to='/home'>Home</Link>
-//                 </li>
-//                 <li>
-//                     <Link to='/friend'>Friends</Link>
-//                 </li>
-//                 <li>
-//                     <Link to='/message'>Notification</Link>
-//                 </li>
-
-//                 <li>
-//                     <Link to='/message'>Messages</Link>
-//                 </li>
-//                 <li>
-//                     <Link to='/profile'>Profile</Link>
-//                 </li>
-//             </ul>
-//         </div>
-//     )
-// }
-
-// export default SideBar;
