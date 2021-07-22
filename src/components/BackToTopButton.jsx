@@ -34,11 +34,5 @@ const BackToTopButton = () => {
   );
 };
 
-// const BackToTopButton = () => {
-//     return (<div>
-//         <button className="backToTopButtonContainer"><img style={{display: showScroll ? 'flex' : 'none'}}src={backToTopIcon} alt="backToTop button"></img></button>
-//     </div>)
-
-// };
 
 export default BackToTopButton;
