@@ -15,16 +15,49 @@ import {
 import LikeIcon from "../../img/like-icon.png";
 import CommentIcon from "../../img/comment-icon.png";
 import { PostImgShowcase } from "./PostImgShowcase";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
+import { useEffect } from "react";
 
 
 const PostCard = (props) => {
   const {postInfo} = props
     //console.log('post info',postInfo);
+    const [likeNumber,setLikeNumber] = useState(null);
+    
     let postTime = new Date(postInfo.created_at).toString();
 
   const changeToCommentPage = () => {
-    window.location.href = "/comment";
+    window.location.href = "post/"+postInfo.id;
   };
+  useEffect(()=>{
+    setLikeNumber(postInfo.content.likes.length);
+  },[])
+  const handleLiked=async (e)=>{
+    e.stopPropagation();
+    console.log('liked process');
+    let token = localStorage.getItem('token');
+    let decode = jwtDecode(token);
+    let username = decode.username;
+    let match = false;
+    match = postInfo.content.likes.find(obj=>obj.user==username)
+    if(match){
+      //cancel like
+    }else{
+      let sendLikedReq = await axios({
+        url:process.env.REACT_APP_API_SERVER+'/api/post/like',
+        data:{user:username,postId:postInfo.id},
+        headers: { Authorization: `Bearer ${token}` },
+        method:'post'
+      })
+      console.log('sendLike req',sendLikedReq);
+      if(sendLikedReq.status==200){
+        setLikeNumber(likeNumber+1);
+      }
+      
+
+    }
+  }
 
   return (
     <div className="postcard-container" onClick={changeToCommentPage}>
@@ -42,6 +75,7 @@ const PostCard = (props) => {
           <div className="card-content">
             <PostImgShowcase
                 imageList={postInfo.content.attachPic}
+                height='300px'
             />
             {/* <PostImgBox Picture={'content.pictures'} /> */}
             {/* {content.pictures.map((picture, index) => (
@@ -54,16 +88,16 @@ const PostCard = (props) => {
 
         <div className="post-like-comment-button">
           <div>
-            <Button color="secondary">
-              <p>1 Like</p>
+            <Button color="secondary" onClick={handleLiked}>
+              <p>{likeNumber } Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
             </Button>
           </div>
 
           <div>
-            <a href="/comment">
+            <a href={"/post/"+postInfo.id}>
               <Button color="secondary">
-                <p>1 Comment</p>
+                <p>{postInfo.content.comments.length} Comment</p>
                 <img
                   src={CommentIcon}
                   className="post-comment-btn"

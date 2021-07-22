@@ -18,6 +18,7 @@ import CommentPage from "./CommentPage";
 import SchedulePage from "./SchedulePage";
 import { loadPostThunk } from "../redux/post/action";
 import { MessagePage } from "./MessagePage";
+import { PostPage } from "./PostPage";
 
 export const ContentPage = () => {
   const [username, setUsername] = useState(null);
@@ -357,10 +358,11 @@ export const ContentPage = () => {
                 render={() => <HomePage postInfo={postInfo} />}
               />
               <Route path="/messages" component={MessagePage} />
-              <Route path="/comment" component={CommentPage} />
+              {/* <Route path="/comment" component={PostPage} /> */}
               <Route
                 path="/post/:postid"
-                render={() => <CommentPage postInfo={postInfo} />}
+                component={PostPage}
+                // render={() => <CommentPage postInfo={postInfo} />}
               />
 
               <Route
