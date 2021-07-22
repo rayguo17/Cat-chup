@@ -1,8 +1,18 @@
 import { Container, Row, Col } from "reactstrap";
 import WeekIcon from "../components/WeekIcon";
+import React from "react";
+import FullCalendar, { formatDate } from "@fullcalendar/react"; // must go before plugins
+import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
+import timeGridPlugin from "@fullcalendar/timegrid";
+import interactionPlugin from "@fullcalendar/interaction";
 
 const SchedulePage = (props) => {
   const postInfo = props.postInfo;
+
+  const handleDateClick = (arg) => {
+    // bind with an arrow function
+    alert(arg.dateStr);
+  };
 
   return (
     <div className="col-9 px-0 mx-0 row">
@@ -14,7 +24,7 @@ const SchedulePage = (props) => {
           >
             <span style={{ fontSize: "50px" }}>Schedule</span>
           </div>
-          <WeekIcon />
+          {/* <WeekIcon /> */}
           <div
             className="myschedule-body"
             style={{
@@ -24,7 +34,7 @@ const SchedulePage = (props) => {
               margin: "20px 0",
             }}
           >
-            <div className="">
+            {/* <div className="">
               <button>left</button>
               <button>right</button>
               <button>today</button>
@@ -34,10 +44,33 @@ const SchedulePage = (props) => {
               <button>month</button>
               <button>week</button>
               <button>day</button>
-            </div>
+            </div> */}
           </div>
-
-          <div
+          <FullCalendar
+            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+            headerToolbar={{
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay",
+            }}
+            // initialView="dayGridMonth"
+            // editable={true}
+            // selectable={true}
+            // selectMirror={true}
+            // dayMaxEvents={true}
+            // weekends={this.state.weekendsVisible}
+            // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            // select={this.handleDateSelect}
+            // eventContent={renderEventContent} // custom render function
+            // eventClick={this.handleEventClick}
+            // eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+            /* you can update a remote database when these fire:
+            eventAdd={function(){}}
+            eventChange={function(){}}
+            eventRemove={function(){}}
+            */
+          />
+          {/* <div
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -46,9 +79,9 @@ const SchedulePage = (props) => {
           >
             <p>Sunday</p>
             <p>June 27,2021</p>
-          </div>
+          </div> */}
 
-          <div
+          {/* <div
             style={{
               display: "flex",
               margin: "10px 0",
@@ -67,7 +100,7 @@ const SchedulePage = (props) => {
                 Edit
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
