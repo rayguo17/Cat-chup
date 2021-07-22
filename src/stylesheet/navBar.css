@@ -42,12 +42,30 @@
   font-size: 3vh;
   padding: 0rem 0vh !important;
   text-align: left;
+  text-decoration: none !important;
+  
 }
 
-.MainNavLink:hover, .MainNavLink:active, .MainNavLink.active, .MainNavLink:focus {
+ .MainNavLink:active, .MainNavLink.active, .MainNavLink:focus {
   color:#96d9ff !important;
   font-size: 3.3vh;
   font-weight: 500;
+  text-decoration: underline !important;
+ 
+}
+
+.MainHeadingHover{
+  /* text-decoration: none !important; */
+  border-bottom: none!important;
+}
+
+.MainHeadingHover:hover{
+  color:#96d9ff !important;
+  font-size: 3.1vh;
+  font-weight: 500;
+  text-decoration: none !important;
+  
+
 }
 
 

@@ -27,31 +27,31 @@ const SideBar = (props) => {
           <NavItem className="flexIcon">
             <img src={homeIcon} alt="HomeIcon"></img>
             <NavLink id='home' exact to="/home" className='MainNavLink'>
-              HOME
+              <span className="MainHeadingHover">HOME</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={friendsIcon} alt="FriendIcon"></img>
             <NavLink id='friends' exact to="/friends" className='MainNavLink'>
-              FRIENDS
+              <span className="MainHeadingHover">FRIENDS</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={notificationIcon} alt="NotitificationIcon"></img>
             <NavLink id='notification' exact to="/notifications" className='MainNavLink'>
-              NOTIFICATION
+              <span className="MainHeadingHover">NOTIFICATION</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={speechIcon} alt="SpeechIcon"></img>
             <NavLink id='messages' exact to="/messages" className='MainNavLink'>
-              MESSAGES
+              <span className="MainHeadingHover">MESSAGES</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={profileIcon} alt="ProfileIcon"></img>
             <NavLink id='profile' exact to={`/${props.username}`} className='MainNavLink'>
-              PROFILE
+              <span className="MainHeadingHover">PROFILE</span>
             </NavLink>
           </NavItem>
         </Nav>

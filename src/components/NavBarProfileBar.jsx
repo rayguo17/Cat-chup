@@ -29,18 +29,19 @@ const NavBarProfileBar = (props) => {
             touchEvent="onTouchStart"
             onClickAway={handleClickAway}
         >
-            <div style={{ width: "110px" }}>
+            <div style={{ width: "140px" }}>
                 <button onClick={toggleLogout} style={{ border: "none", background: "none" }}>
                     <div style={{
                         display: 'inline-block', width: '50px',
                         height: '50px',
+                        padding: '0px',
                         backgroundPosition: 'center center',
                         backgroundRepeat: 'no-repeat',
                         backgroundImage: `url(${process.env.REACT_APP_API_SERVER + userInfo.imgPath})`,
                         backgroundSize: "cover", borderRadius: "50px"
                     }}>
                     </div>
-                    <span style={{ verticalAlign: "20px", marginLeft: "10px" }}>{userInfo.username}</span>
+                    <span style={{ verticalAlign: "20px", marginLeft: "10px", fontSize: "23px", fontWeight: "400" }}>{userInfo.username}</span>
                 </button>
                 {toggle && (
                     <div className="logoutToggle" style={{ position: "absolute", bottom: "60px", left: "100px" }}>

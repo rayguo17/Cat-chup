@@ -12,7 +12,7 @@ import "../stylesheet/homePage.css";
 
 const HomePage = (props) => {
   const postInfo = props.postInfo;
-  const postListStore = useSelector(state=>state.postListStore);
+  const postListStore = useSelector(state => state.postListStore);
   const postList = postListStore.postList;
   const [postModal, setPostModal] = useState(false);
   const toggleModal = () => {
