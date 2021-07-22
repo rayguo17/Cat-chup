@@ -1,0 +1,9 @@
+/* details section */
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+  display: none;
+}
+
+textarea {
+  resize: none;
+}

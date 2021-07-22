@@ -6,6 +6,8 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
+import ScheduleDetail from '../components/ScheduleComponents/ScheduleDetail'
+
 const SchedulePage = (props) => {
   const postInfo = props.postInfo;
 
@@ -53,22 +55,22 @@ const SchedulePage = (props) => {
               center: "title",
               right: "dayGridMonth,timeGridWeek,timeGridDay",
             }}
-            // initialView="dayGridMonth"
-            // editable={true}
-            // selectable={true}
-            // selectMirror={true}
-            // dayMaxEvents={true}
-            // weekends={this.state.weekendsVisible}
-            // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
-            // select={this.handleDateSelect}
-            // eventContent={renderEventContent} // custom render function
-            // eventClick={this.handleEventClick}
-            // eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
+          // initialView="dayGridMonth"
+          // editable={true}
+          // selectable={true}
+          // selectMirror={true}
+          // dayMaxEvents={true}
+          // weekends={this.state.weekendsVisible}
+          // initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+          // select={this.handleDateSelect}
+          // eventContent={renderEventContent} // custom render function
+          // eventClick={this.handleEventClick}
+          // eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
+          /* you can update a remote database when these fire:
+          eventAdd={function(){}}
+          eventChange={function(){}}
+          eventRemove={function(){}}
+          */
           />
           {/* <div
             style={{
@@ -105,21 +107,7 @@ const SchedulePage = (props) => {
       </div>
 
       <div className="col-3 px-0">
-        <div style={{ fontSize: "50px", backgroundColor: "antiquewhite" }}>
-          Details
-        </div>
-        <div style={{ textAlign: "center", backgroundColor: "grey" }}>
-          {"Running in the morning"}
-        </div>
-        <div>
-          <div style={{ textAlign: "start" }}>{"Date:2021-07-01"}</div>
-          <div style={{ textAlign: "start" }}>{"Time: 07:00am ~ 07:00pm"}</div>
-          <div style={{ textAlign: "start", marginTop: "30px" }}>
-            {
-              "Running in humans is associated with improved health and life expectancy.I plan to run every morning.Would you join me?"
-            }
-          </div>
-        </div>
+        <ScheduleDetail postInfo={postInfo} />
       </div>
     </div>
   );
