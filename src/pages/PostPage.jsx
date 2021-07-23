@@ -136,7 +136,10 @@ export const PostPage = (props)=>{
 
     }
   }
-
+  const handleRedProfile = (e)=>{
+    e.stopPropagation();
+    window.location.href = '/'+Info.username
+  }
   return (
     <div className="col-9 px-0 comment-part">
         <div >
@@ -147,10 +150,11 @@ export const PostPage = (props)=>{
         <div className="comment-card">
         <Card>
                 <img
+                  onClick={handleRedProfile}
                   className="userIcon"
                   src={Info?process.env.REACT_APP_API_SERVER+Info.imgPath:null}
                   alt="icon"
-                  style={{ width: "50px", height: "50px" }}
+                  style={{ width: "50px", height: "50px",cursor:'pointer' }}
                 />
                 <span className="userName">
                   <p>{Info?Info.username:null}</p>

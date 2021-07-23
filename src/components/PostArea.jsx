@@ -20,12 +20,18 @@ const PostArea = (props) => {
         return <Post postInfo={info} Key={info.id} />;
       })}
       {postList.map((post,index)=>{
-        return (
-          <PostCard
-            postInfo={post}
-            key={post.id}
-          />
-        )
+        if(post.type==='post'){
+          return (
+            <PostCard
+              postInfo={post}
+              key={post.id}
+            />
+          )
+        }
+        if(post.type==='event'){
+          return null
+        }
+        
       })}
       <BackToTopButton />
     </div>

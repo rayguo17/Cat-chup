@@ -24,8 +24,8 @@ const PostCard = (props) => {
   const {postInfo} = props
     //console.log('post info',postInfo);
     const [likeNumber,setLikeNumber] = useState(null);
-    
-    let postTime = new Date(postInfo.created_at).toString();
+    let time = new Date(postInfo.created_at)
+    let postTime = time.toLocaleDateString()+' '+time.toLocaleTimeString();
 
   const changeToCommentPage = () => {
     window.location.href = "post/"+postInfo.id;
@@ -58,17 +58,21 @@ const PostCard = (props) => {
 
     }
   }
+  const handleRedProfile = (e)=>{
+    e.stopPropagation();
+    window.location.href = '/'+postInfo.username;
+  }
 
   return (
     <div className="postcard-container" onClick={changeToCommentPage}>
       <Card>
-        <img className="userIcon" src={`${process.env.REACT_APP_API_SERVER+postInfo.imgPath}`} alt="icon" />
+        <img onClick={handleRedProfile} className="userIcon" src={`${process.env.REACT_APP_API_SERVER+postInfo.imgPath}`} alt="icon" />
         <span className="userName">
           <p> {postInfo.username} </p>
         </span>
         <div className="mood"></div>
         <CardBody>
-          <CardTitle tag="h5"> {'content.caption'} </CardTitle>
+          <CardTitle tag="h5"> {'post'} </CardTitle>
         </CardBody>
         <CardText>{postInfo.content.caption}</CardText>
         <CardBody>
