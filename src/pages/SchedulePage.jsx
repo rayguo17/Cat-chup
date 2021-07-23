@@ -6,6 +6,7 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { INITIAL_EVENTS, createEventId } from "../components/EventUtills";
+import "../../src/stylesheet/schedulePage.css";
 
 import ScheduleDetail from "../components/ScheduleComponents/ScheduleDetail";
 
@@ -63,14 +64,25 @@ export default class SchedulePage extends React.Component {
   };
 
   handleEventClick = (clickInfo) => {
-    console.log("clickInfo,", clickInfo.el.classList);
-    if (
-      alert(
-        `Are you sure you want to delete the event '${clickInfo.event.title}'`
-      )
-    ) {
-      clickInfo.event.remove();
-    }
+    // console.log("clickInfo,", clickInfo.el.classList);
+    console.log(
+      "clickInfo,",
+      document.getElementsByClassName("schedule_detail")
+    );
+    document
+      .getElementsByClassName("schedule_detail")[0]
+      .classList.remove("display-none");
+    // return (clickInfo.el.classList = [
+    //   ...clickInfo.el.classList,
+    //   "display-none",
+    // ]);
+    // if (
+    //   alert(
+    //     `Are you sure you want to delete the event '${clickInfo.event.title}'`
+    //   )
+    // ) {
+    //   clickInfo.event.remove();
+    // }
   };
 
   handleEvents = (events) => {
@@ -136,8 +148,11 @@ export default class SchedulePage extends React.Component {
           </div>
         </div>
 
-        <div className="col-3 px-0">
-          <ScheduleDetail postInfo={this.props.postInfo} />
+        <div className="col-3 px-0 display-none schedule_detail">
+          <ScheduleDetail
+            className="schedule_detail"
+            postInfo={this.props.postInfo}
+          />
         </div>
       </div>
     );
