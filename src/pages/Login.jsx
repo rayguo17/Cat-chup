@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useDispatch } from "react-redux";
 import { loginThunk } from "../redux/auth/action";
 import * as yup from 'yup';
+import { Button, FormControl, FormHelperText, Input, InputLabel } from "@material-ui/core";
 
 
 
@@ -41,7 +42,19 @@ export const Login = (props)=>{
                     </div>
                     <div className='profile-container' style={{marginTop:'30px'}}>
                         <form onSubmit={formik.handleSubmit}>
-                            <input 
+                            <FormControl error={formik.errors.username && formik.touched.username?true:false}>
+                                <InputLabel htmlFor='username'>Username*</InputLabel>
+                                <Input 
+                                name='username' id='username'
+                                value={formik.values.username}
+                                type="text" 
+                                onChange = {formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                className={formik.errors.username && formik.touched.username && 'error-input'}
+                                />
+                                <FormHelperText>{formik.errors.username && formik.touched.username && formik.errors.username}</FormHelperText>
+                            </FormControl>
+                            {/* <input 
                                 name='username' id='username'
                                 type="text" 
                                 value={formik.values.username}
@@ -50,8 +63,21 @@ export const Login = (props)=>{
                                 placeholder='username'
                                 className={formik.errors.username && formik.touched.username && 'error-input'}
                             />
-                            {formik.errors.username && formik.touched.username && <div className='error-message'>{formik.errors.username}</div>}
-                            <input 
+                            {formik.errors.username && formik.touched.username && <div className='error-message'>{formik.errors.username}</div>} */}
+                            <br/>
+                            <FormControl error={formik.errors.password && formik.touched.password?true:false}>
+                            <InputLabel htmlFor='password'>Password*</InputLabel>
+                                <Input 
+                                name='password' id='password'
+                                value={formik.values.password}
+                                type="password" 
+                                onChange = {formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                />
+                                <FormHelperText>{formik.errors.password && formik.touched.password &&formik.errors.password}</FormHelperText>
+                            </FormControl>
+                            <br/>
+                            {/* <input 
                                 name='password' id='password'
                                 type="password" 
                                 value={formik.values.password}
@@ -60,9 +86,12 @@ export const Login = (props)=>{
                                 placeholder='password'
                                 className={formik.errors.password && formik.touched.password && 'error-input'}
                             />
-                            {formik.errors.password && formik.touched.password && <div className='error-message'>{formik.errors.password}</div>}
-                            <button  type='submit' className='btn btn-outline-primary mt-3'>Login</button>
+                            {formik.errors.password && formik.touched.password && <div className='error-message'>{formik.errors.password}</div>} */}
+                            <Button  type='submit' className='mt-3'>Login</Button>
                         </form>
+                    </div>
+                    <div className='mt-4' style={{color:'#c4c4c4'}}>
+                        <Button href='/register'>does not have an account yet?</Button>
                     </div>
                     
                 </center>

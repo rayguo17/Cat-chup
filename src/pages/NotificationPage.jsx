@@ -38,6 +38,18 @@ const NotificationPage = () => {
                                 noti={noti}
                             />
                         }
+                        if (noti.type === 'like'){
+                            return <LikedNotiCard
+                                noti={noti}
+                                key={noti.created_at}
+                            />
+                        }
+                        if(noti.type === 'comment'){
+                            return <CommentNotiCard
+                                noti={noti}
+                                key={noti.created_at}
+                            />
+                        }
                     })
                 }
                 {/* <NotificationBody /> */}

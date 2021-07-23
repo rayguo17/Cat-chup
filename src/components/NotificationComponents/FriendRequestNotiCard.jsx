@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 import userAvatar from '../../img/profileIcon.png';
 import { AddFriendThunk } from "../../redux/friendsList/action";
-import { loadNotiThunk } from "../../redux/notification/action";
+
 
 
 export const FriendRequestNotiCard = (props) =>{
@@ -26,9 +26,12 @@ export const FriendRequestNotiCard = (props) =>{
             })
             //console.log('getDonorInfo',getDonorReq);
             setUserInfo(getDonorReq.data);
-            setDateTime( new Date(noti.created_at).toDateString());
+            
+            
         }
         getDonorInfo();
+        let time = new Date(noti.created_at)
+        setDateTime(time.toLocaleDateString()+' '+time.toLocaleTimeString());
         //console.log('set up time', noti)
        
     },[noti]);
@@ -36,13 +39,17 @@ export const FriendRequestNotiCard = (props) =>{
         dispatch(AddFriendThunk(noti));
         // dispatch(loadNotiThunk(noti.recipient))
     }
+    const handleRedProfile = (e)=>{
+        e.stopPropagation();
+        window.location.href = '/'+noti.donor
+    }
     return (
         <div style={{backgroundColor:'#E3E3E3',paddingBottom:'5px',border:'1px solid #303030'}} className='row mx-0'>
             <div className='col-1 px-0 pt-2'>
                 <FontAwesomeIcon icon={faUserPlus}/>
             </div>
             <div className='col-2 px-0'>
-                <div className='profileImgContainer' style={{width:'50px',height:'50px',borderRadius:'50%',backgroundPositionY:'center',backgroundRepeat:'no-repeat', backgroundImage:`url(${userInfo?process.env.REACT_APP_API_SERVER+userInfo.imgPath:userAvatar})`,backgroundSize:'contain'}}></div>
+                <div onClick={handleRedProfile} className='profileImgContainer' style={{cursor:'pointer',width:'50px',height:'50px',borderRadius:'50%',backgroundPositionY:'center',backgroundRepeat:'no-repeat', backgroundImage:`url(${userInfo?process.env.REACT_APP_API_SERVER+userInfo.imgPath:userAvatar})`,backgroundSize:'contain'}}></div>
                 <div>{donor}</div>
             </div>
             <div className='col-7 px-0'>

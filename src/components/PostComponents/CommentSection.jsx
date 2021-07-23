@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 export const CommentSection = (props)=>{
     const {comments} = props;
     const classes = useStyles();
-
+  //console.log('comment section',comments);
 
     return (
         <List className={classes.root}>

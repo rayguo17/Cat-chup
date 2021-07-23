@@ -31,10 +31,13 @@ export const ChatSettingTop = (creds,chat)=>{
         }
         getOppoFunc();
     },[chat])
+    const handleRedirect = ()=>{
+        window.location.href='/'+oppoInfo.username
+    }
     return (
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:'20px'}}>
             <div style={{marginBottom:'10px'}}>
-                <div style={{position:'relative',width:'50px',height:'50px',backgroundImage:`url(${process.env.REACT_APP_API_SERVER+oppoInfo.imgPath})`,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center',borderRadius:'50%'}}>
+                <div onClick={handleRedirect} style={{cursor:'pointer',position:'relative',width:'50px',height:'50px',backgroundImage:`url(${process.env.REACT_APP_API_SERVER+oppoInfo.imgPath})`,backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center',borderRadius:'50%'}}>
                     <div style={{bottom:'0',right:'0',position:'absolute',width:'10px',height:'10px',backgroundColor:isOnline?'green':'red',borderRadius:'50%'}}></div>
                 </div>
                 <div style={{textAlign:'center'}}>{oppoInfo.username}</div>

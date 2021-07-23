@@ -80,7 +80,7 @@ export const PostPage = (props)=>{
                 method:'post',
             })
             console.log('submit Comment Res',submitCommentReq);
-            setComments(comments.push(submitCommentReq.data.commentId));
+            setComments([...comments,submitCommentReq.data.commentId]);
         } catch (error) {
             console.log('submit comment function error',error)
         }
