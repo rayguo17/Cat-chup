@@ -352,7 +352,7 @@ export const ContentPage = () => {
       },
     },
     {
-      id: 1,
+      id: 7,
       type: "Schedule",
       userInfo: {
         userName: "harry",
@@ -405,7 +405,9 @@ export const ContentPage = () => {
             <Switch>
               <Route
                 path="/home"
-                render={() => <HomePage postInfo={postInfo} username={username} />}
+                render={() => (
+                  <HomePage postInfo={postInfo} username={username} />
+                )}
               />
               <Route path="/messages" component={MessagePage} />
               <Route path="/comment" component={CommentPage} />

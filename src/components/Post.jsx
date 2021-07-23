@@ -15,6 +15,7 @@ import {
 import LikeIcon from "../img/like-icon.png";
 import CommentIcon from "../img/comment-icon.png";
 import PostImgBox from "./PostImgBox";
+import { LinkedCameraSharp } from "@material-ui/icons";
 
 const Post = (props) => {
   const { id, userInfo, content, likeNumber, commentsNumber } = props.postInfo;
@@ -55,14 +56,14 @@ const Post = (props) => {
         <div className="post-like-comment-button">
           <div>
             <Button color="secondary">
-              <p>{likeNumber} Like</p>
+              <p>{"1"} Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
             </Button>
           </div>
 
           <div>
             <Button color="secondary" onclick={changeToCommentPage}>
-              <p>{commentsNumber} Comment</p>
+              <p>{"2"} Comment</p>
               <img
                 src={CommentIcon}
                 className="post-comment-btn"
