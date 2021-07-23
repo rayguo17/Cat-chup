@@ -15,14 +15,33 @@ const ScheduleDetail = (props) => {
   const [selectedText, setSelectedText] = useState(selected.content.text);
   const [selectedStartTime, setselectedStartTime] = useState(selected.content.startTime);
   const [selectedEndTime, setselectedEndTime] = useState(selected.content.endTime);
-  
+  // const [scheduleList,SetScheduleList] = useState([]);
+  // useEffect(() => {
+  //   const scheduleData = [
+  //     {
+  //       type:'schedule',
+
+  //     }
+  //   ]
+  //   // scheduleList = []
+  //   SetScheduleList(scheduleData);
+  //   // scheduleList = [{type:'schedule'}]
+    
+  // }, [])
   const handleSubmit = (e) => {
     e.preventDefault();
+    // let newSchedule = {};
+    // SetScheduleList([...scheduleList,newSchedule]);
+    // => [{type:'schedule'}, {}, {}]
+
+
+
     //gets the input data here
-    console.log("selected date",selectedDate)
-    console.log("selected text",selectedText)
-    console.log("selected StartTime",selectedStartTime)
-    console.log("selected endtime",selectedEndTime)
+    // console.log("selected date",selectedDate)
+    // console.log("selected text",selectedText)
+    // console.log("selected StartTime",selectedStartTime)
+    // console.log("selected endtime",selectedEndTime)
+    
     
   }
 
