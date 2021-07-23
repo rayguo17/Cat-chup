@@ -9,6 +9,20 @@ import { INITIAL_EVENTS, createEventId } from "../components/EventUtills";
 
 import ScheduleDetail from "../components/ScheduleComponents/ScheduleDetail";
 
+ // const [scheduleList,SetScheduleList] = useState([]);
+  // useEffect(() => {
+  //   const scheduleData = [
+  //     {
+  //       type:'schedule',
+
+  //     }
+  //   ]
+  //   // scheduleList = []
+  //   SetScheduleList(scheduleData);
+  //   // scheduleList = [{type:'schedule'}]
+    
+  // }, [])
+
 export default class SchedulePage extends React.Component {
   constructor(props) {
     super(props);
