@@ -344,7 +344,35 @@ export const ContentPage = () => {
           { userName: "MR ", userIcon: "", time: "2020-07-01 15:00:00" },
           { userName: "Ms", userIcon: "", time: "2020-07-02 20:00:00" },
         ],
-        eventDate: "2021-07-23",
+        eventDate: "2021-07-22",
+        startTime: "05:00",
+        endTime: "07:00",
+        tags: ["running", "morning", "stronger"],
+        postTime: "2020-07-01 15:00:00",
+      },
+    },
+    {
+      id: 1,
+      type: "Schedule",
+      userInfo: {
+        userName: "harry",
+        userIcon_url:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIGq5Oq67C0aA4ppNbXuaOzw-38WfscDpI4Q&usqp=CAU",
+      },
+      content: {
+        caption: "Running together6",
+        text:
+          "Running in humans is associated with improved health and life expectancy.I plan to run every morning.Would you join me?",
+        mood: "joy",
+        pictures: [
+          {
+            name: "pic6",
+            data_url:
+              "https://www.imgacademy.com/sites/default/files/styles/scale_1700w/public/2017-05/0x060a2b340101010201010f12137d2fd93d247e043378058064fc000D3A162A40.jpeg?itok=NWxmiYtZ",
+          },
+        ],
+        // eventDateWeek: "Thu",
+        eventDate: "2021-07-22",
         startTime: "05:00",
         endTime: "07:00",
         tags: ["running", "morning", "stronger"],
