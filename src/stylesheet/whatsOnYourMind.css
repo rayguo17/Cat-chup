@@ -1,13 +1,8 @@
 .whatsOnYourMindContainer {
-  background-color: white;
+  background-color: #DFDFDF;
   height: 8vh;
-  /* padding: 0px;
-margin: 0px 0px;
-
-border-bottom: 2px solid white;
-border-radius: 5px; */
-  border-left: 20px solid grey;
-  border-right: 20px solid grey;
+  border-left: 20px solid #DFDFDF;
+  border-right: 20px solid #DFDFDF;
   z-index: 10;
   position: sticky;
   top: 0;

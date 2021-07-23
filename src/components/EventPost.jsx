@@ -59,9 +59,9 @@ const EventPost = (props) => {
                 marginTop: "5px",
               }}
             >
-              {content.tags.map((tag, index) => (
+              {/* {content.tags.map((tag, index) => (
                 <p className="event-tag">{tag}</p>
-              ))}
+              ))} */}
             </div>
             {content.pictures.map((picture, index) => (
               <img width="100%" src={picture.data_url} alt="Card image cap" />

@@ -5,7 +5,9 @@ import { PersonalProfile } from "../components/profile/PersonalProfile";
 import jwtDecode from "jwt-decode";
 import { useSelector } from "react-redux";
 import ScehduleRightBar from "../components/ScheduleRightBar";
+import WeekIcon from "../components/WeekIcon";
 import ProfilePost from "../components/profile/ProfilePost";
+import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { NotFriendBlackBlock } from "../components/NotFriendsComponents/NotFriendBlackBlock"
 
 //check the route name, normally we just dive in by clicking own name
@@ -64,7 +66,7 @@ export const ProfilePage = (props) => {
     }, [userStore, friendListStore])
     return (
         <div className='col-9 px-0 row mx-0'>
-            <div className='col-8 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4'}}>
+            <div className='col-9 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4'}}>
             <PersonalProfile
                             isOwner={isOwner}
                             userInfo={userInfo}
@@ -88,7 +90,9 @@ export const ProfilePage = (props) => {
             />}
             
             </div>
-            <div className='col-4 px-0'>
+            <div className='col-3 px-0'>
+                <MyscheduleButton />
+                <WeekIcon />
                 
             </div>
             
