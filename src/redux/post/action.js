@@ -82,13 +82,34 @@ export function addNewPostThunk(values){
             let savePicRes = await Promise.all(savePicPromises);
             console.log('save picture res', savePicRes);
             let newPost = {};
-            newPost.owner_name=values.ownerName;
-            let content ={caption:values.caption,attachPic:[]}
-            savePicRes.map((imgReq,index)=>{
-                content.attachPic.push(imgReq.data);
-            })
-            newPost.content=content;
-            newPost.visible_group = values.visible_group;
+            if(values.type ==='post'){
+                newPost.owner_name = values.ownerName;
+                let content = {caption:values.caption,attachPic:[]};
+                savePicRes.map((imgReq,index)=>{
+                    content.attachPic.push(imgReq.data);
+                })
+                newPost.content=content;
+                newPost.visible_group = values.visible_group;
+                newPost.type=values.type;
+                console.log('post pre-upload',newPost);
+            }else if(values.type==='event'){
+                newPost.owner_name = values.ownerName;
+                newPost.visible_group = values.visible_group;
+                newPost.type=values.type;
+                let content = {
+                    start:values.start,
+                    end:values.end,
+                    title:values.title,
+                    caption:values.caption,
+                    attachPic:[],
+                }
+                savePicRes.map((imgReq,index)=>{
+                    content.attachPic.push(imgReq.data);
+                })
+                newPost.content = content;
+                console.log('event pre-upload',newPost)
+            }
+            
             let addNewPost = await axios({
                 url:process.env.REACT_APP_API_SERVER+'/api/post',
                 method:'post',

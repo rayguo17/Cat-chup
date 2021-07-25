@@ -1,6 +1,7 @@
 import cover from '../img/cover.jpg'
 import { Link } from 'react-router-dom'
 import '../stylesheet/IndexPage.css'
+import { Button } from '@material-ui/core'
 
 export const IndexPage = ()=>{
     return (
@@ -17,13 +18,15 @@ export const IndexPage = ()=>{
                     
                 </div>
                 <div className='button-container' style={{marginTop:'30px'}}>
-                    <button className='btn btn-primary btn-large' style={{width:'200px'}}>
-                        <Link to='/login' style={{textDecoration:'none', color:'white',width:'100%',display:'inline-block'}}>Login</Link>
-                    </button>
+                    <Button variant='contained' color='primary' href='/login' style={{width:'200px'}}>
+                        Login
+                        {/* <Link to='/login' style={{textDecoration:'none', color:'white',width:'100%',display:'inline-block'}}>Login</Link> */}
+                    </Button>
                     <br/>
-                    <button className='btn btn-primary btn-large mt-3' style={{width:'200px'}}>
-                        <Link to='/register' style={{textDecoration:'none',color:'white',width:'100%',display:'inline-block'}}>Register</Link>
-                    </button>
+                    <Button variant='contained' color='primary' href='/register' className='mt-3' style={{width:'200px'}}>
+                        Register
+                        {/* <Link to='/register' style={{textDecoration:'none',color:'white',width:'100%',display:'inline-block'}}>Register</Link> */}
+                    </Button>
                 </div>
             </center>
             </div>

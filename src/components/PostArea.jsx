@@ -3,6 +3,7 @@ import EventPost from "./EventPost";
 import BackToTopButton from "./BackToTopButton";
 import Post from "./Post";
 import PostCard from "./PostComponents/PostCard";
+import { EventCardPostArea } from "./PostComponents/EventCardPostArea";
 
 const PostArea = (props) => {
   const {postList,postInfo} = props
@@ -20,12 +21,22 @@ const PostArea = (props) => {
         return <Post postInfo={info} Key={info.id} />;
       })}
       {postList.map((post,index)=>{
-        return (
-          <PostCard
-            postInfo={post}
-            key={post.id}
-          />
-        )
+        if(post.type==='post'){
+          return (
+            <PostCard
+              postInfo={post}
+              key={post.id}
+            />
+          )
+        }
+        if(post.type==='event'){
+          return (
+            <EventCardPostArea
+              eventInfo={post}
+            />
+          )
+        }
+        
       })}
       <BackToTopButton />
     </div>
