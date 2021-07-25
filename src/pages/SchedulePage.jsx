@@ -3,7 +3,6 @@ import WeekIcon from "../components/WeekIcon";
 import React, { setState } from "react";
 import ReactDOM from "react-dom";
 import FullCalendar, { formatDate } from "@fullcalendar/react"; // must go before plugins
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -11,24 +10,64 @@ import { INITIAL_EVENTS, createEventId } from "../components/EventUtills";
 import "../../src/stylesheet/schedulePage.css";
 
 import ScheduleDetail from "../components/ScheduleComponents/ScheduleDetail";
-import { ThemeProvider } from "@material-ui/core";
+import {
+  ThemeProvider,
+  TextareaAutosize,
+  Button,
+  TextField,
+} from "@material-ui/core";
 import ScheduleModal from "../components/ScheduleComponents/ScheduleModal";
 import "../stylesheet/scheduleModal.css";
 import moment from "moment";
+import { useFormik } from "formik";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import MoodIcon from "../img//moodIcon.png";
+import IncognitoIcon from "../img//incognitoIcon.png";
+import EventsIcon from "../img//eventsIcon.png";
+import PostEmoji from "../img//post_smile-emoji_icon.png";
+import UploadImageIcon from "../img/upload_imageIcon.png";
+import ReactImageUploading from "react-images-uploading";
+import { PostImageShowcase } from "../components/WhatsOnYourMindComponents/PostImageShowcase";
+import { EmojiPopper } from "../components/WhatsOnYourMindComponents/EmojiPopper";
+import { useRef } from "react";
+import { addNewPostThunk } from "../redux/post/action";
+import FriendGroupSelector from "../components/WhatsOnYourMindComponents/FriendGroupSelector";
+import { makeStyles } from "@material-ui/core";
+import toEventIcon from "../img/toEvent.png";
+import notEventIcon from "../img/notEvent.png";
 
- // const [scheduleList,SetScheduleList] = useState([]);
-  // useEffect(() => {
-  //   const scheduleData = [
-  //     {
-  //       type:'schedule',
+// const [scheduleList,SetScheduleList] = useState([]);
+// useEffect(() => {
+//   const scheduleData = [
+//     {
+//       type:'schedule',
 
-  //     }
-  //   ]
-  //   // scheduleList = []
-  //   SetScheduleList(scheduleData);
-  //   // scheduleList = [{type:'schedule'}]
-    
-  // }, [])
+//     }
+//   ]
+//   // scheduleList = []
+//   SetScheduleList(scheduleData);
+//   // scheduleList = [{type:'schedule'}]
+
+// }, [])
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap",
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+    marginBottom: 10,
+  },
+  title: {
+    border: "none",
+    width: "100%",
+    marginBottom: "5px",
+  },
+}));
 
 export default class SchedulePage extends React.Component {
   constructor(props) {
@@ -50,6 +89,24 @@ export default class SchedulePage extends React.Component {
       modalScheduleDate: local_date,
       today: local_date,
     };
+
+    // const formik = useFormik({
+    //   initialValues: {
+    //     caption: "",
+    //     attachPic: [],
+    //     ownerName: this.userInfo.username,
+    //     visible_group: this.friendGroup[0],
+    //     type: "post",
+    //     start: new Date(Date.now()).toISOString().slice(0, -5),
+    //     end: new Date(Date.now()).toISOString().slice(0, -5),
+    //     title: "",
+    //   },
+    //   onSubmit: (values) => {
+    //     console.log(values);
+    //     dispatch(addNewPostThunk(values));
+    //     toggle();
+    //   },
+    // });
   }
   handleChange(e) {
     const target = e.target;
@@ -59,7 +116,26 @@ export default class SchedulePage extends React.Component {
     this.setState({
       [name]: value,
     });
+
+    // const formik = useFormik({
+    //   initialValues: {
+    //     caption: "",
+    //     attachPic: [],
+    //     ownerName: userInfo.username,
+    //     visible_group: friendGroup[0],
+    //     type: "post",
+    //     start: new Date(Date.now()).toISOString().slice(0, -5),
+    //     end: new Date(Date.now()).toISOString().slice(0, -5),
+    //     title: "",
+    //   },
+    //   onSubmit: (values) => {
+    //     console.log(values);
+    //     dispatch(addNewPostThunk(values));
+    //     toggle();
+    //   },
+    // });
   }
+
   handleSubmit(e) {
     const title = this.state.modalInputTitle;
     // this.setState({ caption: title });
@@ -208,7 +284,7 @@ export default class SchedulePage extends React.Component {
                     className="form-control"
                   />
                   <div>
-                    <label>Date:</label>
+                    {/* <label>Date:</label>
                     <input
                       type="date"
                       value={this.state.modalScheduleDate}
@@ -229,9 +305,8 @@ export default class SchedulePage extends React.Component {
                       id="modalScheduleStartTime"
                       onChange={(e) => this.handleChange(e)}
                       className="form-control"
-                    />
-
-                    <div>
+                    /> */}
+                    {/* <div>
                       &nbsp; &nbsp;
                       <img src="https://img.icons8.com/material-outlined/24/000000/horizontal-line.png" />
                       &nbsp; &nbsp;
@@ -243,6 +318,26 @@ export default class SchedulePage extends React.Component {
                       id="modalScheduleEndTime"
                       onChange={(e) => this.handleChange(e)}
                       className="form-control"
+                    /> */}
+                    <TextField
+                      id="start"
+                      name="start"
+                      label="start time"
+                      type="datetime-local"
+                      // value={formik.values.start}
+                      // onBlur={formik.handleBlur}
+                      // className={classes.textField}
+                      // onChange={formik.handleChange}
+                    />
+                    <TextField
+                      id="end"
+                      name="end"
+                      label="end time"
+                      type="datetime-local"
+                      // value={formik.values.end}
+                      // onChange={formik.handleChange}
+                      // onBlur={formik.handleBlur}
+                      // className={classes.textField}
                     />
                   </div>
 

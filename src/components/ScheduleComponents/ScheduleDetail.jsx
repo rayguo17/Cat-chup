@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import React, { useState } from "react";
 import { Info } from "@material-ui/icons";
 import { useEffect } from "react";
+import { ThemeProvider, TextareaAutosize, TextField } from "@material-ui/core";
 
 const ScheduleDetail = (props) => {
   // console.log("SceduleDetail props", props.postInfo[6]);
@@ -95,7 +96,7 @@ const ScheduleDetail = (props) => {
             {selected.content.eventDateWeek}
           </div>
 
-          <div
+          {/* <div
             style={{
               textAlign: "start",
               paddingLeft: "15px",
@@ -137,7 +138,27 @@ const ScheduleDetail = (props) => {
                 setselectedEndTime(e.target.value);
               }}
             ></input>
-          </div>
+          </div> */}
+          <TextField
+            id="start"
+            name="start"
+            label="start time"
+            type="datetime-local"
+            // value={formik.values.start}
+            // onBlur={formik.handleBlur}
+            // className={classes.textField}
+            // onChange={formik.handleChange}
+          />
+          <TextField
+            id="end"
+            name="end"
+            label="end time"
+            type="datetime-local"
+            // value={formik.values.end}
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // className={classes.textField}
+          />
           <div
             style={{
               textAlign: "start",
