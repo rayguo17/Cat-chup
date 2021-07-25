@@ -11,3 +11,7 @@ textarea {
 .display-none {
   display: none;
 }
+
+.schedule_detail > div {
+  position: absolute;
+}

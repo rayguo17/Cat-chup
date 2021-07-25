@@ -9,6 +9,7 @@ import { INITIAL_EVENTS, createEventId } from "../components/EventUtills";
 import "../../src/stylesheet/schedulePage.css";
 
 import ScheduleDetail from "../components/ScheduleComponents/ScheduleDetail";
+import { ThemeProvider } from "@material-ui/core";
 
  // const [scheduleList,SetScheduleList] = useState([]);
   // useEffect(() => {
@@ -60,18 +61,40 @@ export default class SchedulePage extends React.Component {
   };
 
   handleDisplay = (event) => {
-    console.log("target", document.get);
+    // console.log("target", document.get);
   };
 
   handleEventClick = (clickInfo) => {
     // console.log("clickInfo,", clickInfo.el.classList);
-    console.log(
-      "clickInfo,",
-      document.getElementsByClassName("schedule_detail")
-    );
+    // console.log("clickInfo,", clickInfo);
+    // console.log("clickInfoID,", clickInfo.event["_def"].publicId);
+    // console.log(
+    //   "schedule_detail_div,",
+    //   document
+    //     .getElementsByClassName("schedule_detail")[0]
+    //     .getElementsByClassName("schedule_detail_box").length
+    // );
+
+    const boxes = document
+      .getElementsByClassName("schedule_detail")[0]
+      .getElementsByClassName("schedule_detail_box");
+
+    for (var box of boxes) {
+      // console.log(box);
+      box.classList.add("display-none");
+    }
+    // const postId = document
+    //   .getElementsByClassName("schedule_detail")[0]
+    //   .getElementsByClassName(`postId${clickInfo.event["_def"].publicId}`);
+    // console.log(postId);
+    // document
+    //   .getElementsByClassName("schedule_detail")[0]
+    //   .classList.remove("display-none");
     document
       .getElementsByClassName("schedule_detail")[0]
+      .getElementsByClassName(`postId${clickInfo.event["_def"].publicId}`)[0]
       .classList.remove("display-none");
+
     // return (clickInfo.el.classList = [
     //   ...clickInfo.el.classList,
     //   "display-none",
@@ -148,11 +171,13 @@ export default class SchedulePage extends React.Component {
           </div>
         </div>
 
-        <div className="col-3 px-0 display-none schedule_detail">
-          <ScheduleDetail
-            className="schedule_detail"
-            postInfo={this.props.postInfo}
-          />
+        <div className="col-3 px-0 schedule_detail">
+          {this.props.postInfo.map((Info) => {
+            // console.log(Info);
+            return (
+              <ScheduleDetail className={Info.id} Info={Info} Id={Info.id} />
+            );
+          })}
         </div>
       </div>
     );
