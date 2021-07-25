@@ -7,6 +7,20 @@ export const ADD_FRIEND_SUCCESS_ACTION = 'ADD_FRIEND_SUCCESS_ACTION';
 export const ADD_FRIEND_FAILURE_ACTION = 'ADD_FRIEND_FAILURE_ACTION';
 export const DELETE_FRIEND_SUCCESS_ACTION = 'DELETE_FRIEND_SUCCESS_ACTION';
 export const DELETE_FRIEND_FAILURE_ACTION = 'DELETE_FRIEND_FAILURE_ACTION';
+export const UPDATE_FRIEND_SUCCESS_ACTION = 'UPDATE_FRIEND_SUCCESS_ACTION';
+export const UPDATE_FRIEND_FAILURE_ACTION = 'UPDATE_FRIEND_FAILURE_ACTION';
+
+export function updateFriendSuccessAction(friendList){
+    return {
+        type:UPDATE_FRIEND_SUCCESS_ACTION,
+        friendList:friendList
+    }
+}
+export function updateFriendFailureAction(){
+    return {
+        type:UPDATE_FRIEND_FAILURE_ACTION,
+    }
+}
 
 
 export function loadFriendSuccessAction(friendList) {
@@ -45,6 +59,24 @@ export function deleteFriendFailureAction() {
     }
 }
 
+export function updateFriendThunk(newFriendList,username){
+    return async (dispatch)=>{
+        let token = localStorage.getItem('token');
+        try {
+            console.log('in update friend thunk',newFriendList);
+            let updateReq = await axios({
+                url:process.env.REACT_APP_API_SERVER+'/api/friends/'+username,
+                method:'put',
+                headers: { Authorization: `Bearer ${token}` },
+                data:newFriendList
+            })
+            console.log('update res',updateReq);
+            dispatch(updateFriendSuccessAction(newFriendList))
+        } catch (error) {
+            console.log('update friend thunk error',error)
+        }
+    }
+}
 
 export function loadFriendThunk(username) {
     return async (dispatch) => {
@@ -52,7 +84,7 @@ export function loadFriendThunk(username) {
         try {
             let friendReq = await axios({
                 url: process.env.REACT_APP_API_SERVER + '/api/user/friends/' + username,
-                headers: { Authorization: `Bearer ${token}` }
+                headers: { Authorization: `Bearer ${token}` },
             })
             console.log('load friend req', friendReq.data.friends_list);
             if (friendReq.data) {

@@ -16,6 +16,20 @@ import ScheduleModal from "../components/ScheduleComponents/ScheduleModal";
 import "../stylesheet/scheduleModal.css";
 import moment from "moment";
 
+ // const [scheduleList,SetScheduleList] = useState([]);
+  // useEffect(() => {
+  //   const scheduleData = [
+  //     {
+  //       type:'schedule',
+
+  //     }
+  //   ]
+  //   // scheduleList = []
+  //   SetScheduleList(scheduleData);
+  //   // scheduleList = [{type:'schedule'}]
+    
+  // }, [])
+
 export default class SchedulePage extends React.Component {
   constructor(props) {
     super(props);

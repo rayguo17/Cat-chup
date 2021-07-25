@@ -18,7 +18,7 @@ export const FriendCard = (props) => {
                 url: process.env.REACT_APP_API_SERVER + '/api/user/profile/' + username,
                 headers: { Authorization: `Bearer ${jwt}` },
             })
-            console.log('getUserReq', getUserReq);
+            //console.log('getUserReq', getUserReq);
             setUserInfo(getUserReq.data);
         }
         getUserInfo();

@@ -1,5 +1,5 @@
 .postContainer {
-  background-color: #DFDFDF;
+  background-color: #dfdfdf;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -22,6 +22,7 @@
   height: 50px;
   border-radius: 50%;
   object-fit: cover;
+  cursor: pointer;
 }
 
 .userName {
