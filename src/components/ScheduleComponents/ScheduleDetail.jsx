@@ -46,7 +46,7 @@ const ScheduleDetail = (props) => {
     // console.log("selected endtime",selectedEndTime)
   };
 
-  console.log(selected.content.pictures);
+  // console.log(selected.content.pictures);
 
   return (
     <div
