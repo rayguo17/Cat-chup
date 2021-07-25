@@ -102,7 +102,7 @@ const CommentPage = (props) => {
                 <div className="like-comment-button">
                   <div>
                     <button style={{ cursor: "context-menu" }}>
-                      <p>{Info.content.comments.length}</p>
+                      {/* <p>{Info.content.comments.length}</p> */}
                       <p>Comment</p>
                       <img
                         src={CommentIcon}
@@ -114,7 +114,7 @@ const CommentPage = (props) => {
 
                   <div style={{ display: "flex" }}>
                     <button style={{ cursor: "default" }} onClick={toggle}>
-                      <p>{Info.content.likes.length}</p>
+                      {/* <p>{Info.content.likes.length}</p> */}
                       <p>Like</p>
                     </button>
                     <Modal isOpen={modal} toggle={toggle}>
