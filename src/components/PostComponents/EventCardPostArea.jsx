@@ -29,16 +29,17 @@ const useStyles = makeStyles((theme)=>({
 export const EventCardPostArea = (props)=>{
     const classes = useStyles()
     const {eventInfo} = props;
-    const [likeNumber,setLikeNumber] = useState(null);
+    const [likes,setLikes] = useState(null);
+    
     let time = new Date(eventInfo.created_at);
     let postTime = time.toLocaleDateString()+' '+time.toLocaleTimeString();
     useEffect(()=>{
         console.log('event info in card',eventInfo);
-        setLikeNumber(eventInfo.content.likes.length);
+        setLikes(eventInfo.content.likes);
     },[])
 
     const handleRedirect = ()=>{
-        window.location.href = `/event/${eventInfo.id}`
+        window.location.href = `/post/${eventInfo.id}`
     }
     const handleRedProfile = ()=>{
         window.location.href = `/${eventInfo.username}`
@@ -62,7 +63,7 @@ export const EventCardPostArea = (props)=>{
         })
         console.log('sendLike req',sendLikedReq);
         if(sendLikedReq.status==200){
-          setLikeNumber(likeNumber+1);
+          setLikes([...likes,sendLikedReq.data]);
         }
         
   
@@ -174,7 +175,7 @@ export const EventCardPostArea = (props)=>{
         <div className="post-like-comment-button">
           <div>
             <Button color="secondary" onClick={handleLiked}>
-              <p>{likeNumber } Like</p>
+              <p>{likes?likes.length:null } Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
             </Button>
           </div>

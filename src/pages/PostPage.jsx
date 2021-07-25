@@ -45,6 +45,11 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: "inline",
   },
+  TextField:{
+    marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom:10
+  }
 }));
 
 
@@ -166,6 +171,24 @@ export const PostPage = (props)=>{
                     <CardText style={{ marginTop: "30px" }}>
                       {Info?Info.content.caption:null}
                     </CardText>
+                    {Info.type==='event'?
+                      <div style={{marginBottom:'7px',display:'flex',flexDirection:'row','justifyContent':'space-around'}}>
+                        <TextField
+                          className={classes.textField}
+                          label='start time'
+                          type='datetime-local'
+                          value={Info.content.start}
+                          disabled={true}
+                        />
+                        <TextField
+                        className={classes.textField}
+                        label='end time'
+                        type='datetime-local'
+                        value={Info.content.end}
+                        disabled={true}
+                        />
+                      </div>
+                    :null}
                     <PostImgShowcase
                         imageList={Info?Info.content.attachPic:null}
                         height='500px'
