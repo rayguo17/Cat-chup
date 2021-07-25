@@ -7,12 +7,14 @@ import { useDispatch } from "react-redux";
 
 import userAvatar from '../../img/profileIcon.png';
 import { AddFriendThunk } from "../../redux/friendsList/action";
+import { loadNotiThunk } from "../../redux/notification/action";
 
 
 
 export const FriendRequestNotiCard = (props) =>{
     const {noti} = props
-    const {donor,content,solved} =noti;
+    const {donor,content,solved} = noti;
+    const [localSolved,setLocalSolved] = useState(null);
     const [userInfo,setUserInfo] = useState(null);
     const [dateTime,setDateTime] = useState(null);
     const dispatch = useDispatch();
@@ -26,7 +28,7 @@ export const FriendRequestNotiCard = (props) =>{
             })
             //console.log('getDonorInfo',getDonorReq);
             setUserInfo(getDonorReq.data);
-            
+            setLocalSolved(solved);
             
         }
         getDonorInfo();
@@ -38,6 +40,22 @@ export const FriendRequestNotiCard = (props) =>{
     const acceptFriend = ()=>{
         dispatch(AddFriendThunk(noti));
         // dispatch(loadNotiThunk(noti.recipient))
+    }
+    const handleIgnore = async ()=>{
+        let token = localStorage.getItem('token');
+        try {
+            let ignoreReq = await axios({
+                url:process.env.REACT_APP_API_SERVER+'/api/noti/ignore/'+noti.id,
+                headers:{Authorization:`Bearer ${token}`}
+            })
+            console.log('ignoreReq',ignoreReq);
+            if(ignoreReq.status==200){
+                setLocalSolved(true);
+            }
+        } catch (error) {
+            console.log('ignore friend req',error)
+        }
+        
     }
     const handleRedProfile = (e)=>{
         e.stopPropagation();
@@ -55,8 +73,8 @@ export const FriendRequestNotiCard = (props) =>{
             <div className='col-7 px-0'>
                 <p>{content.intro}</p>
                 <div className='d-flex justify-content-around'>
-                <button disabled={solved?true:false} className='btn btn-success' onClick={acceptFriend}>Accept</button>
-                {solved?null:<button className='btn btn-danger'>Decline</button>}
+                <button disabled={localSolved||solved?true:false} className='btn btn-success' onClick={acceptFriend}>Accept</button>
+                {(localSolved||solved)?null:<button onClick={handleIgnore} className='btn btn-danger'>Decline</button>}
                 </div>
                 
             </div>

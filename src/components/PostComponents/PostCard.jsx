@@ -3,14 +3,8 @@ import {
   Card,
   CardText,
   CardBody,
-  CardLink,
   CardTitle,
-  CardSubtitle,
   Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
 } from "reactstrap";
 import LikeIcon from "../../img/like-icon.png";
 import CommentIcon from "../../img/comment-icon.png";
@@ -64,7 +58,7 @@ const PostCard = (props) => {
   }
 
   return (
-    <div className="postcard-container" onClick={changeToCommentPage}>
+    <div className="postcard-container" onClick={changeToCommentPage} style={{cursor:'pointer'}}>
       <Card>
         <img onClick={handleRedProfile} className="userIcon" src={`${process.env.REACT_APP_API_SERVER+postInfo.imgPath}`} alt="icon" />
         <span className="userName">

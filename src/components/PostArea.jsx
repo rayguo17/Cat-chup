@@ -3,6 +3,7 @@ import EventPost from "./EventPost";
 import BackToTopButton from "./BackToTopButton";
 import Post from "./Post";
 import PostCard from "./PostComponents/PostCard";
+import { EventCardPostArea } from "./PostComponents/EventCardPostArea";
 
 const PostArea = (props) => {
   const {postList,postInfo} = props
@@ -29,7 +30,11 @@ const PostArea = (props) => {
           )
         }
         if(post.type==='event'){
-          return null
+          return (
+            <EventCardPostArea
+              eventInfo={post}
+            />
+          )
         }
         
       })}
