@@ -1,7 +1,11 @@
 import PlanTodayLabel from "./PlanTodayLabel";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const MyPlansToday = (props) => {
+  const postListStore = useSelector((state) => state.postListStore);
+  const username = props.username;
+  const postList = postListStore.postList;
   const postInfo = props.postInfo;
   const today = new Date();
   console.log("today", today);
@@ -19,7 +23,7 @@ const MyPlansToday = (props) => {
     today_date = `${today_year}-${today_month + 1}-${today_day}`;
   }
 
-  console.log("today_date", today_date);
+  // console.log("today_date", today_date);
 
   const routeChange = () => {
     // let path = "/schedule";
@@ -38,9 +42,18 @@ const MyPlansToday = (props) => {
       >
         {/* <span placeholder="todays plans">todays plans</span> */}
         <div className="plansTodayBox">
-          {postInfo.map((Info, index) => {
-            if (Info.type === "event" && Info.content.eventDate == today_date) {
-              return <PlanTodayLabel Info={Info} />;
+          {postList.map((event, index) => {
+            console.log(
+              new Date(Date(event.content.start)).toISOString().slice(0, -14)
+            );
+            if (
+              props.username === event.owner_name &&
+              (event.type === "event" || event.type === "schedule") &&
+              new Date(Date(event.content.start))
+                .toISOString()
+                .slice(0, -14) === today_date
+            ) {
+              return <PlanTodayLabel Info={event} />;
             }
           })}
         </div>

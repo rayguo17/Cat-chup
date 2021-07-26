@@ -5,7 +5,7 @@ import { MyscheduleButton } from "./ScheduleComponents/MyScheduleButton";
 
 const ScehduleRightBarPerosnal = (props) => {
   const postInfo = props.postInfo;
-  console.log(postInfo, "hihi");
+  // console.log(postInfo, "hihi");
   return (
     <div>
       <center>
@@ -18,7 +18,7 @@ const ScehduleRightBarPerosnal = (props) => {
             backgroundColor: "white",
           }}
         >
-         <MyscheduleButton />
+          <MyscheduleButton />
           <WeekIcon />
           <hr
             style={{

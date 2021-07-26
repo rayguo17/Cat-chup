@@ -13,8 +13,8 @@ import "../stylesheet/homePage.css";
 const HomePage = (props) => {
   const postInfo = props.postInfo;
   const username = props.username;
-  console.log("props.postInfo:", props.postInfo)
-  const postListStore = useSelector(state => state.postListStore);
+  console.log("props.postInfo:", props.postInfo);
+  const postListStore = useSelector((state) => state.postListStore);
   const postList = postListStore.postList;
   const [postModal, setPostModal] = useState(false);
   const toggleModal = () => {
@@ -26,15 +26,16 @@ const HomePage = (props) => {
       className="col-9 px-0 mx-0 row post-and-schedule"
       style={{ overflow: "scroll" }}
     >
-      <div className="col-9 px-0 post-page Scrolllable" style={{ maxHeight: "100vh" }}>
+      <div
+        className="col-9 px-0 post-page Scrolllable"
+        style={{ maxHeight: "100vh" }}
+      >
         <CreatePostBtnContainer toggle={toggleModal} username={username} />
         {/* <WhatsOnYourMind /> */}
-        <PostArea postInfo={postInfo}
-          postList={postList}
-        />
+        <PostArea postInfo={postInfo} postList={postList} />
       </div>
       <div className="col-3 px-0 schedule-page" style={{ maxHeight: "100vh" }}>
-        <ScheduleRightBar postInfo={postInfo} />
+        <ScheduleRightBar postInfo={postInfo} username={username} />
       </div>
       <CreatePostModal toggle={toggleModal} modal={postModal} />
     </div>

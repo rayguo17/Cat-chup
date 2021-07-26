@@ -1,23 +1,32 @@
 const PlanTodayLabel = (props) => {
   const Info = props.Info;
-  console.log("plan", Info);
+  // console.log("plan", Info);
   const mood = props.Info.content.mood;
-  console.log("mood", mood);
+  // console.log("mood", mood);
+  const endTime = new Date(Info.content.end);
+  const startTime = new Date(Info.content.start);
+  var diffInSeconds = Math.abs(endTime - startTime) / 1000;
+  var minutes = Math.floor(diffInSeconds / 60);
+  var hours = Math.floor((diffInSeconds / 60 / 60) % 24);
+
   return (
     <div className="planTodayBox_card">
       <div className="planTodayBox_card_time">
-        <p>{Info.content.startTime}</p>
-        <p>&nbsp;-&nbsp;</p>
-        <p>{Info.content.endTime}</p>
+        {/* <p>{new Date(Info.content.start).toLocaleString().slice(0, -10)}</p> */}
+
+        {/* <p>{new Date(Info.content.start).toLocaleString().slice(-9, -3)}</p> */}
+        {/* <p>&nbsp;-&nbsp;</p>
+        <p>
+          {new Date(Date(Info.content.end)).toISOString().slice(-13, -8)}
+        </p> */}
       </div>
-      {(() => {
+      {/* {(() => {
         switch (mood) {
           case "happy":
             return (
               <div className="event_label_happy">
                 <div className="event_label_markcolor_happy"></div>
                 <div className="event_label_title">{Info.content.caption}</div>
-                {/* <div className="event_label_time">{}Hour</div> */}
               </div>
             );
           case "sad":
@@ -25,7 +34,6 @@ const PlanTodayLabel = (props) => {
               <div className="event_label_sad">
                 <div className="event_label_markcolor_sad"></div>
                 <div className="event_label_title">{Info.content.caption}</div>
-                {/* <div className="event_label_time">{}Hour</div> */}
               </div>
             );
           case "angry":
@@ -33,7 +41,6 @@ const PlanTodayLabel = (props) => {
               <div className="event_label_angry">
                 <div className="event_label_markcolor_angry"></div>
                 <div className="event_label_title">{Info.content.caption}</div>
-                {/* <div className="event_label_time">{}Hour</div> */}
               </div>
             );
           case "fear":
@@ -41,7 +48,6 @@ const PlanTodayLabel = (props) => {
               <div className="event_label_fear">
                 <div className="event_label_markcolor_fear"></div>
                 <div className="event_label_title">{Info.content.caption}</div>
-                {/* <div className="event_label_time">{}Hour</div> */}
               </div>
             );
           case "disgust":
@@ -49,7 +55,6 @@ const PlanTodayLabel = (props) => {
               <div className="event_label_disgust">
                 <div className="event_label_markcolor_disgust"></div>
                 <div className="event_label_title">{Info.content.caption}</div>
-                {/* <div className="event_label_time">{}Hour</div> */}
               </div>
             );
           default:
@@ -57,11 +62,19 @@ const PlanTodayLabel = (props) => {
               <div className="event_label">
                 <div className="event_label_markcolor"></div>
                 <div className="event_label_title">{Info.content.caption}</div>
-                {/* <div className="event_label_time">{}Hour</div> */}
               </div>
             );
         }
-      })()}
+      })()} */}
+      <div className="event_label">
+        <div className="event_label_markcolor"></div>
+        <div className="event_label_title">{Info.content.caption}</div>
+        {minutes > 60 ? (
+          <div style={{ float: "right" }}>{hours}&nbsp;hour</div>
+        ) : (
+          <div style={{ float: "right" }}>{minutes}&nbsp;min</div>
+        )}
+      </div>
     </div>
   );
 };
