@@ -14,6 +14,7 @@ import { LikedNotiCard } from "../components/NotificationComponents/LikedNotiCar
 import { CommentNotiCard } from "../components/NotificationComponents/CommentNotiCard";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
 import WeekIcon from "../components/WeekIcon";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
@@ -67,9 +68,9 @@ const NotificationPage = () => {
                 <CommentNotiCard/> */}
                 {/* <EventNotiCard/> */}
             </div>
-            <div className='col-3 px-0'>
-            <MyscheduleButton />
-                <WeekIcon />
+            <div className='col-3 px-0 style={{ maxHeight: "100vh" }}'>
+            <ScehduleRightBarPerosnal />
+        
 
             </div>
         </div>

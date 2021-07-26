@@ -61,7 +61,7 @@ const SideBar = (props) => {
 
       <MyPlansToday postInfo={postInfo} />
 
-      <footer className="pt-2" >
+      <footer className="pt-2" style={{display:"flex"}} >
         <NavProfileBar />
       </footer>
     </div>
