@@ -1,4 +1,4 @@
-import { TextareaAutosize,Button } from '@material-ui/core';
+import { TextareaAutosize,Button, TextField } from '@material-ui/core';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
@@ -15,8 +15,30 @@ import { EmojiPopper } from './EmojiPopper';
 import { useRef } from 'react';
 import { addNewPostThunk } from '../../redux/post/action';
 import FriendGroupSelector from './FriendGroupSelector';
+import { makeStyles } from '@material-ui/core';
+import toEventIcon from '../../img/toEvent.png';
+import notEventIcon from '../../img/notEvent.png';
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+    marginBottom:10
+  },
+  title:{
+    border:'none',
+    width:'100%',
+    marginBottom:'5px'
+  }
+}));
 
 export const CreatePostModal = (props)=>{
+  const classes = useStyles();
   const dispatch = useDispatch();
     const {
         className,
@@ -57,9 +79,13 @@ export const CreatePostModal = (props)=>{
           attachPic:[],
           ownerName:userInfo.username,
           visible_group:friendGroup[0],
+          type:'post',
+          start:new Date(Date.now()).toISOString().slice(0,-5),
+          end:new Date(Date.now()).toISOString().slice(0,-5),
+            title:'',
        },
        onSubmit:values=>{
-          console.log(values.caption);
+          console.log(values);
           dispatch(addNewPostThunk(values));
           toggle();
        }
@@ -68,22 +94,43 @@ export const CreatePostModal = (props)=>{
      const setImageChange = (imageList)=>{
        formik.setFieldValue('attachPic',imageList)
      }
+     // for event toggle
+     const [isEvent,setIsEvent] = useState(false);
+     const toEvent = (e)=>{
+       console.log('toggle to event',formik.values.type);
+       if(isEvent){
+        formik.setFieldValue('type','post');
+        setIsEvent(!isEvent);
+       }else{
+        formik.setFieldValue('type','event');
+       setIsEvent(!isEvent);
+       }
+       
+
+     }
     
      useEffect(()=>{
         //setUserInfo(userInfoStore.userInfo);
-        console.log('i am reset')
+        //console.log('i am reset')
+        console.log('try to coporate time',new Date(Date.now()).toISOString());
         formik.resetForm({
           values:{
             caption:"",
             attachPic:[],
             ownerName:userInfo.username,
             visible_group:friendGroup[0],
+            type:'post',
+            start:new Date(Date.now()).toISOString().slice(0,-8),
+            end:new Date(Date.now()).toISOString().slice(0,-8),
+            title:'',
           }
+
         })
+        setIsEvent(false)
      },[userInfoStore,modal,friendList])
       return (
         <Modal isOpen={modal} toggle={toggle} className={className}>
-            <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+            <ModalHeader toggle={toggle}>{isEvent?'Event':'Post'}</ModalHeader>
             <ModalBody className='px-4'>
               <div className='row'>
                 <div style={{backgroundImage:`url(${userInfo?process.env.REACT_APP_API_SERVER+userInfo.imgPath:null})`,width:'50px',height:'50px',backgroundSize:'cover',backgroundRepeat:'no-repeat',backgroundPosition:'center',borderRadius:'50%',backgroundColor:'white'}}  className="col-3">
@@ -95,7 +142,17 @@ export const CreatePostModal = (props)=>{
               </div>
               <div className='mt-2' >
                   <form id='post-form' onSubmit={formik.handleSubmit}>
-                    
+                      {isEvent?<TextField
+                      autoComplete='off'
+                        id='title'
+                        name='title'
+                        value={formik.values.title}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        placeholder={'What are you planning to do?'}
+                        type='text'
+                        className={classes.title}
+                      />:null}
                       <TextareaAutosize
                         ref={cursorRef}
                         className='message-textarea'
@@ -129,17 +186,43 @@ export const CreatePostModal = (props)=>{
                                   imageList={imageList}
                                   onImageRemove={onImageRemove}
                                 />
+
                                 <FriendGroupSelector
                                   friendGroup={friendGroup}
                                   selectedGroup={formik.values.visible_group}
                                   handleSelect={formik.handleChange}
                                   
                                 />
-                                  <hr className='mt-0'/>
-                                <div style={{display:'flex',justifyContent:'start',flexDirection:'row'}}>
+                                  <hr className='my-0'/>
+                                  {isEvent?(<div style={{marginTop:'7px',display:'flex',flexDirection:'row','justifyContent':'space-around'}}>
+                                  <TextField
+                                    id='start'
+                                    name='start'
+                                    label='start time'
+                                    type='datetime-local'
+                                    value={formik.values.start}
+                                    onBlur={formik.handleBlur}
+                                    className={classes.textField}
+                                    onChange={formik.handleChange}
+                                  />
+                                  <TextField
+                                  id='end'
+                                  name='end'
+                                  label='end time'
+                                  type='datetime-local'
+                                  value={formik.values.end}
+                                  onChange={formik.handleChange}
+                                  onBlur={formik.handleBlur}
+                                  className={classes.textField}
+                                  />
+                                  </div>):null}
+                                  
+                                <div style={{display:'flex',justifyContent:'start',flexDirection:'row',marginTop:'5px'}}>
                                   <div className='add-on-function-post-btn' style={{backgroundImage:`url(${MoodIcon})`}}></div>
                                   <div className='add-on-function-post-btn' style={{backgroundImage:`url(${IncognitoIcon})`}}></div>
-                                  <div className='add-on-function-post-btn' style={{backgroundImage:`url(${EventsIcon})`}}></div>
+                                  {(!isEvent)?(<div className='add-on-function-post-btn' onClick={toEvent} style={{cursor:'pointer',backgroundImage:`url(${toEventIcon})`,backgroundSize:'28px'}}></div>)
+                                  :(<div className='add-on-function-post-btn' onClick={toEvent} style={{cursor:'pointer',backgroundImage:`url(${notEventIcon})`,backgroundSize:'28px'}}></div>)}
+
                                   <div className='add-on-function-post-btn add-on-emoji-btn'   onClick={showEmojiPicker} onBlur={closeEmojiPicker} style={{backgroundImage:`url(${PostEmoji})`}}></div>
                                   <div className='add-on-function-post-btn' onClick={onImageUpload} style={{backgroundImage:`url(${UploadImageIcon})`,cursor:'pointer'}}></div>
                                 </div>

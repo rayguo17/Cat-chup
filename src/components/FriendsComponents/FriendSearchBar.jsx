@@ -12,8 +12,8 @@ const FriendSearchBar = (props) => {
     const [searchValue, setSearchValue] = useState("");
     // const inputE1 = useRef("")
     const { localFriendsList, searched } = props;
-    console.log("this is props inFriendSearchBar", props)
-    console.log("this is local friends list", localFriendsList)
+    //console.log("this is props inFriendSearchBar", props)
+    //console.log("this is local friends list", localFriendsList)
 
     const friendsObject = localFriendsList && localFriendsList.filter((val) => {
         if (searchValue == "") {
@@ -22,19 +22,19 @@ const FriendSearchBar = (props) => {
             return val
         }
     }).map(friend => {
-        console.log("username:friend", friend)
+        //console.log("username:friend", friend)
         return {
 
             username: friend,
             key: friend
         }
     })
-    console.log("friendsList from searchbar", friendsObject);
+    //console.log("friendsList from searchbar", friendsObject);
     // const filteredNames = localFriendsList.filter()
 
     useEffect(() => {
         searched(searchValue);
-        console.log("FRIENDS SEARCH USE EFFECT", searchValue)
+        //console.log("FRIENDS SEARCH USE EFFECT", searchValue)
     }, [searchValue])
 
     // function handleChange(value) {

@@ -15,6 +15,9 @@ import { CommentNotiCard } from "../components/NotificationComponents/CommentNot
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
+import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
+import WeekIcon from "../components/WeekIcon";
+import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
 // import { useEffect } from "react";
 
@@ -29,14 +32,32 @@ const NotificationPage = () => {
     }, [notiStore])
     return (
         <div className="col-9 px-0 mx-0 row">
-            <div className="col-8 px-0">
+            <div className="col-9 px-0">
                 <NotificationHeader />
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {
                             return <FriendRequestNotiCard
-                                key={noti.created_at}
+                                key={noti.id}
                                 noti={noti}
+                            />
+                        }
+                        if (noti.type === 'like'){
+                            return <LikedNotiCard
+                                noti={noti}
+                                key={noti.id}
+                            />
+                        }
+                        if(noti.type === 'comment'){
+                            return <CommentNotiCard
+                                noti={noti}
+                                key={noti.id}
+                            />
+                        }
+                        if(noti.type==='join_event'){
+                            return <EventNotiCard
+                                noti={noti}
+                                key={noti.id}
                             />
                         }
                     })
@@ -45,6 +66,7 @@ const NotificationPage = () => {
 
                 {/* <LikedNotiCard/>
                 <CommentNotiCard/> */}
+                {/* <EventNotiCard/> */}
             </div>
             <div className='col-3 px-0 style={{ maxHeight: "100vh" }}'>
             <ScehduleRightBarPerosnal />

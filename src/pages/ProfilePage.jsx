@@ -10,7 +10,6 @@ import ProfilePost from "../components/profile/ProfilePost";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { NotFriendBlackBlock } from "../components/NotFriendsComponents/NotFriendBlackBlock"
 import { loadAllUsersThunk } from "../redux/allUsersInfo/action"
-import NotExistingUserLogoBlock from "../components/NotFriendsComponents/NoExisitingUserLogoBlock"
 import NotExistingUserBlackBlock from "../components/NotFriendsComponents/NotExistingUserBlackBlock"
 
 //check the route name, normally we just dive in by clicking own name
@@ -27,7 +26,6 @@ export const ProfilePage = (props) => {
     console.log("ALL USERS STORE", allUsersStore)
     console.log("owner",isOwner)
     console.log("friends",areFriends)
-    // console.log("userslist", usersList)
 
     //set up post area
     
@@ -79,22 +77,23 @@ export const ProfilePage = (props) => {
             FetchFriend();
 
         }
+
         //and then check if they are friend?
+
     }, [userStore, friendListStore])
-    
-   console.log("userslist---here", allUsersStore)
+   
+
+  
     return (
         <div className='col-9 px-0 row mx-0'>
             <div className='col-9 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4'}}>
-            
+                <p style={{color:"black"}}>sad</p>
             <PersonalProfile
                             isOwner={isOwner}
                             userInfo={userInfo}
                             areFriends={areFriends}
-                            usersList={usersList}
                         
                         />
-
             {(isOwner === true || areFriends === true) ? (
                 
                 <ProfilePost

@@ -6,8 +6,9 @@ import { registerThunk } from "../redux/auth/action";
 import * as yup from 'yup'
 import axios from 'axios'
 import '../stylesheet/Register.css'
-import { FormControl, InputLabel,Input, FormHelperText, TextField } from "@material-ui/core";
+import { FormControl, InputLabel,Input, FormHelperText, TextField, Button } from "@material-ui/core";
 import { useEffect } from "react";
+
 
 
 
@@ -131,6 +132,7 @@ const Register = (props) =>{
                                 />
                                 <FormHelperText>{formik.errors.username && formik.touched.username && formik.errors.username}</FormHelperText>
                             </FormControl>
+                            <br />
                             <FormControl error={formik.errors.email && formik.touched.email?true:false}>
                                 <InputLabel htmlFor='email'>Email*</InputLabel>
                                 <Input 
@@ -142,6 +144,7 @@ const Register = (props) =>{
                                 />
                                 <FormHelperText>{formik.errors.email && formik.touched.email && formik.errors.email}</FormHelperText>
                             </FormControl>
+                            <br />
                             <FormControl error={formik.errors.password && formik.touched.password?true:false}>
                             <InputLabel htmlFor='password'>Password*</InputLabel>
                                 <Input 
@@ -153,6 +156,7 @@ const Register = (props) =>{
                                 />
                                 <FormHelperText>{formik.errors.password && formik.touched.password &&formik.errors.password}</FormHelperText>
                             </FormControl>
+                            <br />
                             <FormControl error={formik.errors.confirmPassword && formik.touched.confirmPassword?true:false}>
                             <InputLabel htmlFor='confirmPassword'>Confrim Password*</InputLabel>
                                 <Input 
@@ -176,6 +180,7 @@ const Register = (props) =>{
                                     placeholder='phone (optional)'
                                 />
                             </FormControl>
+                            <br />
                             <FormControl>
                             <InputLabel htmlFor='city'>city (optional)</InputLabel>
                                 <Input type="text" 
@@ -185,6 +190,7 @@ const Register = (props) =>{
                                     placeholder='city (optional)'
                                 />
                             </FormControl>
+                            <br />
                             <TextField style={{marginTop:'30px'}}
                                 id='description'
                                 name='description'
@@ -198,12 +204,14 @@ const Register = (props) =>{
                             
                         </div>
                     </div>
-                    <button
+                    <Button
                         type='submit'
-                        className='btn btn-outline-primary mt-3'
-                    >Register</button>
+                        className=' mt-3'
+                    >Register</Button>
                     </form>
-                    
+                    <div className='mt-4' style={{color:'#c4c4c4'}}>
+                        <Button href='/login'>Already have an account?</Button>
+                    </div>
                     
                 </center>
             

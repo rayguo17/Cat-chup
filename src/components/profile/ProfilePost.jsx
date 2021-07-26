@@ -4,6 +4,7 @@ import "../../stylesheet/postArea.css";
 import EventPost from "../EventPost";
 import jwtDecode from "jwt-decode";
 import PostCard from "../PostComponents/PostCard";
+import { EventCardPostArea } from "../PostComponents/EventCardPostArea";
 
 const ProfilePost = (props) => {
   const {postList,isOwner,areFriends,pageOwner} = props
@@ -57,12 +58,21 @@ const ProfilePost = (props) => {
         )
       })} */}
       {postInfo.map((post,index)=>{
+        if(post.type==='post'){
           return (
-              <PostCard
-                postInfo={post}
-                key={post.id}
-              />
+            <PostCard
+              postInfo={post}
+              key={post.id}
+            />
           )
+        }
+        if(post.type==='event'){
+          return <EventCardPostArea
+            eventInfo={post}
+            key={post.id}
+          />
+        }
+          
       })}
     </div>
 
