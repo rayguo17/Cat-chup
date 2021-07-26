@@ -3,9 +3,9 @@ import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const MyPlansToday = (props) => {
-  const postListStore = useSelector((state) => state.postListStore);
+  const scheduleListStore = useSelector((state) => state.scheduleListStore);
   const username = props.username;
-  const postList = postListStore.postList;
+  const scheduleList = scheduleListStore.scheduleList;
   const postInfo = props.postInfo;
   const today = new Date();
   console.log("today", today);
@@ -41,17 +41,16 @@ const MyPlansToday = (props) => {
         style={{ cursor: "pointer" }}
       >
         {/* <span placeholder="todays plans">todays plans</span> */}
-        <div className="plansTodayBox "style={{borderRadius:"1.5rem"}}>
-          {postList.map((event, index) => {
+        <div className="plansTodayBox " style={{ borderRadius: "1.5rem" }}>
+          {scheduleList.map((event, index) => {
             console.log(
-              new Date(Date(event.content.start)).toISOString().slice(0, -14)
+              new Date(Date(event.start)).toISOString().slice(0, -14)
             );
             if (
-              props.username === event.owner_name &&
+              props.username === event.creator &&
               (event.type === "event" || event.type === "schedule") &&
-              new Date(Date(event.content.start))
-                .toISOString()
-                .slice(0, -14) === today_date
+              new Date(Date(event.start)).toISOString().slice(0, -14) ===
+                today_date
             ) {
               return <PlanTodayLabel Info={event} />;
             }
