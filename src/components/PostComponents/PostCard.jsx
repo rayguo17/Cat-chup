@@ -7,12 +7,17 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { updatePostAction } from "../../redux/post/action";
+import { useDispatch, useSelector } from "react-redux";
 
 const PostCard = (props) => {
   const { postInfo } = props;
   //console.log('post info',postInfo);
+  const dispatch = useDispatch();
   const [likes,setLikes] = useState(null);
   const history = useHistory();
+  const socketStore = useSelector(state=>state.socketStore);
+  const socket = socketStore.webSocket;
   let time = new Date(postInfo.created_at);
   let postTime = time.toLocaleDateString() + " " + time.toLocaleTimeString();
 
@@ -27,11 +32,12 @@ const PostCard = (props) => {
   const handleLiked = async (e) => {
     e.stopPropagation();
 
-    console.log("liked process");
+    //console.log("liked process",postInfo);
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
     let username = decode.username;
     let match = false;
+    
     match = likes.find((obj) => obj.user == username);
     if (match) {
       //cancel like
@@ -45,7 +51,14 @@ const PostCard = (props) => {
       console.log("sendLike req", sendLikedReq);
       if (sendLikedReq.status == 200) {
         //setLikeNumber(likeNumber + 1);
-        setLikes([...likes,sendLikedReq.data])
+        let newPost = {
+          ...postInfo,
+          
+        }
+        newPost.content.likes=[...likes,sendLikedReq.data];
+        dispatch(updatePostAction(newPost));
+        setLikes([...likes,sendLikedReq.data]);
+        socket.emit('like',{donor:username,recipient:postInfo.id})
       }
     }
   };

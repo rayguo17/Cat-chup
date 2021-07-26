@@ -17,6 +17,8 @@ import MailIcon from "../../img/mail-icon.png";
 import { makeStyles, TextField } from '@material-ui/core';
 import {store} from 'react-notifications-component';
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePostAction } from "../../redux/post/action";
 
 const useStyles = makeStyles((theme)=>({
     TextField:{
@@ -30,6 +32,9 @@ const useStyles = makeStyles((theme)=>({
 export const EventCardPostArea = (props)=>{
     const classes = useStyles()
     const {eventInfo} = props;
+    const dispatch = useDispatch();
+    const socketStore = useSelector(state=>state.socketStore);
+    const socket = socketStore.webSocket;
     const [likes,setLikes] = useState(null);
     const history = useHistory();
     let time = new Date(eventInfo.created_at);
@@ -67,7 +72,14 @@ export const EventCardPostArea = (props)=>{
         })
         console.log('sendLike req',sendLikedReq);
         if(sendLikedReq.status==200){
+          let newPost = {
+            ...eventInfo,
+            
+          }
+          newPost.content.likes=[...likes,sendLikedReq.data];
+          dispatch(updatePostAction(newPost));
           setLikes([...likes,sendLikedReq.data]);
+          socket.emit('like',{donor:username,recipient:eventInfo.id})
         }
         
   
@@ -98,6 +110,7 @@ export const EventCardPostArea = (props)=>{
         })
         //console.log('send Noti res',sendNotiReq);
         if(sendNotiReq.status===200){
+          socket.emit('joinEvent',{donor:decode.username,recipient:eventInfo.username});
           store.addNotification({
             title:'Join event request sent!',
             message:'Please wait for other people to confirmed your request',

@@ -36,6 +36,8 @@ import { PostImgShowcase } from "../components/PostComponents/PostImgShowcase";
 import { LikeListCard } from "../components/PostComponents/LikeListCard";
 import { CommentSection } from "../components/PostComponents/CommentSection";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePostAction } from "../redux/post/action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +66,9 @@ export const PostPage = (props)=>{
   const [comments,setComments] = useState(null);
   const [likes,setLikes] = useState(null);
   const history = useHistory();
+  const socketStore = useSelector(state=>state.socketStore);
+  const socket = socketStore.webSocket;
+  const dispatch = useDispatch();
   const toggle = () => setModal(!modal);
 
   const postComment = (e) => {
@@ -86,6 +91,7 @@ export const PostPage = (props)=>{
                 method:'post',
             })
             console.log('submit Comment Res',submitCommentReq);
+            socket.emit('comment',{donor:user,recipient:Info.username,comment:comment});
             setComments([...comments,submitCommentReq.data.commentId]);
         } catch (error) {
             console.log('submit comment function error',error)
@@ -137,7 +143,15 @@ export const PostPage = (props)=>{
       })
       console.log('sendLike req',sendLikedReq);
       if(sendLikedReq.status==200){
+        //set thunk to change reducer
+        let newPost = {
+          ...Info,
+          
+        }
+        newPost.content.likes=[...likes,sendLikedReq.data];
+        dispatch(updatePostAction(newPost));
         setLikes([...likes,sendLikedReq.data])
+        socket.emit('like',{donor:username,recipient:Info.username})
       }
       
 

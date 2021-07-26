@@ -6,6 +6,7 @@ export const LOAD_POST_SUCCESS_ACTION = 'LOAD_POST_SUCCESS_ACTION';
 export const LOAD_POST_FAILURE_ACTION = 'LOAD_POST_FAILURE_ACTION';
 export const ADD_NEW_POST_SUCCESS_ACTION = 'ADD_NEW_POST_SUCCESS_ACTION';
 export const ADD_NEW_POST_FAILURE_ACTION = 'ADD_NEW_POST_FAILURE_ACTION';
+export const UPDATE_POST_ACTION = 'UPDATE_POST_ACTION';
 
 export function loadPostSuccessAction(postList){
     return {
@@ -28,6 +29,12 @@ export function addNewPostSuccessAction(newPost){
 export function addNewPostFailureAction(){
     return {
         type:ADD_NEW_POST_FAILURE_ACTION
+    }
+}
+export function updatePostAction(updatedPost){
+    return {
+        type:UPDATE_POST_ACTION,
+        updatedPost:updatedPost
     }
 }
 
