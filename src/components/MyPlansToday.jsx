@@ -7,6 +7,7 @@ const MyPlansToday = (props) => {
   const username = props.username;
   const postList = postListStore.postList;
   const postInfo = props.postInfo;
+  const history = useHistory();
   const today = new Date();
   console.log("today", today);
   const today_year = today.getFullYear();
@@ -29,7 +30,8 @@ const MyPlansToday = (props) => {
     // let path = "/schedule";
     // const history = useHistory();
     // history.pushState(path);
-    window.location.href = "/schedule";
+    history.push("/schedule");
+    //window.location.href = "/schedule";
   };
 
   return (

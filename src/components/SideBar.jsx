@@ -17,9 +17,9 @@ const SideBar = (props) => {
   const postInfo = props.postInfo;
   const realTimeNotiStore = useSelector(state=>state.realTimeNotiStore);
   const notiList = realTimeNotiStore.notiList;
-
+  console.log('noti list in sidebar',notiList);
   const username = props.username;
-  console.log("sidebar", props.username);
+  //console.log("sidebar", props.username);
   return (
     <div className="navContainer">
       {/* <Col xs="3" className="navIconLinkContainer px-0"> */}
@@ -41,7 +41,7 @@ const SideBar = (props) => {
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon" style={{position:'relative'}}>
-            {notiList&&notiList.length>0?<div style={{position:'absolute',width:'23px',height:'23px',backgroundColor:'red',borderRadius:'50%',color:'white',textAlign:'center'}}>{notiList.length}</div>:null}
+            {notiList&&notiList.length>0?<div style={{fontSize:'14px',paddingRight:'2px',position:'absolute',width:'23px',height:'23px',backgroundColor:'red',borderRadius:'50%',color:'white',textAlign:'center'}}>{notiList.length}</div>:null}
             <img src={notificationIcon} alt="NotitificationIcon"></img>
             <NavLink
               id="notification"
