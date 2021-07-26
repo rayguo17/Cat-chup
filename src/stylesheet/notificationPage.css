@@ -1,5 +1,8 @@
 /************Notifications left side *****************/
-
+.body {
+  margin: 0px;
+  padding: 0px;
+}
 .notificationHeaderContainer {
   background-color: #96d9ff !important;
   color: white;

@@ -37,7 +37,7 @@ const MyPlansToday = (props) => {
         style={{ cursor: "pointer" }}
       >
         {/* <span placeholder="todays plans">todays plans</span> */}
-        <div className="plansTodayBox">
+        <div className="plansTodayBox" style={{borderRadius:"1.5rem"}}>
           {postInfo.map((Info, index) => {
             if (Info.type === "event" && Info.content.eventDate == today_date) {
               return <PlanTodayLabel Info={Info} />;

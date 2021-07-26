@@ -5,12 +5,12 @@ import { MyscheduleButton } from "./ScheduleComponents/MyScheduleButton";
 
 const ScehduleRightBarPerosnal = (props) => {
   const postInfo = props.postInfo;
-  console.log(postInfo, "hihi");
+  // console.log(postInfo, "hihi");
   return (
     <div>
       <center>
         <div
-          className="Schedule-header"
+          // className="Schedule-header"
           style={{
             position: "sticky",
             top: "0",
