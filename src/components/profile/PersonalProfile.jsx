@@ -9,6 +9,7 @@ import {Button} from 'reactstrap'
 import { useSelector } from "react-redux"
 import axios from "axios"
 import { getOrCreateChat } from "react-chat-engine"
+import { useHistory } from "react-router-dom"
 
 
 
@@ -22,6 +23,7 @@ let profileBtn = {
 export const PersonalProfile = (props) => {
     console.log('isOwner', props.isOwner);
     console.log('userInfo', props.userInfo);
+    const history=useHistory();
     const userInfoStore = useSelector(state=>state.userInfoStore);
     const userInfo = userInfoStore.userInfo;
     const [modalIsOpen, setOpenModal] = useState(false);
@@ -45,15 +47,15 @@ export const PersonalProfile = (props) => {
         }
         let createMessage =  getOrCreateChat(creds,{is_direct_chat:true,usernames:[props.userInfo.username]},(data)=>{
             console.log('create chat in profile page',data);
-            window.location.href='/messages';
+            history.push('/messages');
         })
         
     }
-
+//here write if user exists if not return  logo in a div
     return (
+        
         <div style={{position:'sticky', height:'330px',borderBottom:'1px solid #c4c4c4',top:'0',zIndex:'10',backgroundColor:'white'}}>
             <div className='' style={{width:'100%',height:'200px',backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundImage:`url(${process.env.REACT_APP_API_SERVER+props.userInfo.bgImgPath})`}}>
-                 
             </div>
             <div style={{ position: 'absolute', top: '100px', left: "100px" }}>
                 <ProfilePicDiv
@@ -82,5 +84,18 @@ export const PersonalProfile = (props) => {
                 ownerName={props.userInfo.username}
             /> : null}
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
     )
 }

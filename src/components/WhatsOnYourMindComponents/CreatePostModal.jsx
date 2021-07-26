@@ -61,7 +61,7 @@ export const CreatePostModal = (props)=>{
      const open = Boolean(anchorEl);
      const id=open?"transitions-popper":undefined;
      const closeEmojiPicker = ()=>{
-       console.log('try to close emoji')
+       //console.log('try to close emoji')
        setAnchorEl(null);
      }
 
@@ -97,7 +97,7 @@ export const CreatePostModal = (props)=>{
      // for event toggle
      const [isEvent,setIsEvent] = useState(false);
      const toEvent = (e)=>{
-       console.log('toggle to event',formik.values.type);
+       //console.log('toggle to event',formik.values.type);
        if(isEvent){
         formik.setFieldValue('type','post');
         setIsEvent(!isEvent);
@@ -112,7 +112,7 @@ export const CreatePostModal = (props)=>{
      useEffect(()=>{
         //setUserInfo(userInfoStore.userInfo);
         //console.log('i am reset')
-        console.log('try to coporate time',new Date(Date.now()).toISOString());
+        //console.log('try to coporate time',new Date(Date.now()).toISOString());
         formik.resetForm({
           values:{
             caption:"",

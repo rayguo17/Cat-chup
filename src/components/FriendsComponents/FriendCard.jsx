@@ -6,9 +6,11 @@ import {
     Card, CardImg, CardText, CardBody
 } from 'reactstrap';
 import userAvatar from '../../img/profileIcon.png';
+import { useHistory } from 'react-router-dom';
 
 export const FriendCard = (props) => {
     const { username, toggle } = props
+    const history = useHistory();
     const [userInfo, setUserInfo] = useState(null);
     const { friendsList, activeTab } = props
     useEffect(() => {
@@ -23,6 +25,9 @@ export const FriendCard = (props) => {
         }
         getUserInfo();
     }, [username])
+    const handleRedProfile= ()=>{
+        history.push('/'+userInfo.username);
+    }
     return (
         <div className='col-6'>
 
@@ -33,7 +38,7 @@ export const FriendCard = (props) => {
 
                     </div>
                     <div className='col-6 px-0' >
-                        <a style={{ fontSize: "25px", color: "black", textDecoration: "none" }} href={"/" + username}>{username}</a>
+                        <a style={{ fontSize: "25px", color: "black", textDecoration: "none",cursor:'pointer' }} onClick={handleRedProfile}>{username}</a>
                     </div>
                     {activeTab == "All Friends" &&
                         <EditFriendGroup username={username} activeTab={activeTab} friendsList={friendsList} />}

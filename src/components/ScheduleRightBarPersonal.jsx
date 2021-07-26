@@ -1,12 +1,9 @@
 import "../stylesheet/scheduleArea.css";
 import WeekIcon from "./WeekIcon";
 import EventCard from "./EventCard";
-import { useSelector } from "react-redux";
-import EventCardSchedule from "./PostComponents/EventCardSchedule";
+import { MyscheduleButton } from "./ScheduleComponents/MyScheduleButton";
 
-const ScehduleRightBar = (props) => {
-  const postListStore = useSelector(state=>state.postListStore);
-  const postList = postListStore.postList
+const ScehduleRightBarPerosnal = (props) => {
   const postInfo = props.postInfo;
   console.log(postInfo, "hihi");
   return (
@@ -21,7 +18,7 @@ const ScehduleRightBar = (props) => {
             backgroundColor: "white",
           }}
         >
-          <h3>Available Event</h3>
+         <MyscheduleButton />
           <WeekIcon />
           <hr
             style={{
@@ -31,18 +28,15 @@ const ScehduleRightBar = (props) => {
         </div>
 
         <div>
-          {postList.map((event,index)=>{
-            if(event.type==='event'){
-              return <EventCardSchedule
-                Info={event}
-                key={event.id}
-              />
+          {/* {postInfo.map((Info, index) => {
+            if (Info.type === "event") {
+              return <EventCard Info={Info} />;
             }
-          })}
+          })} */}
         </div>
       </center>
     </div>
   );
 };
 
-export default ScehduleRightBar;
+export default ScehduleRightBarPerosnal;

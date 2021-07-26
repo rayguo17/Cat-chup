@@ -34,7 +34,7 @@
 .navIconLinkContainer {
   margin: 0 20px;
   margin-bottom: 0%;
-  padding: 3vh
+  padding: 3vh;
 }
 
 .MainNavLink {
@@ -43,32 +43,28 @@
   padding: 0rem 0vh !important;
   text-align: left;
   text-decoration: none !important;
-  
 }
 
- .MainNavLink:active, .MainNavLink.active, .MainNavLink:focus {
-  color:#96d9ff !important;
+.MainNavLink:active,
+.MainNavLink.active,
+.MainNavLink:focus {
+  color: #96d9ff !important;
   font-size: 3.3vh;
   font-weight: 500;
   text-decoration: underline !important;
- 
 }
 
-.MainHeadingHover{
+.MainHeadingHover {
   /* text-decoration: none !important; */
-  border-bottom: none!important;
+  border-bottom: none !important;
 }
 
-.MainHeadingHover:hover{
-  color:#96d9ff !important;
+.MainHeadingHover:hover {
+  color: #96d9ff !important;
   font-size: 3.1vh;
   font-weight: 500;
   text-decoration: none !important;
-  
-
 }
-
-
 
 .flexIcon img {
   height: 4vh;
@@ -235,7 +231,6 @@
   font-size: 15px;
 }
 
-
 footer {
   background-color: #96d9ff;
   position: absolute;
@@ -250,11 +245,10 @@ footer {
   text-align: center;
 }
 
-
 .logoutButton {
   background-color: red;
   border-radius: 1rem;
   width: 5vw;
-  height: 4vh;
+  height: 5vh;
   color: white;
 }
