@@ -10,7 +10,7 @@ const ScehduleRightBarPerosnal = (props) => {
     <div>
       <center>
         <div
-          className="Schedule-header"
+          // className="Schedule-header"
           style={{
             position: "sticky",
             top: "0",
