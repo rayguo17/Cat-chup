@@ -1,8 +1,8 @@
 .whatsOnYourMindContainer {
-  background-color: #DFDFDF;
+  background-color: #dfdfdf;
   height: 8vh;
-  border-left: 20px solid #DFDFDF;
-  border-right: 20px solid #DFDFDF;
+  border-left: 20px solid #dfdfdf;
+  border-right: 20px solid #dfdfdf;
   z-index: 10;
   position: sticky;
   top: 0;
@@ -37,9 +37,11 @@
   margin: auto !important;
   padding: auto !important;
 }
-
+/* //work on this */
 .modal-header button.close {
-  border-radius: 50% !important;
+  background-color: transparent;
+  border: none;
+  font-size: 25px;
   margin-left: 90%;
 }
 .modal-footer {

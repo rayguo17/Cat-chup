@@ -9,16 +9,10 @@ const Logout = () => {
 
     const dispatch = useDispatch()
     const logout = () => {
-
         dispatch(logoutThunk());
-
-
-
-
     }
     return (
         <button onClick={logout} className="logoutButton">Logout</button>
     )
 }
-
 export default Logout;

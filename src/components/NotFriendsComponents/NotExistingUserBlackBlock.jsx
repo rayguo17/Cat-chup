@@ -12,7 +12,7 @@ const NotExistingUserBlackBlock = (props) => {
         }}>
             <img style={{ marginTop: "40px" }} src={LockIcon} alt="lockIcon" />
             <p style={{ marginTop: "10px", color: "white" }}>This account doesn't exist</p>
-            <p style={{ marginTop: "10px", color: "white" }}>Try searching for another</p>
+            <p style={{ marginTop: "10px", color: "grey" }}>Try searching for another</p>
         </div >
     )
 
