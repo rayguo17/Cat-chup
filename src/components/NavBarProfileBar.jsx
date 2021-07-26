@@ -29,10 +29,11 @@ const NavBarProfileBar = (props) => {
             touchEvent="onTouchStart"
             onClickAway={handleClickAway}
         >
-            <div style={{ width: "140px" }}>
-                <button onClick={toggleLogout} style={{ border: "none", background: "none" }}>
+            <div>
+                <button onClick={toggleLogout} style={{ border: "none", background: "none", display:"flex" }}>
                     <div style={{
-                        display: 'inline-block', width: '50px',
+                        
+                        width: '50px',
                         height: '50px',
                         padding: '0px',
                         backgroundPosition: 'center center',

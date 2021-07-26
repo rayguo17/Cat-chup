@@ -139,7 +139,7 @@ export const EventCardPostArea = (props)=>{
         <span className="userName">
           <p> {eventInfo.username} </p>
         </span>
-        <div className="mood"></div>
+        <div style={{borderRadius:"5px"}}className="mood"></div>
         <CardBody>
           <CardTitle tag="h5"> {eventInfo.content.title} </CardTitle>
           {/* <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle> */}
@@ -178,22 +178,22 @@ export const EventCardPostArea = (props)=>{
         </CardBody>
         <div className="post-like-comment-button">
           <div>
-            <Button color="secondary" onClick={handleLiked}>
+            <button style={{fontSize:"24px", fontWeight:"700",border:"none", color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white"}} onClick={handleLiked}>
               <p>{likes?likes.length:null } Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
-            </Button>
+            </button>
           </div>
 
           <div>
-            <a href={"/post/"+eventInfo.id}>
-              <Button color="secondary">
+            <a style={{textDecoration:"none"}}href={"/post/"+eventInfo.id}>
+              <button style={{fontSize:"24px", fontWeight:"700",border:"none", color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white"}}>
                 <p>{eventInfo.content.comments.length} Comment</p>
                 <img
                   src={CommentIcon}
                   className="post-comment-btn"
                   alt="Comment"
                 />
-              </Button>
+              </button>
             </a>
           </div>
         </div>
