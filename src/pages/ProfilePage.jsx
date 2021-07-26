@@ -10,6 +10,7 @@ import ProfilePost from "../components/profile/ProfilePost";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { NotFriendBlackBlock } from "../components/NotFriendsComponents/NotFriendBlackBlock"
 import { loadAllUsersThunk } from "../redux/allUsersInfo/action"
+import NotExistingUserLogoBlock from "../components/NotFriendsComponents/NotExistingUserLogoBlock";
 import NotExistingUserBlackBlock from "../components/NotFriendsComponents/NotExistingUserBlackBlock"
 
 //check the route name, normally we just dive in by clicking own name
@@ -21,7 +22,7 @@ export const ProfilePage = (props) => {
     const allUsersStore = useSelector(state => state.allUsersListStore);
     console.log('in profile page',userStore);
     const [userInfo,setUserInfo] = useState({}); 
-    const [usersList, setUsersList] = useState([])
+    // const [usersList, setUsersList] = useState([])
     
     console.log("ALL USERS STORE", allUsersStore)
     console.log("owner",isOwner)
@@ -81,19 +82,23 @@ export const ProfilePage = (props) => {
         //and then check if they are friend?
 
     }, [userStore, friendListStore])
+
+
+    console.log("this is userlist*************",allUsersStore.allUsersList)
    
 
   
     return (
         <div className='col-9 px-0 row mx-0'>
-            <div className='col-9 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4'}}>
-                <p style={{color:"black"}}>sad</p>
+            <div className='col-9 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4', position:"relative"}}>
+              {(allUsersStore.allUsersList.find((obj) => obj.username === props.match.params.username)) ? (
             <PersonalProfile
                             isOwner={isOwner}
                             userInfo={userInfo}
                             areFriends={areFriends}
                         
-                        />
+                        />):<NotExistingUserLogoBlock />}
+
             {(isOwner === true || areFriends === true) ? (
                 
                 <ProfilePost
@@ -104,7 +109,7 @@ export const ProfilePage = (props) => {
                 pageOwner={props.match.params.username}
                 />                                                      
             ) 
-            :(usersList.find((obj) => obj.username === props.match.params.username) ? (
+            :(allUsersStore.allUsersList.find((obj) => obj.username === props.match.params.username) ? (
             <NotFriendBlackBlock
             pageOwnerName={props.match.params.username}
             areFriends={areFriends}
