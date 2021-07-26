@@ -41,10 +41,13 @@ textarea {
   resize: none;
 }
 
+.schedule_detail_box {
+  display: inline-block;
+}
 .display-none {
   display: none;
 }
 
 .schedule_detail > div {
-  position: absolute;
+  /* position: absolute; */
 }
