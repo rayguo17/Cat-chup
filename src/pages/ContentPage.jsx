@@ -21,7 +21,6 @@ import { MessagePage } from "./MessagePage";
 import { PostPage } from "./PostPage";
 import { WeekendTwoTone } from "@material-ui/icons";
 import { loadAllUsersThunk } from "../redux/allUsersInfo/action";
-import { loadScheduleThunk } from "../redux/schedule/action";
 
 export const ContentPage = () => {
   const [username, setUsername] = useState(null);
@@ -39,7 +38,6 @@ export const ContentPage = () => {
     dispatch(loadNotiThunk(decode.username));
     dispatch(loadPostThunk(decode.username));
     dispatch(loadAllUsersThunk());
-    dispatch(loadScheduleThunk(decode.username));
   }, []);
 
   var dummydate = new Date(

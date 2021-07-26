@@ -7,6 +7,7 @@ import EventCardSchedule from "./PostComponents/EventCardSchedule";
 const ScehduleRightBar = (props) => {
   const postListStore = useSelector((state) => state.postListStore);
   const postList = postListStore.postList;
+  const username = props.username;
   const postInfo = props.postInfo;
   // console.log(postInfo, "hihi");
   return (
@@ -32,7 +33,7 @@ const ScehduleRightBar = (props) => {
 
         <div>
           {postList.map((event, index) => {
-            if (event.type === "event") {
+            if (event.type === "event" && username !== event.owner_name) {
               return <EventCardSchedule Info={event} key={event.id} />;
             }
           })}

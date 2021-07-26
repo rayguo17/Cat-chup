@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 
 const MyPlansToday = (props) => {
   const postListStore = useSelector((state) => state.postListStore);
+  const username = props.username;
   const postList = postListStore.postList;
   const postInfo = props.postInfo;
   const today = new Date();
@@ -46,6 +47,7 @@ const MyPlansToday = (props) => {
               new Date(Date(event.content.start)).toISOString().slice(0, -14)
             );
             if (
+              props.username === event.owner_name &&
               (event.type === "event" || event.type === "schedule") &&
               new Date(Date(event.content.start))
                 .toISOString()
