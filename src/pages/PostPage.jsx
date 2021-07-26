@@ -35,6 +35,7 @@ import jwtDecode from "jwt-decode";
 import { PostImgShowcase } from "../components/PostComponents/PostImgShowcase";
 import { LikeListCard } from "../components/PostComponents/LikeListCard";
 import { CommentSection } from "../components/PostComponents/CommentSection";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
   inline: {
     display: "inline",
   },
+  TextField:{
+    marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        marginBottom:10
+  }
 }));
 
 
@@ -57,7 +63,7 @@ export const PostPage = (props)=>{
   const [Info,setPostInfo] = useState(null);
   const [comments,setComments] = useState(null);
   const [likes,setLikes] = useState(null);
-
+  const history = useHistory();
   const toggle = () => setModal(!modal);
 
   const postComment = (e) => {
@@ -88,6 +94,7 @@ export const PostPage = (props)=>{
 
     }
     submitCommentFunc();
+    setComment('');
     
   };
   const handleChange = (e)=>{
@@ -138,7 +145,8 @@ export const PostPage = (props)=>{
   }
   const handleRedProfile = (e)=>{
     e.stopPropagation();
-    window.location.href = '/'+Info.username
+    history.push('/'+Info.username)
+    //window.location.href = '/'+Info.username
   }
   return (
     <div className="col-9 px-0 comment-part">
@@ -166,6 +174,24 @@ export const PostPage = (props)=>{
                     <CardText style={{ marginTop: "30px" }}>
                       {Info?Info.content.caption:null}
                     </CardText>
+                    {Info&&Info.type==='event'?
+                      <div style={{marginBottom:'7px',display:'flex',flexDirection:'row','justifyContent':'space-around'}}>
+                        <TextField
+                          className={classes.textField}
+                          label='start time'
+                          type='datetime-local'
+                          value={Info.content.start}
+                          disabled={true}
+                        />
+                        <TextField
+                        className={classes.textField}
+                        label='end time'
+                        type='datetime-local'
+                        value={Info.content.end}
+                        disabled={true}
+                        />
+                      </div>
+                    :null}
                     <PostImgShowcase
                         imageList={Info?Info.content.attachPic:null}
                         height='500px'

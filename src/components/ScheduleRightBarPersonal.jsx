@@ -18,7 +18,7 @@ const ScehduleRightBarPerosnal = (props) => {
             backgroundColor: "white",
           }}
         >
-         <MyscheduleButton />
+          <MyscheduleButton />
           <WeekIcon />
           <hr
             style={{

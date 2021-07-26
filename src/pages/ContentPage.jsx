@@ -37,7 +37,7 @@ export const ContentPage = () => {
     dispatch(socketConnectThunk());
     dispatch(loadNotiThunk(decode.username));
     dispatch(loadPostThunk(decode.username));
-    dispatch(loadAllUsersThunk())
+    dispatch(loadAllUsersThunk());
   }, []);
 
   var dummydate = new Date(

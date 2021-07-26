@@ -6,19 +6,23 @@ import { PostImgShowcase } from "./PostImgShowcase";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 const PostCard = (props) => {
   const { postInfo } = props;
   //console.log('post info',postInfo);
-  const [likeNumber, setLikeNumber] = useState(null);
+  const [likes,setLikes] = useState(null);
+  const history = useHistory();
   let time = new Date(postInfo.created_at);
   let postTime = time.toLocaleDateString() + " " + time.toLocaleTimeString();
 
   const changeToCommentPage = () => {
-    window.location.href = "post/" + postInfo.id;
+    history.push("post/" + postInfo.id)
+    //window.location.href = "post/" + postInfo.id;
   };
   useEffect(() => {
-    setLikeNumber(postInfo.content.likes.length);
+    setLikes(postInfo.content.likes)
+    //setLikeNumber(postInfo.content.likes.length);
   }, []);
   const handleLiked = async (e) => {
     e.stopPropagation();
@@ -28,7 +32,7 @@ const PostCard = (props) => {
     let decode = jwtDecode(token);
     let username = decode.username;
     let match = false;
-    match = postInfo.content.likes.find((obj) => obj.user == username);
+    match = likes.find((obj) => obj.user == username);
     if (match) {
       //cancel like
     } else {
@@ -40,13 +44,15 @@ const PostCard = (props) => {
       });
       console.log("sendLike req", sendLikedReq);
       if (sendLikedReq.status == 200) {
-        setLikeNumber(likeNumber + 1);
+        //setLikeNumber(likeNumber + 1);
+        setLikes([...likes,sendLikedReq.data])
       }
     }
   };
   const handleRedProfile = (e) => {
     e.stopPropagation();
-    window.location.href = "/" + postInfo.username;
+    history.push("/" + postInfo.username)
+    //window.location.href = "/" + postInfo.username;
   };
 
   return (
@@ -88,7 +94,7 @@ const PostCard = (props) => {
         <div className="post-like-comment-button">
           <div>
             <button style={{fontSize:"24px", fontWeight:"700",border:"none", color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white"}} onClick={handleLiked}>
-              <p>{likeNumber} Like</p>
+              <p>{likes?likes.length:null} Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
             </button>
           </div>

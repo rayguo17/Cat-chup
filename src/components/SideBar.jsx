@@ -14,7 +14,7 @@ import "../stylesheet/navBar.css";
 
 const SideBar = (props) => {
   const postInfo = props.postInfo;
-
+  const username = props.username;
   console.log("sidebar", props.username);
   return (
     <div className="navContainer">
@@ -26,31 +26,41 @@ const SideBar = (props) => {
         <Nav vertical className="iconContainer">
           <NavItem className="flexIcon">
             <img src={homeIcon} alt="HomeIcon"></img>
-            <NavLink id='home' exact to="/home" className='MainNavLink'>
+            <NavLink id="home" exact to="/home" className="MainNavLink">
               <span className="MainHeadingHover">HOME</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={friendsIcon} alt="FriendIcon"></img>
-            <NavLink id='friends' exact to="/friends" className='MainNavLink'>
+            <NavLink id="friends" exact to="/friends" className="MainNavLink">
               <span className="MainHeadingHover">FRIENDS</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={notificationIcon} alt="NotitificationIcon"></img>
-            <NavLink id='notification' exact to="/notifications" className='MainNavLink'>
+            <NavLink
+              id="notification"
+              exact
+              to="/notifications"
+              className="MainNavLink"
+            >
               <span className="MainHeadingHover">NOTIFICATION</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={speechIcon} alt="SpeechIcon"></img>
-            <NavLink id='messages' exact to="/messages" className='MainNavLink'>
+            <NavLink id="messages" exact to="/messages" className="MainNavLink">
               <span className="MainHeadingHover">MESSAGES</span>
             </NavLink>
           </NavItem>
           <NavItem className="flexIcon">
             <img src={profileIcon} alt="ProfileIcon"></img>
-            <NavLink id='profile' exact to={`/${props.username}`} className='MainNavLink'>
+            <NavLink
+              id="profile"
+              exact
+              to={`/${props.username}`}
+              className="MainNavLink"
+            >
               <span className="MainHeadingHover">PROFILE</span>
             </NavLink>
           </NavItem>
@@ -59,7 +69,7 @@ const SideBar = (props) => {
 
       {/* </Col> */}
 
-      <MyPlansToday postInfo={postInfo} />
+      <MyPlansToday postInfo={postInfo} username={username} />
 
       <footer className="pt-2" style={{display:"flex", alignItems:"center", flexDirection: "column"}} >
         <NavProfileBar />
@@ -69,4 +79,3 @@ const SideBar = (props) => {
 };
 
 export default SideBar;
-

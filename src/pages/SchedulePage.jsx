@@ -295,7 +295,6 @@ export default class SchedulePage extends React.Component {
                       min={this.state.today}
                     />
                   </div>
-
                   <label>Time:</label>
                   <div className="scheduleTime-div">
                     <input
