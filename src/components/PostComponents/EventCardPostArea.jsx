@@ -16,6 +16,7 @@ import jwtDecode from "jwt-decode";
 import MailIcon from "../../img/mail-icon.png";
 import { makeStyles, TextField } from '@material-ui/core';
 import {store} from 'react-notifications-component';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme)=>({
     TextField:{
@@ -29,28 +30,32 @@ const useStyles = makeStyles((theme)=>({
 export const EventCardPostArea = (props)=>{
     const classes = useStyles()
     const {eventInfo} = props;
-    const [likeNumber,setLikeNumber] = useState(null);
+    const [likes,setLikes] = useState(null);
+    const history = useHistory();
     let time = new Date(eventInfo.created_at);
     let postTime = time.toLocaleDateString()+' '+time.toLocaleTimeString();
     useEffect(()=>{
         console.log('event info in card',eventInfo);
-        setLikeNumber(eventInfo.content.likes.length);
+        setLikes(eventInfo.content.likes);
     },[])
 
     const handleRedirect = ()=>{
-        window.location.href = `/event/${eventInfo.id}`
+         history.push(`/post/${eventInfo.id}`)
     }
-    const handleRedProfile = ()=>{
-        window.location.href = `/${eventInfo.username}`
+    const handleRedProfile = (e)=>{
+      e.stopPropagation();
+        history.push(`/${eventInfo.username}`)
     }
     const handleLiked=async (e)=>{
       e.stopPropagation();
       console.log('liked process');
+      console.log('like list',likes)
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       let username = decode.username;
       let match = false;
-      match = eventInfo.content.likes.find(obj=>obj.user==username)
+      match = likes.find(obj=>obj.user==username);
+      console.log('match like',match);
       if(match){
         //cancel like
       }else{
@@ -62,7 +67,7 @@ export const EventCardPostArea = (props)=>{
         })
         console.log('sendLike req',sendLikedReq);
         if(sendLikedReq.status==200){
-          setLikeNumber(likeNumber+1);
+          setLikes([...likes,sendLikedReq.data]);
         }
         
   
@@ -174,7 +179,7 @@ export const EventCardPostArea = (props)=>{
         <div className="post-like-comment-button">
           <div>
             <Button color="secondary" onClick={handleLiked}>
-              <p>{likeNumber } Like</p>
+              <p>{likes?likes.length:null } Like</p>
               <img src={LikeIcon} className="post-like-btn" alt="Like" />
             </Button>
           </div>

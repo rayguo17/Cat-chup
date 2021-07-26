@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { values } from 'lodash';
+import { useHistory } from 'react-router-dom';
 import SelectSearch from 'react-select-search';
 import SearchIcon from '../../img/searchIcon.png'
 import "../../stylesheet/globalSearch.css"
@@ -14,6 +15,7 @@ const GlobalSearchBar = () => {
         // { photo: "https://randomuser.me/api/portraits/women/71.jpg", name: 'Nathan', value: 'na' },
 
     ];
+    const history = useHistory();
     const getOptions = (query)=>{
         let token = localStorage.getItem('token');
         if(query.length==0)return null;
@@ -30,6 +32,10 @@ const GlobalSearchBar = () => {
             })
         })
     }
+    const handleRedProfile = (username)=>{
+        console.log('handle red global search ',username);
+        history.push('/'+username);
+    }
     return (
         <div className="globalSearch-input-container">
             <img className="global-search-icon" src={SearchIcon} alt="SearchIcon" />
@@ -41,11 +47,11 @@ const GlobalSearchBar = () => {
                             <p style={{color:'black'}}>{value.username}</p>
                         )
                     }
-                    return (<a style={{ textDecoration: "none" }} href={"/" + value.username}><div style={{ display: 'flex', fontSize: '20px', color: 'black', padding: '8px' }}>
+                    return (<div style={{ display: 'flex', fontSize: '20px', color: 'black', padding: '8px' ,cursor:'pointer'}} onClick={handleRedProfile.bind(this,value.username)}> 
                         <img style={{ height: '50px',width:'50px', borderRadius: '50%' }} src={process.env.REACT_APP_API_SERVER+value.imgPath} alt="" />
                         {/* add a tag */}
                         <p style={{ marginLeft: '20px' }}>{value.username}</p>
-                    </div></a>)
+                    </div>)
                 }} />
         </div>
     )

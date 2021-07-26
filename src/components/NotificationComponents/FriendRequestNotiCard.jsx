@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import userAvatar from '../../img/profileIcon.png';
 import { AddFriendThunk } from "../../redux/friendsList/action";
@@ -18,6 +19,7 @@ export const FriendRequestNotiCard = (props) =>{
     const [userInfo,setUserInfo] = useState(null);
     const [dateTime,setDateTime] = useState(null);
     const dispatch = useDispatch();
+    const history = useHistory();
     //console.log('content',content);
     useEffect(()=>{
         let jwt = localStorage.getItem('token');
@@ -59,7 +61,8 @@ export const FriendRequestNotiCard = (props) =>{
     }
     const handleRedProfile = (e)=>{
         e.stopPropagation();
-        window.location.href = '/'+noti.donor
+        history.push('/'+noti.donor)
+        //window.location.href = '/'+noti.donor
     }
     return (
         <div style={{backgroundColor:'#E3E3E3',paddingBottom:'5px',border:'1px solid #303030'}} className='row mx-0'>

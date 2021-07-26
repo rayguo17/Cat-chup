@@ -50,7 +50,7 @@ const ScheduleDetail = (props) => {
   // console.log(selected.content.pictures);
 
   return (
-    <div
+    <div 
       className={
         "postId" +
         selected.id +

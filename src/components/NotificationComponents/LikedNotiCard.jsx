@@ -3,11 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import userAvatar from '../../img/profileIcon.png';
 
 export const LikedNotiCard = (props)=>{
     const {noti} = props;
+    const history = useHistory();
     const [userInfo,setUserInfo] = useState(null);
     const [timeString,setTimeString] = useState(null);
 
@@ -31,11 +32,13 @@ export const LikedNotiCard = (props)=>{
         
     },[])
     const handleRedirect = ()=>{
-        window.location.href='/post/'+noti.content.postId
+        history.push('/post/'+noti.content.postId)
+        //window.location.href='/post/'+noti.content.postId
     }
     const handleRedProfile = (e)=>{
         e.stopPropagation();
-        window.location.href = '/'+noti.donor
+        history.push('/'+noti.donor)
+        //window.location.href = '/'+noti.donor
 
     }
     return (
