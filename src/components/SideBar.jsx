@@ -11,9 +11,12 @@ import NavProfileBar from "./NavBarProfileBar";
 import MyPlansToday from "./MyPlansToday";
 import { NavLink } from "react-router-dom";
 import "../stylesheet/navBar.css";
+import { useSelector } from "react-redux";
 
 const SideBar = (props) => {
   const postInfo = props.postInfo;
+  const realTimeNotiStore = useSelector(state=>state.realTimeNotiStore);
+  const notiList = realTimeNotiStore.notiList;
 
   console.log("sidebar", props.username);
   return (
@@ -36,7 +39,8 @@ const SideBar = (props) => {
               <span className="MainHeadingHover">FRIENDS</span>
             </NavLink>
           </NavItem>
-          <NavItem className="flexIcon">
+          <NavItem className="flexIcon" style={{position:'relative'}}>
+            {notiList&&notiList.length>0?<div style={{position:'absolute',width:'23px',height:'23px',backgroundColor:'red',borderRadius:'50%',color:'white',textAlign:'center'}}>{notiList.length}</div>:null}
             <img src={notificationIcon} alt="NotitificationIcon"></img>
             <NavLink id='notification' exact to="/notifications" className='MainNavLink'>
               <span className="MainHeadingHover">NOTIFICATION</span>

@@ -2,6 +2,7 @@ import jwtDecode from 'jwt-decode'
 import { store } from 'react-notifications-component'
 import webSocket from 'socket.io-client'
 import { loadNotiThunk } from '../notification/action'
+import { addNewNotiAction } from '../real_time_noti/action'
 
 export const SOCKET_CONNECT_SUCCESS_ACTION = "SOCKET_CONNECT_SUCCESS_ACTION"
 export const SOCKET_CONNECT_FAILURE_ACTION = 'SOCKET_CONNECT_FAILURE_ACTION'
@@ -54,6 +55,7 @@ const setupSocket = (ws,dispatch)=>{
                 }
             })
             dispatch(loadNotiThunk(username));
+            dispatch(addNewNotiAction(data));
 
         }
     });
@@ -72,6 +74,7 @@ const setupSocket = (ws,dispatch)=>{
                 }
             })
             dispatch(loadNotiThunk(username));
+            dispatch(addNewNotiAction(data));
 
         }
     });
@@ -90,7 +93,7 @@ const setupSocket = (ws,dispatch)=>{
                 }
             })
             dispatch(loadNotiThunk(username));
-
+            dispatch(addNewNotiAction(data));
         }
     });
     ws.on('friend_request',(data)=>{
@@ -108,7 +111,7 @@ const setupSocket = (ws,dispatch)=>{
                 }
             })
             dispatch(loadNotiThunk(username));
-
+            dispatch(addNewNotiAction(data));
         }
     })
     

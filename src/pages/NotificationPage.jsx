@@ -12,12 +12,13 @@ import NotificationBody from "../components/NotificationComponents/NotificationB
 import { useState } from "react";
 import { LikedNotiCard } from "../components/NotificationComponents/LikedNotiCard";
 import { CommentNotiCard } from "../components/NotificationComponents/CommentNotiCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
 import WeekIcon from "../components/WeekIcon";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
+import { clearAllNotiAction } from "../redux/real_time_noti/action";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
 // import { useEffect } from "react";
 
@@ -26,10 +27,14 @@ import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleBut
 const NotificationPage = () => {
     const notiStore = useSelector(state => state.notiListStore)
     const [notiList, setNotiList] = useState([]);
+    const dispatch = useDispatch();
     useEffect(() => {
         //console.log('inside notification page',notiStore.notiList);
         setNotiList(notiStore.notiList);
     }, [notiStore])
+    useEffect(()=>{
+        dispatch(clearAllNotiAction());
+    },[])
     return (
         <div className="col-9 px-0 mx-0 row">
             <div className="col-9 px-0">
