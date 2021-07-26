@@ -35,6 +35,7 @@ import jwtDecode from "jwt-decode";
 import { PostImgShowcase } from "../components/PostComponents/PostImgShowcase";
 import { LikeListCard } from "../components/PostComponents/LikeListCard";
 import { CommentSection } from "../components/PostComponents/CommentSection";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -62,7 +63,7 @@ export const PostPage = (props)=>{
   const [Info,setPostInfo] = useState(null);
   const [comments,setComments] = useState(null);
   const [likes,setLikes] = useState(null);
-
+  const history = useHistory();
   const toggle = () => setModal(!modal);
 
   const postComment = (e) => {
@@ -143,7 +144,8 @@ export const PostPage = (props)=>{
   }
   const handleRedProfile = (e)=>{
     e.stopPropagation();
-    window.location.href = '/'+Info.username
+    history.push('/'+Info.username)
+    //window.location.href = '/'+Info.username
   }
   return (
     <div className="col-9 px-0 comment-part">
@@ -171,7 +173,7 @@ export const PostPage = (props)=>{
                     <CardText style={{ marginTop: "30px" }}>
                       {Info?Info.content.caption:null}
                     </CardText>
-                    {Info.type==='event'?
+                    {Info&&Info.type==='event'?
                       <div style={{marginBottom:'7px',display:'flex',flexDirection:'row','justifyContent':'space-around'}}>
                         <TextField
                           className={classes.textField}

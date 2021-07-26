@@ -2,12 +2,14 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 
 export const ChatSettingTop = (creds,chat)=>{
     console.log('chat setting top',chat);
     const [isOnline,setIsOnline] = useState(false);
     const [oppoInfo,setOppoInfo] = useState({});
+    const history = useHistory()
     useEffect(()=>{
         let jwt = localStorage.getItem('token');
         let decode = jwtDecode(jwt);
@@ -34,7 +36,8 @@ export const ChatSettingTop = (creds,chat)=>{
         
     },[chat])
     const handleRedirect = ()=>{
-        window.location.href='/'+oppoInfo.username
+        history.push('/'+oppoInfo.username)
+        //window.location.href='/'+oppoInfo.username
     }
     if(chat){
         return (

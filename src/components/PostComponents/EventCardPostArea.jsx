@@ -16,6 +16,7 @@ import jwtDecode from "jwt-decode";
 import MailIcon from "../../img/mail-icon.png";
 import { makeStyles, TextField } from '@material-ui/core';
 import {store} from 'react-notifications-component';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme)=>({
     TextField:{
@@ -30,7 +31,7 @@ export const EventCardPostArea = (props)=>{
     const classes = useStyles()
     const {eventInfo} = props;
     const [likes,setLikes] = useState(null);
-    
+    const history = useHistory();
     let time = new Date(eventInfo.created_at);
     let postTime = time.toLocaleDateString()+' '+time.toLocaleTimeString();
     useEffect(()=>{
@@ -39,19 +40,22 @@ export const EventCardPostArea = (props)=>{
     },[])
 
     const handleRedirect = ()=>{
-        window.location.href = `/post/${eventInfo.id}`
+         history.push(`/post/${eventInfo.id}`)
     }
-    const handleRedProfile = ()=>{
-        window.location.href = `/${eventInfo.username}`
+    const handleRedProfile = (e)=>{
+      e.stopPropagation();
+        history.push(`/${eventInfo.username}`)
     }
     const handleLiked=async (e)=>{
       e.stopPropagation();
       console.log('liked process');
+      console.log('like list',likes)
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       let username = decode.username;
       let match = false;
-      match = eventInfo.content.likes.find(obj=>obj.user==username)
+      match = likes.find(obj=>obj.user==username);
+      console.log('match like',match);
       if(match){
         //cancel like
       }else{
