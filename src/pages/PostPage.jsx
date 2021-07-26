@@ -94,6 +94,7 @@ export const PostPage = (props)=>{
 
     }
     submitCommentFunc();
+    setComment('');
     
   };
   const handleChange = (e)=>{
