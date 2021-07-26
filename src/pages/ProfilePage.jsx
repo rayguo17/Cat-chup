@@ -12,6 +12,8 @@ import { NotFriendBlackBlock } from "../components/NotFriendsComponents/NotFrien
 import { loadAllUsersThunk } from "../redux/allUsersInfo/action"
 import NotExistingUserLogoBlock from "../components/NotFriendsComponents/NotExistingUserLogoBlock";
 import NotExistingUserBlackBlock from "../components/NotFriendsComponents/NotExistingUserBlackBlock"
+import { Hidden } from "@material-ui/core";
+import NoPostsPlaceHolder from "../components/profile/NoPostPlaceHolder";
 
 //check the route name, normally we just dive in by clicking own name
 export const ProfilePage = (props) => {
@@ -84,13 +86,13 @@ export const ProfilePage = (props) => {
     }, [userStore, friendListStore])
 
 
-    console.log("this is userlist*************",allUsersStore.allUsersList)
+    console.log("this is postlist*************",postList.length)
    
 
   
     return (
-        <div className='col-9 px-0 row mx-0'>
-            <div className='col-9 px-0' style={{borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4', position:"relative"}}>
+        <div className='col-9 px-0 row mx-0' style={{overflow:"hidden"}}>
+            <div className='col-9 px-0' style={{backgroundColor:"rgb(223, 223, 223)",borderLeft:'1px solid #c4c4c4',borderRight:'1px solid #c4c4c4', position:"relative", height:"100vh"}}>
               {(allUsersStore.allUsersList.find((obj) => obj.username === props.match.params.username)) ? (
             <PersonalProfile
                             isOwner={isOwner}
@@ -99,16 +101,21 @@ export const ProfilePage = (props) => {
                         
                         />):<NotExistingUserLogoBlock />}
 
-            {(isOwner === true || areFriends === true) ? (
-                
+            {(isOwner === true || areFriends === true) ? 
+
+                ( postList.length > 0) ?
+                <div className="Scrolllable" style={{overflow:"scroll", overflowX:"hidden",height:"100vh"}}>
                 <ProfilePost
                 postList={postList}
                 isOwner={isOwner}
                 areFriends={areFriends}
                 postInfo={postInfo}
                 pageOwner={props.match.params.username}
-                />                                                      
-            ) 
+                />
+                </div>: <div><NoPostsPlaceHolder /></div>
+                
+        
+            
             :(allUsersStore.allUsersList.find((obj) => obj.username === props.match.params.username) ? (
             <NotFriendBlackBlock
             pageOwnerName={props.match.params.username}
@@ -121,7 +128,8 @@ export const ProfilePage = (props) => {
             }
           
             </div>
-            <div className='col-3 px-0' style={{ maxHeight: "100vh" }}>
+
+            <div className='col-3 px-0' style={{ maxHeight: "100vh", overflow:"scroll", overflowX:"hidden", position:"sticky", top:"0" }}>
               <ScehduleRightBarPersonal />
                 
             </div>

@@ -20,7 +20,7 @@ const FriendsHeader = (props) => {
     <div className="friendsHeaderContainer">
       <div className="TitleSearchContainer">
         {friendsList[activeTab] == null ? (
-          <p className="FriendsTitle">All Friends</p>
+          <p className="FriendsTitle">All Friends(0)</p>
         ) : (
           <p className="FriendsTitle">
             {activeTab}(

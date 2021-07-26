@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
 import WeekIcon from "../components/WeekIcon";
+import NoNotifications from "../components/NotificationComponents/NoNotifications";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { clearAllNotiAction } from "../redux/real_time_noti/action";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
@@ -29,16 +30,26 @@ const NotificationPage = () => {
     const [notiList, setNotiList] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
-        //console.log('inside notification page',notiStore.notiList);
+        console.log('inside notification page',notiStore.notiList.length);
         setNotiList(notiStore.notiList);
     }, [notiStore])
     useEffect(()=>{
         dispatch(clearAllNotiAction());
     },[])
+
+    const notiPageLength = notiStore.notiList.length
+
+    console.log("not link************************",notiPageLength)
     return (
+
+        
         <div className="col-9 px-0 mx-0 row">
-            <div className="col-9 px-0">
-                <NotificationHeader />
+            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf"}}>
+                <NotificationHeader  />
+
+
+                {(notiPageLength > 0) ?(
+                    <div >
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {
@@ -72,8 +83,16 @@ const NotificationPage = () => {
                 {/* <LikedNotiCard/>
                 <CommentNotiCard/> */}
                 {/* <EventNotiCard/> */}
+
+                </div>
+
+                ):
+                <NoNotifications />}
             </div>
-            <div className='col-3 px-0 style={{ maxHeight: "100vh" }}'>
+
+
+
+            <div className='col-3 px-0' style={{ maxHeight: "100vh", overflow:"scroll", overflowX:"hidden", position:"sticky", top:"0" }}>
             <ScehduleRightBarPerosnal />
         
 

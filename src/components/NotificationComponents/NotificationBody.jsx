@@ -1,17 +1,17 @@
-import '../../stylesheet/notificationPage.css'
-import NotificationMessage from './NotificationMessage';
+// import '../../stylesheet/notificationPage.css'
+// import NotificationMessage from './NotificationMessage';
 
-const NotificationBody = () => {
-    return (
-        <div >
-            <div className="notificationBodyContainer">
+// const NotificationBody = () => {
+//     return (
+//         <div >
+//             <div className="notificationBodyContainer">
 
-                < NotificationMessage />
+//                 < NotificationMessage />
 
-            </div>
-        </div>
-    )
-}
+//             </div>
+//         </div>
+//     )
+// }
 
 
-export default NotificationBody;
+// export default NotificationBody;
