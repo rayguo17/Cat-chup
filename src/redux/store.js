@@ -7,6 +7,7 @@ import postListReducer from "./post/reducer";
 import socketReducer from "./socket/reducer";
 import userInfoReducer from "./userInfo/reducer";
 import allUsersListReducer from "./allUsersInfo/reducer"
+import scheduleListReducer from "./schedule/reducer";
 
 
 export const store = createStore(
@@ -18,6 +19,7 @@ export const store = createStore(
         notiListStore: notiListReducer,
         postListStore: postListReducer,
         allUsersListStore: allUsersListReducer,
+        scheduleListStore:scheduleListReducer
     }),
     applyMiddleware(thunk)
 )

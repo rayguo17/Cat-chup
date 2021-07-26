@@ -1,4 +1,4 @@
-import { LOAD_SCHEDULE_FAILURE_ACTION, LOAD_SCHEDULE_SUCCESS_ACTION } from "./action"
+import { ADD_NEW_SCHEDULE_FAILURE_ACTION, ADD_NEW_SCHEDULE_SUCCESS_ACTION, LOAD_SCHEDULE_FAILURE_ACTION, LOAD_SCHEDULE_SUCCESS_ACTION } from "./action"
 
 
 const initialState = {
@@ -16,8 +16,10 @@ const scheduleListReducer = (state=initialState,action)=>{
                 scheduleList:[action.newSchedule,...state.scheduleList]
             }
         
-        case LOAD_SCHEDULE_FAILURE_ACTION:
+        case ADD_NEW_SCHEDULE_FAILURE_ACTION:
         default:
             return state
     }
 }
+
+export default scheduleListReducer;
