@@ -17,6 +17,7 @@ import { loadNotiThunk } from "../redux/notification/action";
 import CommentPage from "./CommentPage";
 import SchedulePage from "./SchedulePage";
 import { loadPostThunk } from "../redux/post/action";
+import { loadScheduleThunk } from "../redux/schedule/action";
 import { MessagePage } from "./MessagePage";
 import { PostPage } from "./PostPage";
 import { WeekendTwoTone } from "@material-ui/icons";
@@ -37,6 +38,7 @@ export const ContentPage = () => {
     dispatch(socketConnectThunk());
     dispatch(loadNotiThunk(decode.username));
     dispatch(loadPostThunk(decode.username));
+    dispatch(loadScheduleThunk(decode.username));
     dispatch(loadAllUsersThunk());
   }, []);
 
@@ -422,7 +424,9 @@ export const ContentPage = () => {
 
               <Route
                 path="/friends"
-                render={() => <FriendsPage postInfo={postInfo} />}
+                render={() => (
+                  <FriendsPage postInfo={postInfo} username={username} />
+                )}
               />
               <Route path="/notifications" component={NotificationPage} />
               <Route

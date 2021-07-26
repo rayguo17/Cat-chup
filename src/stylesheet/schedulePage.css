@@ -51,3 +51,11 @@ textarea {
 /* .schedule_detail > div {
   position: absolute;
 } */
+
+label#start-label {
+  transform: translate(0, 1.5px) scale(0.75);
+}
+
+label#end-label {
+  transform: translate(0, 1.5px) scale(0.75);
+}
