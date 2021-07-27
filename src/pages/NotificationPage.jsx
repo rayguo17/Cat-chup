@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
 import WeekIcon from "../components/WeekIcon";
+import BackToTopButton from "../components/BackToTopButton";
 import NoNotifications from "../components/NotificationComponents/NoNotifications";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
@@ -34,17 +35,18 @@ const NotificationPage = () => {
 
     const notiPageLength = notiStore.notiList.length
 
-    console.log("not link************************",notiPageLength)
+    // console.log("not link************************",notiPageLength)
     return (
 
         
-        <div className="col-9 px-0 mx-0 row">
-            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf"}}>
+        <div className="col-9 px-0 mx-0 row notificationOverflow">
+            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf", overflow:"hidden", height:"100vh"}}>
                 <NotificationHeader  />
 
 
                 {(notiPageLength > 0) ?(
-                    <div >
+                    
+                    <div className="Scrolllable"style={{overflow:"scroll",height:"91%"}} >
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {
@@ -78,6 +80,7 @@ const NotificationPage = () => {
                 {/* <LikedNotiCard/>
                 <CommentNotiCard/> */}
                 {/* <EventNotiCard/> */}
+                <BackToTopButton />
 
                 </div>
 

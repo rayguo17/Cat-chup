@@ -41,7 +41,14 @@ const MyPlansToday = (props) => {
         style={{ cursor: "pointer" }}
       >
         {/* <span placeholder="todays plans">todays plans</span> */}
-        <div className="plansTodayBox " style={{ borderRadius: "1.5rem" }}>
+        <div
+          className="plansTodayBox "
+          style={{
+            borderRadius: "0.2rem",
+            overflow: "scroll",
+            overflowX: "hidden",
+          }}
+        >
           {scheduleList.map((event, index) => {
             console.log(
               new Date(Date(event.start)).toISOString().slice(0, -14)

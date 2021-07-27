@@ -25,7 +25,7 @@ const HomePage = (props) => {
   return (
     <div
       className="col-9 px-0 mx-0 row post-and-schedule"
-      style={{ overflow: "scroll" }}
+      // style={{ overflow: "scroll" }}
     >
       <div
         className="col-9 px-0 post-page Scrolllable"
