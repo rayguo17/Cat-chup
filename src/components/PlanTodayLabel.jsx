@@ -69,11 +69,14 @@ const PlanTodayLabel = (props) => {
       <div className="event_label">
         <div className="event_label_markcolor"></div>
         <div className="event_label_title">{Info.content.title}</div>
-        {minutes > 60 ? (
+        <div style={{ fontSize: "12px" }}>{`${new Date(Info.start)
+          .toLocaleString()
+          .slice(-8, -3)}`}</div>
+        {/* {minutes > 60 ? (
           <div style={{ float: "right" }}>{hours}&nbsp;hour</div>
         ) : (
           <div style={{ float: "right" }}>{minutes}&nbsp;min</div>
-        )}
+        )} */}
       </div>
     </div>
   );
