@@ -68,7 +68,7 @@ const PlanTodayLabel = (props) => {
       })()} */}
       <div className="event_label">
         <div className="event_label_markcolor"></div>
-        <div className="event_label_title">{Info.content.caption}</div>
+        <div className="event_label_title">{Info.content.title}</div>
         {minutes > 60 ? (
           <div style={{ float: "right" }}>{hours}&nbsp;hour</div>
         ) : (
