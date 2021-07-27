@@ -37,7 +37,7 @@ const Post = (props) => {
         <span className="userName">
           <p> {userInfo.userName} </p>
         </span>
-        <div className="mood"></div>
+        <div style={{borderRadius:"5px"}}className="mood"></div>
         <CardBody>
           <CardTitle tag="h5"> {content.caption} </CardTitle>
         </CardBody>
