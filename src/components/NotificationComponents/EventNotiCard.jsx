@@ -3,13 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import userAvatar from '../../img/profileIcon.png';
+import { updateNotificationAction } from "../../redux/notification/action";
 
 export const EventNotiCard = (props)=>{
     const {noti} = props;
     const {solved} = noti;
     const history = useHistory();
+    const dispatch = useDispatch();
     const [localSolved,setLocalSolved] = useState(null);
     const [userInfo,setUserInfo] = useState(null);
     const [timeString,setTimeString] = useState(null);
@@ -43,6 +46,11 @@ export const EventNotiCard = (props)=>{
             })
             console.log('ignoreReq',ignoreReq);
             if(ignoreReq.status==200){
+                let newNoti = {
+                    ...noti
+                }
+                newNoti.solved=true;
+                dispatch(updateNotificationAction(newNoti));
                 setLocalSolved(true);
             }
         } catch (error) {

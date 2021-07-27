@@ -91,6 +91,12 @@ export const PostPage = (props)=>{
                 method:'post',
             })
             console.log('submit Comment Res',submitCommentReq);
+            let newPost = {
+              ...Info,
+              
+            }
+            newPost.content.comments=[...comments,submitCommentReq.data.commentId];
+            dispatch(updatePostAction(newPost));
             socket.emit('comment',{donor:user,recipient:Info.username,comment:comment});
             setComments([...comments,submitCommentReq.data.commentId]);
         } catch (error) {

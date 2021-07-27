@@ -20,6 +20,7 @@ import WeekIcon from "../components/WeekIcon";
 import NoNotifications from "../components/NotificationComponents/NoNotifications";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { clearAllNotiAction } from "../redux/real_time_noti/action";
+import jwtDecode from "jwt-decode";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
 // import { useEffect } from "react";
 
@@ -27,6 +28,8 @@ import { clearAllNotiAction } from "../redux/real_time_noti/action";
 
 const NotificationPage = () => {
     const notiStore = useSelector(state => state.notiListStore)
+    const socketStore = useSelector(state=>state.socketStore);
+    const socket = socketStore.webSocket;
     const [notiList, setNotiList] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
@@ -35,6 +38,12 @@ const NotificationPage = () => {
     }, [notiStore])
     useEffect(()=>{
         dispatch(clearAllNotiAction());
+        let token = localStorage.getItem('token');
+        let decode = jwtDecode(token);
+        if(socket){
+            socket.emit('clearNoti',decode.username);
+        }
+        
     },[])
 
     const notiPageLength = notiStore.notiList.length

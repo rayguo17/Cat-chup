@@ -4,13 +4,17 @@ import React from "react";
 import { Row, Col, Card, CardTitle } from "reactstrap";
 import MailIcon from "../../img/mail-icon.png";
 import { store } from "react-notifications-component";
+import { useSelector } from "react-redux";
 
 const EventCardSchedule = (props) => {
   const Info = props.Info;
+  const socketStore = useSelector(state=>state.socketStore);
+  const socket = socketStore.webSocket
   const handleJoin = async () => {
     console.log("i want to join");
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
+
     //check if people want to join is themself
 
     let newNoti = {
@@ -31,6 +35,7 @@ const EventCardSchedule = (props) => {
       });
       //console.log('send Noti res',sendNotiReq);
       if (sendNotiReq.status === 200) {
+        socket.emit('joinEvent',{donor:decode.username,recipient:Info.username});
         store.addNotification({
           title: "Join event request sent!",
           message: "Please wait for other people to confirmed your request",
