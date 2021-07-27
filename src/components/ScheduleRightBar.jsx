@@ -9,7 +9,7 @@ const ScehduleRightBar = (props) => {
   const scheduleList = scheduleListStore.scheduleList;
   const username = props.username;
   const postInfo = props.postInfo;
-  console.log(scheduleList, "hihi");
+  console.log(scheduleList, "this is scedule list");
   return (
     <div>
       <center>

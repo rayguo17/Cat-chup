@@ -5,6 +5,9 @@ import { Row, Col, Card, CardTitle } from "reactstrap";
 import MailIcon from "../../img/mail-icon.png";
 import { store } from "react-notifications-component";
 
+
+
+
 function dateIs(date2) {
   return new Date(date2);
 }
@@ -78,6 +81,7 @@ const EventCardSchedule = (props) => {
       console.log("join event error", error);
     }
   };
+
   return (
     <div>
       <Card
@@ -144,7 +148,11 @@ const EventCardSchedule = (props) => {
                     width: "100px",
                   }}
                 >
-                  {Info.start}
+                  {new Date(Info.start)
+                    .toLocaleString("en-GB")
+                    .slice(0, -10) + new Date(Info.start)
+                    .toLocaleString("en-GB")
+                    .slice(11, -3)}
                 </p>
               </div>
 
@@ -166,7 +174,11 @@ const EventCardSchedule = (props) => {
                     fontWeight: "500",
                   }}
                 >
-                  {Info.end}
+                  {new Date(Info.end)
+                    .toLocaleString("en-GB")
+                    .slice(0, -10) + new Date(Info.end)
+                    .toLocaleString("en-GB")
+                    .slice(11, -3)}
                 </p>
               </div>
 
