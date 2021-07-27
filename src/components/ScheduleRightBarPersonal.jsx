@@ -3,7 +3,7 @@ import WeekIcon from "./WeekIcon";
 import EventCard from "./EventCard";
 import { MyscheduleButton } from "./ScheduleComponents/MyScheduleButton";
 import { useSelector } from "react-redux";
-import EventCardSchedule from "./PostComponents/EventCardSchedule";
+import MyEventCardSchedule from "./PostComponents/MyEventCardSchedule";
 
 const ScehduleRightBarPerosnal = (props) => {
   const postInfo = props.postInfo;
@@ -40,7 +40,7 @@ const ScehduleRightBarPerosnal = (props) => {
               (new Date(event.start) > new Date() ||
                 new Date(event.start) == new Date())
             ) {
-              return <EventCardSchedule Info={event} key={event.id} />;
+              return <MyEventCardSchedule Info={event} key={event.id} />;
             }
           })}
         </div>
