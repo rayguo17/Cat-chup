@@ -104,7 +104,7 @@ export const ProfilePage = (props) => {
             {(isOwner === true || areFriends === true) ? 
 
                 ( postList.length > 0) ?
-                <div className="Scrolllable" style={{overflow:"scroll", overflowX:"hidden",height:"66vh"}}>
+                <div className="Scrolllable" style={{overflow:"scroll", overflowX:"hidden",height:"67vh"}}>
                 <ProfilePost
                 postList={postList}
                 isOwner={isOwner}

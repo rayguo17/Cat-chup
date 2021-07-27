@@ -39,12 +39,13 @@ const NotificationPage = () => {
 
         
         <div className="col-9 px-0 mx-0 row notificationOverflow">
-            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf", overflow:"hidden"}}>
-                <NotificationHeader style={{overflow:"hidden"}}  />
+            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf", overflow:"hidden", height:"100vh"}}>
+                <NotificationHeader  />
 
 
                 {(notiPageLength > 0) ?(
-                    <div style={{overflow:"scroll", overflowX:"hidden",height:"50%"}} >
+                    
+                    <div style={{overflow:"scroll",height:"91%"}} >
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {
