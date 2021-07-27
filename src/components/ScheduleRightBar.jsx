@@ -33,7 +33,12 @@ const ScehduleRightBar = (props) => {
 
         <div>
           {postList.map((event, index) => {
-            if (event.type === "event" && username !== event.owner_name) {
+            if (
+              event.type === "event" &&
+              username !== event.owner_name &&
+              (new Date(event.content.start) > new Date() ||
+                new Date(event.content.start) == new Date())
+            ) {
               return <EventCardSchedule Info={event} key={event.id} />;
             }
           })}

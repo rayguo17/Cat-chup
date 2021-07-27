@@ -7,21 +7,21 @@ const MyPlansToday = (props) => {
   const username = props.username;
   const scheduleList = scheduleListStore.scheduleList;
   const postInfo = props.postInfo;
-  const today = new Date();
+  const today = new Date().toLocaleString().slice(0, -10);
   console.log("today", today);
-  const today_year = today.getFullYear();
-  const today_month = today.getMonth();
-  const today_day = today.getDate();
-  var today_date;
-  if (today_month < 10) {
-    if (today_day < 10) {
-      today_date = `${today_year}-0${today_month + 1}-0${today_day}`;
-    } else {
-      today_date = `${today_year}-0${today_month + 1}-${today_day}`;
-    }
-  } else {
-    today_date = `${today_year}-${today_month + 1}-${today_day}`;
-  }
+  // const today_year = today.getFullYear();
+  // const today_month = today.getMonth();
+  // const today_day = today.getDate();
+  // var today_date;
+  // if (today_month < 10) {
+  //   if (today_day < 10) {
+  //     today_date = `${today_year}-0${today_month + 1}-0${today_day}`;
+  //   } else {
+  //     today_date = `${today_year}-0${today_month + 1}-${today_day}`;
+  //   }
+  // } else {
+  //   today_date = `${today_year}-${today_month + 1}-${today_day}`;
+  // }
 
   // console.log("today_date", today_date);
 
@@ -50,16 +50,12 @@ const MyPlansToday = (props) => {
           }}
         >
           {scheduleList.map((event, index) => {
-            console.log(
-              new Date(Date(event.start)).toISOString().slice(0, -14)
-            );
             if (
               props.username === event.creator &&
               (event.type === "event" || event.type === "schedule") &&
-              new Date(Date(event.start)).toISOString().slice(0, -14) ===
-                today_date
+              new Date(event.start).toLocaleString().slice(0, -10) === today
             ) {
-              return <PlanTodayLabel Info={event} />;
+              return <PlanTodayLabel Info={event} key={event.id} />;
             }
           })}
         </div>
