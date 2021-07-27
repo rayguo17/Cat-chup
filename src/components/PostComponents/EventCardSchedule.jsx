@@ -112,7 +112,7 @@ const EventCardSchedule = (props) => {
                 width: "100px",
               }}
             >
-              {Info.userName}
+              {Info.creator}
             </p>
           </Col>
           <Col xs="10">
@@ -134,7 +134,7 @@ const EventCardSchedule = (props) => {
                     display: "flex",
                   }}
                 >
-                  {getDayOfWeek(dateIs(Info.content.start))} &nbsp;
+                  {getDayOfWeek(dateIs(Info.start))} &nbsp;
                 </p>
                 <p
                   style={{
@@ -144,7 +144,7 @@ const EventCardSchedule = (props) => {
                     width: "100px",
                   }}
                 >
-                  {Info.content.start}
+                  {Info.start}
                 </p>
               </div>
 
@@ -166,7 +166,7 @@ const EventCardSchedule = (props) => {
                     fontWeight: "500",
                   }}
                 >
-                  {Info.content.end}
+                  {Info.end}
                 </p>
               </div>
 
