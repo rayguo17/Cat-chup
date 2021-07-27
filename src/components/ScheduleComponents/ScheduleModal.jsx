@@ -7,7 +7,7 @@ const ScheduleModal = ({ handleClose, show, children }) => {
     <div className={showHideClassName}>
       <div className="modal-container">
         {children}
-        <a href="javascript:;" className="modal-close" onClick={handleClose}>
+        <a style={{cursor:'pointer'}} className="modal-close" onClick={handleClose}>
           close
         </a>
       </div>

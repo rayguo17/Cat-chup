@@ -9,7 +9,8 @@ const MyPlansToday = (props) => {
   const postInfo = props.postInfo;
   const history = useHistory();
   const today = new Date();
-  console.log("today", today);
+  //console.log("today", today);
+  
   const today_year = today.getFullYear();
   const today_month = today.getMonth();
   const today_day = today.getDate();
@@ -24,7 +25,7 @@ const MyPlansToday = (props) => {
     today_date = `${today_year}-${today_month + 1}-${today_day}`;
   }
 
-  // console.log("today_date", today_date);
+  console.log("today_date", today_date);
 
   const routeChange = () => {
     // let path = "/schedule";
@@ -52,16 +53,20 @@ const MyPlansToday = (props) => {
           }}
         >
           {scheduleList.map((event, index) => {
+            let startTime = new Date(event.start);
+            startTime.setHours(startTime.getHours()+8);
             console.log(
-              new Date(Date(event.start)).toISOString().slice(0, -14)
-            );
+              'plan label',startTime.toISOString()
+            ,startTime.toISOString().slice(0, -14) ===
+            today_date);
             if (
-              props.username === event.creator &&
+              props.username === event.executor &&
               (event.type === "event" || event.type === "schedule") &&
-              new Date(Date(event.start)).toISOString().slice(0, -14) ===
+              startTime.toISOString().slice(0, -14) ===
                 today_date
             ) {
-              return <PlanTodayLabel Info={event} />;
+              return <PlanTodayLabel Info={event} 
+                  key={event.id}/>;
             }
           })}
         </div>
