@@ -45,7 +45,7 @@ const NavBarProfileBar = (props) => {
                     <span style={{ verticalAlign: "20px", marginLeft: "10px", fontSize: "23px", fontWeight: "400" }}>{userInfo.username}</span>
                 </button>
                 {toggle && (
-                    <div className="logoutToggle" style={{ position: "absolute", bottom: "60px", left: "7px" }}>
+                    <div className="logoutToggle" style={{ position: "absolute", bottom: "60px", left: "100px" }}>
                         <Logout />
                     </div>
                 )}

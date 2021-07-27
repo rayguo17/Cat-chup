@@ -26,7 +26,7 @@ const HomePage = (props) => {
     
     <div
       className="col-9 px-0 mx-0 row post-and-schedule"
-      style={{ overflow: "scroll" }}
+      // style={{ overflow: "scroll" }}
     >
       <div className="col-9 px-0 post-page Scrolllable" style={{ maxHeight: "100vh", backgroundColor:"#dfdfdf" }}>
         <CreatePostBtnContainer toggle={toggleModal} username={username} />

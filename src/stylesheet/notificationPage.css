@@ -2,6 +2,11 @@
 .body {
   margin: 0px;
   padding: 0px;
+  overflow: hidden !important; /* Hide scrollbars */
+}
+
+.notificationOverflow {
+  overflow: hidden !important;
 }
 .notificationHeaderContainer {
   background-color: #96d9ff !important;
@@ -10,11 +15,6 @@
   text-align: left;
   position: sticky;
   z-index: 10;
-}
-
-.notificationBodyContainer {
-  /* margin-top: 80px !important; */
-  /* background-color: orange; */
 }
 
 .notificationAvatar {

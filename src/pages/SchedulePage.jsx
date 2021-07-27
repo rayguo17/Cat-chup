@@ -254,9 +254,9 @@ export default class SchedulePage extends React.Component {
           <div>
             <div
               className="myschedule-header"
-              style={{ backgroundColor: "aquamarine", marginBottom: "10px" }}
+              style={{color:"white" ,backgroundColor: "#96d9ff",padding:"20px", marginBottom: "10px" }}
             >
-              <span style={{ fontSize: "50px" }}>Schedule</span>
+              <span style={{ fontSize: "28px" }}>Schedule</span>
             </div>
             {/* <WeekIcon /> */}
             <div

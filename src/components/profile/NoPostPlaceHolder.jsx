@@ -11,7 +11,7 @@ import catLogo from '../../img/cat-chup_logo.png'
                  color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white", width:"32vw",
                  backgroundColor:"#dfdfdf"}}>
                      You currently have no posts or events!</p>
-                <img style={{padding:"10px",alignSelf:"center",height:"50vh"}} src={catLogo} alt="catlogo"></img>
+                <img style={{padding:"10px",alignSelf:"center",height:"40vh"}} src={catLogo} alt="catlogo"></img>
             </div>
             </div>
      )
