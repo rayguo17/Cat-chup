@@ -5,11 +5,10 @@ import { useSelector } from "react-redux";
 import EventCardSchedule from "./PostComponents/EventCardSchedule";
 
 const ScehduleRightBar = (props) => {
-  const scheduleListStore = useSelector((state) => state.scheduleListStore);
-  const scheduleList = scheduleListStore.scheduleList;
+  const postListStore = useSelector((state) => state.postListStore);
   const username = props.username;
+  const postList = postListStore.postList;
   const postInfo = props.postInfo;
-  console.log(scheduleList, "this is scedule list");
   return (
     <div>
       <center>
@@ -32,15 +31,16 @@ const ScehduleRightBar = (props) => {
         </div>
 
         <div>
-          {scheduleList.map((event, index) => {
+          {postList.map((event, index) => {
             if (
               event.type === "event" &&
-              username !== event.creator &&
-              (new Date(event.start) > new Date() ||
-                new Date(event.start) == new Date())
+              username !== event.username &&
+              (new Date(event.content.start) > new Date() ||
+                new Date(event.content.start) == new Date())
             ) {
               return <EventCardSchedule Info={event} key={event.id} />;
             }
+            // return <EventCardSchedule Info={event} key={event.id} />;
           })}
         </div>
       </center>
