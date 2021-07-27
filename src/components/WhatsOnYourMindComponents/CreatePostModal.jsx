@@ -235,6 +235,7 @@ export const CreatePostModal = (props) => {
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           className={classes.textField}
+                          inputProps={{ min: formik.values.start }}
                         />
                       </div>
                     ) : null}
