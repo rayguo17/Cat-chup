@@ -44,7 +44,7 @@ export const EventNotiCard = (props)=>{
                 url:process.env.REACT_APP_API_SERVER+'/api/noti/ignore/'+noti.id,
                 headers:{Authorization:`Bearer ${token}`}
             })
-            console.log('ignoreReq',ignoreReq);
+            //console.log('ignoreReq',ignoreReq);
             if(ignoreReq.status==200){
                 let newNoti = {
                     ...noti
@@ -68,6 +68,30 @@ export const EventNotiCard = (props)=>{
         //window.location.href = '/'+noti.donor
 
     }
+    const handleAccept = async (e)=>{
+        e.stopPropagation();
+        console.log('accept request');
+        let token = localStorage.getItem('token');
+        try {
+            let newData = {
+                executor:noti.donor,
+                post_id:noti.content.postId,
+            }
+
+            let acceptReq = await axios({
+                url:process.env.REACT_APP_API_SERVER+'/api/schedule/accept',
+                headers:{Authorization:`Bearer ${token}`},
+                method:'post',
+                data:newData
+            })
+
+            console.log('accept req res',acceptReq);
+        } catch (error) {
+            console.log('accept join req error',error);
+
+        }
+        
+    }
     return (
         
         <div onClick={handleRedirect} style={{cursor:'pointer'}} >
@@ -82,7 +106,7 @@ export const EventNotiCard = (props)=>{
             <div className='col-7 px-0'>
                 <p>{noti.donor} want to join your event!</p>
                 <div className='d-flex justify-content-around'>
-                <button disabled={localSolved||solved?true:false} className='btn btn-success' >Accept</button>
+                <button disabled={localSolved||solved?true:false} className='btn btn-success' onClick={handleAccept} >Accept</button>
                 {(localSolved||solved)?null:<button onClick={handleIgnore} className='btn btn-danger'>Decline</button>}
                 </div>
                 
