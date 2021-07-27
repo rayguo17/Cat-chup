@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
 import WeekIcon from "../components/WeekIcon";
+import BackToTopButton from "../components/BackToTopButton";
 import NoNotifications from "../components/NotificationComponents/NoNotifications";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
@@ -45,7 +46,7 @@ const NotificationPage = () => {
 
                 {(notiPageLength > 0) ?(
                     
-                    <div style={{overflow:"scroll",height:"91%"}} >
+                    <div className="Scrolllable"style={{overflow:"scroll",height:"91%"}} >
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {
@@ -79,6 +80,7 @@ const NotificationPage = () => {
                 {/* <LikedNotiCard/>
                 <CommentNotiCard/> */}
                 {/* <EventNotiCard/> */}
+                <BackToTopButton />
 
                 </div>
 

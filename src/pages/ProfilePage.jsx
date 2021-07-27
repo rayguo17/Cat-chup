@@ -4,6 +4,7 @@ import { useState } from "react";
 import { PersonalProfile } from "../components/profile/PersonalProfile";
 import jwtDecode from "jwt-decode";
 import { useSelector, useDispatch } from "react-redux";
+import BackToTopButton from "../components/BackToTopButton";
 import ScehduleRightBarPersonal from "../components/ScheduleRightBarPersonal";
 
 import ProfilePost from "../components/profile/ProfilePost";
@@ -112,6 +113,8 @@ export const ProfilePage = (props) => {
                 postInfo={postInfo}
                 pageOwner={props.match.params.username}
                 />
+                <BackToTopButton />
+
                 </div>: <div><NoPostsPlaceHolder /></div>
                 
         
