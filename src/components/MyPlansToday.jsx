@@ -7,8 +7,8 @@ const MyPlansToday = (props) => {
   const username = props.username;
   const scheduleList = scheduleListStore.scheduleList;
   const postInfo = props.postInfo;
-  const today = new Date().toLocaleString().slice(0, -10);
-  console.log("today", today);
+  const today = new Date().toLocaleString("en-GB").slice(0, -10);
+  // console.log("today", new Date().length);
   // const today_year = today.getFullYear();
   // const today_month = today.getMonth();
   // const today_day = today.getDate();
@@ -53,7 +53,8 @@ const MyPlansToday = (props) => {
             if (
               props.username === event.creator &&
               (event.type === "event" || event.type === "schedule") &&
-              new Date(event.start).toLocaleString().slice(0, -10) === today
+              new Date(event.start).toLocaleString("en-GB").slice(0, -10) ===
+                today
             ) {
               return <PlanTodayLabel Info={event} key={event.id} />;
             }

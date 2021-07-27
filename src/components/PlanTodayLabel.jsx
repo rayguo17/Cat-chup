@@ -8,6 +8,7 @@ const PlanTodayLabel = (props) => {
   var diffInSeconds = Math.abs(endTime - startTime) / 1000;
   var minutes = Math.floor(diffInSeconds / 60);
   var hours = Math.floor((diffInSeconds / 60 / 60) % 24);
+  console.log("starttime", startTime.toLocaleString("en-GB"));
 
   return (
     <div className="planTodayBox_card">
@@ -70,8 +71,8 @@ const PlanTodayLabel = (props) => {
         <div className="event_label_markcolor"></div>
         <div className="event_label_title">{Info.content.title}</div>
         <div style={{ fontSize: "12px" }}>{`${new Date(Info.start)
-          .toLocaleString()
-          .slice(-8, -3)}`}</div>
+          .toLocaleString("en-GB")
+          .slice(11, -3)}`}</div>
         {/* {minutes > 60 ? (
           <div style={{ float: "right" }}>{hours}&nbsp;hour</div>
         ) : (
