@@ -9,7 +9,6 @@ const ScehduleRightBar = (props) => {
   const username = props.username;
   const postList = postListStore.postList;
   const postInfo = props.postInfo;
-
   return (
     <div>
       <center>

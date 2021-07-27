@@ -144,7 +144,11 @@ const MyEventCardSchedule = (props) => {
                     width: "100px",
                   }}
                 >
-                  {Info.start}
+                  {new Date(Info.start)
+                    .toLocaleString("en-GB")
+                    .slice(0, -10) + new Date(Info.start)
+                    .toLocaleString("en-GB")
+                    .slice(11, -3)}
                 </p>
               </div>
 
@@ -166,7 +170,11 @@ const MyEventCardSchedule = (props) => {
                     fontWeight: "500",
                   }}
                 >
-                  {Info.end}
+                  {new Date(Info.end)
+                    .toLocaleString("en-GB")
+                    .slice(0, -10) + new Date(Info.end)
+                    .toLocaleString("en-GB")
+                    .slice(11, -3)}
                 </p>
               </div>
 
