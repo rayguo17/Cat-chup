@@ -8,22 +8,37 @@ const MyPlansToday = (props) => {
   const scheduleList = scheduleListStore.scheduleList;
   const postInfo = props.postInfo;
   const history = useHistory();
-  const today = new Date();
-  //console.log("today", today);
+  // const today = new Date();
+  // //console.log("today", today);
   
-  const today_year = today.getFullYear();
-  const today_month = today.getMonth();
-  const today_day = today.getDate();
-  var today_date;
-  if (today_month < 10) {
-    if (today_day < 10) {
-      today_date = `${today_year}-0${today_month + 1}-0${today_day}`;
-    } else {
-      today_date = `${today_year}-0${today_month + 1}-${today_day}`;
-    }
-  } else {
-    today_date = `${today_year}-${today_month + 1}-${today_day}`;
-  }
+  // const today_year = today.getFullYear();
+  // const today_month = today.getMonth();
+  // const today_day = today.getDate();
+  // var today_date;
+  // if (today_month < 10) {
+  //   if (today_day < 10) {
+  //     today_date = `${today_year}-0${today_month + 1}-0${today_day}`;
+  //   } else {
+  //     today_date = `${today_year}-0${today_month + 1}-${today_day}`;
+  //   }
+  // } else {
+  //   today_date = `${today_year}-${today_month + 1}-${today_day}`;
+  // }
+  const today = new Date().toLocaleString("en-GB").slice(0, -10);
+  // console.log("today", new Date().length);
+  // const today_year = today.getFullYear();
+  // const today_month = today.getMonth();
+  // const today_day = today.getDate();
+  // var today_date;
+  // if (today_month < 10) {
+  //   if (today_day < 10) {
+  //     today_date = `${today_year}-0${today_month + 1}-0${today_day}`;
+  //   } else {
+  //     today_date = `${today_year}-0${today_month + 1}-${today_day}`;
+  //   }
+  // } else {
+  //   today_date = `${today_year}-${today_month + 1}-${today_day}`;
+  // }
 
   console.log("today_date", today_date);
 
@@ -53,20 +68,13 @@ const MyPlansToday = (props) => {
           }}
         >
           {scheduleList.map((event, index) => {
-            let startTime = new Date(event.start);
-            startTime.setHours(startTime.getHours()+8);
-            console.log(
-              'plan label',startTime.toISOString()
-            ,startTime.toISOString().slice(0, -14) ===
-            today_date);
             if (
               props.username === event.executor &&
               (event.type === "event" || event.type === "schedule") &&
-              startTime.toISOString().slice(0, -14) ===
-                today_date
+              new Date(event.start).toLocaleString("en-GB").slice(0, -10) ===
+                today
             ) {
-              return <PlanTodayLabel Info={event} 
-                  key={event.id}/>;
+              return <PlanTodayLabel Info={event} key={event.id} />;
             }
           })}
         </div>

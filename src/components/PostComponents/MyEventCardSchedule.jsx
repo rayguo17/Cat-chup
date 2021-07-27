@@ -4,19 +4,13 @@ import React from "react";
 import { Row, Col, Card, CardTitle } from "reactstrap";
 import MailIcon from "../../img/mail-icon.png";
 import { store } from "react-notifications-component";
-import { useSelector } from "react-redux";
-
-
-
 
 function dateIs(date2) {
   return new Date(date2);
 }
 
-const EventCardSchedule = (props) => {
+const MyEventCardSchedule = (props) => {
   const Info = props.Info;
-  const socketStore = useSelector(state=>state.socketStore);
-  const socket = socketStore.webSocket
   function getDayOfWeek(date) {
     var week;
     if (date.getDay() == 0) week = "SUN";
@@ -32,7 +26,6 @@ const EventCardSchedule = (props) => {
     console.log("i want to join");
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
-
     //check if people want to join is themself
 
     let newNoti = {
@@ -53,7 +46,6 @@ const EventCardSchedule = (props) => {
       });
       //console.log('send Noti res',sendNotiReq);
       if (sendNotiReq.status === 200) {
-        socket.emit('joinEvent',{donor:decode.username,recipient:Info.username});
         store.addNotification({
           title: "Join event request sent!",
           message: "Please wait for other people to confirmed your request",
@@ -86,7 +78,6 @@ const EventCardSchedule = (props) => {
       console.log("join event error", error);
     }
   };
-
   return (
     <div>
       <Card
@@ -121,7 +112,7 @@ const EventCardSchedule = (props) => {
                 width: "100px",
               }}
             >
-              {Info.username}
+              {Info.creator}
             </p>
           </Col>
           <Col xs="10">
@@ -143,7 +134,7 @@ const EventCardSchedule = (props) => {
                     display: "flex",
                   }}
                 >
-                  {getDayOfWeek(dateIs(Info.content.start))} &nbsp;
+                  {getDayOfWeek(dateIs(Info.start))} &nbsp;
                 </p>
                 <p
                   style={{
@@ -153,9 +144,9 @@ const EventCardSchedule = (props) => {
                     width: "100px",
                   }}
                 >
-                  {new Date(Info.content.start)
+                  {new Date(Info.start)
                     .toLocaleString("en-GB")
-                    .slice(0, -10) + new Date(Info.content.start)
+                    .slice(0, -10) + new Date(Info.start)
                     .toLocaleString("en-GB")
                     .slice(11, -3)}
                 </p>
@@ -179,9 +170,9 @@ const EventCardSchedule = (props) => {
                     fontWeight: "500",
                   }}
                 >
-                  {new Date(Info.content.end)
+                  {new Date(Info.end)
                     .toLocaleString("en-GB")
-                    .slice(0, -10) + new Date(Info.content.end)
+                    .slice(0, -10) + new Date(Info.end)
                     .toLocaleString("en-GB")
                     .slice(11, -3)}
                 </p>
@@ -235,4 +226,4 @@ const EventCardSchedule = (props) => {
   );
 };
 
-export default EventCardSchedule;
+export default MyEventCardSchedule;

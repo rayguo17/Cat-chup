@@ -24,27 +24,20 @@ const FriendsPage = (props) => {
   };
 
   useEffect(() => {
-    // let dummyFriends={
-    //     "All Friends":[1,2,3,4],
-    //     "Family":[4,6,3,9],
-    //     "Work":[5,2,4],
-    //     "School":[3,2,45,45],
-    //     "Close Friends":[1,33,45,42,34],
-    // }
+  
     let friendList = friendListStore.friendList;
     setFriendsList(friendList);
     let key = Object.keys(friendList);
-    // let value = Object.values(friendList)[0].length;
-    // // console.log('friends', friendList);
+ 
     // console.log("this is friendlist**********************",value)
     setActiveTab(key[0]);
   }, [friendListStore]);
 
-  const friendLength = Object.values(friendListStore.friendList)[0].length;
+  const friendLength = Object.values(friendListStore.friendList)[0];
 
   return (
     <div className="col-9 px-0 row mx-0 " style={{ overflow: "hidden" }}>
-      {friendLength > 0 ? (
+      {friendLength && friendLength.length  > 0 ? (
         <div
           style={{ backgroundColor: "#dfdfdf", maxHeight: "100vh" }}
           className="col-9 px-0 friends-page Scrolllable"
