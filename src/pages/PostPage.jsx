@@ -167,7 +167,7 @@ export const PostPage = (props)=>{
                 <span className="userName">
                   <p>{Info?Info.username:null}</p>
                 </span>
-                <div className="mood"></div>
+                <div style={{borderRadius: "5px"}} className="mood"></div>
                 <CardBody></CardBody>
                 <CardBody>
                   <div className="card-content">
