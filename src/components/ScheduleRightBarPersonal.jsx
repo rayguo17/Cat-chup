@@ -2,10 +2,16 @@ import "../stylesheet/scheduleArea.css";
 import WeekIcon from "./WeekIcon";
 import EventCard from "./EventCard";
 import { MyscheduleButton } from "./ScheduleComponents/MyScheduleButton";
+import { useSelector } from "react-redux";
+import EventCardSchedule from "./PostComponents/EventCardSchedule";
 
 const ScehduleRightBarPerosnal = (props) => {
   const postInfo = props.postInfo;
+  const scheduleListStore = useSelector((state) => state.scheduleListStore);
+  const scheduleList = scheduleListStore.scheduleList;
+  const username = props.username;
   // console.log(postInfo, "hihi");
+  console.log("name", username);
   return (
     <div>
       <center>
@@ -19,7 +25,7 @@ const ScehduleRightBarPerosnal = (props) => {
           }}
         >
           <MyscheduleButton />
-          <WeekIcon />
+          {/* <WeekIcon /> */}
           <hr
             style={{
               height: 5,
@@ -28,11 +34,11 @@ const ScehduleRightBarPerosnal = (props) => {
         </div>
 
         <div>
-          {/* {postInfo.map((Info, index) => {
-            if (Info.type === "event") {
-              return <EventCard Info={Info} />;
+          {scheduleList.map((event, index) => {
+            if (event.creator !== username) {
+              return <EventCardSchedule Info={event} key={event.id} />;
             }
-          })} */}
+          })}
         </div>
       </center>
     </div>

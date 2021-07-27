@@ -428,12 +428,22 @@ export const ContentPage = () => {
                   <FriendsPage postInfo={postInfo} username={username} />
                 )}
               />
-              <Route path="/notifications" component={NotificationPage} />
+              <Route
+                path="/notifications"
+                component={NotificationPage}
+                username={username}
+              />
               <Route
                 path="/schedule"
-                render={() => <SchedulePage postInfo={postInfo} />}
+                render={() => (
+                  <SchedulePage postInfo={postInfo} username={username} />
+                )}
               />
-              <Route path="/:username" component={ProfilePage} />
+              <Route
+                path="/:username"
+                component={ProfilePage}
+                username={username}
+              />
             </Switch>
           </Row>
         </Container>

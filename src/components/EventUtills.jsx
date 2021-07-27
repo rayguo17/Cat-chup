@@ -362,6 +362,25 @@ const PassEventData = () => {
   });
 };
 
+// const PassEventData = () => {
+//   const scheduleListStore = useSelector((state) => state.scheduleListStore);
+//   const scheduleList = scheduleListStore.scheduleList;
+
+//   scheduleList.map((schedule, index) => {
+//     if (schedule.type == "event" || "schedule") {
+//       INITIAL_EVENTS.push({
+//         id: schedule.id,
+//         title: schedule.title,
+//         start:
+//    new Date(schedule.start).toLocaleString().slice(0, -10) +
+// `T${new Date(schedule.start).toLocaleString().slice(-8, -3)}`,
+//         end:
+//           new Date(schedule.end).toLocaleString().slice(0, -10) +
+//           `T${schedule.start}`,
+//       });
+//     }
+//   });
+// };
 export const INITIAL_EVENTS = [
   // {
   //   id: createEventId(),

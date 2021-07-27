@@ -9,17 +9,18 @@ const ScheduleDetail = (props) => {
   // console.log("SceduleDetail props", props.postInfo[6]);
 
   //this props.postInfo[6] will change depending on data..example....props.postInfo[selected  schedule/event id]
-  const selected = props.Info;
+  const selected = props.scheduleList;
+  const schedule = props.scheduleList;
   // console.log("selected,", selected);
 
   // console.log("SceduleDetail pic", selected.content.pictures[0].data_url);
   const [selectedDate, setSelectedDate] = useState(selected.content.eventDate);
-  const [selectedText, setSelectedText] = useState(selected.content.text);
+  const [selectedText, setSelectedText] = useState(selected.content.caption);
   const [selectedStartTime, setselectedStartTime] = useState(
-    selected.content.startTime
+    new Date(Date(selected.content.start)).toISOString().slice(0, -5)
   );
   const [selectedEndTime, setselectedEndTime] = useState(
-    selected.content.endTime
+    new Date(Date(selected.content.end)).toISOString().slice(0, -5)
   );
   const [scheduleList, SetScheduleList] = useState([]);
 
@@ -34,6 +35,17 @@ const ScheduleDetail = (props) => {
     // this moment : scheduleList = [{type:'schedule'}]
   }, []);
 
+  const handleChange = (e) => {
+    if (e.target.name == "start") {
+      console.log(e.target);
+      setselectedStartTime(e.target.value);
+    }
+    if (e.target.name == "end") {
+      console.log(e.target);
+      setselectedEndTime(e.target.value);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let newSchedule = {};
@@ -46,9 +58,9 @@ const ScheduleDetail = (props) => {
     // console.log("selected StartTime",selectedStartTime)
     // console.log("selected endtime",selectedEndTime)
   };
-
+  console.log(schedule);
   // console.log(selected.content.pictures);
-
+  console.log(new Date(schedule.end).toLocaleString().slice(0, -10));
   return (
     <div
       className={
@@ -63,7 +75,7 @@ const ScheduleDetail = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <div style={{ fontSize: "32px", backgroundColor: "#96d9ff" }}>
-            {selected.content.caption}
+            {schedule.content.title}
           </div>
 
           {/* //if event conditional render */}
@@ -73,14 +85,14 @@ const ScheduleDetail = (props) => {
           {selected.type === "event" ? (
             <div style={{ textAlign: "center" }}>
               <p style={{ color: "black", backgroundColor: "grey" }}>
-                Event by {selected.userInfo.userName}
+                Event by {selected.creator}
               </p>
               <div>
-                <img
+                {/* <img
                   style={{ width: "80%" }}
                   src={selected.content.pictures[0].data_url}
                   alt="pic"
-                ></img>
+                ></img> */}
               </div>
             </div>
           ) : null}
@@ -93,69 +105,26 @@ const ScheduleDetail = (props) => {
             }}
           >
             {" "}
-            {selected.content.eventDateWeek}
+            {/* {selected.content.eventDateWeek} */}
           </div>
 
-          {/* <div
-            style={{
-              textAlign: "start",
-              paddingLeft: "15px",
-              paddingTop: "2px",
-            }}
-          >
-            date:{" "}
-            <input
-              required
-              type="date"
-              onChange={(e) => {
-                setSelectedDate(e.target.value);
-              }}
-              value={selectedDate}
-            ></input>
-          </div>
-          <div
-            style={{
-              textAlign: "start",
-              paddingLeft: "15px",
-              paddingTop: "2px",
-            }}
-          >
-            time:{" "}
-            <input
-              required
-              type="time"
-              value={selectedStartTime}
-              onChange={(e) => {
-                setselectedStartTime(e.target.value);
-              }}
-            ></input>
-            -
-            <input
-              required
-              type="time"
-              value={selectedEndTime}
-              onChange={(e) => {
-                setselectedEndTime(e.target.value);
-              }}
-            ></input>
-          </div> */}
           <TextField
             id="start"
             name="start"
             label="start time"
             type="datetime-local"
-            // value={formik.values.start}
+            value={selectedStartTime}
             // onBlur={formik.handleBlur}
             // className={classes.textField}
-            // onChange={formik.handleChange}
+            onChange={handleChange}
           />
           <TextField
             id="end"
             name="end"
             label="end time"
             type="datetime-local"
-            // value={formik.values.end}
-            // onChange={formik.handleChange}
+            value={selectedEndTime}
+            onChange={handleChange}
             // onBlur={formik.handleBlur}
             // className={classes.textField}
           />
