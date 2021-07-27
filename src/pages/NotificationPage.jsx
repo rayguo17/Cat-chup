@@ -34,17 +34,17 @@ const NotificationPage = () => {
 
     const notiPageLength = notiStore.notiList.length
 
-    console.log("not link************************",notiPageLength)
+    // console.log("not link************************",notiPageLength)
     return (
 
         
-        <div className="col-9 px-0 mx-0 row">
-            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf"}}>
-                <NotificationHeader  />
+        <div className="col-9 px-0 mx-0 row notificationOverflow">
+            <div className="col-9 px-0" style={{backgroundColor:"#dfdfdf", overflow:"hidden"}}>
+                <NotificationHeader style={{overflow:"hidden"}}  />
 
 
                 {(notiPageLength > 0) ?(
-                    <div >
+                    <div style={{overflow:"scroll", overflowX:"hidden",height:"50%"}} >
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {

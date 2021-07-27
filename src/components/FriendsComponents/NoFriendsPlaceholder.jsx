@@ -10,7 +10,7 @@ import catLogo from '../../img/cat-chup_logo.png'
                  fontWeight:"700",borderBottom:"2px solid #96d9ff",
                  color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white", width:"32vw",
                  backgroundColor:"#dfdfdf"}}>Add some friends to start sharing your thoughts!</p>
-                <img style={{padding:"10px",alignSelf:"center",height:"50vh"}} src={catLogo} alt="catlogo"></img>
+                <img style={{padding:"10px",alignSelf:"center",height:"40vh"}} src={catLogo} alt="catlogo"></img>
             </div>
             </div>
      )
