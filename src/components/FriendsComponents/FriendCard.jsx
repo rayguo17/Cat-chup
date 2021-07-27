@@ -34,7 +34,7 @@ export const FriendCard = (props) => {
             <Card className="friendsAreaComponent">
 
                 <CardBody className="friendCardBody row mx-0">
-                    <div className='col-3 px-0' style={{ padding: '10px', width: '60px', height: '60px', borderRadius: '50%', backgroundPositionY: 'center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${userInfo ? process.env.REACT_APP_API_SERVER + userInfo.imgPath : userAvatar})`, backgroundSize: 'contain' }}>
+                    <div className='col-3 px-0' style={{ padding: '10px', width: '60px', height: '60px', borderRadius: '50%', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundImage: `url(${userInfo ? process.env.REACT_APP_API_SERVER + userInfo.imgPath : userAvatar})`, backgroundSize: 'cover' }}>
 
                     </div>
                     <div className='col-6 px-0' >

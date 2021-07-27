@@ -46,7 +46,7 @@ export function loadPostThunk(username){
                 url:process.env.REACT_APP_API_SERVER+'/api/post/'+username,
                 headers: { Authorization: `Bearer ${token}` },
             })
-            console.log('load post req', getPostReq);
+            //console.log('load post req', getPostReq);
             dispatch(loadPostSuccessAction(getPostReq.data))
         } catch (error) {
             console.log('load post thunk error',error)

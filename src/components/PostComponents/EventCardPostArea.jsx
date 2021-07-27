@@ -40,7 +40,7 @@ export const EventCardPostArea = (props)=>{
     let time = new Date(eventInfo.created_at);
     let postTime = time.toLocaleDateString()+' '+time.toLocaleTimeString();
     useEffect(()=>{
-        console.log('event info in card',eventInfo);
+        //console.log('event info in card',eventInfo);
         setLikes(eventInfo.content.likes);
     },[])
 
@@ -53,14 +53,14 @@ export const EventCardPostArea = (props)=>{
     }
     const handleLiked=async (e)=>{
       e.stopPropagation();
-      console.log('liked process');
-      console.log('like list',likes)
+      //console.log('liked process');
+      //console.log('like list',likes)
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       let username = decode.username;
       let match = false;
       match = likes.find(obj=>obj.user==username);
-      console.log('match like',match);
+      //console.log('match like',match);
       if(match){
         //cancel like
       }else{
@@ -70,7 +70,7 @@ export const EventCardPostArea = (props)=>{
           headers: { Authorization: `Bearer ${token}` },
           method:'post'
         })
-        console.log('sendLike req',sendLikedReq);
+        //console.log('sendLike req',sendLikedReq);
         if(sendLikedReq.status==200){
           let newPost = {
             ...eventInfo,
@@ -86,7 +86,7 @@ export const EventCardPostArea = (props)=>{
       }
     }
     const handleJoin = async ()=>{
-      console.log('i want to join');
+      //console.log('i want to join');
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       //check if people want to join is themself

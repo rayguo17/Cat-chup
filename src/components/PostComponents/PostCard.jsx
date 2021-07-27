@@ -113,8 +113,7 @@ const PostCard = (props) => {
           </div>
 
           <div>
-            <a style={{textDecoration:"none"}} href={"/post/" + postInfo.id}>
-              <button style={{fontSize:"24px", fontWeight:"700",border:"none", color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white"}} onClick={handleLiked} >
+              <button style={{fontSize:"24px", fontWeight:"700",border:"none", color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white"}}>
                 <p>{postInfo.content.comments.length} Comment</p>
                 <img
                   src={CommentIcon}
@@ -122,7 +121,6 @@ const PostCard = (props) => {
                   alt="Comment"
                 />
               </button>
-            </a>
           </div>
         </div>
       </Card>

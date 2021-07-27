@@ -21,6 +21,7 @@ import NoNotifications from "../components/NotificationComponents/NoNotification
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { clearAllNotiAction } from "../redux/real_time_noti/action";
 import jwtDecode from "jwt-decode";
+import { AcceptEventCard } from "../components/NotificationComponents/AcceptEventCard";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
 // import { useEffect } from "react";
 
@@ -33,7 +34,7 @@ const NotificationPage = () => {
     const [notiList, setNotiList] = useState([]);
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log('inside notification page',notiStore.notiList.length);
+        //console.log('inside notification page',notiStore.notiList.length);
         setNotiList(notiStore.notiList);
     }, [notiStore])
     useEffect(()=>{
@@ -59,6 +60,7 @@ const NotificationPage = () => {
 
                 {(notiPageLength > 0) ?(
                     <div style={{overflow:"scroll", overflowX:"hidden",height:"50%"}} >
+
                 {
                     notiList.map((noti, index) => {
                         if (noti.type === 'friend_request') {
@@ -81,6 +83,12 @@ const NotificationPage = () => {
                         }
                         if(noti.type==='join_event'){
                             return <EventNotiCard
+                                noti={noti}
+                                key={noti.id}
+                            />
+                        }
+                        if(noti.type==='accept_event'){
+                            return <AcceptEventCard
                                 noti={noti}
                                 key={noti.id}
                             />

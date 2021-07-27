@@ -1,24 +1,28 @@
-import { faCalendarCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarCheck,faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import userAvatar from '../../img/profileIcon.png';
 import { updateNotificationAction } from "../../redux/notification/action";
+
 
 export const EventNotiCard = (props)=>{
     const {noti} = props;
     const {solved} = noti;
     const history = useHistory();
     const dispatch = useDispatch();
+    const socketStore = useSelector(state=>state.socketStore);
+    const socket = socketStore.webSocket;
     const [localSolved,setLocalSolved] = useState(null);
     const [userInfo,setUserInfo] = useState(null);
     const [timeString,setTimeString] = useState(null);
 
     useEffect(()=>{
-        console.log('in like noti card',noti);
+        //console.log('in like noti card',noti);
         let jwt = localStorage.getItem('token');
         async function getUserFunc(){
             let getUserReq = await axios({
@@ -72,10 +76,12 @@ export const EventNotiCard = (props)=>{
         e.stopPropagation();
         console.log('accept request');
         let token = localStorage.getItem('token');
+        let decode = jwtDecode(token);
         try {
             let newData = {
                 executor:noti.donor,
                 post_id:noti.content.postId,
+                noti_id:noti.id,
             }
 
             let acceptReq = await axios({
@@ -86,6 +92,18 @@ export const EventNotiCard = (props)=>{
             })
 
             console.log('accept req res',acceptReq);
+            if(acceptReq.status===200){
+                let newNoti = {
+                    ...noti
+                }
+                newNoti.solved=true;
+                dispatch(updateNotificationAction(newNoti));
+                setLocalSolved(true);
+                socket.emit('acceptEvent',{donor:decode.username,recipient:noti.donor});
+
+            }else{
+
+            }
         } catch (error) {
             console.log('accept join req error',error);
 
@@ -97,7 +115,7 @@ export const EventNotiCard = (props)=>{
         <div onClick={handleRedirect} style={{cursor:'pointer'}} >
             <div style={{backgroundColor:'#E3E3E3',border:'1px solid #303030'}} className='row mx-0 py-2'>
             <div className='col-1 px-0 pt-2'>
-                <FontAwesomeIcon icon={faCalendarCheck}/>
+                <FontAwesomeIcon icon={faCalendarAlt}/>
             </div>
             <div className='col-2 px-0'>
                 <div onClick={handleRedProfile} className='profileImgContainer' style={{borderRadius:'50%',backgroundRepeat:'no-repeat',backgroundPosition:'center',width:'50px',height:'50px', backgroundImage:`url(${userInfo?process.env.REACT_APP_API_SERVER+userInfo.imgPath:userAvatar})`,backgroundSize:'cover'}}></div>

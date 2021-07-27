@@ -3,6 +3,7 @@ import { store } from 'react-notifications-component'
 import webSocket from 'socket.io-client'
 import { loadNotiThunk } from '../notification/action'
 import { addNewNotiAction, initialNotiAction } from '../real_time_noti/action'
+import { loadScheduleThunk } from '../schedule/action'
 
 export const SOCKET_CONNECT_SUCCESS_ACTION = "SOCKET_CONNECT_SUCCESS_ACTION"
 export const SOCKET_CONNECT_FAILURE_ACTION = 'SOCKET_CONNECT_FAILURE_ACTION'
@@ -26,7 +27,7 @@ export function socketConnectThunk(){
             query:{token},
             
         });
-        console.log('inside thunk', newWebSocket);
+        //console.log('inside thunk', newWebSocket);
         if(newWebSocket){
             setupSocket(newWebSocket,dispatch);
             dispatch(socketConnectSuccessAction(newWebSocket));
@@ -82,7 +83,22 @@ const setupSocket = (ws,dispatch)=>{
 
         }
     });
-    
+    ws.on('acceptEvent',(data)=>{
+        store.addNotification({
+            title:'Event request permitted',
+            message:data.donor+' approve your join request ',
+            insert:'top',
+            container:'bottom-right',
+            type:'default',
+            dismiss:{
+                duration:2000,
+                onScreen:true,
+            }
+        })
+        dispatch(loadNotiThunk(username));
+        dispatch(loadScheduleThunk(username));
+        dispatch(addNewNotiAction(data));
+    })
     ws.on('joinEvent',(data)=>{
         //console.log('join my event',data);
         if(data.recipient===username){

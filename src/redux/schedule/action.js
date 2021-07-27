@@ -41,7 +41,7 @@ export function loadScheduleThunk(username){
                 url:process.env.REACT_APP_API_SERVER+'/api/schedule/'+username,
                 headers: { Authorization: `Bearer ${token}` },
             })
-            console.log('load schedule req',getScheduleReq);
+            //console.log('load schedule req',getScheduleReq);
             dispatch(loadScheduleSuccessAction(getScheduleReq.data));
         } catch (error) {
             console.log('load schedule thunk error',error)
