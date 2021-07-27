@@ -1,10 +1,10 @@
 const PlanTodayLabel = (props) => {
   const Info = props.Info;
   // console.log("plan", Info);
-  const mood = props.Info.content.mood;
+  // const mood = props.Info.content.mood;
   // console.log("mood", mood);
-  const endTime = new Date(Info.content.end);
-  const startTime = new Date(Info.content.start);
+  const endTime = new Date(Info.end);
+  const startTime = new Date(Info.start);
   var diffInSeconds = Math.abs(endTime - startTime) / 1000;
   var minutes = Math.floor(diffInSeconds / 60);
   var hours = Math.floor((diffInSeconds / 60 / 60) % 24);
@@ -69,11 +69,14 @@ const PlanTodayLabel = (props) => {
       <div className="event_label">
         <div className="event_label_markcolor"></div>
         <div className="event_label_title">{Info.content.title}</div>
-        {minutes > 60 ? (
+        <div style={{ fontSize: "12px" }}>{`${new Date(Info.start)
+          .toLocaleString()
+          .slice(-8, -3)}`}</div>
+        {/* {minutes > 60 ? (
           <div style={{ float: "right" }}>{hours}&nbsp;hour</div>
         ) : (
           <div style={{ float: "right" }}>{minutes}&nbsp;min</div>
-        )}
+        )} */}
       </div>
     </div>
   );

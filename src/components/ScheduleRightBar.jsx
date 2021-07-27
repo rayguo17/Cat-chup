@@ -22,7 +22,7 @@ const ScehduleRightBar = (props) => {
           }}
         >
           <h3>Available Event</h3>
-          <WeekIcon />
+          {/* <WeekIcon /> */}
           <hr
             style={{
               height: 5,

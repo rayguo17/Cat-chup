@@ -6,10 +6,25 @@ import MailIcon from "../../img/mail-icon.png";
 import { store } from "react-notifications-component";
 import { useSelector } from "react-redux";
 
+function dateIs(date2) {
+  return new Date(date2);
+}
+
 const EventCardSchedule = (props) => {
   const Info = props.Info;
   const socketStore = useSelector(state=>state.socketStore);
   const socket = socketStore.webSocket
+  function getDayOfWeek(date) {
+    var week;
+    if (date.getDay() == 0) week = "SUN";
+    if (date.getDay() == 1) week = "MON";
+    if (date.getDay() == 2) week = "TUE";
+    if (date.getDay() == 3) week = "WED";
+    if (date.getDay() == 4) week = "THU";
+    if (date.getDay() == 5) week = "FRI";
+    if (date.getDay() == 6) week = "SAT";
+    return week;
+  }
   const handleJoin = async () => {
     console.log("i want to join");
     let token = localStorage.getItem("token");
@@ -124,7 +139,7 @@ const EventCardSchedule = (props) => {
                     display: "flex",
                   }}
                 >
-                  {"THU"} &nbsp;
+                  {getDayOfWeek(dateIs(Info.content.start))} &nbsp;
                 </p>
                 <p
                   style={{
