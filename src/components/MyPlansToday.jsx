@@ -43,7 +43,7 @@ const MyPlansToday = (props) => {
         style={{ cursor: "pointer" }}
       >
         {/* <span placeholder="todays plans">todays plans</span> */}
-        <div className="plansTodayBox "style={{borderRadius:"1.5rem", overflow:"hidden"}}>
+        <div className="plansTodayBox "style={{borderRadius:"0.2rem", overflow:"scroll", overflowX:"hidden"}}>
 
           {/* <p>NO PLANS FOR TODAY</p> */}
           
