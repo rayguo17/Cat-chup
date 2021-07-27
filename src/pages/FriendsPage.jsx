@@ -14,7 +14,7 @@ import NoFriendsPlaceholder from "../components/FriendsComponents/NoFriendsPlace
 
 const FriendsPage = (props) => {
   const postInfo = props.postInfo;
-
+  const username = props.username;
   const [activeTab, setActiveTab] = useState("All Friends");
   const friendListStore = useSelector((state) => state.friendListStore);
   const [friendsList, setFriendsList] = useState({});
@@ -76,7 +76,7 @@ const FriendsPage = (props) => {
       )}
 
       <div className="col-3 px-0 schedule-page" style={{ maxHeight: "100vh" }}>
-        <ScheduleRightBar postInfo={postInfo} />
+        <ScheduleRightBar postInfo={postInfo} username={username} />
       </div>
     </div>
   );
