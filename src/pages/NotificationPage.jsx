@@ -12,7 +12,7 @@ import NotificationBody from "../components/NotificationComponents/NotificationB
 import { useState } from "react";
 import { LikedNotiCard } from "../components/NotificationComponents/LikedNotiCard";
 import { CommentNotiCard } from "../components/NotificationComponents/CommentNotiCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
@@ -20,6 +20,9 @@ import WeekIcon from "../components/WeekIcon";
 import BackToTopButton from "../components/BackToTopButton";
 import NoNotifications from "../components/NotificationComponents/NoNotifications";
 import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
+import { clearAllNotiAction } from "../redux/real_time_noti/action";
+import jwtDecode from "jwt-decode";
+import { AcceptEventCard } from "../components/NotificationComponents/AcceptEventCard";
 // import FriendsArea from "../components/FriendsComponents/FriendsArea";
 // import { useEffect } from "react";
 
@@ -27,11 +30,23 @@ import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleBut
 
 const NotificationPage = () => {
     const notiStore = useSelector(state => state.notiListStore)
+    const socketStore = useSelector(state=>state.socketStore);
+    const socket = socketStore.webSocket;
     const [notiList, setNotiList] = useState([]);
+    const dispatch = useDispatch();
     useEffect(() => {
-        console.log('inside notification page',notiStore.notiList.length);
+        //console.log('inside notification page',notiStore.notiList.length);
         setNotiList(notiStore.notiList);
     }, [notiStore])
+    useEffect(()=>{
+        dispatch(clearAllNotiAction());
+        let token = localStorage.getItem('token');
+        let decode = jwtDecode(token);
+        if(socket){
+            socket.emit('clearNoti',decode.username);
+        }
+        
+    },[])
 
     const notiPageLength = notiStore.notiList.length
 
@@ -69,6 +84,12 @@ const NotificationPage = () => {
                         }
                         if(noti.type==='join_event'){
                             return <EventNotiCard
+                                noti={noti}
+                                key={noti.id}
+                            />
+                        }
+                        if(noti.type==='accept_event'){
+                            return <AcceptEventCard
                                 noti={noti}
                                 key={noti.id}
                             />

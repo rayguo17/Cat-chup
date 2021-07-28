@@ -4,52 +4,70 @@ import React, { useState } from "react";
 import { Info } from "@material-ui/icons";
 import { useEffect } from "react";
 import { ThemeProvider, TextareaAutosize, TextField } from "@material-ui/core";
+import axios from "axios";
 
 const ScheduleDetail = (props) => {
-  // console.log("SceduleDetail props", props.postInfo[6]);
-
-  //this props.postInfo[6] will change depending on data..example....props.postInfo[selected  schedule/event id]
+  
   const selected = props.scheduleList;
-  const schedule = props.scheduleList;
-  // console.log("selected,", selected);
-
-  // console.log("SceduleDetail pic", selected.content.pictures[0].data_url);
   const [selectedDate, setSelectedDate] = useState(selected.content.eventDate);
   const [selectedText, setSelectedText] = useState(selected.content.caption);
+  let startTime = new Date(selected.start);
+  let endTime = new Date(selected.end);
+  startTime.setHours(startTime.getHours()+8);
+  endTime.setHours(endTime.getHours()+8);
   const [selectedStartTime, setselectedStartTime] = useState(
-    new Date(Date(selected.content.start)).toISOString().slice(0, -5)
+    startTime.toISOString().slice(0, -5)
   );
   const [selectedEndTime, setselectedEndTime] = useState(
-    new Date(Date(selected.content.end)).toISOString().slice(0, -5)
+    endTime.toISOString().slice(0, -5)
   );
-  const [scheduleList, SetScheduleList] = useState([]);
+  
 
   useEffect(() => {
-    const scheduleData = [
-      {
-        type: "schedule",
-      },
-    ];
+    //console.log(selected);
+    //console.log('schedule detail start time',selected.start)
     // this moment : scheduleList = []
-    SetScheduleList(scheduleData);
+    
     // this moment : scheduleList = [{type:'schedule'}]
   }, []);
 
   const handleChange = (e) => {
     if (e.target.name == "start") {
-      console.log(e.target);
+      //console.log(e.target);
       setselectedStartTime(e.target.value);
     }
     if (e.target.name == "end") {
-      console.log(e.target);
+      //console.log(e.target);
       setselectedEndTime(e.target.value);
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let newSchedule = {};
-    SetScheduleList([...scheduleList, newSchedule]);
+    let token = localStorage.getItem('token');
+    try {
+      let updatedSchedule = {
+        ...selected
+      };
+      updatedSchedule.start = selectedStartTime;
+      updatedSchedule.end = selectedEndTime;
+      updatedSchedule.content.caption = selectedText
+      let updateScheduleReq = await axios({
+        url:process.env.REACT_APP_API_SERVER+'/api/schedule',
+        headers:{Authorization:`Bearer ${token}`},
+        method:'put',
+        data:updatedSchedule
+      })
+      console.log('updatedSchedule res',updateScheduleReq);
+      if(updateScheduleReq.status===200){
+
+      }
+    } catch (error) {
+      console.log('update schedule error',error)
+    }
+    
+    
+
     // => [{type:'schedule'}, {}, {}]
 
     //gets the input data here
@@ -58,11 +76,11 @@ const ScheduleDetail = (props) => {
     // console.log("selected StartTime",selectedStartTime)
     // console.log("selected endtime",selectedEndTime)
   };
-  console.log(schedule);
+  //console.log(schedule);
   // console.log(selected.content.pictures);
-  console.log(new Date(schedule.end).toLocaleString().slice(0, -10));
+  //console.log(new Date(schedule.end).toLocaleString().slice(0, -10));
   return (
-    <div
+    <div 
       className={
         "postId" +
         selected.id +
@@ -74,8 +92,8 @@ const ScheduleDetail = (props) => {
     >
       <form onSubmit={handleSubmit}>
         <div>
-          <div style={{ fontSize: "32px", backgroundColor: "#96d9ff" }}>
-            {props.schedule.content.title}
+          <div style={{ fontSize: "32px", backgroundColor: "#96d9ff",height:'82px',borderLeft:'1px solid #c4c4c4' }}>
+            {selected.content.title}
           </div>
 
           {/* //if event conditional render */}
@@ -87,13 +105,13 @@ const ScheduleDetail = (props) => {
               <p style={{ color: "black", backgroundColor: "grey" }}>
                 Event by {selected.creator}
               </p>
-              <div>
-                {/* <img
+              {selected.type==='event' &&selected.content.attachPic[0]?<div>
+                <img
                   style={{ width: "80%" }}
-                  src={selected.content.pictures[0].data_url}
+                  src={process.env.REACT_APP_API_SERVER+selected.content.attachPic[0]}
                   alt="pic"
-                ></img> */}
-              </div>
+                ></img>
+              </div>:null}
             </div>
           ) : null}
 
@@ -109,22 +127,22 @@ const ScheduleDetail = (props) => {
           </div>
 
           <TextField
-            id="start"
             name="start"
             label="start time"
             type="datetime-local"
             value={selectedStartTime}
+            disabled={true}
             // onBlur={formik.handleBlur}
             // className={classes.textField}
             onChange={handleChange}
           />
           <TextField
-            id="end"
             name="end"
             label="end time"
             type="datetime-local"
             value={selectedEndTime}
             onChange={handleChange}
+            disabled={true}
             // onBlur={formik.handleBlur}
             // className={classes.textField}
           />
@@ -140,6 +158,7 @@ const ScheduleDetail = (props) => {
               onChange={(e) => setSelectedText(e.target.value)}
               value={selectedText}
               style={{ resize: "none", height: "35vh", width: "100%" }}
+              disabled={selected.type==='schedule'&& selected.creator===selected.executor?false:true}
             ></textarea>
           </div>
           {/* <p>{selectedText}</p> */}
@@ -147,15 +166,19 @@ const ScheduleDetail = (props) => {
             style={{
               display: "flex",
               width: "80%",
-              justifyContent: "space-between",
+              justifyContent: "center",
             }}
           >
-            <Button variant="contained" color="primary" type="submit">
+            <Button variant="contained" color="primary" type="submit"
+              disabled={selected.type==='schedule'&& selected.creator===selected.executor?false:true}
+            >
               Save
             </Button>
-            <Button variant="contained" color="secondary">
+            {/* <Button variant="contained" color="secondary"
+              disabled={selected.creator===selected.executor?false:true}
+            >
               Delete
-            </Button>
+            </Button> */}
           </div>
         </div>
       </form>

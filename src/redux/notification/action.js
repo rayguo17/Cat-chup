@@ -2,6 +2,16 @@ import axios from "axios";
 
 export const LOAD_NOTIFICATION_SUCCESS_ACTION = 'LOAD_NOTIFICATION_SUCCESS_ACTION';
 export const LOAD_NOTIFICATION_FAILURE_ACTION = 'LOAD_NOTIFICATION_FAILURE_ACTION';
+export const UPDATE_NOTIFICATION_ACTION = 'UPDATE_NOTIFICATION_ACTION';
+
+
+export function updateNotificationAction(updatedNoti){
+    return {
+        type:UPDATE_NOTIFICATION_ACTION,
+        updatedNoti:updatedNoti
+    }
+}
+
 
 export function loadNotificationSuccessAction(notiList){
     return {

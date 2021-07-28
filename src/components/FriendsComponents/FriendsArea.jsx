@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import {
-    Card, CardImg, CardText, CardBody, Button,
-    Container, Row, Col
+    Container, Row
 } from 'reactstrap';
 
 import '../../stylesheet/friendsPage.css'
@@ -20,16 +18,16 @@ const FriendsArea = (props) => {
     const toggle = () => setModal(!modal);
     const deleteBtnToggle = (e) => {
         toggle();
-        console.log('trigger', e.target.getAttribute('name'));
+        //console.log('trigger', e.target.getAttribute('name'));
         setOnDeleteUser(e.target.getAttribute('name'));
     }
     const { friendsList, activeTab, index } = props
-    console.log("Friends List from active tab:", friendsList[activeTab])
-    console.log('friendsList from friends area', friendsList, "active tab", activeTab, index);
+    //console.log("Friends List from active tab:", friendsList[activeTab])
+    //console.log('friendsList from friends area', friendsList, "active tab", activeTab, index);
     const [localFriendsList, setLocalFriendsList] = useState(friendsList);
     const [searchResult, setSearchResult] = useState("");
     const [onDeleteUser, setOnDeleteUser] = useState(null)
-    console.log("SEARCH RESULT:", typeof searchResult)
+    //console.log("SEARCH RESULT:", typeof searchResult)
 
 
 

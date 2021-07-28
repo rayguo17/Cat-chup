@@ -8,6 +8,7 @@ import socketReducer from "./socket/reducer";
 import userInfoReducer from "./userInfo/reducer";
 import allUsersListReducer from "./allUsersInfo/reducer"
 import scheduleListReducer from "./schedule/reducer";
+import realTimeNotiReducer from "./real_time_noti/reducer";
 
 
 export const store = createStore(
@@ -19,7 +20,8 @@ export const store = createStore(
         notiListStore: notiListReducer,
         postListStore: postListReducer,
         allUsersListStore: allUsersListReducer,
-        scheduleListStore:scheduleListReducer
+        scheduleListStore:scheduleListReducer,
+        realTimeNotiStore:realTimeNotiReducer,
     }),
     applyMiddleware(thunk)
 )

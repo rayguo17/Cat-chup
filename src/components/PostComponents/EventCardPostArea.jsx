@@ -6,7 +6,6 @@ import {
   CardBody,
   CardLink,
   CardTitle,
-  Button,
 } from "reactstrap";
 import { PostImgShowcase } from "./PostImgShowcase";
 import axios from "axios";
@@ -17,6 +16,8 @@ import MailIcon from "../../img/mail-icon.png";
 import { makeStyles, TextField } from '@material-ui/core';
 import {store} from 'react-notifications-component';
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePostAction } from "../../redux/post/action";
 
 const useStyles = makeStyles((theme)=>({
     TextField:{
@@ -30,12 +31,15 @@ const useStyles = makeStyles((theme)=>({
 export const EventCardPostArea = (props)=>{
     const classes = useStyles()
     const {eventInfo} = props;
+    const dispatch = useDispatch();
+    const socketStore = useSelector(state=>state.socketStore);
+    const socket = socketStore.webSocket;
     const [likes,setLikes] = useState(null);
     const history = useHistory();
     let time = new Date(eventInfo.created_at);
     let postTime = time.toLocaleDateString()+' '+time.toLocaleTimeString();
     useEffect(()=>{
-        console.log('event info in card',eventInfo);
+        //console.log('event info in card',eventInfo);
         setLikes(eventInfo.content.likes);
     },[])
 
@@ -48,14 +52,14 @@ export const EventCardPostArea = (props)=>{
     }
     const handleLiked=async (e)=>{
       e.stopPropagation();
-      console.log('liked process');
-      console.log('like list',likes)
+      //console.log('liked process');
+      //console.log('like list',likes)
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       let username = decode.username;
       let match = false;
       match = likes.find(obj=>obj.user==username);
-      console.log('match like',match);
+      //console.log('match like',match);
       if(match){
         //cancel like
       }else{
@@ -65,16 +69,23 @@ export const EventCardPostArea = (props)=>{
           headers: { Authorization: `Bearer ${token}` },
           method:'post'
         })
-        console.log('sendLike req',sendLikedReq);
+        //console.log('sendLike req',sendLikedReq);
         if(sendLikedReq.status==200){
+          let newPost = {
+            ...eventInfo,
+            
+          }
+          newPost.content.likes=[...likes,sendLikedReq.data];
+          dispatch(updatePostAction(newPost));
           setLikes([...likes,sendLikedReq.data]);
+          socket.emit('like',{donor:username,recipient:eventInfo.id})
         }
         
   
       }
     }
     const handleJoin = async ()=>{
-      console.log('i want to join');
+      //console.log('i want to join');
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       //check if people want to join is themself
@@ -98,6 +109,7 @@ export const EventCardPostArea = (props)=>{
         })
         //console.log('send Noti res',sendNotiReq);
         if(sendNotiReq.status===200){
+          socket.emit('joinEvent',{donor:decode.username,recipient:eventInfo.username});
           store.addNotification({
             title:'Join event request sent!',
             message:'Please wait for other people to confirmed your request',
@@ -139,7 +151,7 @@ export const EventCardPostArea = (props)=>{
         <span className="userName">
           <p> {eventInfo.username} </p>
         </span>
-        <div style={{borderRadius:"5px"}}className="mood"></div>
+        {/* <div style={{borderRadius:"5px"}}className="mood"></div> */}
         <CardBody>
           <CardTitle tag="h5"> {eventInfo.content.title} </CardTitle>
           {/* <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle> */}

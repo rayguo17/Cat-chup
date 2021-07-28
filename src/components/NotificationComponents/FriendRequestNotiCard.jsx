@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 import userAvatar from '../../img/profileIcon.png';
 import { AddFriendThunk } from "../../redux/friendsList/action";
-import { loadNotiThunk } from "../../redux/notification/action";
+import { loadNotiThunk, updateNotificationAction } from "../../redux/notification/action";
 
 
 
@@ -52,6 +52,11 @@ export const FriendRequestNotiCard = (props) =>{
             })
             console.log('ignoreReq',ignoreReq);
             if(ignoreReq.status==200){
+                let newNoti = {
+                    ...noti
+                }
+                newNoti.solved = true;
+                dispatch(updateNotificationAction(newNoti));
                 setLocalSolved(true);
             }
         } catch (error) {
@@ -70,7 +75,7 @@ export const FriendRequestNotiCard = (props) =>{
                 <FontAwesomeIcon icon={faUserPlus}/>
             </div>
             <div className='col-2 px-0'>
-                <div onClick={handleRedProfile} className='profileImgContainer' style={{cursor:'pointer',width:'50px',height:'50px',borderRadius:'50%',backgroundPositionY:'center',backgroundRepeat:'no-repeat', backgroundImage:`url(${userInfo?process.env.REACT_APP_API_SERVER+userInfo.imgPath:userAvatar})`,backgroundSize:'contain'}}></div>
+                <div onClick={handleRedProfile} className='profileImgContainer' style={{cursor:'pointer',width:'50px',height:'50px',borderRadius:'50%',backgroundPosition:'center',backgroundRepeat:'no-repeat', backgroundImage:`url(${userInfo?process.env.REACT_APP_API_SERVER+userInfo.imgPath:userAvatar})`,backgroundSize:'cover'}}></div>
                 <div>{donor}</div>
             </div>
             <div className='col-7 px-0'>

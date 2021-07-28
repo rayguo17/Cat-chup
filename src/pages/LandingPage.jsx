@@ -11,10 +11,10 @@ const PrivateRoute = ({ component, ...rest }) => {
     const auth = useSelector(state => state.authStore);
     const { isAuthenticated } = auth;
     const Component = component;
-    console.log('rendering data')
+    //console.log('rendering data')
     if (Component != null) {
-        console.log('component exist', Component)
-        console.log('auth', isAuthenticated)
+        //console.log('component exist', Component)
+        //console.log('auth', isAuthenticated)
         return (
             <Route
                 {...rest}
@@ -43,10 +43,10 @@ const PublicRoute = ({ component, ...rest }) => {
     const auth = useSelector(state => state.authStore);
     const { isAuthenticated } = auth;
     const Component = component;
-    console.log('rendering data')
+    //console.log('rendering data')
     if (Component != null) {
-        console.log('component exist', Component)
-        console.log('auth', isAuthenticated)
+        //console.log('component exist', Component)
+        //console.log('auth', isAuthenticated)
         return (
             <Route
                 {...rest}

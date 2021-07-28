@@ -1,15 +1,6 @@
 const PlanTodayLabel = (props) => {
   const Info = props.Info;
-  // console.log("plan", Info);
-  // const mood = props.Info.content.mood;
-  // console.log("mood", mood);
-  const endTime = new Date(Info.end);
-  const startTime = new Date(Info.start);
-  var diffInSeconds = Math.abs(endTime - startTime) / 1000;
-  var minutes = Math.floor(diffInSeconds / 60);
-  var hours = Math.floor((diffInSeconds / 60 / 60) % 24);
-  console.log("starttime", startTime.toLocaleString("en-GB"));
-
+  let startTime = new Date(Info.start);
   return (
     <div className="planTodayBox_card">
       <div className="planTodayBox_card_time">

@@ -14,7 +14,7 @@ import NoPostsOrEventsPlaceholder from "../components/PostComponents/NoPostsOrEv
 const HomePage = (props) => {
   const postInfo = props.postInfo;
   const username = props.username;
-  console.log("props.postInfo:", props.postInfo);
+  //console.log("props.postInfo:", props.postInfo);
   const postListStore = useSelector((state) => state.postListStore);
   const postList = postListStore.postList;
   const [postModal, setPostModal] = useState(false);

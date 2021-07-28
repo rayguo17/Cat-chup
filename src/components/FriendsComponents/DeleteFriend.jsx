@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../stylesheet/friendsPage.css'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { useDispatch } from 'react-redux';
@@ -7,7 +7,6 @@ import jwtDecode from 'jwt-decode';
 
 const DeleteFriend = (props) => {
     const {
-        buttonLabel,
         className,
         toggle,
         modal,

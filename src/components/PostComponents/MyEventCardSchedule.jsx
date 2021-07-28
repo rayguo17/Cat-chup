@@ -22,62 +22,62 @@ const MyEventCardSchedule = (props) => {
     if (date.getDay() == 6) week = "SAT";
     return week;
   }
-  const handleJoin = async () => {
-    console.log("i want to join");
-    let token = localStorage.getItem("token");
-    let decode = jwtDecode(token);
-    //check if people want to join is themself
+  // const handleJoin = async () => {
+  //   console.log("i want to join");
+  //   let token = localStorage.getItem("token");
+  //   let decode = jwtDecode(token);
+  //   //check if people want to join is themself
 
-    let newNoti = {
-      recipient: Info.username,
-      donor: decode.username,
-      type: "join_event",
-    };
-    let content = {
-      postId: Info.id,
-    };
-    newNoti.content = content;
-    try {
-      let sendNotiReq = await axios({
-        url: process.env.REACT_APP_API_SERVER + "/api/post/eventNoti",
-        method: "post",
-        headers: { Authorization: `Bearer ${token}` },
-        data: newNoti,
-      });
-      //console.log('send Noti res',sendNotiReq);
-      if (sendNotiReq.status === 200) {
-        store.addNotification({
-          title: "Join event request sent!",
-          message: "Please wait for other people to confirmed your request",
-          type: "success",
-          insert: "top",
-          container: "top-right",
-          // animationIn:['animate__animated','animate__fadeIn'],
-          // animationOut:['animate__animated','animate_fadeOut'],
-          dismiss: {
-            duration: 2000,
-            onScreen: true,
-          },
-        });
-      } else {
-        store.addNotification({
-          title: "Internal error",
-          message: "Please try again later",
-          type: "warning",
-          insert: "top",
-          container: "top-right",
-          // animationIn:['animate__animated','animate__fadeIn'],
-          // animationOut:['animate__animated','animate_fadeOut'],
-          dismiss: {
-            duration: 2000,
-            onScreen: true,
-          },
-        });
-      }
-    } catch (error) {
-      console.log("join event error", error);
-    }
-  };
+  //   let newNoti = {
+  //     recipient: Info.username,
+  //     donor: decode.username,
+  //     type: "join_event",
+  //   };
+  //   let content = {
+  //     postId: Info.id,
+  //   };
+  //   newNoti.content = content;
+  //   try {
+  //     let sendNotiReq = await axios({
+  //       url: process.env.REACT_APP_API_SERVER + "/api/post/eventNoti",
+  //       method: "post",
+  //       headers: { Authorization: `Bearer ${token}` },
+  //       data: newNoti,
+  //     });
+  //     //console.log('send Noti res',sendNotiReq);
+  //     if (sendNotiReq.status === 200) {
+  //       store.addNotification({
+  //         title: "Join event request sent!",
+  //         message: "Please wait for other people to confirmed your request",
+  //         type: "success",
+  //         insert: "top",
+  //         container: "top-right",
+  //         // animationIn:['animate__animated','animate__fadeIn'],
+  //         // animationOut:['animate__animated','animate_fadeOut'],
+  //         dismiss: {
+  //           duration: 2000,
+  //           onScreen: true,
+  //         },
+  //       });
+  //     } else {
+  //       store.addNotification({
+  //         title: "Internal error",
+  //         message: "Please try again later",
+  //         type: "warning",
+  //         insert: "top",
+  //         container: "top-right",
+  //         // animationIn:['animate__animated','animate__fadeIn'],
+  //         // animationOut:['animate__animated','animate_fadeOut'],
+  //         dismiss: {
+  //           duration: 2000,
+  //           onScreen: true,
+  //         },
+  //       });
+  //     }
+  //   } catch (error) {
+  //     console.log("join event error", error);
+  //   }
+  // };
   return (
     <div>
       <Card
@@ -195,7 +195,7 @@ const MyEventCardSchedule = (props) => {
                     alignItems: "center",
                   }}
                 >
-                  <a href="#">
+                  {/* <a href="#">
                     <img
                       src={MailIcon}
                       alt="mail-icon"
@@ -207,7 +207,7 @@ const MyEventCardSchedule = (props) => {
                       }}
                       onClick={handleJoin}
                     />
-                  </a>
+                  </a> */}
                 </div>
               </div>
             </div>

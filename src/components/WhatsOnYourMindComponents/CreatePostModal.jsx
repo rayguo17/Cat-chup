@@ -72,6 +72,8 @@ export const CreatePostModal = (props) => {
   const friendGroup = Object.keys(friendList);
 
   //FOR FORMIK FORM CONTROL
+  let initialTime = new Date(Date.now());
+    initialTime.setHours(initialTime.getHours()+8);
   const formik = useFormik({
     initialValues: {
       caption: "",
@@ -79,8 +81,8 @@ export const CreatePostModal = (props) => {
       ownerName: userInfo.username,
       visible_group: friendGroup[0],
       type: "post",
-      start: new Date(Date.now()).toISOString().slice(0, -5),
-      end: new Date(Date.now()).toISOString().slice(0, -5),
+      start: initialTime.toISOString().slice(0, -5),
+      end: initialTime.toISOString().slice(0, -5),
       title: "",
     },
     onSubmit: (values) => {
@@ -106,6 +108,8 @@ export const CreatePostModal = (props) => {
   };
 
   useEffect(() => {
+    let initialTime = new Date(Date.now());
+    initialTime.setHours(initialTime.getHours()+8);
     //setUserInfo(userInfoStore.userInfo);
     //console.log('i am reset')
     //console.log('try to coporate time',new Date(Date.now()).toISOString());
@@ -116,8 +120,8 @@ export const CreatePostModal = (props) => {
         ownerName: userInfo.username,
         visible_group: friendGroup[0],
         type: "post",
-        start: new Date(Date.now()).toISOString().slice(0, -8),
-        end: new Date(Date.now()).toISOString().slice(0, -8),
+        start: initialTime.toISOString().slice(0, -8),
+        end: initialTime.toISOString().slice(0, -8),
         title: "",
       },
     });
@@ -248,14 +252,14 @@ export const CreatePostModal = (props) => {
                         marginTop: "5px",
                       }}
                     >
-                      <div
+                      {/* <div
                         className="add-on-function-post-btn"
                         style={{ backgroundImage: `url(${MoodIcon})` }}
                       ></div>
                       <div
                         className="add-on-function-post-btn"
                         style={{ backgroundImage: `url(${IncognitoIcon})` }}
-                      ></div>
+                      ></div> */}
                       {!isEvent ? (
                         <div
                           className="add-on-function-post-btn"
