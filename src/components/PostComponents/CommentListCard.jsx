@@ -7,8 +7,6 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import Divider from "@material-ui/core/Divider";
-
 export const CommentListCard = (props)=>{
 
     const {comment} = props;
@@ -31,7 +29,7 @@ export const CommentListCard = (props)=>{
             }
         }
         commentFunc();
-    },[])
+    },[comment])
 
     return (
         <ListItem alignItems="flex-start">

@@ -14,13 +14,11 @@ import { loadProfileThunk } from "../redux/userInfo/action";
 import { loadFriendThunk } from "../redux/friendsList/action";
 import { socketConnectThunk } from "../redux/socket/action";
 import { loadNotiThunk } from "../redux/notification/action";
-import CommentPage from "./CommentPage";
 import SchedulePage from "./SchedulePage";
 import { loadPostThunk } from "../redux/post/action";
 import { loadScheduleThunk } from "../redux/schedule/action";
 import { MessagePage } from "./MessagePage";
 import { PostPage } from "./PostPage";
-import { WeekendTwoTone } from "@material-ui/icons";
 import { loadAllUsersThunk } from "../redux/allUsersInfo/action";
 
 export const ContentPage = () => {

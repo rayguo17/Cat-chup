@@ -1,9 +1,10 @@
-import SideBar from "../components/SideBar";
-import { Container, Row, Col } from "reactstrap";
+
+
 import PostArea from "../components/PostArea";
 import ScheduleRightBar from "../components/ScheduleRightBar";
 import "../stylesheet/navBar.css";
-import WhatsOnYourMind from "../components/WhatsOnYourMind";
+
+import '../stylesheet/whatsOnYourMind.css'
 import { CreatePostModal } from "../components/WhatsOnYourMindComponents/CreatePostModal";
 import { CreatePostBtnContainer } from "../components/WhatsOnYourMindComponents/CreatePostBtnContainer";
 import { useState } from "react";

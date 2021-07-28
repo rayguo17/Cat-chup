@@ -7,16 +7,10 @@ import "../../stylesheet/globalSearch.css"
 
 const GlobalSearchBar = () => {
     // console.log("globalSearch", props)
-    const options = [
-        {  username: 'type more to get result', type:'default' },
-        // { photo: "https://randomuser.me/api/portraits/women/71.jpg", name: 'Esther', value: 'es' },
-        // { photo: "https://randomuser.me/api/portraits/women/71.jpg", name: 'Nathan', value: 'na' },
-
-    ];
     const history = useHistory();
     const getOptions = (query)=>{
         let token = localStorage.getItem('token');
-        if(query.length==0)return [];
+        if(query.length===0)return [];
         return new Promise((resolve,reject)=>{
             axios({
                 url:process.env.REACT_APP_API_SERVER+'/api/friends/search/'+query,

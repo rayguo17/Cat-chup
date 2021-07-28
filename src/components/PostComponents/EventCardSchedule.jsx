@@ -19,17 +19,17 @@ const EventCardSchedule = (props) => {
   const socket = socketStore.webSocket
   function getDayOfWeek(date) {
     var week;
-    if (date.getDay() == 0) week = "SUN";
-    if (date.getDay() == 1) week = "MON";
-    if (date.getDay() == 2) week = "TUE";
-    if (date.getDay() == 3) week = "WED";
-    if (date.getDay() == 4) week = "THU";
-    if (date.getDay() == 5) week = "FRI";
-    if (date.getDay() == 6) week = "SAT";
+    if (date.getDay() === 0) week = "SUN";
+    if (date.getDay() === 1) week = "MON";
+    if (date.getDay() === 2) week = "TUE";
+    if (date.getDay() === 3) week = "WED";
+    if (date.getDay() === 4) week = "THU";
+    if (date.getDay() === 5) week = "FRI";
+    if (date.getDay() === 6) week = "SAT";
     return week;
   }
   const handleJoin = async () => {
-    console.log("i want to join");
+    //console.log("i want to join");
     let token = localStorage.getItem("token");
     let decode = jwtDecode(token);
 
@@ -204,7 +204,7 @@ const EventCardSchedule = (props) => {
                     alignItems: "center",
                   }}
                 >
-                  <a href="#">
+                  <span>
                     <img
                       src={MailIcon}
                       alt="mail-icon"
@@ -216,7 +216,7 @@ const EventCardSchedule = (props) => {
                       }}
                       onClick={handleJoin}
                     />
-                  </a>
+                  </span>
                 </div>
               </div>
             </div>

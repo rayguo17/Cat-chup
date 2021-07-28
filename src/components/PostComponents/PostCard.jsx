@@ -28,7 +28,7 @@ const PostCard = (props) => {
   useEffect(() => {
     setLikes(postInfo.content.likes)
     //setLikeNumber(postInfo.content.likes.length);
-  }, []);
+  }, [postInfo.content.likes]);
   const handleLiked = async (e) => {
     e.stopPropagation();
 
@@ -38,7 +38,7 @@ const PostCard = (props) => {
     let username = decode.username;
     let match = false;
     
-    match = likes.find((obj) => obj.user == username);
+    match = likes.find((obj) => obj.user === username);
     if (match) {
       //cancel like
     } else {
@@ -49,7 +49,7 @@ const PostCard = (props) => {
         method: "post",
       });
       console.log("sendLike req", sendLikedReq);
-      if (sendLikedReq.status == 200) {
+      if (sendLikedReq.status === 200) {
         //setLikeNumber(likeNumber + 1);
         let newPost = {
           ...postInfo,

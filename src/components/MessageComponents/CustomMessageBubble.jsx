@@ -29,7 +29,7 @@ export const CustomMessageBubble = ({creds, chat, lastMessage, message, nextMess
             let newMessage = {};
             Object.assign(newMessage,message);
             for(let i=0;i<getUserInfoRes.length;i++){
-                if(message.sender.username==getUserInfoRes[i].data.username){
+                if(message.sender.username===getUserInfoRes[i].data.username){
                     newMessage.sender.avatar=process.env.REACT_APP_API_SERVER+getUserInfoRes[i].data.imgPath
                 }
             }
@@ -38,7 +38,7 @@ export const CustomMessageBubble = ({creds, chat, lastMessage, message, nextMess
         }
         changeAvatar();
         
-    },[])
+    },[chat,message])
             
 
     //console.log('inside custom message bubble',chat,message,lastMessage,nextMessage);

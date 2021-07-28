@@ -2,7 +2,7 @@ import React from "react"
 import LockIcon from "../../img/lockIcon.png";
 
 export const NotFriendBlackBlock = (props) => {
-    const { pageOwnerName, areFriends } = props
+    const { pageOwnerName } = props
 
     return (
         <div className='col-12 px-0 row mx-0' style={{position:"absolute", bottom: "0"}}>

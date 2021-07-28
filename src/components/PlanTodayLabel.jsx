@@ -1,6 +1,5 @@
 const PlanTodayLabel = (props) => {
   const Info = props.Info;
-  let startTime = new Date(Info.start);
   return (
     <div className="planTodayBox_card">
       <div className="planTodayBox_card_time">

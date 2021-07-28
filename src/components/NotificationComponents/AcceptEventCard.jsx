@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import userAvatar from '../../img/profileIcon.png';
 
@@ -35,7 +34,7 @@ export const AcceptEventCard = (props)=>{
         }
         let time =new Date(noti.created_at)
         setTimeString(time.toLocaleDateString()+' '+time.toLocaleTimeString())
-    },[]);
+    },[noti]);
 
     const handleRedirect = ()=>{
         history.push(`/post/${noti.content.postId}`)

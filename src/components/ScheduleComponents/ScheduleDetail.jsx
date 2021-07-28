@@ -1,15 +1,13 @@
 import "../../stylesheet/schedulePage.css";
 import Button from "@material-ui/core/Button";
 import React, { useState } from "react";
-import { Info } from "@material-ui/icons";
 import { useEffect } from "react";
-import { ThemeProvider, TextareaAutosize, TextField } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
 import axios from "axios";
 
 const ScheduleDetail = (props) => {
   
   const selected = props.scheduleList;
-  const [selectedDate, setSelectedDate] = useState(selected.content.eventDate);
   const [selectedText, setSelectedText] = useState(selected.content.caption);
   let startTime = new Date(selected.start);
   let endTime = new Date(selected.end);
@@ -32,11 +30,11 @@ const ScheduleDetail = (props) => {
   }, []);
 
   const handleChange = (e) => {
-    if (e.target.name == "start") {
+    if (e.target.name === "start") {
       //console.log(e.target);
       setselectedStartTime(e.target.value);
     }
-    if (e.target.name == "end") {
+    if (e.target.name === "end") {
       //console.log(e.target);
       setselectedEndTime(e.target.value);
     }

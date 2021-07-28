@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import EditFriendGroup from "./EditFriendGroup";
 import {
-    Card, CardImg, CardText, CardBody
+    Card, CardBody
 } from 'reactstrap';
 import userAvatar from '../../img/profileIcon.png';
 import { useHistory } from 'react-router-dom';
@@ -38,9 +38,9 @@ export const FriendCard = (props) => {
 
                     </div>
                     <div className='col-6 px-0' >
-                        <a style={{ fontSize: "25px", color: "black", textDecoration: "none",cursor:'pointer' }} onClick={handleRedProfile}>{username}</a>
+                        <span style={{ fontSize: "25px", color: "black", textDecoration: "none",cursor:'pointer' }} onClick={handleRedProfile}>{username}</span>
                     </div>
-                    {activeTab == "All Friends" &&
+                    {activeTab === "All Friends" &&
                         <EditFriendGroup username={username} activeTab={activeTab} friendsList={friendsList} />}
                     <button className="deleteFriendBtn" onClick={toggle} name={username}></button>
 

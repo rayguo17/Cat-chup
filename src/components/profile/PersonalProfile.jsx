@@ -7,7 +7,6 @@ import { ProfilePicDiv } from "./ProfilePicDiv"
 import cat_chup from '../../img/logo87.svg'
 import {Button} from 'reactstrap'
 import { useSelector } from "react-redux"
-import axios from "axios"
 import { getOrCreateChat } from "react-chat-engine"
 import { useHistory } from "react-router-dom"
 
@@ -21,8 +20,8 @@ let profileBtn = {
 
 
 export const PersonalProfile = (props) => {
-    console.log('isOwner', props.isOwner);
-    console.log('userInfo', props.userInfo);
+    //console.log('isOwner', props.isOwner);
+    //console.log('userInfo', props.userInfo);
     const history=useHistory();
     const userInfoStore = useSelector(state=>state.userInfoStore);
     const userInfo = userInfoStore.userInfo;
@@ -46,7 +45,7 @@ export const PersonalProfile = (props) => {
             userSecret:userInfo.hash
         }
         let createMessage =  getOrCreateChat(creds,{is_direct_chat:true,usernames:[props.userInfo.username]},(data)=>{
-            console.log('create chat in profile page',data);
+            //console.log('create chat in profile page',data);
             history.push('/messages');
         })
         

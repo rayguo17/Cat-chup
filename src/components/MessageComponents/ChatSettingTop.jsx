@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 
 export const ChatSettingTop = (creds,chat)=>{
-    console.log('chat setting top',chat);
+    //console.log('chat setting top',chat);
     const [isOnline,setIsOnline] = useState(false);
     const [oppoInfo,setOppoInfo] = useState({});
     const history = useHistory()
@@ -18,7 +18,7 @@ export const ChatSettingTop = (creds,chat)=>{
         let peopleList = chat.people;
         let opponent;
         for(let i =0;i<peopleList.length;i++){
-            if(peopleList[i].person.username!=ownerName){
+            if(peopleList[i].person.username!==ownerName){
                 opponent=peopleList[i].person.username;
                 setIsOnline(peopleList[i].person.is_online);
             };
