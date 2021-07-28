@@ -21,7 +21,7 @@ const SideBar = (props) => {
   const username = props.username;
   //console.log("sidebar", props.username);
   return (
-    <div className="navContainer">
+    <div className="navContainer" style={{backgroundColor:"white"}}>
       {/* <Col xs="3" className="navIconLinkContainer px-0"> */}
       <div className="navIconLinkContainer">
         <img className="mainLogo" src={Logo} alt="MainLogo"></img>
