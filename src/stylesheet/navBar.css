@@ -426,3 +426,7 @@ footer {
   height: 5vh;
   color: white;
 }
+
+.event_label_title p::-webkit-scrollbar {
+  display: none;
+}
