@@ -6,7 +6,6 @@ const MyPlansToday = (props) => {
   const scheduleListStore = useSelector((state) => state.scheduleListStore);
   const username = props.username;
   const scheduleList = scheduleListStore.scheduleList;
-  const postInfo = props.postInfo;
   const history = useHistory();
   // const today = new Date();
   // //console.log("today", today);
