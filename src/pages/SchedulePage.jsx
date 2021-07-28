@@ -417,7 +417,13 @@ const SchedulePage = (props) => {
               </div>
                 <br />
               <div className="form-group">
-                <button onClick={(e) => handleSubmit(e)} type="button">
+                <button style={{backgroundColor:"#96d9ff",
+                 borderRadius:"2rem",
+                  border:"1px solid black",
+                  color:"white",
+                  fontSize:"25px",
+                  padding:"4px 10px 4px 10px"}}
+                   onClick={(e) => handleSubmit(e)} type="button">
                   Save
                 </button>
               </div>
