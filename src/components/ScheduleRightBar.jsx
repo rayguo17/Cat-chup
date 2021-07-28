@@ -15,7 +15,7 @@ const ScehduleRightBar = (props) => {
 
   
   return (
-    <div>
+    <div >
       {(postList && postList.filter((post)=>{return  post.owner_name!==username&&post.type==='event'}).length  > 0) ? (
       
       <center>
