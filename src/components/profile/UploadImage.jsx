@@ -1,7 +1,4 @@
-import { useEffect } from 'react';
-import { useState } from 'react'
 import ImageUploading from 'react-images-uploading'
-import { ProfilePicDiv } from './ProfilePicDiv';
 
 
 export const UploadImage = (props)=>{

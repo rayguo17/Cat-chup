@@ -252,14 +252,14 @@ export const CreatePostModal = (props) => {
                         marginTop: "5px",
                       }}
                     >
-                      <div
+                      {/* <div
                         className="add-on-function-post-btn"
                         style={{ backgroundImage: `url(${MoodIcon})` }}
                       ></div>
                       <div
                         className="add-on-function-post-btn"
                         style={{ backgroundImage: `url(${IncognitoIcon})` }}
-                      ></div>
+                      ></div> */}
                       {!isEvent ? (
                         <div
                           className="add-on-function-post-btn"

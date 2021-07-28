@@ -6,7 +6,6 @@ import {
   CardBody,
   CardLink,
   CardTitle,
-  Button,
 } from "reactstrap";
 import { PostImgShowcase } from "./PostImgShowcase";
 import axios from "axios";
@@ -152,7 +151,7 @@ export const EventCardPostArea = (props)=>{
         <span className="userName">
           <p> {eventInfo.username} </p>
         </span>
-        <div style={{borderRadius:"5px"}}className="mood"></div>
+        {/* <div style={{borderRadius:"5px"}}className="mood"></div> */}
         <CardBody>
           <CardTitle tag="h5"> {eventInfo.content.title} </CardTitle>
           {/* <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle> */}

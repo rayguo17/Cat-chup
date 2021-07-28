@@ -1,12 +1,11 @@
 import { useState } from "react";
-import ReactDom from "react-dom";
 import React from "react";
 import backToTopIcon from "../img/backToTopIcon.png";
 
 const BackToTopButton = () => {
   //toggle visibility of scroll
   const scrollDiv = document.getElementsByClassName("Scrolllable");
-  console.log("this is the DOM:", scrollDiv[0]);
+  //console.log("this is the DOM:", scrollDiv[0]);
 
   const [showScroll, setShowScroll] = useState(false);
 

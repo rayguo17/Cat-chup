@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Card, CardText, CardBody, CardTitle, Button } from "reactstrap";
+import { Card, CardText, CardBody, CardTitle} from "reactstrap";
 import LikeIcon from "../../img/like-icon.png";
 import CommentIcon from "../../img/comment-icon.png";
 import { PostImgShowcase } from "./PostImgShowcase";
@@ -84,7 +84,7 @@ const PostCard = (props) => {
         <span className="userName">
           <p> {postInfo.username} </p>
         </span>
-        <div style={{borderRadius:"5px"}} className="mood"></div>
+        {/* <div style={{borderRadius:"5px"}} className="mood"></div> */}
         <CardBody>
           <CardTitle tag="h5"> {"post"} </CardTitle>
         </CardBody>

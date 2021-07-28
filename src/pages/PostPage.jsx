@@ -1,19 +1,13 @@
 import "../stylesheet/commentPage.css";
-import backButton from "../svg/backButton.svg";
-import Comments from "../components/Comments";
 import { useState } from "react";
 import {
   Card,
   CardText,
   CardBody,
-  CardLink,
-  CardTitle,
-  CardSubtitle,
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
 } from "reactstrap";
 import { TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
@@ -22,12 +16,6 @@ import CommentIcon from "../img/comment-icon.png";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import { useEffect } from "react";
 import GoBackButton from "../components/GoBackButton";
 import axios from "axios";
@@ -187,7 +175,7 @@ export const PostPage = (props)=>{
                 <span className="userName">
                   <p>{Info?Info.username:null}</p>
                 </span>
-                <div style={{borderRadius: "5px"}} className="mood"></div>
+                {/* <div style={{borderRadius: "5px"}} className="mood"></div> */}
                 <CardBody></CardBody>
                 <CardBody>
                   <div className="card-content">
@@ -238,7 +226,7 @@ export const PostPage = (props)=>{
                       <p>Like</p>
                     </button>
                     <Modal isOpen={modal} toggle={toggle}>
-                      <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+                      <ModalHeader toggle={toggle}>Likes</ModalHeader>
                       <ModalBody>
                         <List className={classes.root}>
                           {likes?likes.map((like, index) => {

@@ -17,7 +17,7 @@ const SideBar = (props) => {
   const postInfo = props.postInfo;
   const realTimeNotiStore = useSelector(state=>state.realTimeNotiStore);
   const notiList = realTimeNotiStore.notiList;
-  console.log('noti list in sidebar',notiList);
+  //console.log('noti list in sidebar',notiList);
   const username = props.username;
   //console.log("sidebar", props.username);
   return (
