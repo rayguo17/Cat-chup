@@ -59,7 +59,17 @@ const PlanTodayLabel = (props) => {
       })()} */}
       <div className="event_label">
         <div className="event_label_markcolor"></div>
-        <div className="event_label_title">{Info.content.title}</div>
+        <div className="event_label_title">
+          <p
+            style={{
+              margin: 0,
+              whiteSpace: "nowrap",
+              overflow: "scroll",
+            }}
+          >
+            {Info.content.title}
+          </p>
+        </div>
         <div style={{ fontSize: "12px" }}>{`${new Date(Info.start)
           .toLocaleString("en-GB")
           .slice(11, -3)}`}</div>
