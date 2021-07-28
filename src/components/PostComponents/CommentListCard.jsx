@@ -20,7 +20,7 @@ export const CommentListCard = (props)=>{
                     url:process.env.REACT_APP_API_SERVER+'/api/post/comment/'+comment,
                     headers: { Authorization: `Bearer ${token}` },
                 })
-                console.log('get comment res',getCommentReq);
+                //console.log('get comment res',getCommentReq);
                 setCommentDetail(getCommentReq.data);
                 let time = getCommentReq.data.created_at;
                 setTimeString(new Date(time).toLocaleTimeString());

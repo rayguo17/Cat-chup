@@ -84,8 +84,9 @@ export const EventCardPostArea = (props)=>{
   
       }
     }
-    const handleJoin = async ()=>{
+    const handleJoin = async (e)=>{
       //console.log('i want to join');
+      e.stopPropagation();
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       //check if people want to join is themself

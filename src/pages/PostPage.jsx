@@ -78,7 +78,7 @@ export const PostPage = (props)=>{
                 data:commentData,
                 method:'post',
             })
-            console.log('submit Comment Res',submitCommentReq);
+            //console.log('submit Comment Res',submitCommentReq);
             let newPost = {
               ...Info,
               
@@ -102,8 +102,8 @@ export const PostPage = (props)=>{
   }
   
   useEffect(()=>{
-    console.log("window", window.location.pathname);
-    console.log("path", props.match.params.postid);
+    //console.log("window", window.location.pathname);
+    //console.log("path", props.match.params.postid);
     let postId = props.match.params.postid;
     async function getPostDetail(){
         let token = localStorage.getItem('token');
@@ -112,7 +112,7 @@ export const PostPage = (props)=>{
             url:process.env.REACT_APP_API_SERVER+'/api/post/'+postId+'/user/'+decode.username,
             headers: { Authorization: `Bearer ${token}` },
         })
-        console.log('get post res',getPostReq);
+        //console.log('get post res',getPostReq);
         setPostInfo(getPostReq.data);
         setLikes(getPostReq.data.content.likes);
         setComments(getPostReq.data.content.comments);
@@ -120,7 +120,7 @@ export const PostPage = (props)=>{
     getPostDetail();
   },[props.match.params.postid])
   const handleLiked = async ()=>{
-    console.log('liked process');
+    //console.log('liked process');
     let token = localStorage.getItem('token');
     let decode = jwtDecode(token);
     let username = decode.username;
@@ -135,7 +135,7 @@ export const PostPage = (props)=>{
         headers: { Authorization: `Bearer ${token}` },
         method:'post'
       })
-      console.log('sendLike req',sendLikedReq);
+      //console.log('sendLike req',sendLikedReq);
       if(sendLikedReq.status===200){
         //set thunk to change reducer
         let newPost = {
@@ -268,7 +268,7 @@ export const PostPage = (props)=>{
                   <Button
                     variant="contained"
                     size="small"
-                    endIcon={<SendIcon />}
+                    
                     // onClick={postComment}
                     // disabled={!comment}
                     type="submit"

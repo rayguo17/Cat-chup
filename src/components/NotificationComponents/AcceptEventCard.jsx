@@ -18,7 +18,7 @@ export const AcceptEventCard = (props)=>{
 
 
     useEffect(()=>{
-        console.log('in like noti card',noti);
+        //console.log('in like noti card',noti);
         let jwt = localStorage.getItem('token');
         async function getUserFunc(){
             let getUserReq = await axios({

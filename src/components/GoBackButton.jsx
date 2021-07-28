@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom'
 class GoBack extends React.Component{
     
     goBack=()=>{
-        console.log('i amgoing back',this.props.history)
+       // console.log('i amgoing back',this.props.history)
         this.props.history.goBack();
     }
     render(){
