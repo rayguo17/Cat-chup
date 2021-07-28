@@ -13,7 +13,7 @@ const ScehduleRightBarPerosnal = (props) => {
   const username = props.username;
   
   return (
-    <div>
+    <div style={{backgroundColor:"white"}}>
       {(scheduleList && scheduleList.length > 0) ? (
 
       <center>

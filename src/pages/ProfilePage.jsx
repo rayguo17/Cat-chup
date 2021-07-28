@@ -132,7 +132,7 @@ export const ProfilePage = (props) => {
           
             </div>
 
-            <div className='col-3 px-0' style={{ maxHeight: "100vh", overflow:"scroll", overflowX:"hidden", position:"sticky", top:"0" }}>
+            <div className='col-3 px-0' style={{ maxHeight: "100vh", overflow:"scroll", overflowX:"hidden", position:"sticky", top:"0", backgroundColor:"white" }}>
               <ScehduleRightBarPersonal />
                 
             </div>
