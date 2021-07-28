@@ -6,26 +6,23 @@ import { TextField } from "@material-ui/core";
 import axios from "axios";
 
 const ScheduleDetail = (props) => {
-  
   const selected = props.scheduleList;
   const [selectedText, setSelectedText] = useState(selected.content.caption);
   let startTime = new Date(selected.start);
   let endTime = new Date(selected.end);
-  startTime.setHours(startTime.getHours()+8);
-  endTime.setHours(endTime.getHours()+8);
+  startTime.setHours(startTime.getHours() + 8);
+  endTime.setHours(endTime.getHours() + 8);
   const [selectedStartTime, setselectedStartTime] = useState(
     startTime.toISOString().slice(0, -5)
   );
   const [selectedEndTime, setselectedEndTime] = useState(
     endTime.toISOString().slice(0, -5)
   );
-  
 
   useEffect(() => {
     //console.log(selected);
     //console.log('schedule detail start time',selected.start)
     // this moment : scheduleList = []
-    
     // this moment : scheduleList = [{type:'schedule'}]
   }, []);
 
@@ -42,29 +39,26 @@ const ScheduleDetail = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let token = localStorage.getItem('token');
+    let token = localStorage.getItem("token");
     try {
       let updatedSchedule = {
-        ...selected
+        ...selected,
       };
       updatedSchedule.start = selectedStartTime;
       updatedSchedule.end = selectedEndTime;
-      updatedSchedule.content.caption = selectedText
+      updatedSchedule.content.caption = selectedText;
       let updateScheduleReq = await axios({
-        url:process.env.REACT_APP_API_SERVER+'/api/schedule',
-        headers:{Authorization:`Bearer ${token}`},
-        method:'put',
-        data:updatedSchedule
-      })
-      console.log('updatedSchedule res',updateScheduleReq);
-      if(updateScheduleReq.status===200){
-
+        url: process.env.REACT_APP_API_SERVER + "/api/schedule",
+        headers: { Authorization: `Bearer ${token}` },
+        method: "put",
+        data: updatedSchedule,
+      });
+      console.log("updatedSchedule res", updateScheduleReq);
+      if (updateScheduleReq.status === 200) {
       }
     } catch (error) {
-      console.log('update schedule error',error)
+      console.log("update schedule error", error);
     }
-    
-    
 
     // => [{type:'schedule'}, {}, {}]
 
@@ -78,7 +72,7 @@ const ScheduleDetail = (props) => {
   // console.log(selected.content.pictures);
   //console.log(new Date(schedule.end).toLocaleString().slice(0, -10));
   return (
-    <div 
+    <div
       className={
         "postId" +
         selected.id +
@@ -90,7 +84,14 @@ const ScheduleDetail = (props) => {
     >
       <form onSubmit={handleSubmit}>
         <div>
-          <div style={{ fontSize: "32px", backgroundColor: "#96d9ff",height:'82px',borderLeft:'1px solid #c4c4c4' }}>
+          <div
+            style={{
+              fontSize: "32px",
+              backgroundColor: "#96d9ff",
+              height: "82px",
+              borderLeft: "1px solid #c4c4c4",
+            }}
+          >
             {selected.content.title}
           </div>
 
@@ -103,20 +104,25 @@ const ScheduleDetail = (props) => {
               <p style={{ color: "black", backgroundColor: "grey" }}>
                 Event by {selected.creator}
               </p>
-              {selected.type==='event' &&selected.content.attachPic[0]?<div>
-                <img
-                  style={{ width: "80%" }}
-                  src={process.env.REACT_APP_API_SERVER+selected.content.attachPic[0]}
-                  alt="pic"
-                ></img>
-              </div>:null}
+              {selected.type === "event" && selected.content.attachPic[0] ? (
+                <div>
+                  <img
+                    style={{ width: "80%" }}
+                    src={
+                      process.env.REACT_APP_API_SERVER +
+                      selected.content.attachPic[0]
+                    }
+                    alt="pic"
+                  ></img>
+                </div>
+              ) : null}
             </div>
           ) : null}
 
           <div
             style={{
               textAlign: "start",
-              
+
               paddingTop: "10px",
             }}
           >
@@ -130,6 +136,7 @@ const ScheduleDetail = (props) => {
             type="datetime-local"
             value={selectedStartTime}
             disabled={true}
+            className="start-field"
             // onBlur={formik.handleBlur}
             // className={classes.textField}
             onChange={handleChange}
@@ -141,6 +148,7 @@ const ScheduleDetail = (props) => {
             value={selectedEndTime}
             onChange={handleChange}
             disabled={true}
+            className="end-field"
             // onBlur={formik.handleBlur}
             // className={classes.textField}
           />
@@ -148,7 +156,7 @@ const ScheduleDetail = (props) => {
             style={{
               textAlign: "start",
               marginTop: "30px",
-              padding:'0 10px'
+              padding: "0 10px",
             }}
           >
             <textarea
@@ -156,7 +164,12 @@ const ScheduleDetail = (props) => {
               onChange={(e) => setSelectedText(e.target.value)}
               value={selectedText}
               style={{ resize: "none", height: "35vh", width: "100%" }}
-              disabled={selected.type==='schedule'&& selected.creator===selected.executor?false:true}
+              disabled={
+                selected.type === "schedule" &&
+                selected.creator === selected.executor
+                  ? false
+                  : true
+              }
             ></textarea>
           </div>
           {/* <p>{selectedText}</p> */}
@@ -167,8 +180,16 @@ const ScheduleDetail = (props) => {
               justifyContent: "center",
             }}
           >
-            <Button variant="contained" color="primary" type="submit"
-              disabled={selected.type==='schedule'&& selected.creator===selected.executor?false:true}
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              disabled={
+                selected.type === "schedule" &&
+                selected.creator === selected.executor
+                  ? false
+                  : true
+              }
             >
               Save
             </Button>

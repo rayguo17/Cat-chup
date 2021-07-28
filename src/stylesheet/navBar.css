@@ -430,3 +430,8 @@ footer {
 .event_label_title p::-webkit-scrollbar {
   display: none;
 }
+
+.MuiTextField-root.start-field,
+.MuiTextField-root.end-field {
+  left: 5px;
+}

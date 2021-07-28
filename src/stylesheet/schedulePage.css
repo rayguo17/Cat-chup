@@ -62,3 +62,11 @@ label#start-label {
 label#end-label {
   transform: translate(0, 1.5px) scale(0.75);
 }
+
+.fc-event-main i {
+  margin-left: 10px;
+}
+
+.fc-daygrid-event i {
+  margin-left: 10px;
+}
