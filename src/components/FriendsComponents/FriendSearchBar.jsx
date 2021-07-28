@@ -1,5 +1,5 @@
 // import SelectSearch from 'react-select-search';
-import React, { useRef } from "react";
+import React from "react";
 import SearchIcon from '../../img/searchIcon.png'
 // import fuzzySearch from '../../util/fuzzySearch';
 import "../../stylesheet/globalSearch.css";
@@ -58,7 +58,7 @@ const FriendSearchBar = (props) => {
                 options={localFriendsList}
                 // ref={inputE1}
                 // value={friendsObject}
-                search placeholder="Search Friends"
+             placeholder="Search Friends"
                 onChange={event => { setSearchValue(event.target.value) }} />
 
 

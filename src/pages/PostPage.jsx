@@ -1,19 +1,13 @@
 import "../stylesheet/commentPage.css";
-import backButton from "../svg/backButton.svg";
-import Comments from "../components/Comments";
 import { useState } from "react";
 import {
   Card,
   CardText,
   CardBody,
-  CardLink,
-  CardTitle,
-  CardSubtitle,
   Button,
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter,
 } from "reactstrap";
 import { TextField } from "@material-ui/core";
 import SendIcon from "@material-ui/icons/Send";
@@ -22,12 +16,6 @@ import CommentIcon from "../img/comment-icon.png";
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import Divider from "@material-ui/core/Divider";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
-import Avatar from "@material-ui/core/Avatar";
-import Typography from "@material-ui/core/Typography";
 import { useEffect } from "react";
 import GoBackButton from "../components/GoBackButton";
 import axios from "axios";
@@ -36,6 +24,8 @@ import { PostImgShowcase } from "../components/PostComponents/PostImgShowcase";
 import { LikeListCard } from "../components/PostComponents/LikeListCard";
 import { CommentSection } from "../components/PostComponents/CommentSection";
 import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { updatePostAction } from "../redux/post/action";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -64,6 +54,9 @@ export const PostPage = (props)=>{
   const [comments,setComments] = useState(null);
   const [likes,setLikes] = useState(null);
   const history = useHistory();
+  const socketStore = useSelector(state=>state.socketStore);
+  const socket = socketStore.webSocket;
+  const dispatch = useDispatch();
   const toggle = () => setModal(!modal);
 
   const postComment = (e) => {
@@ -86,6 +79,13 @@ export const PostPage = (props)=>{
                 method:'post',
             })
             console.log('submit Comment Res',submitCommentReq);
+            let newPost = {
+              ...Info,
+              
+            }
+            newPost.content.comments=[...comments,submitCommentReq.data.commentId];
+            dispatch(updatePostAction(newPost));
+            socket.emit('comment',{donor:user,recipient:Info.username,comment:comment});
             setComments([...comments,submitCommentReq.data.commentId]);
         } catch (error) {
             console.log('submit comment function error',error)
@@ -137,7 +137,15 @@ export const PostPage = (props)=>{
       })
       console.log('sendLike req',sendLikedReq);
       if(sendLikedReq.status==200){
+        //set thunk to change reducer
+        let newPost = {
+          ...Info,
+          
+        }
+        newPost.content.likes=[...likes,sendLikedReq.data];
+        dispatch(updatePostAction(newPost));
         setLikes([...likes,sendLikedReq.data])
+        socket.emit('like',{donor:username,recipient:Info.username})
       }
       
 
@@ -167,7 +175,7 @@ export const PostPage = (props)=>{
                 <span className="userName">
                   <p>{Info?Info.username:null}</p>
                 </span>
-                <div style={{borderRadius: "5px"}} className="mood"></div>
+                {/* <div style={{borderRadius: "5px"}} className="mood"></div> */}
                 <CardBody></CardBody>
                 <CardBody>
                   <div className="card-content">
@@ -218,7 +226,7 @@ export const PostPage = (props)=>{
                       <p>Like</p>
                     </button>
                     <Modal isOpen={modal} toggle={toggle}>
-                      <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+                      <ModalHeader toggle={toggle}>Likes</ModalHeader>
                       <ModalBody>
                         <List className={classes.root}>
                           {likes?likes.map((like, index) => {

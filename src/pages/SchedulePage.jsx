@@ -38,6 +38,9 @@ import FriendGroupSelector from "../components/WhatsOnYourMindComponents/FriendG
 import { makeStyles } from "@material-ui/core";
 import toEventIcon from "../img/toEvent.png";
 import notEventIcon from "../img/notEvent.png";
+import jwtDecode from "jwt-decode";
+import axios from "axios";
+import { addNewScheduleSuccessAction } from "../redux/schedule/action";
 
 // const [scheduleList,SetScheduleList] = useState([]);
 // useEffect(() => {
@@ -71,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-var currentScheduleList = [];
+
 const SchedulePage = (props) => {
   const scheduleListStore = useSelector((state) => state.scheduleListStore);
   const scheduleList = scheduleListStore.scheduleList;
@@ -79,10 +82,10 @@ const SchedulePage = (props) => {
   const classes = useStyles();
   var local_date = moment().format("YYYY-MM-DD");
   var local_hour = moment().format("HH");
-  console.log("local_hour,", local_hour);
+  //console.log("local_hour,", local_hour);
   const [modal, setModal] = useState(false);
-  const [caption, setCaption] = useState("");
-  const [Info, setInfo] = useState({ type: "schedule", content: {} });
+  const calendarRef = useRef();
+  const dispatch = useDispatch();
   const [modalInputTitle, setModalInputTitle] = useState("");
   const [modalScheduleStartTime, setModalScheduleStartTime] = useState(``);
   const [modalScheduleEndTime, setModalScheduleEndTime] = useState(``);
@@ -96,29 +99,36 @@ const SchedulePage = (props) => {
   useEffect(() => {
     async function PassEventData() {
       try {
+        let currentScheduleList = [];
         if (scheduleList.length) {
           setDataPassed(true);
-          console.log("hihgjhfkfkfkugkgkjgkjgkjgkjgjk", scheduleList);
+          //console.log("hihgjhfkfkfkugkgkjgkjgkjgkjgjk", scheduleList);
           scheduleList.map((schedule, index) => {
-            console.log(
-              "sadhjasgdijhasdlbkasjfdgoaghpondsaglgdsoigpsodhgosdnvsdhgipohsdpods"
-            );
+            // console.log(
+            //   "test",new Date(schedule.start)
+            // );
+            let startTime = new Date(schedule.start);
+            let endTime = new Date(schedule.end);
+            startTime.setHours(startTime.getHours()+8);
+            endTime.setHours(endTime.getHours()+8);
             currentScheduleList.push({
               id: schedule.id,
               title: schedule.content.title,
-              start: "2021-07-26" + "T12:00:00",
-              end: "2021-07-26" + "T15:00:00",
+              start: startTime.toISOString().slice(0,-5),
+              end: endTime.toISOString().slice(0,-5),
             });
           });
         }
-        await setINITIAL_EVENTS(currentScheduleList);
+        
+         setINITIAL_EVENTS(currentScheduleList);
+         console.log('it rerender',INITIAL_EVENTS)
       } catch (error) {
         console.log("INITIAL_EVENTS DATA error", error);
       }
     }
     PassEventData();
   }, [scheduleList]);
-  console.log(INITIAL_EVENTS);
+  //console.log(INITIAL_EVENTS);
   // PassEventData();
   // console.log(currentScheduleList);
 
@@ -142,23 +152,78 @@ const SchedulePage = (props) => {
     const target = e.target;
     const name = target.name;
     const value = target.value;
+    if(name==='modalTitle'){
+      setModalInputTitle(value);
+    }
+    if(name==='modalCaption'){
+      setModalContent(value);
+    }
 
-    setState({
-      [name]: value,
-    });
   };
+  useEffect(()=>{
+    console.log('ref',calendarRef);
+    if(calendarRef.current){
+      let calendarApi = calendarRef.current.getApi();
+    console.log('calendarapi',calendarApi);
+    }
+    
+  },[calendarRef.current])
 
-  const handleSubmit = (e) => {
-    const title = modalInputTitle;
-    // this.setState({ caption: title });
-    setState({
-      Info: { ...props.Info, content: { caption: title } },
-    });
+  const handleSubmit =async (e) => {
+    try {
+      let token = localStorage.getItem('token');
+    let decode = jwtDecode(token);
+    let newSchedule = {
+      creator:decode.username,
+      executor:decode.username,
+      start:modalScheduleStartTime,
+      end:modalScheduleEndTime,
+      type:'schedule'
+    }
+    let scheduleContent = {
+      title:modalInputTitle,
+      caption:modalContent
+    }
+    newSchedule.content = scheduleContent;
+    console.log('submit new schedule',newSchedule);
+    let newScheduleReq = await axios({
+      url:process.env.REACT_APP_API_SERVER+'/api/schedule',
+      headers:{Authorization:`Bearer ${token}`},
+      method:'post',
+      data:newSchedule
+    })
+    console.log('store schedule res',newScheduleReq);
+    if(newScheduleReq.status===200){
+      dispatch(addNewScheduleSuccessAction(newScheduleReq.data))
+      let newStartTime = new Date(modalScheduleStartTime.start);
+            let newEndTime = new Date(modalScheduleEndTime.end);
+            newStartTime.setHours(newStartTime.getHours()+8);
+            newEndTime.setHours(newEndTime.getHours()+8);
+      let newEvent = {
+        id:newScheduleReq.data.id,
+        title:modalInputTitle,
+        start:newStartTime,
+        end:newEndTime,
+      }
+      // setINITIAL_EVENTS([...INITIAL_EVENTS,newEvent]);
+      console.log('calendarRef',calendarRef);
+      let calendarApi = calendarRef.current.getApi();
+      console.log('calendarapi',calendarApi);
+        calendarApi.addEvent(newEvent);
+
+      
+    }
+    } catch (error) {
+      console.log('submit schedule error',error);
+    }
+    
+    //after got new schedule ,dispatch to redux
     modalClose();
     // console.log("close", state);
   };
 
-  const modalOpen = () => {
+  const modalOpen = (e) => {
+    console.log('open new schedule modal',e);
     setModal(true);
   };
 
@@ -171,7 +236,6 @@ const SchedulePage = (props) => {
     setModal(false);
   };
 
-  const postInfo = props.postInfo;
 
   //   handleWeekendsToggle = () => {
   //     this.setState({
@@ -313,7 +377,8 @@ const SchedulePage = (props) => {
                   type="datetime-local"
                   // value={formik.values.start}
                   // onBlur={formik.handleBlur}
-                  className={modalScheduleStartTime}
+                  value={modalScheduleStartTime}
+                  onChange={(e)=>setModalScheduleStartTime(e.target.value)}
                   // onChange={formik.handleChange}
                   required
                 />
@@ -322,10 +387,12 @@ const SchedulePage = (props) => {
                   name="end"
                   label="end time"
                   type="datetime-local"
+                  value={modalScheduleEndTime}
+                  onChange={(e)=>setModalScheduleEndTime(e.target.value)}
                   // value={formik.values.end}
                   // onChange={formik.handleChange}
                   // onBlur={formik.handleBlur}
-                  className={modalScheduleEndTime}
+                  
                   required
                 />
               </div>
@@ -333,23 +400,22 @@ const SchedulePage = (props) => {
                 <label>Schedule Title:</label>
                 <input
                   type="text"
+                  name='modalTitle'
                   value={modalInputTitle}
-                  name="modalInputTitle"
                   onChange={(e) => handleChange(e)}
                   className="form-control"
                   required
                 />
-
+                <br />
                 <textarea
                   value={modalContent}
-                  name="modalContent"
-                  id="modalContent"
+                  name="modalCaption"
                   onChange={(e) => handleChange(e)}
                   className="form-control"
                   required
                 />
               </div>
-
+                <br />
               <div className="form-group">
                 <button onClick={(e) => handleSubmit(e)} type="button">
                   Save
@@ -360,6 +426,7 @@ const SchedulePage = (props) => {
 
           {dataPassed ? (
             <FullCalendar
+              ref={calendarRef}
               plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
               headerToolbar={{
                 left: "prev,next today",
@@ -367,13 +434,12 @@ const SchedulePage = (props) => {
                 right: "dayGridMonth,timeGridWeek,timeGridDay",
               }}
               initialView="dayGridMonth"
-              editable={true}
-              selectable={true}
+              
               selectMirror={true}
               dayMaxEvents={true}
               weekends={weekendsVisible}
               // alternatively, use the `events` setting to fetch from a feed
-              initialEvents={INITIAL_EVENTS}
+              events={INITIAL_EVENTS}
               // select={this.handleDateSelect}
               dateClick={(e) => modalOpen(e)}
               // dateClick={function (info) {
@@ -401,6 +467,7 @@ const SchedulePage = (props) => {
               Info={Info}
               Id={Info.id}
               scheduleList={Info}
+              key={Info.id}
             />
           );
         })}

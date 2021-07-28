@@ -9,6 +9,8 @@ import { Checkbox,FormControlLabel,FormGroup, TextareaAutosize} from '@material-
 export const AddFriendModal = (props)=>{
 
     const {modalIsOpen,toggle,className,ownerName} = props;
+    const socketStore = useSelector(state=>state.socketStore);
+    const socket = socketStore.webSocket;
     const userStore = useSelector(state=>state.userInfoStore);
     let userInfo = userStore.userInfo;
     const formik = useFormik({
@@ -31,6 +33,7 @@ export const AddFriendModal = (props)=>{
                 });
                 //console.log('sendReq',sendReq);
                 if(sendReq.status===200){
+                    socket.emit('friend_request',{donor:values.donor,recipient:values.recipient})
                     store.addNotification({
                         title:'Friend request sent!',
                         message:'Please wait for other people to confirmed your request',

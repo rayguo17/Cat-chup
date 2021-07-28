@@ -5,7 +5,6 @@ import {
   CardBody,
   CardLink,
   CardTitle,
-  CardSubtitle,
 } from "reactstrap";
 import MailIcon from "../img/mail-icon.png";
 
@@ -14,19 +13,13 @@ const EventPost = (props) => {
     id,
     userInfo,
     content,
-    postTime,
-    likeNumber,
-    commentsNumber,
+    
   } = props.postInfo;
 
   const postTimeYMDT =
     new Date(content.postTime).toLocaleDateString() +
     " " +
     new Date(content.postTime).toLocaleTimeString();
-
-  const eventDateYMD = new Date(content.postTime).toLocaleDateString();
-  const DateTimeT = new Date(content.postTime).toLocaleTimeString();
-
   const changeToCommentPage = (postInfo) => {
     window.location.href = `/post/${id}`;
   };

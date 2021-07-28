@@ -1,12 +1,9 @@
 import React from "react";
 import {
-  Container,
   Row,
   Col,
   Card,
-  Button,
   CardTitle,
-  CardText,
 } from "reactstrap";
 import MailIcon from "../img/mail-icon.png";
 

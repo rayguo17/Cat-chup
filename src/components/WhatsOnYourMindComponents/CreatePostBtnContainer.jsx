@@ -3,7 +3,7 @@ import { Button } from "@material-ui/core"
 export const CreatePostBtnContainer = (props) => {
     const { toggle } = props
 
-    console.log("createPostBtn props****", props)
+    //console.log("createPostBtn props****", props)
 
     return (
         <div className='whatsOnYourMindContainer'>

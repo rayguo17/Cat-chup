@@ -6,6 +6,7 @@ export const LOAD_POST_SUCCESS_ACTION = 'LOAD_POST_SUCCESS_ACTION';
 export const LOAD_POST_FAILURE_ACTION = 'LOAD_POST_FAILURE_ACTION';
 export const ADD_NEW_POST_SUCCESS_ACTION = 'ADD_NEW_POST_SUCCESS_ACTION';
 export const ADD_NEW_POST_FAILURE_ACTION = 'ADD_NEW_POST_FAILURE_ACTION';
+export const UPDATE_POST_ACTION = 'UPDATE_POST_ACTION';
 
 export function loadPostSuccessAction(postList){
     return {
@@ -30,6 +31,12 @@ export function addNewPostFailureAction(){
         type:ADD_NEW_POST_FAILURE_ACTION
     }
 }
+export function updatePostAction(updatedPost){
+    return {
+        type:UPDATE_POST_ACTION,
+        updatedPost:updatedPost
+    }
+}
 
 export function loadPostThunk(username){
     return async (dispatch)=>{
@@ -39,7 +46,7 @@ export function loadPostThunk(username){
                 url:process.env.REACT_APP_API_SERVER+'/api/post/'+username,
                 headers: { Authorization: `Bearer ${token}` },
             })
-            console.log('load post req', getPostReq);
+            //console.log('load post req', getPostReq);
             dispatch(loadPostSuccessAction(getPostReq.data))
         } catch (error) {
             console.log('load post thunk error',error)

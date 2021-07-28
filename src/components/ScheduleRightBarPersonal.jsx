@@ -35,8 +35,9 @@ const ScehduleRightBarPerosnal = (props) => {
 
         <div>
           {scheduleList.map((event, index) => {
+            console.log('event card',event);
             if (
-              event.creator !== username &&
+              
               (new Date(event.start) > new Date() ||
                 new Date(event.start) == new Date())
             ) {
