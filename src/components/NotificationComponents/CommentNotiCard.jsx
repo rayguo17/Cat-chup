@@ -45,7 +45,7 @@ export const CommentNotiCard = (props)=>{
                 <div>{noti.donor}</div>
             </div>
             <div className='col-7 px-0'>
-                <p style={{color:'#c4c4c4'}}>{noti.donor} commented your post</p>
+                <p style={{color:'grey'}}>{noti.donor} commented your post</p>
                 <p>{noti.content.comment}</p>
                 
                 

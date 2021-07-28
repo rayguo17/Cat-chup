@@ -29,7 +29,7 @@ const EventPost = (props) => {
       <Card>
         <img className="userIcon" src={userInfo.userIcon_url} alt="icon" />
         <span className="userName">
-          <p> {userInfo.userName} </p>
+          <p style={{fontSize:"25px", fontWeight:"600"}}> {userInfo.userName} </p>
         </span>
         <div className="mood"></div>
         <CardBody>
