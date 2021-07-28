@@ -327,8 +327,8 @@ const SchedulePage = (props) => {
             style={{
               display: "flex",
               justifyContent: "space-evenly",
-              padding: "10px 0",
-              margin: "20px 0",
+              padding: "0px 0",
+              margin: "0px 0",
             }}
           ></div>
           <div className="App">
