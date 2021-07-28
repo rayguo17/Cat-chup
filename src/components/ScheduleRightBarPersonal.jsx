@@ -45,7 +45,8 @@ const ScehduleRightBarPerosnal = (props) => {
             }
           })}
         </div>
-      </center>):
+      </center>)
+      :
       <center style={{overflow:"hidden"}}>
       <div
         // className="Schedule-header"
@@ -67,7 +68,7 @@ const ScehduleRightBarPerosnal = (props) => {
       </div>
 <div style={{height:"90vh",marginLeft:"2%",marginRight:"2%",overflow:"hidden", border:"2px solid grey", backgroundColor:"#96d9ff"}}>
       <div style={{padding:"10px", marginTop:"100%", overflow:"hidden"}}>
-          <p>you currently have no events right now!</p>
+          <p>You currently have no events right now!</p>
           <img style={{width:"60%"}} src={favicon} alt="cathead"></img>
         </div>
 

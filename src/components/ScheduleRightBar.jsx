@@ -68,7 +68,7 @@ const ScehduleRightBar = (props) => {
         <div style={{height:"90vh",marginLeft:"2%",marginRight:"2%",overflow:"hidden", border:"2px solid grey", backgroundColor:"#96d9ff"}}>
 
         <div style={{padding:"10px",marginTop:"100%"}}>
-          <p>there is currently no events right now</p>
+          <p>There is currently no events right now</p>
           <img style={{width:"60%"}} src={favicon} alt="cathead"></img>
         </div>
 
