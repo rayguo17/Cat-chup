@@ -66,11 +66,10 @@ export const CreatePostModal = (props) => {
   const friendListStore = useSelector((state) => state.friendListStore);
   const friendList = friendListStore.friendList;
   //console.log('friendList',friendList);
-  
 
   //FOR FORMIK FORM CONTROL
   let initialTime = new Date(Date.now());
-    initialTime.setHours(initialTime.getHours()+8);
+  initialTime.setHours(initialTime.getHours() + 8);
   const formik = useFormik({
     initialValues: {
       caption: "",
@@ -106,7 +105,7 @@ export const CreatePostModal = (props) => {
 
   useEffect(() => {
     let initialTime = new Date(Date.now());
-    initialTime.setHours(initialTime.getHours()+8);
+    initialTime.setHours(initialTime.getHours() + 8);
     let friendGroup = Object.keys(friendList);
     //setUserInfo(userInfoStore.userInfo);
     //console.log('i am reset')
@@ -227,6 +226,7 @@ export const CreatePostModal = (props) => {
                           onBlur={formik.handleBlur}
                           className={classes.textField}
                           onChange={formik.handleChange}
+                          inputProps={{ style: { fontSize: "0.92rem" } }}
                         />
                         <TextField
                           id="end"
@@ -237,7 +237,10 @@ export const CreatePostModal = (props) => {
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           className={classes.textField}
-                          inputProps={{ min: formik.values.start }}
+                          inputProps={{
+                            min: formik.values.start,
+                            style: { fontSize: "0.92rem" },
+                          }}
                         />
                       </div>
                     ) : null}
@@ -303,7 +306,6 @@ export const CreatePostModal = (props) => {
               id={id}
               open={open}
               anchorEl={anchorEl}
-              
               onEmojiClick={onEmojiClick}
             />
           </form>
