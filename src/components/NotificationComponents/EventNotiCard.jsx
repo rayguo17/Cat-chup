@@ -1,4 +1,4 @@
-import { faCalendarCheck,faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -39,7 +39,7 @@ export const EventNotiCard = (props)=>{
         let time =new Date(noti.created_at)
         setTimeString(time.toLocaleDateString()+' '+time.toLocaleTimeString())
         setLocalSolved(solved);
-    },[])
+    },[noti.donor,noti.created_at,solved])
     const handleIgnore = async (e)=>{
         e.stopPropagation();
         let token = localStorage.getItem('token');
@@ -49,7 +49,7 @@ export const EventNotiCard = (props)=>{
                 headers:{Authorization:`Bearer ${token}`}
             })
             //console.log('ignoreReq',ignoreReq);
-            if(ignoreReq.status==200){
+            if(ignoreReq.status===200){
                 let newNoti = {
                     ...noti
                 }

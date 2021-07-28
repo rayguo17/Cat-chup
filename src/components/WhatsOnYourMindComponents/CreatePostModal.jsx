@@ -4,9 +4,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import MoodIcon from "../../img/moodIcon.png";
-import IncognitoIcon from "../../img/incognitoIcon.png";
-import EventsIcon from "../../img/eventsIcon.png";
 import PostEmoji from "../../img/post_smile-emoji_icon.png";
 import UploadImageIcon from "../../img/upload_imageIcon.png";
 import ReactImageUploading from "react-images-uploading";
@@ -69,7 +66,7 @@ export const CreatePostModal = (props) => {
   const friendListStore = useSelector((state) => state.friendListStore);
   const friendList = friendListStore.friendList;
   //console.log('friendList',friendList);
-  const friendGroup = Object.keys(friendList);
+  
 
   //FOR FORMIK FORM CONTROL
   let initialTime = new Date(Date.now());
@@ -79,7 +76,7 @@ export const CreatePostModal = (props) => {
       caption: "",
       attachPic: [],
       ownerName: userInfo.username,
-      visible_group: friendGroup[0],
+      visible_group: Object.keys(friendList)[0],
       type: "post",
       start: initialTime.toISOString().slice(0, -5),
       end: initialTime.toISOString().slice(0, -5),
@@ -110,6 +107,7 @@ export const CreatePostModal = (props) => {
   useEffect(() => {
     let initialTime = new Date(Date.now());
     initialTime.setHours(initialTime.getHours()+8);
+    let friendGroup = Object.keys(friendList);
     //setUserInfo(userInfoStore.userInfo);
     //console.log('i am reset')
     //console.log('try to coporate time',new Date(Date.now()).toISOString());
@@ -126,7 +124,7 @@ export const CreatePostModal = (props) => {
       },
     });
     setIsEvent(false);
-  }, [userInfoStore, modal, friendList]);
+  }, [userInfo.username, modal, friendList]);
   return (
     <Modal isOpen={modal} toggle={toggle} className={className}>
       <ModalHeader toggle={toggle}>{isEvent ? "Event" : "Post"}</ModalHeader>
@@ -206,7 +204,7 @@ export const CreatePostModal = (props) => {
                     />
 
                     <FriendGroupSelector
-                      friendGroup={friendGroup}
+                      friendGroup={Object.keys(friendList)}
                       selectedGroup={formik.values.visible_group}
                       handleSelect={formik.handleChange}
                     />
@@ -305,7 +303,7 @@ export const CreatePostModal = (props) => {
               id={id}
               open={open}
               anchorEl={anchorEl}
-              handleClickAway={closeEmojiPicker}
+              
               onEmojiClick={onEmojiClick}
             />
           </form>

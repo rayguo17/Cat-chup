@@ -12,9 +12,7 @@ const EditFriendGroup = (props) => {
 
     const toggle = () => setModal(!modal);
     const {
-        buttonLabel,
         friendsList,
-        activeTab,
         className,
         username
     } = props;

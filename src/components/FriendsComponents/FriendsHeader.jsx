@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Nav, NavItem, NavLink } from "reactstrap";
+import { Nav } from "reactstrap";
 // import classnames from 'classnames';
 import GlobalSearchBar from "./GlobalSerachBar";
 // import { GroupFriendDrop } from './GroupFriendDrop';
@@ -57,14 +57,3 @@ const FriendsHeader = (props) => {
 
 export default FriendsHeader;
 
-{
-  /* <div className="friendGroupListContainer">
-                <ButtonGroup >
-                    <Button className="friendGroupList">All Friends</Button>
-                    <Button className="friendGroupList">Family</Button>
-                    <Button className="friendGroupList">Work</Button>
-                    <Button className="friendGroupList">School</Button>
-                    <Button className="friendGroupList">Close Friends</Button>
-                </ButtonGroup>
-            </div> */
-}

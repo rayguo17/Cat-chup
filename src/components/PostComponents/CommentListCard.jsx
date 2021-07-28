@@ -7,8 +7,6 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import Divider from "@material-ui/core/Divider";
-
 export const CommentListCard = (props)=>{
 
     const {comment} = props;
@@ -22,7 +20,7 @@ export const CommentListCard = (props)=>{
                     url:process.env.REACT_APP_API_SERVER+'/api/post/comment/'+comment,
                     headers: { Authorization: `Bearer ${token}` },
                 })
-                console.log('get comment res',getCommentReq);
+                //console.log('get comment res',getCommentReq);
                 setCommentDetail(getCommentReq.data);
                 let time = getCommentReq.data.created_at;
                 setTimeString(new Date(time).toLocaleTimeString());
@@ -31,7 +29,7 @@ export const CommentListCard = (props)=>{
             }
         }
         commentFunc();
-    },[])
+    },[comment])
 
     return (
         <ListItem alignItems="flex-start">

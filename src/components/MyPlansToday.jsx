@@ -5,9 +5,7 @@ import favicon from "../../src/img/favicon.png"
 
 const MyPlansToday = (props) => {
   const scheduleListStore = useSelector((state) => state.scheduleListStore);
-  const username = props.username;
   const scheduleList = scheduleListStore.scheduleList;
-  const postInfo = props.postInfo;
   const history = useHistory();
   const today = new Date().toLocaleString("en-GB").slice(0, -10);
   const routeChange = () => {
@@ -27,7 +25,12 @@ const MyPlansToday = (props) => {
       >
         {/* <span placeholder="todays plans">todays plans</span> */}
 
-        {(scheduleList && scheduleList.length > 0) ? (
+        {(scheduleList && scheduleList.filter((event)=>{
+          return props.username === event.executor &&
+          (event.type === "event" || event.type === "schedule") &&
+          new Date(event.start).toLocaleString("en-GB").slice(0, -10) ===
+            today
+        }).length > 0) ? (
         <div
           className="plansTodayBox "
           style={{
@@ -45,6 +48,9 @@ const MyPlansToday = (props) => {
                 today
             ) {
               return <PlanTodayLabel Info={event} key={event.id} />;
+            }
+            else{
+              return null
             }
           })}
         </div>)

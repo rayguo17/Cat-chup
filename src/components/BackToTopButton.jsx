@@ -1,4 +1,3 @@
-import { useState } from "react";
 import React from "react";
 import backToTopIcon from "../img/backToTopIcon.png";
 
@@ -7,7 +6,7 @@ const BackToTopButton = () => {
   const scrollDiv = document.getElementsByClassName("Scrolllable");
   //console.log("this is the DOM:", scrollDiv[0]);
 
-  const [showScroll, setShowScroll] = useState(false);
+  
 
   const checkScrollTop = () => {
     // if (!showScroll && scrollDiv[0].pageYOffset > 50) {
@@ -26,7 +25,7 @@ const BackToTopButton = () => {
     <img
       className="ScrollToTopButton"
       onClick={scrollTop}
-      style={{ display: showScroll ? "flex" : "flex" }}
+      style={{ display:  "flex" }}
       src={backToTopIcon}
       alt="backToTop button"
     ></img>

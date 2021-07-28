@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const ProfileEditModal = (props)=>{
     const {
-        buttonLabel,className,toggle,modalIsOpen
+        className,toggle,modalIsOpen
     } = props;
     const userStore = useSelector(state=>state.userInfoStore);
     let userInfo = userStore.userInfo;
@@ -86,7 +86,7 @@ export const ProfileEditModal = (props)=>{
     }
     useEffect(()=>{
       //console.log('use effect',userInfo.email)
-      console.log('images',formik.values);
+      //console.log('images',formik.values);
       formik.resetForm({
         values:{
           profilePic:[],

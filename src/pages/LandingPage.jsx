@@ -1,11 +1,11 @@
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom"
 import { ContentPage } from "./ContentPage"
 import { IndexPage } from "./IndexPage"
-import HomePage from "./HomePage"
+
 import { Login } from "./Login"
 import Register from "./Register"
 import { useSelector } from "react-redux"
-import FriendsPage from "./FriendsPage"
+
 
 const PrivateRoute = ({ component, ...rest }) => {
     const auth = useSelector(state => state.authStore);

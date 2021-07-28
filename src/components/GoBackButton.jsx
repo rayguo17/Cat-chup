@@ -1,16 +1,13 @@
-import { Icon, IconButton } from '@material-ui/core';
+import {  IconButton } from '@material-ui/core';
 import { ArrowBack } from '@material-ui/icons';
 import * as React from 'react'
 import { withRouter } from 'react-router-dom'
 
 
 class GoBack extends React.Component{
-    constructor(props){
-        super(props);
-
-    }
+    
     goBack=()=>{
-        console.log('i amgoing back',this.props.history)
+       // console.log('i amgoing back',this.props.history)
         this.props.history.goBack();
     }
     render(){

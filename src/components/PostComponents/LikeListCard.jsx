@@ -28,7 +28,7 @@ export const LikeListCard = (props)=>{
             setTimeString(new Date(time).toLocaleTimeString())
         }
         getLikefunc();
-    },[])
+    },[like])
 
     return (
         <ListItem alignItems="flex-start">

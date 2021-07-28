@@ -52,10 +52,6 @@ const useStyles = makeStyles((theme) => ({
 export default function FriendGroupSelector(props) {
   const classes = useStyles();
   const {selectedGroup,handleSelect,friendGroup}=props;
-  const [group, setGroup] = React.useState('All Friends');
-  const handleChange = (event) => {
-    //setGroup(event.target.value);
-  };
   return (
     <div>
       
@@ -68,7 +64,6 @@ export default function FriendGroupSelector(props) {
           name='visible_group'
           id='visible_group'
           labelId="demo-customized-select-label"
-          id="demo-customized-select"
           value={selectedGroup}
           onChange={handleSelect}
           input={<BootstrapInput />}

@@ -1,20 +1,21 @@
 import "../stylesheet/scheduleArea.css";
-import WeekIcon from "./WeekIcon";
-import EventCard from "./EventCard";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import favicon from "../../src/img/favicon.png"
+
 import { MyscheduleButton } from "./ScheduleComponents/MyScheduleButton";
 import { useSelector } from "react-redux";
 import MyEventCardSchedule from "./PostComponents/MyEventCardSchedule";
 
 const ScehduleRightBarPerosnal = (props) => {
-  const postInfo = props.postInfo;
   const scheduleListStore = useSelector((state) => state.scheduleListStore);
   const scheduleList = scheduleListStore.scheduleList;
-  const username = props.username;
   
   return (
-    <div style={{backgroundColor:"white"}}>
-      {(scheduleList && scheduleList.length > 0) ? (
+    <div>
+      {(scheduleList && scheduleList.filter((event)=>{
+        return new Date(event.start) > new Date() ||
+        new Date(event.start) === new Date()
+      }).length > 0) ? (
 
       <center>
         <div
@@ -37,13 +38,15 @@ const ScehduleRightBarPerosnal = (props) => {
 
         <div>
           {scheduleList.map((event, index) => {
-            console.log('event card',event);
+            //console.log('event card',event);
             if (
               
               (new Date(event.start) > new Date() ||
-                new Date(event.start) == new Date())
+                new Date(event.start) === new Date())
             ) {
               return <MyEventCardSchedule Info={event} key={event.id} />;
+            }else{
+              return null
             }
           })}
         </div>

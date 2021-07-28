@@ -64,7 +64,7 @@ export function updateFriendThunk(newFriendList,username){
         let token = localStorage.getItem('token');
         try {
             //console.log('in update friend thunk',newFriendList);
-            let updateReq = await axios({
+            await axios({
                 url:process.env.REACT_APP_API_SERVER+'/api/friends/'+username,
                 method:'put',
                 headers: { Authorization: `Bearer ${token}` },
@@ -108,7 +108,7 @@ export function AddFriendThunk(values) {
     return async (dispatch) => {
         try {
             let token = localStorage.getItem('token');
-            let addFriendReq = await axios({
+             await axios({
                 url: process.env.REACT_APP_API_SERVER + '/api/friends',
                 method: 'post',
                 headers: { Authorization: `Bearer ${token}` },

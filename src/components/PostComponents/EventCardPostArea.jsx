@@ -41,7 +41,7 @@ export const EventCardPostArea = (props)=>{
     useEffect(()=>{
         //console.log('event info in card',eventInfo);
         setLikes(eventInfo.content.likes);
-    },[])
+    },[eventInfo.content.likes])
 
     const handleRedirect = ()=>{
          history.push(`/post/${eventInfo.id}`)
@@ -58,7 +58,7 @@ export const EventCardPostArea = (props)=>{
       let decode = jwtDecode(token);
       let username = decode.username;
       let match = false;
-      match = likes.find(obj=>obj.user==username);
+      match = likes.find(obj=>obj.user===username);
       //console.log('match like',match);
       if(match){
         //cancel like
@@ -70,7 +70,7 @@ export const EventCardPostArea = (props)=>{
           method:'post'
         })
         //console.log('sendLike req',sendLikedReq);
-        if(sendLikedReq.status==200){
+        if(sendLikedReq.status===200){
           let newPost = {
             ...eventInfo,
             
@@ -84,8 +84,9 @@ export const EventCardPostArea = (props)=>{
   
       }
     }
-    const handleJoin = async ()=>{
+    const handleJoin = async (e)=>{
       //console.log('i want to join');
+      e.stopPropagation();
       let token = localStorage.getItem('token');
       let decode = jwtDecode(token);
       //check if people want to join is themself

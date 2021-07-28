@@ -1,9 +1,9 @@
-import { faComment, faHeart} from "@fortawesome/free-solid-svg-icons"
+import { faComment} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import userAvatar from '../../img/profileIcon.png';
 
 export const CommentNotiCard = (props)=>{
@@ -24,7 +24,7 @@ export const CommentNotiCard = (props)=>{
         getUserFunc()
         let time = new Date(noti.created_at);
         setTimeString(time.toLocaleDateString()+' '+time.toLocaleTimeString())
-    },[])
+    },[noti.created_at,noti.donor])
     const handleRedirect = ()=>{
         history.push('/post/'+noti.content.postId)
         //window.location.href = '/post/'+noti.content.postId;

@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "../../stylesheet/postArea.css";
-import EventPost from "../EventPost";
+
 import jwtDecode from "jwt-decode";
 import PostCard from "../PostComponents/PostCard";
 import { EventCardPostArea } from "../PostComponents/EventCardPostArea";
 
 const ProfilePost = (props) => {
-  const {postList,isOwner,areFriends,pageOwner} = props
+  const {isOwner,areFriends,pageOwner} = props
   const [postInfo,setPostInfo] = useState([]);
 
   useEffect(()=>{
@@ -21,7 +21,7 @@ const ProfilePost = (props) => {
                 url:process.env.REACT_APP_API_SERVER+'/api/post/user/'+pageOwner,
                 headers:{Authorization:`Bearer ${token}`},
             })
-            console.log('get personal post req',postReq);
+            //console.log('get personal post req',postReq);
             setPostInfo(postReq.data);
         }
         getPostReq();
@@ -31,16 +31,12 @@ const ProfilePost = (props) => {
                 url:process.env.REACT_APP_API_SERVER+'/api/post/'+currentUserName+'/friend/'+pageOwner,
                 headers:{Authorization:`Bearer ${token}`},
             })
-            console.log('get personal req',postReq);
+            //console.log('get personal req',postReq);
             setPostInfo(postReq.data);
         }
         getPostReq();
     }
-  },[isOwner,areFriends])
-  const changeToCommentPage = () => {
-    window.location.href = "/comment";
-  };
-
+  },[isOwner,areFriends,pageOwner])
   return (
     <div className="postContainer">
       {/* {postInfo.map((info, index) => {
@@ -72,6 +68,7 @@ const ProfilePost = (props) => {
             key={post.id}
           />
         }
+        return null
           
       })}
     </div>

@@ -6,7 +6,6 @@ import {
 import '../../stylesheet/friendsPage.css'
 import DeleteFriend from "./DeleteFriend";
 import FriendSearchBar from "./FriendSearchBar";
-import EditFriendGroup from "./EditFriendGroup";
 import BackToTopButton from "../BackToTopButton";
 import { FriendCard } from "./FriendCard"
 
@@ -21,10 +20,9 @@ const FriendsArea = (props) => {
         //console.log('trigger', e.target.getAttribute('name'));
         setOnDeleteUser(e.target.getAttribute('name'));
     }
-    const { friendsList, activeTab, index } = props
+    const { friendsList, activeTab} = props
     //console.log("Friends List from active tab:", friendsList[activeTab])
     //console.log('friendsList from friends area', friendsList, "active tab", activeTab, index);
-    const [localFriendsList, setLocalFriendsList] = useState(friendsList);
     const [searchResult, setSearchResult] = useState("");
     const [onDeleteUser, setOnDeleteUser] = useState(null)
     //console.log("SEARCH RESULT:", typeof searchResult)
@@ -62,6 +60,7 @@ const FriendsArea = (props) => {
                         }) :
                             friendsList[activeTab] && friendsList[activeTab].filter(newfriendsList => {
                                 if (newfriendsList.toLowerCase().includes(searchResult)) return newfriendsList
+                                else return false;
                             }).map((friend, index) => {
                                 // console.log("FRIENDS LIST III:", friend);
                                 return (

@@ -2,7 +2,6 @@ import React from "react"
 import LockIcon from "../../img/lockIcon.png";
 
 const NotExistingUserBlackBlock = (props) => {
-    const { pageOwnerName, areFriends } = props
     // console.log("this is black:", pageOwnerName)
     // console.log("this is black arefriends:", areFriends)
     return (

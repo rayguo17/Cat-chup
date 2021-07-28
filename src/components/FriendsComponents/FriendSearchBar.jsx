@@ -15,20 +15,20 @@ const FriendSearchBar = (props) => {
     //console.log("this is props inFriendSearchBar", props)
     //console.log("this is local friends list", localFriendsList)
 
-    const friendsObject = localFriendsList && localFriendsList.filter((val) => {
-        if (searchValue == "") {
-            return val
-        } else if (val.toLowerCase().includes(searchValue.toLocaleLowerCase())) {
-            return val
-        }
-    }).map(friend => {
-        //console.log("username:friend", friend)
-        return {
+    // const friendsObject = localFriendsList && localFriendsList.filter((val) => {
+    //     if (searchValue == "") {
+    //         return val
+    //     } else if (val.toLowerCase().includes(searchValue.toLocaleLowerCase())) {
+    //         return val
+    //     }
+    // }).map(friend => {
+    //     //console.log("username:friend", friend)
+    //     return {
 
-            username: friend,
-            key: friend
-        }
-    })
+    //         username: friend,
+    //         key: friend
+    //     }
+    // })
     //console.log("friendsList from searchbar", friendsObject);
     // const filteredNames = localFriendsList.filter()
 

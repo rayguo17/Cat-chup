@@ -8,7 +8,7 @@ import catLogo from '../../img/cat-chup_logo.png'
             <div style={{backgroundColor:"#dfdfdf"}} >
                 <p style={{padding:"10px",fontSize:"30px",
                  fontWeight:"700",borderBottom:"2px solid #96d9ff",
-                 color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", backgroundColor:"white", width:"32vw",
+                 color:"white",WebkitTextStrokeWidth: "1px", WebkitTextStrokeColor:"black", width:"32vw",
                  backgroundColor:"#dfdfdf"}}>
                      You currently have no notifications !</p>
                 <img style={{padding:"10px",alignSelf:"center",height:"40vh"}} src={catLogo} alt="catlogo"></img>

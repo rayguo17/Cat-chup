@@ -28,6 +28,7 @@ const PostArea = (props) => {
             />
           )
         }
+        return null;
         
       })}
       <BackToTopButton />

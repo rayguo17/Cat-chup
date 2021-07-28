@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 
 import userAvatar from '../../img/profileIcon.png';
 import { AddFriendThunk } from "../../redux/friendsList/action";
-import { loadNotiThunk, updateNotificationAction } from "../../redux/notification/action";
+import { updateNotificationAction } from "../../redux/notification/action";
 
 
 
@@ -38,7 +38,7 @@ export const FriendRequestNotiCard = (props) =>{
         setDateTime(time.toLocaleDateString()+' '+time.toLocaleTimeString());
         //console.log('set up time', noti)
        
-    },[noti]);
+    },[noti,donor,solved]);
     const acceptFriend = ()=>{
         dispatch(AddFriendThunk(noti));
         // dispatch(loadNotiThunk(noti.recipient))
@@ -51,7 +51,7 @@ export const FriendRequestNotiCard = (props) =>{
                 headers:{Authorization:`Bearer ${token}`}
             })
             console.log('ignoreReq',ignoreReq);
-            if(ignoreReq.status==200){
+            if(ignoreReq.status===200){
                 let newNoti = {
                     ...noti
                 }

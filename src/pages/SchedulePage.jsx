@@ -1,43 +1,23 @@
-import { Container, Row, Col } from "reactstrap";
-import WeekIcon from "../components/WeekIcon";
-import React, { setState } from "react";
-import ReactDOM from "react-dom";
+import React from "react";
 import FullCalendar, { formatDate } from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import { INITIAL_EVENTS, createEventId } from "../components/EventUtills";
+
 import "../../src/stylesheet/schedulePage.css";
 
 import ScheduleDetail from "../components/ScheduleComponents/ScheduleDetail";
 import {
-  ThemeProvider,
-  TextareaAutosize,
-  Button,
   TextField,
 } from "@material-ui/core";
 import ScheduleModal from "../components/ScheduleComponents/ScheduleModal";
 import "../stylesheet/scheduleModal.css";
 import moment from "moment";
-import { useFormik } from "formik";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import MoodIcon from "../img//moodIcon.png";
-import IncognitoIcon from "../img//incognitoIcon.png";
-import EventsIcon from "../img//eventsIcon.png";
-import PostEmoji from "../img//post_smile-emoji_icon.png";
-import UploadImageIcon from "../img/upload_imageIcon.png";
-import ReactImageUploading from "react-images-uploading";
-import { PostImageShowcase } from "../components/WhatsOnYourMindComponents/PostImageShowcase";
-import { EmojiPopper } from "../components/WhatsOnYourMindComponents/EmojiPopper";
 import { useRef } from "react";
-import { addNewPostThunk } from "../redux/post/action";
-import FriendGroupSelector from "../components/WhatsOnYourMindComponents/FriendGroupSelector";
 import { makeStyles } from "@material-ui/core";
-import toEventIcon from "../img/toEvent.png";
-import notEventIcon from "../img/notEvent.png";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 import { addNewScheduleSuccessAction } from "../redux/schedule/action";
@@ -79,7 +59,6 @@ const SchedulePage = (props) => {
   const scheduleListStore = useSelector((state) => state.scheduleListStore);
   const scheduleList = scheduleListStore.scheduleList;
   const [INITIAL_EVENTS, setINITIAL_EVENTS] = useState([]);
-  const classes = useStyles();
   var local_date = moment().format("YYYY-MM-DD");
   var local_hour = moment().format("HH");
   //console.log("local_hour,", local_hour);
@@ -117,11 +96,12 @@ const SchedulePage = (props) => {
               start: startTime.toISOString().slice(0,-5),
               end: endTime.toISOString().slice(0,-5),
             });
+            return null;
           });
         }
         
          setINITIAL_EVENTS(currentScheduleList);
-         console.log('it rerender',INITIAL_EVENTS)
+         //console.log('it rerender',INITIAL_EVENTS)
       } catch (error) {
         console.log("INITIAL_EVENTS DATA error", error);
       }
@@ -160,14 +140,6 @@ const SchedulePage = (props) => {
     }
 
   };
-  useEffect(()=>{
-    console.log('ref',calendarRef);
-    if(calendarRef.current){
-      let calendarApi = calendarRef.current.getApi();
-    console.log('calendarapi',calendarApi);
-    }
-    
-  },[calendarRef.current])
 
   const handleSubmit =async (e) => {
     try {
@@ -185,14 +157,14 @@ const SchedulePage = (props) => {
       caption:modalContent
     }
     newSchedule.content = scheduleContent;
-    console.log('submit new schedule',newSchedule);
+    //console.log('submit new schedule',newSchedule);
     let newScheduleReq = await axios({
       url:process.env.REACT_APP_API_SERVER+'/api/schedule',
       headers:{Authorization:`Bearer ${token}`},
       method:'post',
       data:newSchedule
     })
-    console.log('store schedule res',newScheduleReq);
+    //console.log('store schedule res',newScheduleReq);
     if(newScheduleReq.status===200){
       dispatch(addNewScheduleSuccessAction(newScheduleReq.data))
       let newStartTime = new Date(modalScheduleStartTime.start);
@@ -206,9 +178,9 @@ const SchedulePage = (props) => {
         end:newEndTime,
       }
       // setINITIAL_EVENTS([...INITIAL_EVENTS,newEvent]);
-      console.log('calendarRef',calendarRef);
+      //console.log('calendarRef',calendarRef);
       let calendarApi = calendarRef.current.getApi();
-      console.log('calendarapi',calendarApi);
+      //console.log('calendarapi',calendarApi);
         calendarApi.addEvent(newEvent);
 
       
@@ -223,7 +195,7 @@ const SchedulePage = (props) => {
   };
 
   const modalOpen = (e) => {
-    console.log('open new schedule modal',e);
+    //console.log('open new schedule modal',e);
     setModal(true);
   };
 
@@ -243,22 +215,22 @@ const SchedulePage = (props) => {
   //     });
   //   };
 
-  const handleDateSelect = (selectInfo) => {
-    let title = prompt("Please enter a new title for your event");
-    let calendarApi = selectInfo.view.calendar;
+  // const handleDateSelect = (selectInfo) => {
+  //   let title = prompt("Please enter a new title for your event");
+  //   let calendarApi = selectInfo.view.calendar;
 
-    calendarApi.unselect(); // clear date selection
+  //   calendarApi.unselect(); // clear date selection
 
-    if (title) {
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-      });
-    }
-  };
+  //   if (title) {
+  //     calendarApi.addEvent({
+  //       id: createEventId(),
+  //       title,
+  //       start: selectInfo.startStr,
+  //       end: selectInfo.endStr,
+  //       allDay: selectInfo.allDay,
+  //     });
+  //   }
+  // };
 
   const handleDisplay = (event) => {
     // console.log("target", document.get);
