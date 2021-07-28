@@ -149,7 +149,7 @@ export const EventCardPostArea = (props)=>{
             <Card>
         <img onClick={handleRedProfile} className="userIcon" src={`${process.env.REACT_APP_API_SERVER+eventInfo.imgPath}`} alt="icon" />
         <span className="userName">
-          <p> {eventInfo.username} </p>
+          <p style={{fontSize:"25px", fontWeight:"600"}}> {eventInfo.username} </p>
         </span>
         {/* <div style={{borderRadius:"5px"}}className="mood"></div> */}
         <CardBody>

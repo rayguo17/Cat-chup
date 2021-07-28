@@ -82,7 +82,7 @@ const PostCard = (props) => {
           alt="icon"
         />
         <span className="userName">
-          <p> {postInfo.username} </p>
+          <p style={{fontSize:"25px", fontWeight:"600"}}> {postInfo.username} </p>
         </span>
         {/* <div style={{borderRadius:"5px"}} className="mood"></div> */}
         <CardBody>
