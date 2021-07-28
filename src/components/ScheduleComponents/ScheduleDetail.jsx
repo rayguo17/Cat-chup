@@ -116,7 +116,7 @@ const ScheduleDetail = (props) => {
           <div
             style={{
               textAlign: "start",
-              paddingLeft: "15px",
+              
               paddingTop: "10px",
             }}
           >
@@ -148,7 +148,7 @@ const ScheduleDetail = (props) => {
             style={{
               textAlign: "start",
               marginTop: "30px",
-              paddingLeft: "15px",
+              padding:'0 10px'
             }}
           >
             <textarea

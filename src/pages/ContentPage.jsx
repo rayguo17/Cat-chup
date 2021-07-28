@@ -397,7 +397,7 @@ export const ContentPage = () => {
   return (
     <center>
       <BrowserRouter>
-        <Container>
+        <Container style={{backgroundColor:'white'}}>
           <Row>
             <Col xs="3 px-0" style={{ height: "auto" }}>
               <SideBar username={username}  />

@@ -47,6 +47,9 @@ textarea {
 .display-none {
   display: none;
 }
+.schedule_detail {
+  background-color: white;
+}
 
 /* .schedule_detail > div {
   position: absolute;
