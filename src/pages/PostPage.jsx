@@ -173,7 +173,7 @@ export const PostPage = (props)=>{
                   style={{ width: "50px", height: "50px",cursor:'pointer' }}
                 />
                 <span className="userName">
-                  <p>{Info?Info.username:null}</p>
+                  <p style={{fontSize:"25px", fontWeight:"600"}}>{Info?Info.username:null}</p>
                 </span>
                 {/* <div style={{borderRadius: "5px"}} className="mood"></div> */}
                 <CardBody></CardBody>
