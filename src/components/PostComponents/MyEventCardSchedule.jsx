@@ -84,7 +84,7 @@ const MyEventCardSchedule = (props) => {
         body
         style={{
           padding: "0px 10px",
-          margin: "0px",
+          margin: "2px 10px 2px 10px",
           border: "2px solid #79D7F6",
           backgroundColor: "#D4E9F0",
         }}
