@@ -75,7 +75,7 @@ const ScheduleDetail = (props) => {
       <form onSubmit={handleSubmit}>
         <div>
           <div style={{ fontSize: "32px", backgroundColor: "#96d9ff" }}>
-            {props.schedule.content.title}
+            {schedule.content.title}
           </div>
 
           {/* //if event conditional render */}
