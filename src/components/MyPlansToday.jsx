@@ -40,7 +40,7 @@ const MyPlansToday = (props) => {
   //   today_date = `${today_year}-${today_month + 1}-${today_day}`;
   // }
 
-  console.log("today_date", today_date);
+  //console.log("today_date", today_date);
 
   const routeChange = () => {
     // let path = "/schedule";
