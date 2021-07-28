@@ -4,11 +4,9 @@
 import NotificationHeader from "../components/NotificationComponents/NotificationHeader";
 
 
-import ScheduleRightBar from "../components/ScheduleRightBar"
 import '../stylesheet/navBar.css'
 import '../stylesheet/notificationPage.css'
 import { FriendRequestNotiCard } from '../components/NotificationComponents/FriendRequestNotiCard'
-import NotificationBody from "../components/NotificationComponents/NotificationBody";
 import { useState } from "react";
 import { LikedNotiCard } from "../components/NotificationComponents/LikedNotiCard";
 import { CommentNotiCard } from "../components/NotificationComponents/CommentNotiCard";
@@ -16,10 +14,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ScehduleRightBarPerosnal from "../components/ScheduleRightBarPersonal";
 import { EventNotiCard } from "../components/NotificationComponents/EventNotiCard";
-import WeekIcon from "../components/WeekIcon";
 import BackToTopButton from "../components/BackToTopButton";
 import NoNotifications from "../components/NotificationComponents/NoNotifications";
-import { MyscheduleButton } from "../components/ScheduleComponents/MyScheduleButton";
 import { clearAllNotiAction } from "../redux/real_time_noti/action";
 import jwtDecode from "jwt-decode";
 import { AcceptEventCard } from "../components/NotificationComponents/AcceptEventCard";
@@ -94,6 +90,7 @@ const NotificationPage = () => {
                                 key={noti.id}
                             />
                         }
+                        return null;
                     })
                 }
                 {/* <NotificationBody /> */}

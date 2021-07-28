@@ -59,7 +59,6 @@ const SchedulePage = (props) => {
   const scheduleListStore = useSelector((state) => state.scheduleListStore);
   const scheduleList = scheduleListStore.scheduleList;
   const [INITIAL_EVENTS, setINITIAL_EVENTS] = useState([]);
-  const classes = useStyles();
   var local_date = moment().format("YYYY-MM-DD");
   var local_hour = moment().format("HH");
   //console.log("local_hour,", local_hour);
@@ -97,6 +96,7 @@ const SchedulePage = (props) => {
               start: startTime.toISOString().slice(0,-5),
               end: endTime.toISOString().slice(0,-5),
             });
+            return null;
           });
         }
         
@@ -140,14 +140,6 @@ const SchedulePage = (props) => {
     }
 
   };
-  useEffect(()=>{
-    //console.log('ref',calendarRef);
-    if(calendarRef.current){
-      let calendarApi = calendarRef.current.getApi();
-    //console.log('calendarapi',calendarApi);
-    }
-    
-  },[calendarRef.current])
 
   const handleSubmit =async (e) => {
     try {

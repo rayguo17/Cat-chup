@@ -94,6 +94,7 @@ export function addNewPostThunk(values){
                 let content = {caption:values.caption,attachPic:[]};
                 savePicRes.map((imgReq,index)=>{
                     content.attachPic.push(imgReq.data);
+                    return null;
                 })
                 newPost.content=content;
                 newPost.visible_group = values.visible_group;
@@ -112,6 +113,7 @@ export function addNewPostThunk(values){
                 }
                 savePicRes.map((imgReq,index)=>{
                     content.attachPic.push(imgReq.data);
+                    return null;
                 })
                 newPost.content = content;
                 console.log('event pre-upload',newPost)

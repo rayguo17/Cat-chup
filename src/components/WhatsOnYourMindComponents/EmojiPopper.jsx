@@ -2,7 +2,7 @@ import { Fade, Popper } from "@material-ui/core";
 import Picker from 'emoji-picker-react';
 
 export const EmojiPopper = (props)=>{
-    const {id,open,anchorEl,handleClickAway,onEmojiClick} = props;
+    const {id,open,anchorEl,onEmojiClick} = props;
 
     //console.log('open',open);
     //console.log('anchorEl',anchorEl);

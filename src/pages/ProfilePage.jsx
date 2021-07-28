@@ -32,7 +32,6 @@ export const ProfilePage = (props) => {
     
     const postListStore = useSelector(state=>state.postListStore);
     const postList = postListStore.postList;
-    const [postInfo,setPostInfo] = useState([]);
 
         const dispatch = useDispatch();
         useEffect(() => {
@@ -52,7 +51,7 @@ export const ProfilePage = (props) => {
         let decode = jwtDecode(jwt);
         let currentUserName = decode.username
         //check if it is owner
-        if (pageOwnerName == currentUserName) {
+        if (pageOwnerName === currentUserName) {
             setIsOwner(true);
             setareFriends(false);
             setUserInfo(userStore.userInfo);
@@ -69,7 +68,7 @@ export const ProfilePage = (props) => {
                 let allFriend = friendListStore.friendList["All Friends"];
                 //console.log('friendList', friendListStore.friendList, allFriend);
                 if (allFriend.find(e => e === pageOwnerName)) {
-                    console.log('are friends');
+                    //console.log('are friends');
                     setareFriends(true);
                     setIsOwner(false)
 
@@ -81,7 +80,7 @@ export const ProfilePage = (props) => {
 
         //and then check if they are friend?
 
-    }, [userStore, friendListStore])
+    }, [userStore, friendListStore,props.match.params.username])
 
 
     //console.log("this is postlist*************",postList.length)
@@ -107,7 +106,6 @@ export const ProfilePage = (props) => {
                 postList={postList}
                 isOwner={isOwner}
                 areFriends={areFriends}
-                postInfo={postInfo}
                 pageOwner={props.match.params.username}
                 />
                 <BackToTopButton />

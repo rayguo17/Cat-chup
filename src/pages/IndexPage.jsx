@@ -1,5 +1,3 @@
-import cover from '../img/cover.jpg'
-import { Link } from 'react-router-dom'
 import '../stylesheet/IndexPage.css'
 import { Button } from '@material-ui/core'
 

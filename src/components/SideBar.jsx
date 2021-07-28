@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
-import { Nav, NavItem, Col } from "reactstrap";
+
+import { Nav, NavItem } from "reactstrap";
 import homeIcon from "../img/homeIcon.png";
 import friendsIcon from "../img/friendsIcon.png";
 import notificationIcon from "../img/NotificationIcon.png";

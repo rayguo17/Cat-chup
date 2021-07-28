@@ -12,7 +12,10 @@ const ScehduleRightBarPerosnal = (props) => {
   
   return (
     <div>
-      {(scheduleList && scheduleList.length > 0) ? (
+      {(scheduleList && scheduleList.filter((event)=>{
+        return new Date(event.start) > new Date() ||
+        new Date(event.start) === new Date()
+      }).length > 0) ? (
 
       <center>
         <div
@@ -39,9 +42,11 @@ const ScehduleRightBarPerosnal = (props) => {
             if (
               
               (new Date(event.start) > new Date() ||
-                new Date(event.start) == new Date())
+                new Date(event.start) === new Date())
             ) {
               return <MyEventCardSchedule Info={event} key={event.id} />;
+            }else{
+              return null
             }
           })}
         </div>

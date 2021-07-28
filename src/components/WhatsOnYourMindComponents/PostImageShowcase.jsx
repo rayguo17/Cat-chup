@@ -14,7 +14,7 @@ const showCaseStyle = {
 export const PostImageShowcase = (props)=>{
     const {imageList, onImageRemove} = props;
     useEffect(()=>{
-        console.log('In the showcase',imageList)
+        //console.log('In the showcase',imageList)
     },[imageList])
     const showImage = ()=>{
         if(!imageList[0]){
@@ -103,7 +103,7 @@ export const PostImageShowcase = (props)=>{
                                 flexDirection:'column'
                             }}>
                                 {imageList.map((image,index)=>{
-                                    if(index==0)return null
+                                    if(index===0)return null
                                     return (
                                         <div key={index} style={{
                                             height:'45%',
@@ -135,7 +135,7 @@ export const PostImageShowcase = (props)=>{
                         <div style={{...showCaseStyle,display:"flex",justifyContent:'space-between'}}>
                             {
                                 imageList.map((image,index)=>{
-                                    if(index==0||index==1){
+                                    if(index===0||index===1){
                                         return (
                                             <div key={index} style={{
                                                 width:'47%',
@@ -147,7 +147,7 @@ export const PostImageShowcase = (props)=>{
                                             }}>
                                                 {
                                                     imageList.map((innerImage,i)=>{
-                                                        if(index==i||i==index+2){
+                                                        if(index===i||i===index+2){
                                                             return (
                                                                 <div key={i} style={{
                                                                     width:"100%",
@@ -157,7 +157,6 @@ export const PostImageShowcase = (props)=>{
                                                                     backgroundPosition:'center',
                                                                     backgroundRepeat:'no-repeat',
                                                                     borderRadius:'20px',
-                                                                    width:'100%',
                                                                     position:'relative',
 
                                                                 }}>
@@ -172,12 +171,16 @@ export const PostImageShowcase = (props)=>{
                                                                     />
                                                                 </div>
                                                             )
+                                                        }else{
+                                                            return null
                                                         }
                                                     })
                                                 }
                                                 
                                             </div>
                                         )
+                                    }else{
+                                        return null;
                                     }
                                 })
                             }

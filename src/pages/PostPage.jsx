@@ -118,14 +118,14 @@ export const PostPage = (props)=>{
         setComments(getPostReq.data.content.comments);
     }
     getPostDetail();
-  },[])
+  },[props.match.params.postid])
   const handleLiked = async ()=>{
     console.log('liked process');
     let token = localStorage.getItem('token');
     let decode = jwtDecode(token);
     let username = decode.username;
     let match = false;
-    match = likes.find(obj=>obj.user==username)
+    match = likes.find(obj=>obj.user===username)
     if(match){
       //cancel like
     }else{
@@ -136,7 +136,7 @@ export const PostPage = (props)=>{
         method:'post'
       })
       console.log('sendLike req',sendLikedReq);
-      if(sendLikedReq.status==200){
+      if(sendLikedReq.status===200){
         //set thunk to change reducer
         let newPost = {
           ...Info,

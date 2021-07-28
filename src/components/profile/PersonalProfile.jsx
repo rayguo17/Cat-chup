@@ -44,7 +44,7 @@ export const PersonalProfile = (props) => {
             userName:userInfo.username,
             userSecret:userInfo.hash
         }
-        let createMessage =  getOrCreateChat(creds,{is_direct_chat:true,usernames:[props.userInfo.username]},(data)=>{
+         getOrCreateChat(creds,{is_direct_chat:true,usernames:[props.userInfo.username]},(data)=>{
             //console.log('create chat in profile page',data);
             history.push('/messages');
         })

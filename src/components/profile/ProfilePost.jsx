@@ -7,7 +7,7 @@ import PostCard from "../PostComponents/PostCard";
 import { EventCardPostArea } from "../PostComponents/EventCardPostArea";
 
 const ProfilePost = (props) => {
-  const {postList,isOwner,areFriends,pageOwner} = props
+  const {isOwner,areFriends,pageOwner} = props
   const [postInfo,setPostInfo] = useState([]);
 
   useEffect(()=>{
@@ -36,7 +36,7 @@ const ProfilePost = (props) => {
         }
         getPostReq();
     }
-  },[isOwner,areFriends])
+  },[isOwner,areFriends,pageOwner])
   return (
     <div className="postContainer">
       {/* {postInfo.map((info, index) => {
@@ -68,6 +68,7 @@ const ProfilePost = (props) => {
             key={post.id}
           />
         }
+        return null
           
       })}
     </div>

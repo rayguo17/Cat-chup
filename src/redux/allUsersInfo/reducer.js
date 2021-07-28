@@ -1,4 +1,4 @@
-import { LOAD_ALLUSERS_SUCCESS_ACTION, LOAD_ALLUSERS_FAILURE_ACTION } from "./action"
+import { LOAD_ALLUSERS_SUCCESS_ACTION } from "./action"
 
 
 
@@ -12,8 +12,6 @@ const allUsersListReducer = (state = initialState, action) => {
             return {
                 allUsersList: action.allUsersInfo
             }
-        case LOAD_ALLUSERS_FAILURE_ACTION:
-            console.log("FAILURE")
         default:
             return state
     }

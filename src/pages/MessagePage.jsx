@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { ChatEngine, ChatEngineWrapper,MessageBubble,Socket } from "react-chat-engine"
+import { ChatEngine } from "react-chat-engine"
 import { useSelector } from "react-redux"
 import { ChatSettingTop } from "../components/MessageComponents/ChatSettingTop";
 import { CustomMessageBubble } from "../components/MessageComponents/CustomMessageBubble";
@@ -11,8 +11,7 @@ export const MessagePage = (props)=>{
     const userInfo = userInfoStore.userInfo;
     const [username,setUsername] = useState(null);
     const [userSecret,setUserSecret]= useState(null);
-    const [localChat,setLocalChat] = useState({});
-    const [localMessage,setLocalMessage] = useState({});
+
     //console.log('user info',userInfo);
     useEffect(()=>{
         //console.log('refresh username');
@@ -21,11 +20,7 @@ export const MessagePage = (props)=>{
     },[userInfo])
     const renderNewChat = (creds)=>{
         //console.log('render new chat creds',creds);
-        return (
-            <div>
-                placeholder
-            </div>
-        )
+        return null
     }
     const renderMessageBubble=(creds, chat, lastMessage, message, nextMessage)=>{
         //console.log('render chat setting',creds,chat);

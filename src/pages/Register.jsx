@@ -37,7 +37,7 @@ const Register = (props) =>{
                 if(value){
                     //console.log('type',value.type)
                     const supported_type=['image/jpeg','image/png','image/jpg']
-                 let matched = supported_type.find(type=>type==value.type)
+                 let matched = supported_type.find(type=>type===value.type)
                  //console.log('matched',matched);
                  if(matched){
                      return true;

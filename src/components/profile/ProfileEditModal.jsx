@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const ProfileEditModal = (props)=>{
     const {
-        buttonLabel,className,toggle,modalIsOpen
+        className,toggle,modalIsOpen
     } = props;
     const userStore = useSelector(state=>state.userInfoStore);
     let userInfo = userStore.userInfo;
