@@ -83,7 +83,7 @@ export const ProfilePage = (props) => {
     }, [userStore, friendListStore,props.match.params.username])
 
 
-    console.log("this is postlist*************",postList)
+    //console.log("this is postlist*************",postList)
    
 
   
