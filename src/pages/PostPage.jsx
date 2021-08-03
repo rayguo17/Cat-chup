@@ -157,14 +157,14 @@ export const PostPage = (props)=>{
     //window.location.href = '/'+Info.username
   }
   return (
-    <div className="col-9 px-0 comment-part">
+    <div className="col-9 px-0 comment-part" style={{backgroundColor:'white'}}>
         <div >
             <div className='back-btn-container'>
             <GoBackButton/>
             </div>
         </div>
         <div className="comment-card">
-        <Card>
+        <Card style={{overflow:'scroll',maxHeight:'95vh',overflowX:'hidden'}}>
                 <img
                   onClick={handleRedProfile}
                   className="userIcon"
