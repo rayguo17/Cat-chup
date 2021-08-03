@@ -2,6 +2,8 @@ import '../stylesheet/IndexPage.css'
 import { Button } from '@material-ui/core'
 
 export const IndexPage = ()=>{
+    console.log('this is index');
+    console.log('backend server',process.env.REACT_APP_API_SERVER);
     return (
         <div className='row mx-0 full-size'>
 

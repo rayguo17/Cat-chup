@@ -5,9 +5,9 @@ export const NotFriendBlackBlock = (props) => {
     const { pageOwnerName } = props
 
     return (
-        <div className='col-12 px-0 row mx-0' style={{position:"absolute", bottom: "0"}}>
+        <div className='row mx-0 w-100' style={{position:"absolute", bottom: "0"}}>
         <div  style={{
-            height: "51vh",
+            height: "67vh",
             backgroundColor: "#434343", zIndex: "20"
         }}>
             <img style={{ marginTop: "40px" }} src={LockIcon} alt="lockIcon" />
