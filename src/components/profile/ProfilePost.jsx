@@ -37,6 +37,7 @@ const ProfilePost = (props) => {
         getPostReq();
     }
   },[isOwner,areFriends,pageOwner])
+  
   return (
     <div className="postContainer">
       {/* {postInfo.map((info, index) => {

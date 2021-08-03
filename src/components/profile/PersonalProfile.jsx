@@ -53,7 +53,7 @@ export const PersonalProfile = (props) => {
 //here write if user exists if not return  logo in a div
     return (
         
-        <div style={{position:'sticky', height:'40vh',borderBottom:'1px solid #c4c4c4',top:'0',zIndex:'10',backgroundColor:'white'}}>
+        <div style={{position:'sticky', height:'49vh',borderBottom:'1px solid #c4c4c4',top:'0',zIndex:'10',backgroundColor:'white'}}>
             <div className='' style={{width:'100%',height:'200px',backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover',backgroundImage:`url(${process.env.REACT_APP_API_SERVER+props.userInfo.bgImgPath})`}}>
             </div>
             <div style={{ position: 'absolute', top: '100px', left: "100px" }}>

@@ -83,7 +83,7 @@ export const ProfilePage = (props) => {
     }, [userStore, friendListStore,props.match.params.username])
 
 
-    //console.log("this is postlist*************",postList.length)
+    console.log("this is postlist*************",postList)
    
 
   
@@ -100,7 +100,7 @@ export const ProfilePage = (props) => {
 
             {(isOwner === true || areFriends === true) ? 
 
-                ( postList.length > 0) ?
+                ( postList.length > 0 && postList.find((obj) => obj.username === props.match.params.username )) ?
                 <div className="Scrolllable" style={{overflow:"scroll", overflowX:"hidden",height:"67vh"}}>
                 <ProfilePost
                 postList={postList}
